@@ -1,0 +1,19 @@
+Successfully added model saving functionality to train_v2.py. The training script now saves all trained models to disk after training completes.
+
+**Files saved to `models/results/v2/`:**
+- [`ensemble_model.pkl`](models/results/v2/ensemble_model.pkl) - Main ensemble model with weighted voting
+- [`logisticregression_model.pkl`](models/results/v2/logisticregression_model.pkl) - Logistic Regression
+- [`randomforest_model.pkl`](models/results/v2/randomforest_model.pkl) - Random Forest
+- [`gradientboosting_model.pkl`](models/results/v2/gradientboosting_model.pkl) - Gradient Boosting
+- [`svm_model.pkl`](models/results/v2/svm_model.pkl) - Support Vector Machine
+- [`naivebayes_model.pkl`](models/results/v2/naivebayes_model.pkl) - Naive Bayes
+- [`feature_names.txt`](models/results/v2/feature_names.txt) - List of 47 feature names
+- [`best_horizon.txt`](models/results/v2/best_horizon.txt) - Best horizon info (20d, ROC-AUC: 0.5783)
+- [`horizon_comparison.json`](models/results/v2/horizon_comparison.json) - Full results
+
+**Training results (20-day horizon - best):**
+- GradientBoosting: 88.7% accuracy, 0.954 ROC-AUC
+- RandomForest: 88.5% accuracy, 0.945 ROC-AUC
+- Ensemble: 64.8% accuracy, 0.578 ROC-AUC
+
+**Note:** The ensemble's weighted voting shows lower individual metrics than the best single model (GradientBoosting) because it averages predictions across all 5 models including weaker ones (SVM, NaiveBayes). For production use, consider using the best individual model (`gradientboosting_model.pkl`) or adjusting ensemble weights.

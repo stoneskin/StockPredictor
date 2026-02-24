@@ -1,0 +1,4 @@
+Best horizon: 20d
+ROC-AUC: 0.5783
+Accuracy: 0.6483
+F1: 0.7745
