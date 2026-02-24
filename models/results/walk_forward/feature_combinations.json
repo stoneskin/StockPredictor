@@ -1,0 +1,258 @@
+{
+  "all_features": [
+    "atr_pct",
+    "bb_width",
+    "day_of_week",
+    "hull_signal",
+    "hull_slope",
+    "hull_value",
+    "macd_bullish",
+    "macd_crossover",
+    "macd_hist",
+    "macd_line",
+    "month",
+    "quarter",
+    "relative_strength",
+    "return_10d",
+    "return_1d",
+    "return_20d",
+    "return_3d",
+    "return_5d",
+    "rsi",
+    "rsi_overbought",
+    "signal_line",
+    "spy_return_15d",
+    "stoch_bullish",
+    "stoch_d",
+    "stoch_k",
+    "veg_fast_band_width",
+    "veg_filter_slope",
+    "veg_price_position",
+    "veg_signal",
+    "veg_slow_band_width",
+    "volume_ratio"
+  ],
+  "top_20": [
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "relative_strength",
+    "atr_pct",
+    "hull_value",
+    "macd_line",
+    "return_10d",
+    "stoch_k",
+    "spy_return_15d",
+    "return_5d",
+    "rsi",
+    "hull_slope",
+    "macd_hist",
+    "veg_filter_slope",
+    "month",
+    "signal_line",
+    "bb_width",
+    "stoch_d",
+    "return_3d"
+  ],
+  "top_15": [
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "relative_strength",
+    "atr_pct",
+    "hull_value",
+    "macd_line",
+    "return_10d",
+    "stoch_k",
+    "spy_return_15d",
+    "return_5d",
+    "rsi",
+    "hull_slope",
+    "macd_hist",
+    "veg_filter_slope"
+  ],
+  "top_10": [
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "relative_strength",
+    "atr_pct",
+    "hull_value",
+    "macd_line",
+    "return_10d",
+    "stoch_k",
+    "spy_return_15d"
+  ],
+  "top_8": [
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "relative_strength",
+    "atr_pct",
+    "hull_value",
+    "macd_line",
+    "return_10d"
+  ],
+  "top_5": [
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "relative_strength",
+    "atr_pct"
+  ],
+  "non_redundant": [
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "veg_filter_slope",
+    "veg_signal",
+    "hull_value",
+    "hull_slope",
+    "hull_signal",
+    "macd_line",
+    "signal_line",
+    "macd_hist",
+    "macd_bullish",
+    "macd_crossover",
+    "rsi",
+    "rsi_overbought",
+    "stoch_k",
+    "stoch_d",
+    "stoch_bullish",
+    "volume_ratio",
+    "atr_pct",
+    "bb_width",
+    "spy_return_15d",
+    "day_of_week",
+    "month",
+    "return_1d",
+    "return_3d",
+    "return_5d",
+    "return_10d",
+    "return_20d"
+  ],
+  "veg_only": [
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "veg_filter_slope",
+    "veg_signal"
+  ],
+  "hull_only": [
+    "hull_value",
+    "hull_slope",
+    "hull_signal"
+  ],
+  "macd_only": [
+    "macd_line",
+    "macd_hist",
+    "macd_bullish",
+    "macd_crossover"
+  ],
+  "signal_only": [
+    "signal_line"
+  ],
+  "rsi_only": [
+    "rsi",
+    "rsi_overbought"
+  ],
+  "stoch_only": [
+    "stoch_k",
+    "stoch_d",
+    "stoch_bullish"
+  ],
+  "volume_only": [
+    "volume_ratio"
+  ],
+  "atr_only": [
+    "atr_pct"
+  ],
+  "bb_only": [
+    "bb_width"
+  ],
+  "spy_only": [
+    "spy_return_15d"
+  ],
+  "relative_only": [
+    "relative_strength"
+  ],
+  "day_only": [
+    "day_of_week"
+  ],
+  "month_only": [
+    "month"
+  ],
+  "quarter_only": [
+    "quarter"
+  ],
+  "return_only": [
+    "return_1d",
+    "return_3d",
+    "return_5d",
+    "return_10d",
+    "return_20d"
+  ],
+  "top_per_category": [
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "hull_value",
+    "hull_slope",
+    "hull_signal",
+    "macd_line",
+    "macd_hist",
+    "macd_crossover",
+    "signal_line",
+    "rsi",
+    "rsi_overbought",
+    "stoch_k",
+    "stoch_d",
+    "stoch_bullish",
+    "volume_ratio",
+    "atr_pct",
+    "bb_width",
+    "spy_return_15d",
+    "relative_strength",
+    "day_of_week",
+    "month",
+    "quarter",
+    "return_10d",
+    "return_5d",
+    "return_3d"
+  ],
+  "hull_macd":[
+    "hull_value",
+    "hull_slope",
+    "hull_signal",
+    "macd_line",
+    "signal_line",
+    "macd_hist",
+    "macd_bullish",
+    "macd_crossover",
+    "volume_ratio"
+  ],
+  "random_pick1":[
+    "veg_fast_band_width",
+    "veg_slow_band_width",
+    "veg_price_position",
+    "relative_strength",
+    "atr_pct",
+    "hull_value",
+    "macd_line",
+    "return_10d",
+    "stoch_k",
+    "spy_return_15d"
+  ],
+  "random_pick2":[
+    "veg_fast_band_width",
+    "hull_value",
+    "macd_line",
+    "rsi",
+    "stoch_k",
+    "volume_ratio",
+    "atr_pct",
+    "bb_width",
+    "spy_return_15d",
+    "relative_strength"
+  ]
+}
