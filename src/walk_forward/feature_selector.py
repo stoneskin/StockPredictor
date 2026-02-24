@@ -186,6 +186,13 @@ class FeatureSelector:
             if top_per_category:
                 category_combinations['top_per_category'] = top_per_category
         
+        # Create hull + macd combination
+        hull_features = categories.get('hull', [])
+        macd_features = categories.get('macd', [])
+        if hull_features and macd_features:
+            hull_macd = hull_features + macd_features
+            category_combinations['hull_macd'] = hull_macd
+        
         return category_combinations
     
     def save_combinations(self, output_path: str):

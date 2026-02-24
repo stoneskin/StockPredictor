@@ -84,10 +84,27 @@ class WalkForwardTrainer:
         
         # Monotonicity check
         df_eval = pd.DataFrame({'y_true': y_test, 'y_pred': y_pred})
-        if len(df_eval) > 0:
-            df_eval['quantile'] = pd.qcut(df_eval['y_pred'], q=5, labels=['Q1', 'Q2', 'Q3', 'Q4', 'Q5'], duplicates='drop')
-            quantile_means = df_eval.groupby('quantile')['y_true'].mean().values
-            is_monotonic = all(quantile_means[i] <= quantile_means[i+1] for i in range(len(quantile_means)-1))
+        if len(df_eval) >= 5:
+            try:
+                # Try to create 5 quantiles, but handle case where duplicates='drop' creates fewer bins
+                df_eval['quantile'], bins = pd.qcut(df_eval['y_pred'], q=5, labels=False, duplicates='drop', retbins=True)
+                n_bins = len(bins) - 1
+                
+                if n_bins >= 2:
+                    # Create labels based on actual number of bins
+                    labels = [f'Q{i+1}' for i in range(n_bins)]
+                    df_eval['quantile'] = pd.cut(df_eval['y_pred'], bins=bins, labels=labels, include_lowest=True)
+                    quantile_means = df_eval.groupby('quantile', observed=True)['y_true'].mean().values
+                    is_monotonic = all(quantile_means[i] <= quantile_means[i+1] for i in range(len(quantile_means)-1))
+                else:
+                    quantile_means = []
+                    is_monotonic = False
+            except Exception as e:
+                # Fallback: use rank-based approach
+                df_eval['rank'] = df_eval['y_pred'].rank(method='first')
+                df_eval['quantile'] = pd.qcut(df_eval['rank'], q=min(5, len(df_eval)), labels=False, duplicates='drop')
+                quantile_means = df_eval.groupby('quantile')['y_true'].mean().values
+                is_monotonic = len(quantile_means) >= 2 and all(quantile_means[i] <= quantile_means[i+1] for i in range(len(quantile_means)-1))
         else:
             quantile_means = []
             is_monotonic = False
@@ -155,6 +172,24 @@ class WalkForwardTrainer:
         # Aggregate results
         metrics_names = ['r2', 'rmse', 'mae', 'correlation', 'win_rate']
         aggregated = {}
+        
+        # Handle empty fold_results case
+        if len(fold_results) == 0:
+            print(f"\nWARNING: No fold results for combination '{combination_name}'!")
+            print(f"   This usually means no valid folds were generated.")
+            for metric in metrics_names:
+                aggregated[f'{metric}_mean'] = np.nan
+                aggregated[f'{metric}_std'] = np.nan
+                aggregated[f'{metric}_min'] = np.nan
+                aggregated[f'{metric}_max'] = np.nan
+            
+            aggregated['n_folds'] = 0
+            aggregated['n_features'] = len(feature_indices)
+            aggregated['monotonic_count'] = 0
+            aggregated['monotonic_pct'] = 0.0
+            aggregated['fold_results'] = []
+            
+            return aggregated
         
         for metric in metrics_names:
             values = [r[metric] for r in fold_results]

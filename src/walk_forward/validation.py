@@ -84,14 +84,23 @@ class WalkForwardValidator:
         folds = []
         fold_id = 0
         
-        # Calculate window sizes in samples
-        samples_per_month = len(self.df) / (
-            (self.dates[-1] - self.dates[0]).astype('timedelta64[D]').astype(int) / 30
-        )
+        # Calculate window sizes in samples - use a more robust approach
+        if len(self.dates) > 1:
+            date_range_days = (pd.Timestamp(self.dates[-1]) - pd.Timestamp(self.dates[0])).days
+            if date_range_days > 0:
+                samples_per_month = len(self.df) / (date_range_days / 30)
+            else:
+                samples_per_month = len(self.df) / 12  # Fallback: assume 1 year of data
+        else:
+            samples_per_month = len(self.df) / 12  # Fallback
         
         train_samples = int(self.train_months * samples_per_month)
         test_samples = int(self.test_months * samples_per_month)
         step_samples = int(self.step_months * samples_per_month)
+        
+        # Ensure minimum sample sizes
+        train_samples = max(train_samples, self.min_train_samples)
+        test_samples = max(test_samples, self.min_test_samples)
         
         # Starting point: use enough data for initial training window
         train_start_idx = 0
@@ -126,6 +135,21 @@ class WalkForwardValidator:
             test_start_idx += step_samples
         
         self.folds = folds
+        
+        # Warn if no folds were generated
+        if len(folds) == 0:
+            print("\nWARNING: No walk-forward folds were generated!")
+            print(f"   Data size: {len(self.df)} samples")
+            print(f"   Date range: {self.dates[0]} to {self.dates[-1]}")
+            print(f"   Requested train window: {self.train_months} months (~{train_samples} samples)")
+            print(f"   Requested test window: {self.test_months} months (~{test_samples} samples)")
+            print(f"   Minimum train samples required: {self.min_train_samples}")
+            print(f"   Minimum test samples required: {self.min_test_samples}")
+            print("\n   Possible solutions:")
+            print("   1. Reduce train_months/test_months parameters")
+            print("   2. Reduce min_train_samples/min_test_samples")
+            print("   3. Use smaller step_months to generate more folds")
+        
         return folds
     
     def get_train_data(self, fold: WalkForwardPeriod):

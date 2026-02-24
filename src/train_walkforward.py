@@ -88,14 +88,35 @@ def setup_walk_forward_validation(df):
     if 'date' not in df.columns:
         df['date'] = pd.date_range(start='2019-01-01', periods=len(df), freq='D')
     
+    # Calculate appropriate window sizes based on data
+    # Data has 583 samples from 2019-01-01 to 2020-08-05 (~19 months)
+    # Use smaller windows to ensure we can generate folds
+    n_samples = len(df)
+    date_range_days = (df['date'].max() - df['date'].min()).days
+    months_of_data = date_range_days / 30
+    
+    # Use 12-month training (about 60% of data), 3-month test, 3-month step
+    train_months = min(12, int(months_of_data * 0.5))
+    test_months = 3
+    step_months = 3
+    
+    # Adjust min samples based on window sizes
+    samples_per_month = n_samples / months_of_data if months_of_data > 0 else n_samples / 12
+    min_train = max(100, int(train_months * samples_per_month * 0.8))
+    min_test = max(20, int(test_months * samples_per_month * 0.8))
+    
+    print(f"   Data: {n_samples} samples over {months_of_data:.1f} months")
+    print(f"   Using: train={train_months}mo, test={test_months}mo, step={step_months}mo")
+    print(f"   Min samples: train={min_train}, test={min_test}")
+    
     validator = WalkForwardValidator(
         df=df,
         date_column='date',
-        train_months=24,      # 2-year training window
-        test_months=3,        # 3-month test window
-        step_months=3,        # Step size
-        min_train_samples=500,
-        min_test_samples=30
+        train_months=train_months,
+        test_months=test_months,
+        step_months=step_months,
+        min_train_samples=min_train,
+        min_test_samples=min_test
     )
     
     folds = validator.generate_folds()
@@ -189,9 +210,25 @@ def compare_and_recommend(all_results):
     print("RECOMMENDATIONS")
     print("="*80)
     
-    best_r2 = comparison_df.loc[comparison_df['r2_mean'].idxmax()]
-    best_consistency = comparison_df.loc[comparison_df['consistency'].idxmax()]
-    best_rmse = comparison_df.loc[comparison_df['rmse_mean'].idxmin()]
+    # Filter out NaN values for comparison
+    valid_df = comparison_df.dropna(subset=['r2_mean', 'rmse_mean', 'consistency'])
+    
+    if len(valid_df) == 0:
+        print("\nNo valid results to compare - all feature combinations failed to generate folds.")
+        print("This is likely due to insufficient data for the requested window sizes.")
+        print("\nSuggestions:")
+        print("1. Use smaller training/test windows")
+        print("2. Use more frequent step sizes")
+        print("3. Reduce minimum sample requirements")
+        
+        # Return empty recommendations
+        return comparison_df, {
+            'error': 'No valid results - insufficient data for walk-forward validation'
+        }
+    
+    best_r2 = valid_df.loc[valid_df['r2_mean'].idxmax()]
+    best_consistency = valid_df.loc[valid_df['consistency'].idxmax()]
+    best_rmse = valid_df.loc[valid_df['rmse_mean'].idxmin()]
     
     print(f"\n1. Best R² Score:")
     print(f"   {best_r2['combination']}")

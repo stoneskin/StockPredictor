@@ -220,39 +220,13 @@
     "return_5d",
     "return_3d"
   ],
-  "hull_macd":[
+  "hull_macd": [
     "hull_value",
     "hull_slope",
     "hull_signal",
     "macd_line",
-    "signal_line",
     "macd_hist",
     "macd_bullish",
-    "macd_crossover",
-    "volume_ratio"
-  ],
-  "random_pick1":[
-    "veg_fast_band_width",
-    "veg_slow_band_width",
-    "veg_price_position",
-    "relative_strength",
-    "atr_pct",
-    "hull_value",
-    "macd_line",
-    "return_10d",
-    "stoch_k",
-    "spy_return_15d"
-  ],
-  "random_pick2":[
-    "veg_fast_band_width",
-    "hull_value",
-    "macd_line",
-    "rsi",
-    "stoch_k",
-    "volume_ratio",
-    "atr_pct",
-    "bb_width",
-    "spy_return_15d",
-    "relative_strength"
+    "macd_crossover"
   ]
 }
