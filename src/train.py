@@ -129,7 +129,7 @@ def save_model(model, feature_names):
 def convert_to_onnx(model, feature_names):
     """Convert LightGBM model to ONNX format."""
     try:
-        from skl2onnx import convert_lightgbm
+        from skl2onnx.lightgbm import convert_lightgbm
         from skl2onnx.common.data_types import FloatTensorType
 
         print("\n" + "="*50)

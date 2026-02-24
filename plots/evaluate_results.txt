@@ -1,0 +1,111 @@
+PS C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor> python src/evaluate.py
+Loading model from: C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\models\checkpoints\latest_model.pkl
+
+============================================================
+Evaluating Train
+============================================================
+R²: 0.4160
+RMSE: 3.3602%
+MAE: 2.5584%
+Correlation: 0.8965
+C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\evaluate.py:64: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  quantile_summary = results_df.groupby('quantile').agg({
+
+Actual returns by prediction quintile:
+          y_true
+            mean     std count      min      max
+quantile
+Q1       -4.5857  2.7654   119 -12.8137   2.8916
+Q2        0.1767  1.8295   123  -4.6000   6.9638
+Q3        2.1825  2.0497   108  -3.0988   9.1807
+Q4        3.8784  1.3510   118   0.2771   7.4271
+Q5        6.8467  2.4439   115   2.7500  13.2579
+C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\evaluate.py:71: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  mean_returns = results_df.groupby('quantile')['y_true'].mean().values
+
+Monotonic increasing: ✅
+
+Top 20% avg actual return: 6.80%
+Bottom 20% avg actual return: -4.59%
+Spread (Top - Bottom): 11.38%
+
+============================================================
+Evaluating Validation
+============================================================
+R²: 0.0312
+RMSE: 4.6763%
+MAE: 3.1734%
+Correlation: 0.2262
+C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\evaluate.py:64: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  quantile_summary = results_df.groupby('quantile').agg({
+
+Actual returns by prediction quintile:
+          y_true
+            mean     std count      min      max
+quantile
+Q1       -1.1545  4.0985    52 -12.5647   4.6997
+Q2        0.1153  5.5841    51 -12.8232  10.4994
+Q3        1.2907  2.7510    47  -7.5904   5.2489
+Q4        5.0729  4.4285    50  -0.9245  17.2566
+Q5        0.9643  4.0827    50  -8.8238   5.8827
+C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\evaluate.py:71: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  mean_returns = results_df.groupby('quantile')['y_true'].mean().values
+
+Monotonic increasing: ❌
+Warning: Non-monotonic sequence: [-1.1544891   0.11532848  1.29068206  5.07292273  0.96429796]
+
+Top 20% avg actual return: 0.96%
+Bottom 20% avg actual return: -1.15%
+Spread (Top - Bottom): 2.12%
+
+============================================================
+Evaluating Test
+============================================================
+R²: -2.5347
+RMSE: 4.1023%
+MAE: 3.4851%
+Correlation: -0.0133
+C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\evaluate.py:64: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  quantile_summary = results_df.groupby('quantile').agg({
+
+Actual returns by prediction quintile:
+          y_true
+            mean     std count     min     max
+quantile
+Q1       -0.5225  1.9655     5 -3.2719  1.5720
+Q2       -2.1957  3.7584     3 -4.6982  2.1263
+Q3       -3.4930  0.3219     3 -3.8628 -3.2760
+Q4       -0.2089  2.4121     4 -3.6349  2.0127
+Q5       -1.7059  1.1809     4 -3.2412 -0.5144
+C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\evaluate.py:71: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  mean_returns = results_df.groupby('quantile')['y_true'].mean().values
+
+Monotonic increasing: ❌
+Warning: Non-monotonic sequence: [-0.522493   -2.19566129 -3.49297488 -0.20894846 -1.70587689]
+
+Top 20% avg actual return: -1.71%
+Bottom 20% avg actual return: -0.52%
+Spread (Top - Bottom): -1.18%
+
+Trading Simulation Results (threshold=1.00%):
+Number of trades: 19
+Win rate: 26.32%
+Average win: 1.07%
+Average loss: -2.67%
+Profit factor: 0.40
+Total strategy return: -25.91%
+Buy & Hold return: -24.42%
+Sharpe ratio: -12.09
+C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\evaluate.py:168: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  quantile_stats = df_ytrue_y_pred.groupby(pd.qcut(df_ytrue_y_pred['y_pred'], q=5, labels=['Q1','Q2','Q3','Q4','Q5']))['y_true'].mean()
+
+Plots saved to: plots
+
+============================================================
+EVALUATION SUMMARY
+============================================================
+Train: R²=0.4160, RMSE=3.36%, Monotonic=True
+Validation: R²=0.0312, RMSE=4.68%, Monotonic=False
+Test: R²=-2.5347, RMSE=4.10%, Monotonic=False
+
+Strategy (top 20% threshold): Sharpe=-12.09, Total Return=-25.9%
