@@ -1,3 +1,9 @@
 {
-    "python-envs.defaultEnvManager": "ms-python.python:system"
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "chat.tools.terminal.autoApprove": {
+        "/^python -c \"import sys; from pathlib import Path; sys\\.path\\.insert\\(0, str\\(Path\\.cwd\\(\\)\\)\\); from src\\.inference_v2 import app; print\\('✓ Module imports successfully'\\); print\\('✓ FastAPI app initialized'\\); print\\('✓ API is ready to use'\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
 }

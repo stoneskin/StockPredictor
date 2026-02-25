@@ -1,0 +1,125 @@
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\utils\validation.py:2684: UserWarning: X has feature names, but GradientBoostingClassifier was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File "C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\test_api.py", line 82, in test_api_locally
+    result = predict_direction(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\inference_v2.py", line 685, in predict_direction
+    prediction = model.predict(X_pred)[0]
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\src\models_v2\base.py", line 69, in predict
+    return self.model.predict(X)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\ensemble\_gb.py", line 1635, in predict
+    raw_predictions = self.decision_function(X)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\ensemble\_gb.py", line 1588, in decision_function
+    X = validate_data(
+        ^^^^^^^^^^^^^^
+  File "C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\utils\validation.py", line 2923, in validate_data
+    _check_n_features(_estimator, X, reset=reset)
+  File "C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\utils\validation.py", line 2787, in _check_n_features
+    raise ValueError(
+ValueError: X has 41 features, but GradientBoostingClassifier is expecting 47 features as input.
+
+Stock Prediction API V2 - Enhanced with Auto Data Loading
+============================================================
+
+============================================================
+Example API Requests & Responses
+============================================================
+
+[Example 1] Simple request with defaults
+Request:
+{
+  "symbol": "QQQ"
+}
+
+Expected Response:
+{
+  "symbol": "QQQ",
+  "date": "2026-02-24",
+  "predictions": [
+    {
+      "horizon": 5,
+      "prediction": "UP",
+      "probability_up": 0.65,
+      "probability_down": 0.35,
+      "confidence": 0.65
+    },
+    {
+      "horizon": 10,
+      "prediction": "DOWN",
+      "probability_up": 0.45,
+      "probability_down": 0.55,
+      "confidence": 0.55
+    }
+  ]
+}
+
+------------------------------------------------------------
+
+[Example 2] Request with custom date and horizons
+Request:
+{
+  "symbol": "AAPL",
+  "date": "2026-02-20",
+  "horizons": [
+    5,
+    10,
+    20
+  ]
+}
+
+------------------------------------------------------------
+
+[Example 3] Curl command
+curl -X POST http://localhost:8000/predict/simple \
+  -H "Content-Type: application/json" \
+  -d '{
+    "symbol": "QQQ",
+    "date": "2026-02-24",
+    "horizons": [5, 10, 20, 30]
+  }'
+
+============================================================
+============================================================
+Stock Prediction API V2 - Local Test
+============================================================
+
+[Test 1] Loading local data for QQQ...
+[OK] Loaded 1541 days of QQQ data
+     Date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+
+[Test 2] Getting stock data (auto-fetch if needed)...
+Current date not specified, using latest available: 2026-02-20 00:00:00
+[OK] Retrieved 1541 days of SPY data
+     Latest date: 2026-02-20
+     Available data range: 2020-01-03 to 2026-02-20
+
+[Test 3] Loading prediction model...
+Loaded GradientBoosting model (best individual model)
+Best horizon: 20d
+ROC-AUC: 0.5783
+Accuracy: 0.6483
+F1: 0.7745
+
+Model loaded. Features (47): ['close', 'ma_5', 'ema_5', 'ma_10', 'ema_10']...
+[OK] Model loaded successfully
+
+[Test 4] Making a prediction...
+Current date not specified, using latest available: 2026-02-20 00:00:00
+[ERROR] Error making prediction: X has 41 features, but GradientBoostingClassifier is expecting 47 features as input.
+
+============================================================
+Local tests completed!
+============================================================
+
+To start the API server, run:
+  python -m uvicorn src.inference_v2:app --reload --host 0.0.0.0 --port 8000
+
+Then test with:
+  curl -X POST http://localhost:8000/predict/simple \
+    -H "Content-Type: application/json" \
+    -d '{"symbol": "QQQ"}'
+============================================================
