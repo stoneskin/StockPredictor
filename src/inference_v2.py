@@ -39,7 +39,7 @@ def load_model(horizon: int = None):
     Args:
         horizon: Prediction horizon (5, 10, or 20 days). If None, uses best horizon.
     """
-    global model, feature_names, horizon
+    global model, feature_names
     
     if horizon is None:
         horizon = DEFAULT_HORIZON
