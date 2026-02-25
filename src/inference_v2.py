@@ -22,7 +22,7 @@ SRC_PATH = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(SRC_PATH))
 
-from config_v2 import MODEL_RESULTS_DIR, DEFAULT_HORIZON, RAW_DATA_DIR
+from config_v2 import MODEL_RESULTS_DIR, DEFAULT_HORIZON, RAW_DATA_DIR, CACHE_DATA_DIR
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -39,61 +39,100 @@ horizon = DEFAULT_HORIZON
 
 # ============= Data Loading Utilities =============
 
-def get_local_data_file(symbol: str) -> Path:
-    """Get the path to the local data file for a symbol."""
+def get_cache_data_file(symbol: str) -> Path:
+    """Get the path to the cache data file for a symbol (always standard format)."""
+    CACHE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    return CACHE_DATA_DIR / f"{symbol.lower()}.csv"
+
+
+def get_training_data_file(symbol: str) -> Path:
+    """Get the path to the training data file for a symbol (may have legacy format)."""
     RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
     return RAW_DATA_DIR / f"{symbol.lower()}.csv"
 
 
+def get_local_data_file(symbol: str) -> Path:
+    """DEPRECATED: Use get_cache_data_file() instead. Kept for backward compatibility."""
+    return get_cache_data_file(symbol)
+
+
 def load_local_data(symbol: str) -> Optional[pd.DataFrame]:
     """
-    Load data from local CSV file.
+    Load data from cache or training data.
+    Priority: Cache (fast, standard format) > Training Data (may need conversion)
+    
+    Cache Strategy:
+    - First load from cache if available (fast, standard format only)
+    - If cache missing, load from training data (handles legacy format)
+    - Save to cache for future fast loads
     
     Args:
         symbol: Stock symbol (e.g., 'QQQ', 'AAPL')
     
     Returns:
-        DataFrame with columns [date, open, high, low, close, volume] or None if file doesn't exist
+        DataFrame with columns [date, open, high, low, close, volume] or None
     """
-    file_path = get_local_data_file(symbol)
+    cache_file = get_cache_data_file(symbol)
+    training_file = get_training_data_file(symbol)
     
-    if not file_path.exists():
-        return None
-    
-    try:
-        # Try to load as standard CSV first
+    # Priority 1: Try cache first (should be fast - standard format)
+    if cache_file.exists():
         try:
-            df = pd.read_csv(file_path, parse_dates=['date'])
+            df = pd.read_csv(cache_file, parse_dates=['date'])
             df = df.sort_values('date').reset_index(drop=True)
+            print(f"Loaded {symbol} from cache (fast)")
             return df
-        except:
-            # Try to load with header skipping (for older format)
-            df = pd.read_csv(file_path, skiprows=3)
+        except Exception as e:
+            print(f"Cache file corrupted for {symbol}, will recreate: {e}")
+    
+    # Priority 2: Load from training data (may be legacy format)
+    if training_file.exists():
+        try:
+            # Try standard format first
+            try:
+                df = pd.read_csv(training_file, parse_dates=['date'])
+                df = df.sort_values('date').reset_index(drop=True)
+                print(f"Loaded {symbol} from training data (standard format)")
+            except (KeyError, ValueError):
+                # Try legacy format
+                print(f"Converting {symbol} from legacy format to standard...")
+                df = pd.read_csv(training_file, skiprows=3)
+                
+                if len(df) == 0:
+                    raise ValueError("CSV file is empty")
+                
+                # Map legacy columns: Price -> date, Close/High/Low/Open/Volume -> close/high/low/open/volume
+                if df.columns[0] == 'Price':
+                    df.columns = ['date', 'close', 'high', 'low', 'open', 'volume']
+                else:
+                    df.columns = ['date', 'close', 'high', 'low', 'open', 'volume']
+                
+                # Reorder to standard column order
+                df = df[['date', 'open', 'high', 'low', 'close', 'volume']].copy()
+                df['date'] = pd.to_datetime(df['date'])
+                df = df.sort_values('date').reset_index(drop=True)
+                
+                # Convert numeric columns
+                for col in ['open', 'high', 'low', 'close', 'volume']:
+                    df[col] = pd.to_numeric(df[col], errors='coerce')
+                
+                df = df.dropna()
             
-            # Rename columns based on first column
-            if df.columns[0] == 'Price':
-                # Old format: Price, Close, High, Low, Open, Volume
-                df.columns = ['date', 'close', 'high', 'low', 'open', 'volume']
-            else:
-                # Assume standard format already
-                df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
-            
-            # Ensure columns are in the right order
-            df = df[['date', 'open', 'high', 'low', 'close', 'volume']].copy()
-            df['date'] = pd.to_datetime(df['date'])
-            df = df.sort_values('date').reset_index(drop=True)
-            
-            # Convert numeric columns
-            for col in ['open', 'high', 'low', 'close', 'volume']:
-                df[col] = pd.to_numeric(df[col], errors='coerce')
-            
-            # Remove NaN rows
-            df = df.dropna()
+            # Save to cache for future fast loads (non-blocking)
+            try:
+                df_cache = df.copy()
+                df_cache['date'] = df_cache['date'].dt.strftime('%Y-%m-%d')
+                df_cache.to_csv(cache_file, index=False)
+                print(f"Cached {symbol} for future fast loads")
+            except Exception as e:
+                print(f"Warning: Could not cache {symbol}: {e}")
             
             return df
-    except Exception as e:
-        print(f"Error loading local data for {symbol}: {e}")
-        return None
+        except Exception as e:
+            print(f"Error loading training data for {symbol}: {e}")
+            return None
+    
+    return None
 
 
 def fetch_data_from_yahoo(symbol: str, start_date: Optional[str] = None, end_date: Optional[str] = None) -> pd.DataFrame:
@@ -102,13 +141,18 @@ def fetch_data_from_yahoo(symbol: str, start_date: Optional[str] = None, end_dat
     
     Args:
         symbol: Stock symbol
-        start_date: Start date (YYYY-MM-DD) or None for start of data
+        start_date: Start date (YYYY-MM-DD) or None for default (7 years ago)
         end_date: End date (YYYY-MM-DD) or None for today
     
     Returns:
         DataFrame with columns [date, open, high, low, close, volume]
     """
     print(f"Fetching {symbol} from Yahoo Finance...")
+    
+    # If no start_date specified, default to 7 years ago to get enough history
+    if start_date is None:
+        start_date = (datetime.now() - timedelta(days=7*365)).strftime('%Y-%m-%d')
+        print(f"  Using default start date: {start_date}")
     
     # Download data
     data = yf.download(symbol, start=start_date, end=end_date, progress=False)
@@ -126,39 +170,102 @@ def fetch_data_from_yahoo(symbol: str, start_date: Optional[str] = None, end_dat
     data['date'] = pd.to_datetime(data['date'])
     data = data.sort_values('date').reset_index(drop=True)
     
+    if len(data) == 0:
+        raise ValueError(f"No data fetched for {symbol} from {start_date}. Stock might be invalid or data unavailable.")
+    
+    print(f"  Successfully fetched {len(data)} days of data for {symbol}")
+    
     return data
 
 
 def append_to_local_file(symbol: str, new_data: pd.DataFrame):
     """
-    Append new data to local CSV file, avoiding duplicates.
+    Append new data to cache file, avoiding duplicates.
+    Cache files are always in standard format for fast loading.
     
     Args:
         symbol: Stock symbol
         new_data: DataFrame with new data to append
     """
-    file_path = get_local_data_file(symbol)
+    import os
+    import time
     
-    if not file_path.exists():
-        # Create new file
-        new_data.to_csv(file_path, index=False)
-        print(f"Created new data file: {file_path}")
-        return
+    cache_file = get_cache_data_file(symbol)
+    training_file = get_training_data_file(symbol)
     
-    # Load existing data
-    existing_data = pd.read_csv(file_path)
-    existing_data['date'] = pd.to_datetime(existing_data['date'])
-    new_data = new_data.copy()
+    # Ensure all required columns exist in new_data
+    required_cols = ['date', 'open', 'high', 'low', 'close', 'volume']
+    new_data = new_data[required_cols].copy()
     new_data['date'] = pd.to_datetime(new_data['date'])
+    new_data['date'] = new_data['date'].dt.strftime('%Y-%m-%d')
     
-    # Combine and remove duplicates (keep latest)
-    combined = pd.concat([existing_data, new_data], ignore_index=True)
-    combined = combined.drop_duplicates(subset=['date'], keep='last')
-    combined = combined.sort_values('date').reset_index(drop=True)
-    
-    # Save back to file
-    combined.to_csv(file_path, index=False)
-    print(f"Updated data file: {file_path} with {len(new_data)} new records")
+    try:
+        # Try to load cache first (standard format)
+        existing_data = None
+        
+        if cache_file.exists():
+            try:
+                existing_data = pd.read_csv(cache_file, parse_dates=['date'])
+                print(f"Appending to cached {symbol} (standard format)")
+            except Exception as e:
+                print(f"Cache corrupted, recreating: {e}")
+        
+        # If cache doesn't exist, try training data (may be legacy format)
+        if existing_data is None and training_file.exists():
+            try:
+                existing_data = pd.read_csv(training_file, parse_dates=['date'])
+            except (KeyError, ValueError):
+                try:
+                    print(f"Loading {symbol} training data from legacy format...")
+                    existing_data = pd.read_csv(training_file, skiprows=3)
+                    if existing_data.columns[0] == 'Price':
+                        existing_data.columns = ['date', 'close', 'high', 'low', 'open', 'volume']
+                    else:
+                        existing_data.columns = ['date', 'close', 'high', 'low', 'open', 'volume']
+                    existing_data = existing_data[['date', 'open', 'high', 'low', 'close', 'volume']].copy()
+                    existing_data['date'] = pd.to_datetime(existing_data['date'])
+                except Exception as e:
+                    print(f"Could not load training data: {e}")
+                    existing_data = None
+        
+        if existing_data is None or len(existing_data) == 0:
+            # Create new cache with just new data
+            new_data['date'] = pd.to_datetime(new_data['date'])
+            new_data = new_data.sort_values('date').reset_index(drop=True)
+            try:
+                new_data.to_csv(cache_file, index=False)
+                print(f"Created cache for {symbol}")
+            except PermissionError:
+                print(f"Warning: Could not create cache (locked), working with in-memory data")
+            return
+        
+        # Combine data
+        existing_data['date'] = pd.to_datetime(existing_data['date']).dt.strftime('%Y-%m-%d')
+        
+        # Remove duplicate dates, keep latest values
+        combined = pd.concat([existing_data, new_data], ignore_index=True)
+        combined = combined.drop_duplicates(subset=['date'], keep='last')
+        combined['date'] = pd.to_datetime(combined['date'])
+        combined = combined.sort_values('date').reset_index(drop=True)
+        
+        print(f"Appending {len(new_data)} records to {symbol} cache ({len(combined)} total)")
+        
+        # Write to cache with retry for file locks
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                combined['date'] = combined['date'].dt.strftime('%Y-%m-%d')
+                combined.to_csv(cache_file, index=False)
+                print(f"Updated {symbol} cache successfully")
+                return
+            except (PermissionError, OSError):
+                if attempt < max_retries - 1:
+                    time.sleep(1 + attempt * 0.5)
+                else:
+                    print(f"Warning: Could not update cache (locked by OneDrive), working with in-memory data")
+                    return
+    except Exception as e:
+        print(f"Error appending to {symbol} cache: {e}")
 
 
 def get_stock_data(
@@ -169,6 +276,7 @@ def get_stock_data(
     """
     Get stock data from local file or Yahoo Finance.
     Automatically fetches missing data and appends to local file.
+    Works even if cache file is locked by OneDrive.
     
     Args:
         symbol: Stock symbol
@@ -188,7 +296,7 @@ def get_stock_data(
         # No local data, fetch from Yahoo Finance
         print(f"No local data for {symbol}, fetching from Yahoo Finance...")
         data = fetch_data_from_yahoo(symbol)
-        append_to_local_file(symbol, data)
+        append_to_local_file(symbol, data)  # Try to cache, but don't fail if locked
     else:
         data = local_data.copy()
     
@@ -209,15 +317,22 @@ def get_stock_data(
     latest_local_date = data['date'].max()
     if target_date > latest_local_date:
         print(f"Target date {current_date_str} is after latest local data {latest_local_date.strftime('%Y-%m-%d')}, fetching from Yahoo Finance...")
+        
+        # Fetch new data starting from the day after latest_local_date
         new_data = fetch_data_from_yahoo(symbol, start_date=latest_local_date.strftime('%Y-%m-%d'))
         
-        if len(new_data) > 0:
+        if len(new_data) > 1:  # More than just the repeated last day
+            # Try to append to local file (but don't fail if locked)
             append_to_local_file(symbol, new_data)
+            
+            # Combine new data with old data (in case append to file failed)
             data = pd.concat([data, new_data], ignore_index=True)
             data = data.drop_duplicates(subset=['date'], keep='last')
             data = data.sort_values('date').reset_index(drop=True)
+            
+            print(f"Successfully updated {symbol} data with {len(new_data)-1} new trading days")
         else:
-            print(f"Warning: Could not fetch data for {current_date_str}, using latest available")
+            print(f"Warning: No new data available for {current_date_str} (market might be closed). Using latest available: {latest_local_date.strftime('%Y-%m-%d')}")
             current_date_str = latest_local_date.strftime('%Y-%m-%d')
     
     # Filter data up to target date

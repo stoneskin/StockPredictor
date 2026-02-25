@@ -10,11 +10,13 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
-RAW_DATA_DIR = DATA_DIR / "raw"
+RAW_DATA_DIR = DATA_DIR / "raw"  # Training data (may have legacy format)
+CACHE_DATA_DIR = DATA_DIR / "cache"  # Runtime cache (always standard format)
 MODEL_CHECKPOINTS_DIR = PROJECT_ROOT / "models" / "checkpoints"
 MODEL_RESULTS_DIR = PROJECT_ROOT / "models" / "results" / "v2"
 
 # Create directories
+CACHE_DATA_DIR.mkdir(parents=True, exist_ok=True)
 MODEL_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Data parameters
