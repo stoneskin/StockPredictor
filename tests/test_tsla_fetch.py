@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path.cwd()))
-from src.inference_v2 import fetch_data_from_yahoo
+from src.v2.inference_v2 import fetch_data_from_yahoo
 
 try:
     print("Fetching TSLA data...")

@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from src.inference_v2 import load_local_data
+from src.v2.inference_v2 import load_local_data
 
 def test_load_time(symbol: str, iterations: int = 3):
     """Test load time for a symbol"""

@@ -125,7 +125,7 @@ These documents explain the V1 approach and why it was changed:
 
 1. Read: [../../docs/GETTING_STARTED.md](../../GETTING_STARTED.md)
 2. Compare approaches: [../../docs/ARCHITECTURE.md](../../ARCHITECTURE.md)
-3. Run V2: `python -m uvicorn src.inference_v2:app --reload`
+3. Run V2: `python -m uvicorn src.v2.inference_v2:app --reload`
 
 **Key differences**:
 - Endpoint path: `/predict` (same)

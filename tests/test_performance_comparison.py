@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from src.inference_v2 import load_local_data, CACHE_DATA_DIR
+from src.v2.inference_v2 import load_local_data, CACHE_DATA_DIR
 
 def test_with_clean_cache(symbol: str):
     """Test loading with fresh cache"""

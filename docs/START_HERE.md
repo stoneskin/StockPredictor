@@ -30,7 +30,7 @@ Welcome to the Stock Predictor project! This page will guide you to the right do
 4. **Code**: Review `src/` with focus on:
    - `src/train_v2.py` - training pipeline
    - `src/models_v2/` - model implementations
-   - `src/inference_v2.py` - API server
+   - `src/v2/inference_v2.py` - API server
 
 **Result**: Deep understanding of classification, ensemble methods, and technical trading
 
@@ -48,9 +48,9 @@ Welcome to the Stock Predictor project! This page will guide you to the right do
 4. **[tests/README.md](../tests/README.md)** - testing procedures
 
 **Setup:**
-- Configure in `src/config_v2.py`
-- Train models: `python src/train_v2.py`
-- Start server: `python -m uvicorn src.inference_v2:app --host 0.0.0.0 --port 8000`
+- Configure in `src/v2/config_v2.py`
+- Train models: `python src/v2/train_v2.py`
+- Start server: `python -m uvicorn src.v2.inference_v2:app --host 0.0.0.0 --port 8000`
 - Monitor with: `python tests/test_api.py`
 
 **Result**: Production-ready prediction system
@@ -129,7 +129,7 @@ Welcome to the Stock Predictor project! This page will guide you to the right do
 → [Main README.md](../README.md) - See "Quick Start"
 
 **Q: Can I use this with other stocks?**  
-→ Change `SYMBOL` in `src/config_v2.py`, then `python src/train_v2.py`
+→ Change `SYMBOL` in `src/v2/config_v2.py`, then `python src/v2/train_v2.py`
 
 ---
 

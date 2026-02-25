@@ -386,7 +386,7 @@ The model uses 65 technical features including:
 To use a different model:
 
 ```python
-from src.inference_v2 import predict_direction
+from src.v2.inference_v2 import predict_direction
 import pandas as pd
 
 # Your data
@@ -405,7 +405,7 @@ result = predict_direction(
 ### Direct Python Usage
 
 ```python
-from src.inference_v2 import get_stock_data, compute_features_v2, predict_direction
+from src.v2.inference_v2 import get_stock_data, compute_features_v2, predict_direction
 import pandas as pd
 
 # Get data automatically

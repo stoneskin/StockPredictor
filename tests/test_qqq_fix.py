@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path.cwd()))
 
 # Test the data handling
-from src.inference_v2 import (
+from src.v2.inference_v2 import (
     get_stock_data,
     load_model
 )
@@ -46,7 +46,7 @@ try:
     print("[OK] Model loaded")
     
     # Make sure we can use compute_features_v2 on the loaded data
-    from src.inference_v2 import compute_features_v2
+    from src.v2.inference_v2 import compute_features_v2
     
     current_row = history_df.iloc[-1]
     current_data = {

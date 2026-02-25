@@ -21,7 +21,7 @@ def test_api_locally():
     print("=" * 60)
     
     # Import after path is set
-    from src.inference_v2 import (
+    from src.v2.inference_v2 import (
         get_stock_data, 
         load_model, 
         predict_direction,

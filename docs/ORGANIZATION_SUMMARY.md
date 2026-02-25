@@ -140,8 +140,8 @@ StockPredictor/
 
 ### ✅ What Still Works
 
-- **API Server**: `python -m uvicorn src.inference_v2:app --reload`
-- **Model Training**: `python src/train_v2.py`
+- **API Server**: `python -m uvicorn src.v2.inference_v2:app --reload`
+- **Model Training**: `python src/v2/train_v2.py`
 - **Predictions**: All endpoints functional
 - **Data Loading**: Automatic data fetch from Yahoo Finance
 - **Model Caching**: Fast subsequent requests
@@ -165,7 +165,7 @@ This ensures all existing code continues to work perfectly.
 
 1. Read **[README.md](README.md)** (this repo's main README)
 2. Follow **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)**
-3. Start API: `python -m uvicorn src.inference_v2:app --reload --host 0.0.0.0 --port 8000`
+3. Start API: `python -m uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000`
 4. Make prediction: `curl -X POST http://localhost:8000/predict/simple ...`
 
 ### Want to Understand the System?
@@ -183,10 +183,10 @@ This ensures all existing code continues to work perfectly.
 
 ### Want to Modify the System?
 
-1. Edit **`src/config_v2.py`** for configuration
+1. Edit **`src/v2/config_v2.py`** for configuration
 2. Modify **`src/models_v2/`** to change models
-3. Edit **`src/data_preparation_v2.py`** for new features
-4. Run training: `python src/train_v2.py`
+3. Edit **`src/v2/data_preparation_v2.py`** for new features
+4. Run training: `python src/v2/train_v2.py`
 5. Test predictions: `python tests/test_api.py`
 
 ---
@@ -194,18 +194,18 @@ This ensures all existing code continues to work perfectly.
 ## Next Steps
 
 ### Immediate (Get Running)
-- [ ] Run the API: `python -m uvicorn src.inference_v2:app --reload --host 0.0.0.0 --port 8000`
+- [ ] Run the API: `python -m uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000`
 - [ ] Test prediction
 - [ ] Review [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)
 
 ### Short Term (Understanding)
 - [ ] Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 - [ ] Review code in `src/`
-- [ ] Run `python src/train_v2.py` to understand training
+- [ ] Run `python src/v2/train_v2.py` to understand training
 - [ ] Analyze results in `models/results/v2/`
 
 ### Medium Term (Improvement)
-- [ ] Modify features in `src/data_preparation_v2.py`
+- [ ] Modify features in `src/v2/data_preparation_v2.py`
 - [ ] Experiment with different models
 - [ ] Test different horizons
 - [ ] Monitor prediction accuracy

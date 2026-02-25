@@ -58,7 +58,7 @@ curl -X POST http://localhost:8000/predict/simple \
   -d '{"symbol": "QQQ"}'
 ```
 
-**Result**: 🎉 You've made your first ML prediction!
+**Result** (live on http://localhost:8000/docs): 🎉 You've made your first ML prediction!
 
 ---
 
@@ -70,14 +70,18 @@ StockPredictor/
 │   ├── GETTING_STARTED.md          # First doc to read
 │   ├── ARCHITECTURE.md             # How it works
 │   ├── API_REFERENCE.md            # API guide
-│   └── ...
-├── 🧠 src/
-│   ├── v2/                         # Main version
-│   │   ├── inference_v2.py         # API server
-│   │   ├── train_v2.py             # Training
-│   │   ├── models_v2/              # 5 models
-│   │   └── ...
-│   └── v1/                         # Legacy version
+│   ├── v1/                         # V1 historical docs
+│   ├── v2/                         # V2 current docs
+│   └── archive/                    # Deprecated docs
+├── 🧠 src/                         # Source code
+│   ├── inference_v2.py             # API server
+│   ├── train_v2.py                 # Training
+│   ├── config_v2.py                # Configuration
+│   ├── data_preparation_v2.py      # Features
+│   ├── models_v2/                  # 5 models
+│   ├── regime_v2/                  # Market detection
+│   ├── walk_forward/               # Validation
+│   └── v1/                         # Legacy code
 ├── 📊 data/                        # Data files
 ├── 🤖 models/                      # Trained models
 ├── ✅ tests/                        # Tests

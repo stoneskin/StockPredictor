@@ -14,7 +14,7 @@ if tsla_file.exists():
     print("Removed cached TSLA data for fresh test\n")
 
 # Import the app
-from src.inference_v2 import app, load_model
+from src.v2.inference_v2 import app, load_model
 from fastapi.testclient import TestClient
 
 # Load model manually (TestClient doesn't trigger startup events)

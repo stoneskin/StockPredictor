@@ -55,12 +55,12 @@ curl -X POST http://localhost:8000/predict/simple \
 
 ### Source Code
 ```
-src/
+src/v2/
 ├── config_v2.py              # Configuration
 ├── data_preparation_v2.py    # Data pipeline
 ├── train_v2.py               # Training
 ├── inference_v2.py           # API server
-├── train_walkforward.py       # Walk-forward validation
+├── train_walkforward.py       # V1.5: Walk-forward validation
 ├── models_v2/                # Base models
 │   ├── base.py
 │   ├── logistic_model.py
@@ -72,7 +72,7 @@ src/
 ├── regime_v2/                # Market detection
 │   ├── detector.py
 │   └── ma_crossover.py
-└── walk_forward/             # Time-series validation
+└── walk_forward/             # V1.5: Time-series validation
     ├── validation.py
     ├── feature_selector.py
     └── trainer.py
@@ -124,7 +124,7 @@ src/
 
 ## Configuration
 
-Edit `src/config_v2.py`:
+Edit `src/v2/config_v2.py`:
 
 ```python
 # Data
