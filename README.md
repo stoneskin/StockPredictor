@@ -66,22 +66,29 @@ curl -X POST http://localhost:8000/predict/simple \
 
 ```
 StockPredictor/
-├── 📚 docs/                        # Documentation
+├── 📚 docs/                        # Documentation (by version)
 │   ├── GETTING_STARTED.md          # First doc to read
 │   ├── ARCHITECTURE.md             # How it works
 │   ├── API_REFERENCE.md            # API guide
-│   ├── v1/                         # V1 historical docs
+│   ├── v1/                         # V1 docs
 │   ├── v2/                         # V2 current docs
 │   └── archive/                    # Deprecated docs
-├── 🧠 src/                         # Source code
-│   ├── inference_v2.py             # API server
-│   ├── train_v2.py                 # Training
-│   ├── config_v2.py                # Configuration
-│   ├── data_preparation_v2.py      # Features
-│   ├── models_v2/                  # 5 models
-│   ├── regime_v2/                  # Market detection
-│   ├── walk_forward/               # Validation
-│   └── v1/                         # Legacy code
+├── 🧠 src/                         # Source code (by version)
+│   ├── v1/                         # V1: Regression [FAILED]
+│   │   ├── config.py
+│   │   ├── train.py
+│   │   └── ...
+│   ├── v1_5/                       # V1.5: Walk-Forward [EXPERIMENTAL]
+│   │   ├── train_walkforward.py    # Main pipeline
+│   │   └── walk_forward/           # Validation modules
+│   ├── v2/                         # V2: Classification [ACTIVE]
+│   │   ├── inference_v2.py         # API server
+│   │   ├── train_v2.py             # Training
+│   │   ├── config_v2.py            # Configuration
+│   │   ├── data_preparation_v2.py  # Features
+│   │   ├── models_v2/              # 5 models
+│   │   └── regime_v2/              # Market detection
+│   └── common/                     # Shared utilities
 ├── 📊 data/                        # Data files
 ├── 🤖 models/                      # Trained models
 ├── ✅ tests/                        # Tests
@@ -188,6 +195,7 @@ More help: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
 ## 📚 Versions
 
 - **V2 (Current)** - Classification (UP/DOWN) - Use this! ✅
+- **V1.5 (Experimental)** - Walk-forward validation & feature selection - Research only
 - **V1 (Legacy)** - Regression - Learning reference 📚
 
 ---

@@ -1,175 +1,204 @@
-# 📦 Archive Documentation
+# 📚 V1 Documentation - Regression Approach (Historical)
 
-Deprecated, obsolete, or reference-only documentation. These files are preserved for historical context but **should not be used in new development**.
-
----
-
-## Why Archive Exists
-
-As the Stock Predictor project evolved:
-- **V1** (Regression) was replaced by **V2** (Classification) for better results
-- Early documentation becoming outdated
-- Multiple revisions created overlapping/duplicate docs
-- **Redesign documents** showing iteration history
-
-Archive preserves this history for learning and reference.
+Previous version documentation for Stock Predictor V1. This approach used regression to predict exact stock returns and **failed** with R² < 0 on test set.
 
 ---
 
-## Contents by Category
+## Status
 
-### 1. Code Review & Analysis
-**Files**: `codeReview-mm25.md`  
-**Status**: Outdated  
-**Why**: Code review from earlier iteration - structure has changed  
-**Use Case**: Understand old feedback (not applicable now)
-
----
-
-### 2. Early Redesign Documents  
-**Files**: `REDESIGN.md`, `REDESIGN_V2.md`  
-**Status**: Historical  
-**Why**: Show evolution from REDESIGN → REDESIGN_V2 → final structure  
-**Use Case**: Understand design decisions and why things changed
+🔴 **V1 Status**: FAILED / DEPRECATED  
+❌ **Why Replaced**: Regression on noisy stock returns (exactly predicting return % is too hard)  
+📚 **Purpose**: Learning reference - understand what didn't work and why  
+→ **Use Instead**: [V2 Classification](../v2/README.md)
 
 ---
 
-### 3. Chinese Documentation
-**Files**: `完整实施方案.md`, `策略分析与ML应用建议.md`  
-**Status**: Reference only  
-**Why**: Original Chinese implementation plans and strategy analysis  
-**Use Case**: Reference if working with original team/stakeholders
+## What Was V1?
 
----
+### Approach
+- **Type**: Regression (LightGBM)
+- **Target**: Predict exact daily return percentage
+- **Horizon**: Fixed 15-day prediction
+- **Models**: Single LightGBM model
+- **Features**: 31 technical indicators
 
-### 4. Duplicate/Superseded  
-**Files**: `Stock Prediction with SageMaker.md`, `MIGRATION_GUIDE.md`, `IMPLEMENTATION_GUIDE.md`  
-**Status**: Superseded by versioned docs  
-**Why**: Now covered in `docs/v1/` and `docs/v2/` respectively  
-**Use Case**: Reference old implementation approach
-
----
-
-### 5. Technical Reference  
-**Files**: `Pine Script - Vegas Channel + Hull STRG.md`, `Pine Script -MACD-RSI.md`  
-**Status**: Educational  
-**Why**: Pine Script strategies (not used in Python prediction system)  
-**Use Case**: Reference technical indicator logic
-
----
-
-### 6. Initial READMEs
-**Files**: `README2.md`  
-**Status**: Obsolete  
-**Why**: Replaced by current [../../README.md](../../README.md)  
-**Use Case**: Historical reference only
-
----
-
-## File Inventory
-
-| File | Type | Status | Reason |
-|------|------|--------|--------|
-| codeReview-mm25.md | Review | ⚠️ Outdated | Old code feedback |
-| REDESIGN.md | Design | 📖 Reference | Earlier redesign |
-| REDESIGN_V2.md | Design | 📖 Reference | V2 redesign |
-| 完整实施方案.md | Strategy | 📖 Reference | Original Chinese plan |
-| 策略分析与ML应用建议.md | Analysis | 📖 Reference | Strategy analysis |
-| Stock Prediction with SageMaker.md | Deployment | 📖 Reference | Old SageMaker docs |
-| MIGRATION_GUIDE.md | Guide | 📖 Reference | Now in v1/ & v2/ |
-| IMPLEMENTATION_GUIDE.md | Guide | 📖 Reference | Superseded |
-| Pine Script - Vegas Channel + Hull STRG.md | Technical | 📖 Reference | Pine Script only |
-| Pine Script -MACD-RSI.md | Technical | 📖 Reference | Pine Script only |
-| README2.md | README | ❌ Obsolete | Use main README |
-
----
-
-## When to Reference Archive
-
-✅ **DO read archive if**:
-- Understanding historical design decisions
-- Learning how the project evolved
-- Working with original Chinese documentation
-- Researching Pine Script technical indicators
-- Studying old code review feedback
-
-❌ **DON'T use archive if**:
-- Building new features (use `docs/v2/`)
-- Deploying system (use `docs/v2/`)
-- Learning stock prediction (use `docs/v2/`)
-- Troubleshooting current issues (use main README)
-- New to project (use `GETTING_STARTED.md`)
-
----
-
-## Current Documentation Structure
-
-### Main Docs (Active)
-See [../../](../../):
-- **README.md** - Project overview
-- **GETTING_STARTED.md** - Quick start
-- **ARCHITECTURE.md** - System design
-- **API_REFERENCE.md** - API documentation
-- **V2_CLASSIFICATION.md** - Classification approach
-- **TROUBLESHOOTING.md** - Problem solving
-
-### Versioned Docs
-- **[../v1/README.md](../v1/README.md)** - V1 historical context
-- **[../v2/README.md](../v2/README.md)** - V2 current system
-
-### Legacy Code
-- **[../../src/v1/](../../src/v1/)** - V1 implementation (reference only)
-- **[../../src/](../../src/)** - V2 implementation (active)
-
----
-
-## Archive Structure
-
+### Results
 ```
-docs/archive/
-├── codeReview-mm25.md                           # Old code review
-├── REDESIGN.md                                  # Early redesign
-├── REDESIGN_V2.md                               # V2 redesign
-├── 完整实施方案.md                              # Chinese: Full implementation plan
-├── 策略分析与ML应用建议.md                      # Chinese: Strategy analysis
-├── Stock Prediction with SageMaker.md           # Old SageMaker guide
-├── MIGRATION_GUIDE.md                           # Superseded migration guide
-├── IMPLEMENTATION_GUIDE.md                      # Superseded implementation
-├── Pine Script - Vegas Channel + Hull STRG.md  # Pine Script reference
-├── Pine Script -MACD-RSI.md                     # Pine Script reference
-└── README2.md                                   # Old README
+Training:  R² score =  0.41  (overfitting!)
+Testing:   R² score = -2.53  (predicting worse than baseline)
+```
+
+**Why Failed**: Predicting exact returns on stock prices is extremely difficult - daily returns are too noisy and random, even with good features.
+
+---
+
+## Code (Now in src/v1/)
+
+| File | Purpose |
+|------|---------|
+| `config.py` | Configuration: symbols, horizons, thresholds |
+| `train.py` | Training pipeline for LightGBM |
+| `inference.py` | Prediction API server |
+| `data_preparation.py` | Feature engineering (31 indicators) |
+| `evaluate.py` | Evaluation metrics |
+| `convert_model_to_onnx.py` | ONNX model conversion |
+
+### Run V1 (for learning/reference)
+```bash
+cd src/v1
+python train.py           # Train the model
+python inference.py        # Start API server
+python evaluate.py         # Check performance
 ```
 
 ---
 
-## Moving Forward
+## Key Files in This Folder
 
-### For New Contributors
-1. Start with [../../GETTING_STARTED.md](../../GETTING_STARTED.md)
-2. Read [../../ARCHITECTURE.md](../../ARCHITECTURE.md)
-3. Refer to [../v2/README.md](../v2/README.md) for current system
-4. **DO NOT** use archive files unless specifically researching history
+### Original Documentation
+- **Stock Prediction with SageMaker.md** - AWS SageMaker deployment guide (V1 version)
+- **codeReview-mm25.md** - Code review notes on V1 implementation
 
-### For Historians & Researchers
-1. Explore [../v1/README.md](../v1/README.md) to understand V1
-2. Review `REDESIGN.md` and `REDESIGN_V2.md` for design evolution
-3. Check `完整实施方案.md` for original strategy
-4. Reference Pine Script docs for technical indicators
-
-### For Chinese Speakers
-1. See `完整实施方案.md` - Full implementation plan
-2. See `策略分析与ML应用建议.md` - Strategy & ML recommendations
+### How They Relate
+- Both documents are historical references showing how V1 was developed and deployed
 
 ---
 
-## See Also
+## Lessons Learned (Why V1 Failed)
 
-- **Current Documentation**: [../../](../../)
-- **V1 Historical Context**: [../v1/README.md](../v1/README.md)
-- **V2 Current System**: [../v2/README.md](../v2/README.md)
-- **Tests**: [../../tests/README.md](../../tests/README.md)
-- **Getting Started**: [../../GETTING_STARTED.md](../../GETTING_STARTED.md)
+### Problem 1: Regression is Hard for Stock Returns
+- Stock returns are dominated by random noise
+- Many factors are unpredictable (news, sentiment, macroeconomics)
+- Even perfect features can't overcome inherent randomness
+- Exact predictions (regression) are fundamentally harder than direction (classification)
+
+### Problem 2: Overfitting
+- Train R² = 0.41 → Test R² = -2.53 (catastrophic drop)
+- Model learned training noise instead of signal
+- Fixed train/val/test split couldn't capture market regime changes
+
+### Problem 3: Wrong Problem
+- Asking "what % will QQQ return?" is too hard
+- Better question: "will QQQ go UP or DOWN?" (binary classification)
+- Classification targets are more stable and achievable
 
 ---
 
-**Remember**: This archive is for reference only. Use [../../](../../) for current guidance. 📚
+## The Solution: V1.5 & V2
+
+### V1.5 (Experimentation)
+After V1 failed, an experimental phase tested:
+- Walk-forward validation (prevents look-ahead bias)
+- Feature selection (find what actually matters)
+- Feature combinations (optimize feature set)
+- Key discovery: **Walk-forward + feature selection is critical**
+
+See [src/v1_5/](../../src/v1_5/) for methodology
+
+### V2 (Current Success)
+Learned from V1 failure, V2 uses:
+- **Classification** instead of regression (UP/DOWN, not exact %)
+- **Ensemble of 5 models** for robustness
+- **Walk-forward validation** for realistic evaluation
+- **25+ carefully selected features**
+- **Multiple horizons** (5/10/20/30 days)
+- **Result**: 52-54% accuracy (vs 50% random baseline)
+
+See [../v2/README.md](../v2/README.md) for current system
+
+---
+
+## Version Evolution
+
+```
+V1 (Regression)         → R² < 0, Failed
+  ↓ Led to research phase
+V1.5 (Walk-Forward)     → Experimental methodology
+  ↓ Led to design insights  
+V2 (Classification)     → 52-54% accuracy, Production ✅
+```
+
+---
+
+## Resources
+
+### Understanding Regression vs Classification
+- Regression: Predict continuous values (e.g., stock return %)
+- Classification: Predict categories (e.g., UP or DOWN)
+- Why binary classification works better: Predicting direction is more stable than exact values
+
+### Understanding Why V1 Failed
+1. **Randomness**: Stock returns contain too much random noise
+2. **Overfitting**: Fixed splits don't adapt to market changes
+3. **Problem Design**: Exact prediction is harder than direction
+
+### What Changed in V2
+1. **Problem**: Changed from regression to classification
+2. **Validation**: Changed from fixed split to walk-forward
+3. **Ensembles**: Changed from single model to 5 models
+4. **Strategy**: Changed from 1 horizon to 4 horizons (5/10/20/30 days)
+
+---
+
+## For Researchers
+
+If you're interested in understanding:
+- **Why regression failed** → See code in `src/v1/train.py`
+- **What features were tested** → See `src/v1/data_preparation.py`
+- **How overfitting happened** → See `src/v1/evaluate.py` results
+- **What V1.5 tried** → See `src/v1_5/train_walkforward.py`
+- **How V2 succeeded** → See `src/v2/train_v2.py` (classification approach)
+
+---
+
+## Recommendations
+
+### Don't Use V1 For
+- ❌ Making actual predictions
+- ❌ Trading decisions
+- ❌ New research (outdated approach)
+
+### Use V1 For
+- ✅ Understanding failed approaches
+- ✅ Learning what not to do
+- ✅ Studying regression pitfalls
+- ✅ Understanding project evolution
+- ✅ Code examples (general structure)
+
+### Use V2 Instead For
+- ✅ Actual predictions
+- ✅ Current research
+- ✅ Production deployment
+- ✅ Best results
+
+---
+
+## Next Steps
+
+1. **If you want to understand the project history**:
+   - Read this page (you're here!)
+   - Check `src/v1/` code
+   - Review `Stock Prediction with SageMaker.md`
+
+2. **If you want to use the current system**:
+   - Go to [V2 Documentation](../v2/README.md)
+   - Follow [GETTING_STARTED.md](../GETTING_STARTED.md)
+
+3. **If you want to understand research methodology**:
+   - Check [V1.5 approach](../../src/v1_5/)
+   - Review [REDESIGN.md](../archive/REDESIGN.md)
+
+---
+
+## Quick Links
+
+- **Main README**: [README.md](../../README.md)
+- **V2 Current System**: [docs/v2/README.md](../v2/README.md)
+- **V1.5 Research**: [src/v1_5/](../../src/v1_5/)
+- **Getting Started V2**: [GETTING_STARTED.md](../GETTING_STARTED.md)
+- **Architecture**: [ARCHITECTURE.md](../ARCHITECTURE.md)
+
+---
+
+**Why are you reading this?** If you want to use the system, [go to V2](../v2/README.md). If you're curious about history, keep reading! 📚
+

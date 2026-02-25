@@ -18,13 +18,13 @@ import json
 from pathlib import Path
 
 # Add project root to path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from config import (
+from src.v1.config import (
     PROCESSED_DATA_DIR, MODEL_CHECKPOINTS_DIR, MODEL_PARAMS,
     PATIENCE, TARGET_THRESHOLD
 )
-from walk_forward import (
+from src.v1_5.walk_forward import (
     WalkForwardValidator, FeatureSelector, WalkForwardTrainer
 )
 

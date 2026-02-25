@@ -367,6 +367,6 @@ print(f"Real-world accuracy: {accuracy:.1%}")
 
 ## See Also
 
-- [GETTING_STARTED.md](GETTING_STARTED.md) - Quick start
-- [API_REFERENCE.md](API_REFERENCE.md) - API endpoints
-- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Common issues
+- [GETTING_STARTED.md](../docs/GETTING_STARTED.md) - Quick start
+- [API_REFERENCE.md](../docs/API_REFERENCE.md) - API endpoints
+- [TROUBLESHOOTING.md](../docs/TROUBLESHOOTING.md) - Common issues

@@ -60,7 +60,6 @@ src/v2/
 ├── data_preparation_v2.py    # Data pipeline
 ├── train_v2.py               # Training
 ├── inference_v2.py           # API server
-├── train_walkforward.py       # V1.5: Walk-forward validation
 ├── models_v2/                # Base models
 │   ├── base.py
 │   ├── logistic_model.py
@@ -69,14 +68,12 @@ src/v2/
 │   ├── svm_model.py
 │   ├── naive_bayes_model.py
 │   └── ensemble.py
-├── regime_v2/                # Market detection
-│   ├── detector.py
-│   └── ma_crossover.py
-└── walk_forward/             # V1.5: Time-series validation
-    ├── validation.py
-    ├── feature_selector.py
-    └── trainer.py
+└── regime_v2/                # Market detection
+    ├── detector.py
+    └── ma_crossover.py
 ```
+
+**Note:** Walk-forward validation methodology is in [V1.5](../../src/v1_5/) for research and experimentation.
 
 ### Models
 

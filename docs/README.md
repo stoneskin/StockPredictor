@@ -123,8 +123,8 @@ These documents explain the V1 approach and why it was changed:
 
 **If you're using V1 and want to upgrade to V2:**
 
-1. Read: [../../docs/GETTING_STARTED.md](../../GETTING_STARTED.md)
-2. Compare approaches: [../../docs/ARCHITECTURE.md](../../ARCHITECTURE.md)
+1. Read: [GETTING_STARTED.md](GETTING_STARTED.md)
+2. Compare approaches: [ARCHITECTURE.md](ARCHITECTURE.md)
 3. Run V2: `python -m uvicorn src.v2.inference_v2:app --reload`
 
 **Key differences**:
@@ -137,9 +137,9 @@ These documents explain the V1 approach and why it was changed:
 
 ## See Also
 
-- **Current Project**: [../../README.md](../../README.md)
-- **V2 Docs**: [../v2/README.md](../v2/README.md)
-- **Getting Started**: [../../GETTING_STARTED.md](../../GETTING_STARTED.md)
+- **Current Project**: [../README.md](../README.md)
+- **V2 Docs**: [v2/README.md](v2/README.md)
+- **Getting Started**: [GETTING_STARTED.md](GETTING_STARTED.md)
 - **Full Archive**: [../archive/](../archive/)
 
 ---

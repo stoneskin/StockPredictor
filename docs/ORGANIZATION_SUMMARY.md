@@ -164,20 +164,20 @@ This ensures all existing code continues to work perfectly.
 ### First Time Using Project?
 
 1. Read **[README.md](README.md)** (this repo's main README)
-2. Follow **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)**
+2. Follow **[GETTING_STARTED.md](GETTING_STARTED.md)**
 3. Start API: `python -m uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000`
 4. Make prediction: `curl -X POST http://localhost:8000/predict/simple ...`
 
 ### Want to Understand the System?
 
-1. Read **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**
-2. Read **[docs/V2_CLASSIFICATION.md](docs/V2_CLASSIFICATION.md)**
+1. Read **[ARCHITECTURE.md](ARCHITECTURE.md)**
+2. Read **[V2_CLASSIFICATION.md](V2_CLASSIFICATION.md)**
 3. Review code in `src/` with comments
 
 ### Stuck on Something?
 
-1. Check **[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)**
-2. Read **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** for API help
+1. Check **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)**
+2. Read **[API_REFERENCE.md](API_REFERENCE.md)** for API help
 3. Review code comments in source files
 4. Run tests to verify: `python -m pytest tests/`
 
@@ -196,10 +196,10 @@ This ensures all existing code continues to work perfectly.
 ### Immediate (Get Running)
 - [ ] Run the API: `python -m uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000`
 - [ ] Test prediction
-- [ ] Review [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)
+- [ ] Review [GETTING_STARTED.md](GETTING_STARTED.md)
 
 ### Short Term (Understanding)
-- [ ] Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- [ ] Read [ARCHITECTURE.md](ARCHITECTURE.md)
 - [ ] Review code in `src/`
 - [ ] Run `python src/v2/train_v2.py` to understand training
 - [ ] Analyze results in `models/results/v2/`
@@ -272,10 +272,10 @@ This ensures all existing code continues to work perfectly.
 
 ## Support & Resources
 
-- **Quick Start**: [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)
-- **Architecture**: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
-- **API Guide**: [docs/API_REFERENCE.md](docs/API_REFERENCE.md)
-- **Troubleshooting**: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
+- **Quick Start**: [GETTING_STARTED.md](GETTING_STARTED.md)
+- **Architecture**: [ARCHITECTURE.md](ARCHITECTURE.md)
+- **API Guide**: [API_REFERENCE.md](API_REFERENCE.md)
+- **Troubleshooting**: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 - **Testing**: [tests/README.md](tests/README.md)
 
 ---
@@ -292,6 +292,6 @@ The Stock Predictor project has been reorganized for:
 
 ---
 
-**Questions?** See [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) or [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)
+**Questions?** See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) or [GETTING_STARTED.md](GETTING_STARTED.md)
 
-**Ready to start?** → Follow [README.md](README.md) → [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)
+**Ready to start?** → Follow [README.md](../README.md) → [GETTING_STARTED.md](GETTING_STARTED.md)

@@ -506,7 +506,7 @@ If you're stuck:
 1. **Check the error message carefully** - it usually tells you what's wrong
 2. **Try the solutions in this guide** - most common issues covered
 3. **Read [ARCHITECTURE.md](ARCHITECTURE.md)** - understand the system
-4. **Check [getting-started.md](GETTING_STARTED.md)** - review basic usage
+4. **Check [GETTING_STARTED.md](GETTING_STARTED.md)** - review basic usage
 5. **Look at code comments** in `src/v2/` - well-documented
 6. **Search for your error** online - likely someone has encountered it
 
