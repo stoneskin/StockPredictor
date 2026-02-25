@@ -1,5 +1,9 @@
 # 📈 Stock Predictor - ML for Trading
 
+---
+
+**🌐 Language**: [中文版 (Chinese)](README_cn.md)
+
 A complete machine learning system for predicting QQQ stock price movements. Learn ML fundamentals while building a real trading prediction system.
 
 **Status**: ✅ Fully functional | **Version**: 2.0 | **Platform**: Windows/Linux/Mac
@@ -52,10 +56,17 @@ python -m uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### 3️⃣ Make Prediction
+
+**Using GET (recommended for quick testing):**
+```bash
+curl "http://localhost:8000/predict/simple?symbol=QQQ&date=2025-04-28&horizons=5,10"
+```
+
+**Using POST:**
 ```bash
 curl -X POST http://localhost:8000/predict/simple \
   -H "Content-Type: application/json" \
-  -d '{"symbol": "QQQ"}'
+  -d '{"symbol": "QQQ", "date": "2025-04-28", "horizons": [5, 10]}'
 ```
 
 **Result** (live on http://localhost:8000/docs): 🎉 You've made your first ML prediction!
@@ -99,15 +110,27 @@ StockPredictor/
 
 ## 💻 Common Commands
 
-**Make Prediction** (Python):
+**Make Prediction (GET - recommended):**
+```python
+import requests
+response = requests.get(
+    "http://localhost:8000/predict/simple",
+    params={"symbol": "QQQ", "date": "2025-04-28", "horizons": "5,10"}
+)
+print(response.json())
+```
+
+**Make Prediction (POST):**
 ```python
 import requests
 response = requests.post(
     "http://localhost:8000/predict/simple",
-    json={"symbol": "QQQ"}
+    json={"symbol": "QQQ", "date": "2025-04-28", "horizons": [5, 10]}
 )
 print(response.json())
 ```
+
+
 
 **Train Models**:
 ```bash

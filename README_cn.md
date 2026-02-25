@@ -1,5 +1,8 @@
 # Stock Predictor V2 - Classification Approach
 
+---
+**🌐 语言**: [English Version](README.md)
+
 基于分类方法的股票预测系统，使用集成学习 + 市场状态识别来预测 QQQ 未来价格走势（上涨/下跌）。
 
 ## 项目目标
@@ -240,31 +243,44 @@ python -m uvicorn uvicorn src.v2.inference_v2:app --reload --port 8000
 | `/` | GET | API 信息 |
 | `/health` | GET | 健康检查 |
 | `/model-info` | GET | 模型信息 |
+| `/predict/simple` | GET/POST | 简单预测接口（推荐 GET） |
 | `/predict` | POST | 预测接口 |
 
 ### 4. 调用预测接口
 
-**使用 curl：**
-
+**使用 GET（推荐用于快速测试）：**
 ```bash
-curl -X POST http://localhost:8000/predict \
-  -H "Content-Type: application/json" \
-  -d '{
-    "current": {
-      "date": "2026-02-20",
-      "open": 520.0,
-      "high": 525.0,
-      "low": 518.0,
-      "close": 522.0,
-      "volume": 50000000
-    },
-    "history": [
-      {"date": "2026-01-01", "open": 500, "high": 510, "low": 495, "close": 505, "volume": 45000000},
-      ...
-    ],
-    "horizon": 20
-  }'
+curl "http://localhost:8000/predict/simple?symbol=QQQ&date=2025-04-28&horizons=5,10"
 ```
+
+**使用 POST：**
+```bash
+curl -X POST http://localhost:8000/predict/simple \
+  -H "Content-Type: application/json" \
+  -d '{"symbol": "QQQ", "date": "2025-04-28", "horizons": [5, 10]}'
+```
+
+**使用 Python（GET）：**
+```python
+import requests
+response = requests.get(
+    "http://localhost:8000/predict/simple",
+    params={"symbol": "QQQ", "date": "2025-04-28", "horizons": "5,10"}
+)
+print(response.json())
+```
+
+**使用 Python（POST）：**
+```python
+import requests
+response = requests.post(
+    "http://localhost:8000/predict/simple",
+    json={"symbol": "QQQ", "date": "2025-04-28", "horizons": [5, 10]}
+)
+print(response.json())
+```
+
+
 
 **使用 Python：**
 

@@ -39,7 +39,7 @@ See [../../](../../) for:
 pip install -r requirements.txt
 
 # Start API server
-python -m uvicorn src.inference_v2:app --reload --host 0.0.0.0 --port 8000
+python -m uvicorn uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000
 
 # Make prediction (in another terminal)
 curl -X POST http://localhost:8000/predict/simple \

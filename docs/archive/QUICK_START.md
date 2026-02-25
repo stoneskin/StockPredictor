@@ -4,7 +4,7 @@
 
 ### 1. Start the API
 ```bash
-python -m uvicorn src.inference_v2:app --reload --host 0.0.0.0 --port 8000
+python -m uvicorn uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### 2. Make a Prediction (Any Terminal/Python)
@@ -118,7 +118,7 @@ curl -X POST http://localhost:8000/predict/simple \
 | "Model not loaded" | Server just started | Wait a moment and retry |
 | "Invalid date format" | Wrong date format | Use YYYY-MM-DD format |
 | "Insufficient data" | Stock not in database | Yahoo Finance doesn't have enough history |
-| Connection refused | Server not running | Run: `python -m uvicorn src.inference_v2:app --reload` |
+| Connection refused | Server not running | Run: `python -m uvicorn uvicorn src.v2.inference_v2:app --reload` |
 
 ## Data Handling
 
@@ -145,7 +145,7 @@ curl -X POST http://localhost:8000/predict/simple \
 
 ```bash
 # Start server (do once)
-python -m uvicorn src.inference_v2:app --reload &
+python -m uvicorn uvicorn src.v2.inference_v2:app --reload &
 
 # Wait for startup...
 

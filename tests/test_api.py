@@ -9,8 +9,8 @@ import json
 from pathlib import Path
 from datetime import datetime, timedelta
 
-# Add project root to path
-sys.path.insert(0, str(Path(__file__).parent))
+# Add project root to path (parent of tests folder)
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 def test_api_locally():
     """
@@ -98,7 +98,7 @@ def test_api_locally():
     print("Local tests completed!")
     print("=" * 60)
     print("\nTo start the API server, run:")
-    print("  python -m uvicorn src.inference_v2:app --reload --host 0.0.0.0 --port 8000")
+    print("  python -m uvicorn uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000")
     print("\nThen test with:")
     print('  curl -X POST http://localhost:8000/predict/simple \\')
     print('    -H "Content-Type: application/json" \\')

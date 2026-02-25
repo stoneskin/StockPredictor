@@ -15,7 +15,7 @@ The Stock Prediction API V2 has been enhanced to make it **much easier to use**.
 
 ```bash
 cd StockPredictor
-python -m uvicorn src.inference_v2:app --reload --host 0.0.0.0 --port 8000
+python -m uvicorn uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000
 ```
 
 The API will be available at: `http://localhost:8000`

@@ -6,15 +6,20 @@ Enhanced to automatically load data from local files or Yahoo Finance.
 
 import os
 import sys
+import logging
 import numpy as np
 import pandas as pd
 import joblib
 import yfinance as yf
 from pathlib import Path
 from datetime import datetime, timedelta
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 from typing import List, Optional, Dict
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -72,30 +77,35 @@ def load_local_data(symbol: str) -> Optional[pd.DataFrame]:
     Returns:
         DataFrame with columns [date, open, high, low, close, volume] or None
     """
+    logger.info(f"load_local_data called for {symbol}")
     cache_file = get_cache_data_file(symbol)
     training_file = get_training_data_file(symbol)
+    logger.info(f"Cache file: {cache_file}, exists: {cache_file.exists()}")
+    logger.info(f"Training file: {training_file}, exists: {training_file.exists()}")
     
     # Priority 1: Try cache first (should be fast - standard format)
     if cache_file.exists():
         try:
+            logger.info(f"Reading cache file for {symbol}...")
             df = pd.read_csv(cache_file, parse_dates=['date'])
             df = df.sort_values('date').reset_index(drop=True)
-            print(f"Loaded {symbol} from cache (fast)")
+            logger.info(f"Loaded {symbol} from cache: {len(df)} rows")
             return df
         except Exception as e:
-            print(f"Cache file corrupted for {symbol}, will recreate: {e}")
+            logger.error(f"Cache file corrupted for {symbol}, will recreate: {e}")
     
     # Priority 2: Load from training data (may be legacy format)
     if training_file.exists():
         try:
             # Try standard format first
             try:
+                logger.info(f"Reading training file for {symbol} (standard format)...")
                 df = pd.read_csv(training_file, parse_dates=['date'])
                 df = df.sort_values('date').reset_index(drop=True)
-                print(f"Loaded {symbol} from training data (standard format)")
+                logger.info(f"Loaded {symbol} from training data (standard format): {len(df)} rows")
             except (KeyError, ValueError):
                 # Try legacy format
-                print(f"Converting {symbol} from legacy format to standard...")
+                logger.info(f"Converting {symbol} from legacy format to standard...")
                 df = pd.read_csv(training_file, skiprows=3)
                 
                 if len(df) == 0:
@@ -123,15 +133,16 @@ def load_local_data(symbol: str) -> Optional[pd.DataFrame]:
                 df_cache = df.copy()
                 df_cache['date'] = df_cache['date'].dt.strftime('%Y-%m-%d')
                 df_cache.to_csv(cache_file, index=False)
-                print(f"Cached {symbol} for future fast loads")
+                logger.info(f"Cached {symbol} for future fast loads")
             except Exception as e:
-                print(f"Warning: Could not cache {symbol}: {e}")
+                logger.warning(f"Could not cache {symbol}: {e}")
             
             return df
         except Exception as e:
-            print(f"Error loading training data for {symbol}: {e}")
+            logger.error(f"Error loading training data for {symbol}: {e}")
             return None
     
+    logger.info(f"No data found for {symbol}")
     return None
 
 
@@ -289,12 +300,16 @@ def get_stock_data(
     Raises:
         HTTPException: If unable to get sufficient data
     """
+    logger.info(f"get_stock_data called for {symbol}, date={current_date}")
+    
     # Load local data
+    logger.info(f"Loading local data for {symbol}...")
     local_data = load_local_data(symbol)
+    logger.info(f"Local data loaded: {len(local_data) if local_data is not None else 0} rows")
     
     if local_data is None or len(local_data) == 0:
         # No local data, fetch from Yahoo Finance
-        print(f"No local data for {symbol}, fetching from Yahoo Finance...")
+        logger.info(f"No local data for {symbol}, fetching from Yahoo Finance...")
         data = fetch_data_from_yahoo(symbol)
         append_to_local_file(symbol, data)  # Try to cache, but don't fail if locked
     else:
@@ -309,14 +324,14 @@ def get_stock_data(
     else:
         # Use latest date from data
         target_date = data['date'].max()
-        print(f"Current date not specified, using latest available: {target_date}")
+        logger.info(f"Current date not specified, using latest available: {target_date}")
     
     current_date_str = target_date.strftime('%Y-%m-%d')
     
     # Check if we need to fetch more recent data
     latest_local_date = data['date'].max()
     if target_date > latest_local_date:
-        print(f"Target date {current_date_str} is after latest local data {latest_local_date.strftime('%Y-%m-%d')}, fetching from Yahoo Finance...")
+        logger.info(f"Target date {current_date_str} is after latest local data {latest_local_date.strftime('%Y-%m-%d')}, fetching from Yahoo Finance...")
         
         # Fetch new data starting from the day after latest_local_date
         new_data = fetch_data_from_yahoo(symbol, start_date=latest_local_date.strftime('%Y-%m-%d'))
@@ -330,9 +345,9 @@ def get_stock_data(
             data = data.drop_duplicates(subset=['date'], keep='last')
             data = data.sort_values('date').reset_index(drop=True)
             
-            print(f"Successfully updated {symbol} data with {len(new_data)-1} new trading days")
+            logger.info(f"Successfully updated {symbol} data with {len(new_data)-1} new trading days")
         else:
-            print(f"Warning: No new data available for {current_date_str} (market might be closed). Using latest available: {latest_local_date.strftime('%Y-%m-%d')}")
+            logger.warning(f"No new data available for {current_date_str} (market might be closed). Using latest available: {latest_local_date.strftime('%Y-%m-%d')}")
             current_date_str = latest_local_date.strftime('%Y-%m-%d')
     
     # Filter data up to target date
@@ -345,6 +360,7 @@ def get_stock_data(
             detail=f"Insufficient data for {symbol}. Need {min_history_days} days, got {len(data)}"
         )
     
+    logger.info(f"get_stock_data returning {len(data)} rows for date {current_date_str}")
     return data, current_date_str
 
 
@@ -760,6 +776,39 @@ async def model_info():
     }
 
 
+# GET endpoint for predict/simple
+@app.get("/predict/simple", response_model=SimplePredictionResponse)
+async def predict_simple_get(
+    symbol: str = Query(..., description="Stock symbol (e.g., QQQ, AAPL, SPY)"),
+    date: Optional[str] = Query(None, description="Date (YYYY-MM-DD), defaults to latest"),
+    horizons: Optional[str] = Query(None, description="Comma-separated horizons (e.g., 5,10,20)")
+):
+    """
+    Make predictions for stock price direction (GET method).
+    
+    Example:
+    /predict/simple?symbol=QQQ&date=2025-04-28&horizons=5,10
+    """
+    logger.info(f"GET /predict/simple: symbol={symbol}, date={date}, horizons={horizons}")
+    
+    # Parse horizons
+    horizon_list = None
+    if horizons:
+        try:
+            horizon_list = [int(h.strip()) for h in horizons.split(',')]
+        except ValueError:
+            raise HTTPException(status_code=400, detail=f"Invalid horizons format: {horizons}")
+    
+    # Create request object
+    request = SimplePredictionRequest(
+        symbol=symbol,
+        date=date,
+        horizons=horizon_list
+    )
+    
+    return await predict_simple(request)
+
+
 @app.post("/predict/simple", response_model=SimplePredictionResponse)
 async def predict_simple(request: SimplePredictionRequest):
     """
@@ -787,8 +836,11 @@ async def predict_simple(request: SimplePredictionRequest):
     """
     global model, feature_names
     
+    logger.info(f"POST /predict/simple: symbol={request.symbol}, date={request.date}, horizons={request.horizons}")
+    
     # Validate model is loaded
     if model is None:
+        logger.error("Model not loaded!")
         raise HTTPException(status_code=500, detail="Model not loaded. Server not ready.")
     
     # Default horizons
@@ -800,16 +852,22 @@ async def predict_simple(request: SimplePredictionRequest):
         if not isinstance(h, int) or h <= 0:
             raise HTTPException(status_code=400, detail=f"Invalid horizon: {h}. Must be positive integer.")
     
+    logger.info(f"Loading data for {request.symbol}...")
+    
     # Load data
     try:
+        logger.info(f"Calling get_stock_data for {request.symbol}...")
         history_df, current_date_str = get_stock_data(
             symbol=request.symbol,
             current_date=request.date,
             min_history_days=200
         )
+        logger.info(f"Got data: {len(history_df)} rows, date: {current_date_str}")
     except HTTPException:
+        logger.error(f"HTTPException in get_stock_data: {e}")
         raise
     except Exception as e:
+        logger.error(f"Error loading data: {e}")
         raise HTTPException(status_code=400, detail=f"Error loading data: {str(e)}")
     
     # Get current bar (most recent)
@@ -829,6 +887,8 @@ async def predict_simple(request: SimplePredictionRequest):
     
     # Find the row matching the prediction date
     matching_rows = history_df[history_df['date'] == current_date_dt]
+    logger.info(f"Looking for date {current_date_str}, found {len(matching_rows)} matching rows")
+    
     if len(matching_rows) == 0:
         raise HTTPException(
             status_code=400,
@@ -844,6 +904,8 @@ async def predict_simple(request: SimplePredictionRequest):
         'close': float(current_row['close']),
         'volume': int(current_row['volume'])
     }
+    
+    logger.info(f"Making predictions for {len(request.horizons)} horizons...")
     
     # Make predictions for each horizon
     predictions = []

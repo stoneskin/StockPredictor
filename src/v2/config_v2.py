@@ -7,7 +7,10 @@ import os
 from pathlib import Path
 
 # Project paths
-PROJECT_ROOT = Path(__file__).parent.parent
+# Fix: Go up to find project root (src/v2/config_v2.py -> project root)
+# Current file: src/v2/config_v2.py
+# parent: src/v2, parent.parent: src, parent.parent.parent: project root
+PROJECT_ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 RAW_DATA_DIR = DATA_DIR / "raw"  # Training data (may have legacy format)

@@ -106,7 +106,7 @@ The old endpoint that requires manual data input is still available for backward
 
 ```bash
 # Start server
-python -m uvicorn src.inference_v2:app --reload --host 0.0.0.0 --port 8000
+python -m uvicorn uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000
 
 # In another terminal, make predictions
 curl -X POST http://localhost:8000/predict/simple \
@@ -221,7 +221,7 @@ curl -X POST http://localhost:8000/predict/simple \
 
 ## Next Steps
 
-1. **Start the server:** `python -m uvicorn src.inference_v2:app --reload`
+1. **Start the server:** `python -m uvicorn uvicorn src.v2.inference_v2:app --reload`
 2. **Read the guide:** See `API_GUIDE.md` for complete documentation
 3. **Run tests:** `python test_api.py` to verify setup
 4. **Make predictions:** Start with simple symbol-only requests
