@@ -4,33 +4,34 @@ Trains models with new 4-class classification targets
 """
 
 import sys
+from pathlib import Path
+
+# Add v2.5/src to path
+v25_root = Path(__file__).parent.parent
+sys.path.insert(0, str(v25_root))
+
 import numpy as np
 import pandas as pd
-from pathlib import Path
 from datetime import datetime
 from typing import Tuple, Dict, List
-from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
     accuracy_score, precision_score, recall_score, f1_score,
-    roc_auc_score, confusion_matrix, classification_report
+    roc_auc_score, confusion_matrix
 )
 import joblib
 
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from .config_v2_5 import (
+from src.config_v2_5 import (
     MODEL_RESULTS_DIR, HORIZONS, THRESHOLDS, ENSEMBLE_WEIGHTS,
     TRAIN_PARAMS, MODEL_PARAMS
 )
-from .data_preparation_v2_5 import prepare_data, get_target_column_name
-from .models_v2 import (
+from src.data_preparation_v2_5 import prepare_data, get_target_column_name
+from src.models_v2 import (
     LogisticModel, RandomForestModel, GradientBoostingModel,
     XGBoostModel, CatBoostModel, SVMModel, NaiveBayesModel, EnsembleModel,
     XGBOOST_AVAILABLE, CATBOOST_AVAILABLE
 )
-from .logging_utils import get_training_logger, ModelPerformanceLogger, TRAIN_LOG_DIR
+from src.logging_utils import get_training_logger, ModelPerformanceLogger, TRAIN_LOG_DIR
 
 
 def create_models() -> Dict[str, object]:

@@ -3,29 +3,30 @@ Inference API for Stock Predictor V2.5
 FastAPI server with new 4-class classification
 """
 
-import os
 import sys
+from pathlib import Path
+
+# Add v2.5 to path
+v25_root = Path(__file__).parent.parent
+sys.path.insert(0, str(v25_root))
+
+import os
 import logging
 import numpy as np
 import pandas as pd
 import joblib
 import yfinance as yf
-from pathlib import Path
 from datetime import datetime, timedelta
 from typing import List, Optional, Dict
 
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from .config_v2_5 import (
+from src.config_v2_5 import (
     MODEL_RESULTS_DIR, DEFAULT_HORIZON, HORIZONS, THRESHOLDS,
     CACHE_DATA_DIR, RAW_DATA_DIR, CLASS_LABELS
 )
-from .logging_utils import get_api_logger, get_prediction_logger, PredictionLogger
+from src.logging_utils import get_api_logger, get_prediction_logger, PredictionLogger
 
 logging.basicConfig(level=logging.INFO)
 logger = get_api_logger('inference_v2_5')

@@ -41,7 +41,9 @@ python -m uvicorn src.v2.inference_v2:app --host 0.0.0.0 --port 8000
 ### Training Models
 ```bash
 # Train V2.5 models (current version - 4-class classification)
-python v2.5/src/train_v2_5.py
+# IMPORTANT: Run from v2.5/ folder
+cd v2.5
+python src/train_v2_5.py
 
 # Train V2 models (legacy)
 python src/v2/train_v2.py
@@ -49,14 +51,16 @@ python src/v2/train_v2.py
 
 ### Starting V2.5 API Server
 ```bash
-# Development with hot reload
-python -m uvicorn v2_5.src.inference_v2_5:app --reload --host 0.0.0.0 --port 8000
+# IMPORTANT: Run from v2.5/ folder
+cd v2.5
+python -m uvicorn src.inference_v2_5:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### Running V2.5 Tests
 ```bash
-# Run V2.5 tests
-python v2.5/tests/test_v2_5.py
+# IMPORTANT: Run from v2.5/ folder
+cd v2.5
+python tests/test_v2_5.py
 ```
 
 ## Code Style Guidelines

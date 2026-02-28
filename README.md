@@ -17,23 +17,24 @@ A complete machine learning system for predicting QQQ stock price movements usin
 | Aspect | Details |
 |--------|---------|
 | **Target** | QQQ (Invesco QQQ Trust) |
-| **Prediction** | Price direction: UP (↑) or DOWN (↓) |
-| **Horizons** | 5, 10, 20 days ahead (configurable) |
-| **Models** | 5 ensemble (Logistic Regression, Random Forest, Gradient Boosting, SVM, Naive Bayes) |
+| **Prediction** | 4-class: UP, DOWN, UP_DOWN, SIDEWAYS |
+| **Horizons** | 5, 10, 20, 30 days ahead (configurable) |
+| **Thresholds** | 1%, 2.5%, 5% price movement |
+| **Models** | 7 ensemble (LR, RF, GB, XGBoost, CatBoost, SVM, NB) |
 | **Features** | 47 technical indicators + market regime detection |
-| **Accuracy** | 52-65% depending on horizon (vs 50% random baseline) |
 | **Speed** | <100ms per prediction |
 
 ### ✨ Key Features
 
-- **🤖 5 Ensemble Models**: Weighted voting based on validation performance
-- **📊 47 Technical Features**: MA, RSI, MACD, ATR, Bollinger Bands, Trend, Regime, Correlation with SPY
+- **🤖 7 Ensemble Models**: Added XGBoost and CatBoost
+- **📊 47 Technical Features**: MA, RSI, MACD, ATR, Bollinger Bands, Trend, Regime
 - **⚡ Real-time API**: FastAPI server with automatic data fetching from Yahoo Finance
-- **🔮 Multiple Horizons**: Predict 5, 10, 20+ days ahead simultaneously
+- **🔮 Multiple Horizons**: Predict 5, 10, 20, 30 days ahead simultaneously
 - **🎓 Complete Documentation**: Architecture, API guide, troubleshooting
 - **🧪 Model Persistence**: Pre-trained models available with feature names
-- **📈 Market Regime Detection**: Track bull/bear/sideways market conditions
+- **📈 Market Regime Detection**: Track bull/bear/sideways + volatility states
 - **☁️ Cloud Ready**: Can deploy to AWS SageMaker
+- **📝 Date/Time Logging**: Separate logs for training, prediction, API
 
 ---
 
@@ -59,27 +60,36 @@ A complete machine learning system for predicting QQQ stock price movements usin
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Start API Server
+### 2️⃣ Start API Server (V2.5)
+**IMPORTANT**: All commands below must be run from the `v2.5/` folder.
+
 ```bash
-python -m uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000
+cd v2.5
+python -m uvicorn src.inference_v2_5:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### 3️⃣ Make Your First Prediction
-
-**Using GET (recommended for quick testing):**
-```bash
-curl "http://localhost:8000/predict/simple?symbol=QQQ&date=2026-02-25&horizons=5,10,20"
-```
 
 **Using Python:**
 ```python
 import requests
 
-response = requests.get(
-    "http://localhost:8000/predict/simple",
-    params={"symbol": "QQQ", "date": "2026-02-25", "horizons": "5,10,20"}
+response = requests.post(
+    "http://localhost:8000/predict",
+    json={
+        "symbol": "QQQ",
+        "horizon": 20,
+        "threshold": 0.01
+    }
 )
 print(response.json())
+```
+
+**Using curl:**
+```bash
+curl -X POST http://localhost:8000/predict \
+  -H "Content-Type: application/json" \
+  -d '{"symbol": "QQQ", "horizon": 20, "threshold": 0.01}'
 ```
 
 **See Live API Docs**: http://localhost:8000/docs
@@ -90,46 +100,28 @@ print(response.json())
 
 ```
 StockPredictor/
-├── 📚 docs/                           # Documentation (by version)
-│   ├── GETTING_STARTED.md            # ← Start here!
-│   ├── ARCHITECTURE.md               # System design
-│   ├── API_REFERENCE.md              # API endpoints
-│   ├── V2_CLASSIFICATION.md          # ML details
-│   ├── TROUBLESHOOTING.md            # Common issues
-│   ├── v1/                           # V1 docs (legacy)
-│   ├── v1.5/                         # V1.5 docs (experimental)
-│   ├── v2/                           # V2 docs (current)
-│   │   ├── README.md
-│   │   ├── API_GUIDE.md
-│   │   └── CACHE_OPTIMIZATION.md
-│   └── archive/                      # Old docs
+├── v2.5/                           # Current version (2.5.0) [USE THIS]
+│   ├── src/                        # Source code
+│   │   ├── config_v2_5.py          # Configuration
+│   │   ├── data_preparation_v2_5.py # Data preparation
+│   │   ├── inference_v2_5.py       # API server
+│   │   ├── train_v2_5.py          # Training script
+│   │   ├── logging_utils.py        # Logging utilities
+│   │   ├── models_v2/              # 7 ML models
+│   │   └── regime_v2/              # Market regime detection
+│   ├── tests/                      # Test files
+│   ├── docs/                       # V2.5 documentation
+│   │   └── API_GUIDE.md           # API endpoints
+│   ├── data/                       # Data files
+│   └── models/                     # Trained models
 │
-├── 🧠 src/                            # Source code
-│   ├── v1/                           # V1: Regression [LEGACY]
-│   │   ├── config.py
-│   │   ├── train.py
-│   │   ├── data_preparation.py
-│   │   ├── inference.py
-│   │   └── ...
-│   ├── v1_5/                         # V1.5: Walk-Forward [EXPERIMENTAL]
-│   │   ├── train_walkforward.py
-│   │   └── walk_forward/
-│   ├── v2/                           # V2: Classification [ACTIVE ✅]
-│   │   ├── inference_v2.py           # API server (FastAPI)
-│   │   ├── train_v2.py               # Training pipeline
-│   │   ├── config_v2.py              # Configuration & parameters
-│   │   ├── data_preparation_v2.py    # Data loading & feature engineering
-│   │   ├── models_v2/                # 5 ML models
-│   │   │   ├── base.py              # Base model class
-│   │   │   ├── logistic_model.py    # Logistic Regression
-│   │   │   ├── random_forest_model.py
-│   │   │   ├── gradient_boosting_model.py
-│   │   │   ├── svm_model.py
-│   │   │   ├── naive_bayes_model.py
-│   │   │   └── ensemble.py          # Ensemble voting
-│   │   └── regime_v2/                # Market state detection
-│   │       ├── detector.py
-│   │       ├── ma_crossover.py
+├── src/v2/                         # Legacy version (2.0)
+├── archive/                        # Old versions (v1, v1.5)
+├── docs/                           # Documentation
+├── CHANGELOG.md                   # Version history
+├── README.md                       # This file
+└── README_cn.md                    # Chinese version
+```
 │   │       └── volatility_regime.py
 │   └── common/                       # Shared utilities
 │
@@ -179,24 +171,93 @@ StockPredictor/
 
 ## 🧠 Model Architecture
 
-### 5 Base Models
+### 7 Base Models (V2.5)
 
 | Model | Strengths | Use Case |
 |-------|-----------|----------|
-| **Logistic Regression** | Interpretable, simple baseline | Simple patterns, explanation needed |
-| **Random Forest** | Handles non-linear, robust, fast | General purpose, good baseline |
-| **Gradient Boosting** | Powerful, best performer (88.7% acc) | Main predictor, high accuracy |
-| **SVM (RBF)** | Complex decision boundaries | Non-linear separable patterns |
-| **Naive Bayes** | Very fast, probabilistic | Real-time when speed critical |
+| **Logistic Regression** | Interpretable, simple baseline | Simple patterns |
+| **Random Forest** | Handles non-linear, robust, fast | General purpose |
+| **Gradient Boosting** | Powerful | Main predictor |
+| **XGBoost** | High performance, gradient boosting | High accuracy |
+| **CatBoost** | Handles categorical features | Categorical data |
+| **SVM (RBF)** | Complex decision boundaries | Non-linear patterns |
+| **Naive Bayes** | Very fast | Real-time prediction |
 
-### Ensemble Strategy
+### Ensemble Strategy (V2.5)
 
-Models combined via **weighted voting** based on validation performance:
-- **Gradient Boosting**: 25% weight (most accurate)
-- **Random Forest**: 30% weight (most reliable)  
-- **Logistic Regression**: 20% weight (baseline)
-- **SVM**: 15% weight (non-linear patterns)
-- **Naive Bayes**: 10% weight (fast inference)
+Models combined via **weighted voting**:
+- **Random Forest**: 20% weight
+- **Gradient Boosting**: 20% weight
+- **XGBoost**: 20% weight
+- **Logistic Regression**: 15% weight
+- **CatBoost**: 15% weight
+- **SVM**: 5% weight
+- **Naive Bayes**: 5% weight
+
+---
+
+## 📊 4-Class Classification (V2.5)
+
+V2.5 introduces 4-class classification:
+
+| Class | Condition |
+|-------|----------|
+| **UP** | Max gain > threshold, max loss ≤ threshold |
+| **DOWN** | Max loss > threshold, max gain ≥ threshold |
+| **UP_DOWN** | Both max gain AND max loss > threshold |
+| **SIDEWAYS** | Neither exceeds threshold |
+
+Example: 5-day horizon, 1% threshold:
+- Price goes up >1% but never down >1%: **UP**
+- Price goes down >1% but never up >1%: **DOWN**
+- Price goes up >1% AND down >1%: **UP_DOWN**
+- Price stays within ±1%: **SIDEWAYS**
+
+---
+
+## 🚀 Training & Running V2.5
+
+**IMPORTANT**: All commands below must be run from the `v2.5/` folder.
+
+### Train Models
+```bash
+cd v2.5
+python src/train_v2_5.py
+```
+
+### Start API
+```bash
+cd v2.5
+python -m uvicorn src.inference_v2_5:app --reload --port 8000
+```
+
+### Make Prediction
+```python
+import requests
+
+response = requests.post(
+    "http://localhost:8000/predict",
+    json={
+        "symbol": "QQQ",
+        "horizon": 20,
+        "threshold": 0.01
+    }
+)
+print(response.json())
+```
+
+---
+
+## 📚 Version History
+
+See [CHANGELOG.md](CHANGELOG.md) for complete version history.
+
+| Version | Method | Status |
+|---------|--------|--------|
+| **2.5** | 4-class classification | ✅ Current (use v2.5/) |
+| **2.0** | Binary classification | Legacy (src/v2/) |
+| **1.5** | Walk-Forward validation | Archive |
+| **1.0** | Regression | Archive |
 
 ### Market Regime Detection
 
@@ -254,11 +315,37 @@ Models combined via **weighted voting** based on validation performance:
 
 **1. Start the server:**
 ```bash
-python -m uvicorn src.v2.inference_v2:app --reload --host 0.0.0.0 --port 8000
+cd v2.5
+python -m uvicorn src.inference_v2_5:app --reload --port 8000
 ```
 
-**2. Simple prediction (GET):**
+**2. Simple prediction:**
 ```python
+import requests
+
+response = requests.post(
+    "http://localhost:8000/predict",
+    json={
+        "symbol": "QQQ",
+        "date": "2026-02-25",
+        "horizon": 20,
+        "threshold": 0.01
+    }
+)
+print(response.json())
+```
+
+**3. Multi-horizon prediction:**
+```python
+response = requests.post(
+    "http://localhost:8000/predict/multi",
+    json={
+        "symbol": "QQQ",
+        "horizons": [5, 10, 20, 30],
+        "thresholds": [0.01, 0.025, 0.05]
+    }
+)
+```
 import requests
 
 response = requests.get(

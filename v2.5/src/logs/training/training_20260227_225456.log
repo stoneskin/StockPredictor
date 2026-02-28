@@ -1,0 +1,311 @@
+2026-02-27 22:54:56,082 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:56,083 - train_v2_5 - INFO - Stock Predictor V2.5 Training
+2026-02-27 22:54:56,083 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:56,083 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:56,083 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 1.0%
+2026-02-27 22:54:56,083 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:56,221 - train_v2_5 - INFO - Data prepared: 1536 samples, 45 features
+2026-02-27 22:54:56,221 - train_v2_5 - INFO - Class distribution: [189 455 254 638]
+2026-02-27 22:54:56,224 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=1.0%
+2026-02-27 22:54:56,224 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:56,224 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=1.0%
+2026-02-27 22:54:56,395 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 1.0% | Acc: 54.55% | F1: 53.68% | AUC: 0.795
+2026-02-27 22:54:56,395 - train_v2_5 - INFO - RandomForest: Accuracy=54.55%, F1=53.68%
+2026-02-27 22:54:56,416 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=1.0%
+2026-02-27 22:54:56,417 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:56,417 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=1.0%
+2026-02-27 22:54:56,418 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:56,418 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=1.0%
+2026-02-27 22:54:56,418 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:56,418 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:56,418 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:56,418 - train_v2_5 - INFO - Best Accuracy: 54.55%
+2026-02-27 22:54:56,418 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:56,418 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 2.5%
+2026-02-27 22:54:56,418 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:56,544 - train_v2_5 - INFO - Data prepared: 1536 samples, 45 features
+2026-02-27 22:54:56,545 - train_v2_5 - INFO - Class distribution: [1057  160  229   90]
+2026-02-27 22:54:56,545 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=2.5%
+2026-02-27 22:54:56,546 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:56,546 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=2.5%
+2026-02-27 22:54:56,739 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 2.5% | Acc: 69.16% | F1: 71.53% | AUC: 0.888
+2026-02-27 22:54:56,739 - train_v2_5 - INFO - RandomForest: Accuracy=69.16%, F1=71.53%
+2026-02-27 22:54:56,762 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=2.5%
+2026-02-27 22:54:56,763 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:56,764 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=2.5%
+2026-02-27 22:54:56,764 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:56,764 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=2.5%
+2026-02-27 22:54:56,765 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:56,765 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:56,765 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:56,765 - train_v2_5 - INFO - Best Accuracy: 69.16%
+2026-02-27 22:54:56,765 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:56,765 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 5.0%
+2026-02-27 22:54:56,765 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:56,889 - train_v2_5 - INFO - Data prepared: 1536 samples, 45 features
+2026-02-27 22:54:56,889 - train_v2_5 - INFO - Class distribution: [1476   19   23   18]
+2026-02-27 22:54:56,889 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=5.0%
+2026-02-27 22:54:56,889 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:56,889 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=5.0%
+2026-02-27 22:54:57,078 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 5.0% | Acc: 96.75% | F1: 97.42% | AUC: 0.990
+2026-02-27 22:54:57,078 - train_v2_5 - INFO - RandomForest: Accuracy=96.75%, F1=97.42%
+2026-02-27 22:54:57,103 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=5.0%
+2026-02-27 22:54:57,104 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,104 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=5.0%
+2026-02-27 22:54:57,104 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,104 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=5.0%
+2026-02-27 22:54:57,105 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,105 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:57,105 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:57,105 - train_v2_5 - INFO - Best Accuracy: 96.75%
+2026-02-27 22:54:57,105 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:57,105 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 1.0%
+2026-02-27 22:54:57,105 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:57,234 - train_v2_5 - INFO - Data prepared: 1531 samples, 45 features
+2026-02-27 22:54:57,234 - train_v2_5 - INFO - Class distribution: [  44  275  112 1100]
+2026-02-27 22:54:57,234 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=1.0%
+2026-02-27 22:54:57,235 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:57,235 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=1.0%
+2026-02-27 22:54:57,412 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 1.0% | Acc: 59.61% | F1: 63.21% | AUC: 0.825
+2026-02-27 22:54:57,413 - train_v2_5 - INFO - RandomForest: Accuracy=59.61%, F1=63.21%
+2026-02-27 22:54:57,430 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=1.0%
+2026-02-27 22:54:57,431 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,431 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=1.0%
+2026-02-27 22:54:57,432 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,432 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=1.0%
+2026-02-27 22:54:57,433 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,433 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:57,433 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:57,433 - train_v2_5 - INFO - Best Accuracy: 59.61%
+2026-02-27 22:54:57,433 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:57,433 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 2.5%
+2026-02-27 22:54:57,433 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:57,552 - train_v2_5 - INFO - Data prepared: 1531 samples, 45 features
+2026-02-27 22:54:57,552 - train_v2_5 - INFO - Class distribution: [829 185 281 236]
+2026-02-27 22:54:57,553 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=2.5%
+2026-02-27 22:54:57,553 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:57,553 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=2.5%
+2026-02-27 22:54:57,740 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 2.5% | Acc: 71.99% | F1: 72.79% | AUC: 0.911
+2026-02-27 22:54:57,740 - train_v2_5 - INFO - RandomForest: Accuracy=71.99%, F1=72.79%
+2026-02-27 22:54:57,757 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=2.5%
+2026-02-27 22:54:57,758 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,758 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=2.5%
+2026-02-27 22:54:57,758 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,758 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=2.5%
+2026-02-27 22:54:57,759 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:57,759 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:57,759 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:57,759 - train_v2_5 - INFO - Best Accuracy: 71.99%
+2026-02-27 22:54:57,759 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:57,759 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 5.0%
+2026-02-27 22:54:57,759 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:57,881 - train_v2_5 - INFO - Data prepared: 1531 samples, 45 features
+2026-02-27 22:54:57,881 - train_v2_5 - INFO - Class distribution: [1436   33   23   39]
+2026-02-27 22:54:57,882 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=5.0%
+2026-02-27 22:54:57,882 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:57,882 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=5.0%
+2026-02-27 22:54:58,069 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 5.0% | Acc: 94.14% | F1: 94.96% | AUC: 0.978
+2026-02-27 22:54:58,069 - train_v2_5 - INFO - RandomForest: Accuracy=94.14%, F1=94.96%
+2026-02-27 22:54:58,087 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=5.0%
+2026-02-27 22:54:58,088 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,088 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=5.0%
+2026-02-27 22:54:58,088 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,088 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=5.0%
+2026-02-27 22:54:58,089 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,089 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:58,089 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:58,089 - train_v2_5 - INFO - Best Accuracy: 94.14%
+2026-02-27 22:54:58,089 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:58,089 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 1.0%
+2026-02-27 22:54:58,089 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:58,219 - train_v2_5 - INFO - Data prepared: 1521 samples, 45 features
+2026-02-27 22:54:58,219 - train_v2_5 - INFO - Class distribution: [   0   93   10 1418]
+2026-02-27 22:54:58,219 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=1.0%
+2026-02-27 22:54:58,220 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:58,220 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=1.0%
+2026-02-27 22:54:58,395 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 1.0% | Acc: 94.75% | F1: 95.38% | AUC: 0.971
+2026-02-27 22:54:58,395 - train_v2_5 - INFO - RandomForest: Accuracy=94.75%, F1=95.38%
+2026-02-27 22:54:58,412 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=1.0%
+2026-02-27 22:54:58,413 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,413 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=1.0%
+2026-02-27 22:54:58,413 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,413 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=1.0%
+2026-02-27 22:54:58,414 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,414 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:58,414 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:58,414 - train_v2_5 - INFO - Best Accuracy: 94.75%
+2026-02-27 22:54:58,414 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:58,414 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 2.5%
+2026-02-27 22:54:58,414 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:58,538 - train_v2_5 - INFO - Data prepared: 1521 samples, 45 features
+2026-02-27 22:54:58,538 - train_v2_5 - INFO - Class distribution: [544 180 360 437]
+2026-02-27 22:54:58,539 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=2.5%
+2026-02-27 22:54:58,539 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:58,539 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=2.5%
+2026-02-27 22:54:58,721 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 2.5% | Acc: 76.72% | F1: 76.12% | AUC: 0.939
+2026-02-27 22:54:58,721 - train_v2_5 - INFO - RandomForest: Accuracy=76.72%, F1=76.12%
+2026-02-27 22:54:58,739 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=2.5%
+2026-02-27 22:54:58,740 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,740 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=2.5%
+2026-02-27 22:54:58,740 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,740 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=2.5%
+2026-02-27 22:54:58,741 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:58,741 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:58,741 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:58,741 - train_v2_5 - INFO - Best Accuracy: 76.72%
+2026-02-27 22:54:58,741 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:58,741 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 5.0%
+2026-02-27 22:54:58,741 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:58,865 - train_v2_5 - INFO - Data prepared: 1521 samples, 45 features
+2026-02-27 22:54:58,865 - train_v2_5 - INFO - Class distribution: [1366   53   27   75]
+2026-02-27 22:54:58,866 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=5.0%
+2026-02-27 22:54:58,866 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:58,866 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=5.0%
+2026-02-27 22:54:59,074 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 5.0% | Acc: 96.39% | F1: 96.92% | AUC: 0.999
+2026-02-27 22:54:59,074 - train_v2_5 - INFO - RandomForest: Accuracy=96.39%, F1=96.92%
+2026-02-27 22:54:59,093 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=5.0%
+2026-02-27 22:54:59,094 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,094 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=5.0%
+2026-02-27 22:54:59,094 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,095 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=5.0%
+2026-02-27 22:54:59,095 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,095 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:59,095 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:59,095 - train_v2_5 - INFO - Best Accuracy: 96.39%
+2026-02-27 22:54:59,095 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:59,095 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 1.0%
+2026-02-27 22:54:59,095 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:59,218 - train_v2_5 - INFO - Data prepared: 1511 samples, 45 features
+2026-02-27 22:54:59,218 - train_v2_5 - INFO - Class distribution: [   0   32    0 1479]
+2026-02-27 22:54:59,218 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=1.0%
+2026-02-27 22:54:59,219 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:59,219 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=1.0%
+2026-02-27 22:54:59,376 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 1.0% | Acc: 99.01% | F1: 98.98% | AUC: 0.000
+2026-02-27 22:54:59,378 - train_v2_5 - INFO - RandomForest: Accuracy=99.01%, F1=98.98%
+2026-02-27 22:54:59,396 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=1.0%
+2026-02-27 22:54:59,398 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,398 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=1.0%
+2026-02-27 22:54:59,399 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,399 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=1.0%
+2026-02-27 22:54:59,399 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,400 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:59,400 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:59,400 - train_v2_5 - INFO - Best Accuracy: 99.01%
+2026-02-27 22:54:59,400 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:59,400 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 2.5%
+2026-02-27 22:54:59,400 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:59,523 - train_v2_5 - INFO - Data prepared: 1511 samples, 45 features
+2026-02-27 22:54:59,523 - train_v2_5 - INFO - Class distribution: [392 169 381 569]
+2026-02-27 22:54:59,524 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=2.5%
+2026-02-27 22:54:59,524 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:59,524 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=2.5%
+2026-02-27 22:54:59,697 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 2.5% | Acc: 77.23% | F1: 77.67% | AUC: 0.959
+2026-02-27 22:54:59,697 - train_v2_5 - INFO - RandomForest: Accuracy=77.23%, F1=77.67%
+2026-02-27 22:54:59,715 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=2.5%
+2026-02-27 22:54:59,715 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,715 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=2.5%
+2026-02-27 22:54:59,715 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,717 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=2.5%
+2026-02-27 22:54:59,717 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:54:59,717 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:59,717 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:54:59,717 - train_v2_5 - INFO - Best Accuracy: 77.23%
+2026-02-27 22:54:59,717 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:54:59,717 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 5.0%
+2026-02-27 22:54:59,717 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:54:59,837 - train_v2_5 - INFO - Data prepared: 1511 samples, 45 features
+2026-02-27 22:54:59,837 - train_v2_5 - INFO - Class distribution: [1296   73   37  105]
+2026-02-27 22:54:59,837 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=5.0%
+2026-02-27 22:54:59,838 - train_v2_5 - ERROR - Error training LogisticRegression: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:54:59,838 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=5.0%
+2026-02-27 22:55:00,064 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 5.0% | Acc: 96.70% | F1: 96.90% | AUC: 0.997
+2026-02-27 22:55:00,064 - train_v2_5 - INFO - RandomForest: Accuracy=96.70%, F1=96.90%
+2026-02-27 22:55:00,085 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=5.0%
+2026-02-27 22:55:00,086 - train_v2_5 - ERROR - Error training GradientBoosting: Input X contains NaN.
+GradientBoostingClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:55:00,086 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=5.0%
+2026-02-27 22:55:00,086 - train_v2_5 - ERROR - Error training SVM: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:55:00,087 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=5.0%
+2026-02-27 22:55:00,087 - train_v2_5 - ERROR - Error training NaiveBayes: Input X contains NaN.
+GaussianNB does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2026-02-27 22:55:00,087 - train_v2_5 - ERROR - Error training ensemble: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+2026-02-27 22:55:00,087 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:55:00,087 - train_v2_5 - INFO - Best Accuracy: 96.70%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Saved metrics for 12 models to C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\src\logs\training\metrics_20260227_225500.json
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Training Complete - Summary
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 5d, Threshold: 1.0% | Best: RandomForest | Acc: 54.55%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 5d, Threshold: 2.5% | Best: RandomForest | Acc: 69.16%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 5d, Threshold: 5.0% | Best: RandomForest | Acc: 96.75%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 10d, Threshold: 1.0% | Best: RandomForest | Acc: 59.61%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 10d, Threshold: 2.5% | Best: RandomForest | Acc: 71.99%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 10d, Threshold: 5.0% | Best: RandomForest | Acc: 94.14%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 20d, Threshold: 1.0% | Best: RandomForest | Acc: 94.75%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 20d, Threshold: 2.5% | Best: RandomForest | Acc: 76.72%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 20d, Threshold: 5.0% | Best: RandomForest | Acc: 96.39%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 30d, Threshold: 1.0% | Best: RandomForest | Acc: 99.01%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 30d, Threshold: 2.5% | Best: RandomForest | Acc: 77.23%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Horizon: 30d, Threshold: 5.0% | Best: RandomForest | Acc: 96.70%
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - 
+Models saved to: C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\models\results
+2026-02-27 22:55:00,089 - train_v2_5 - INFO - Logs saved to: C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\src\logs\training

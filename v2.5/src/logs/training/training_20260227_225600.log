@@ -1,0 +1,335 @@
+2026-02-27 22:56:00,660 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:00,660 - train_v2_5 - INFO - Stock Predictor V2.5 Training
+2026-02-27 22:56:00,661 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:00,661 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:00,661 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 1.0%
+2026-02-27 22:56:00,661 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:00,803 - train_v2_5 - INFO - Data prepared: 1337 samples, 45 features
+2026-02-27 22:56:00,803 - train_v2_5 - INFO - Class distribution: [179 399 248 511]
+2026-02-27 22:56:00,804 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=1.0%
+2026-02-27 22:56:01,157 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 5d | Threshold: 1.0% | Acc: 36.19% | F1: 34.07% | AUC: 0.611
+2026-02-27 22:56:01,157 - train_v2_5 - INFO - LogisticRegression: Accuracy=36.19%, F1=34.07%
+2026-02-27 22:56:01,159 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=1.0%
+2026-02-27 22:56:01,353 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 1.0% | Acc: 46.27% | F1: 45.76% | AUC: 0.735
+2026-02-27 22:56:01,353 - train_v2_5 - INFO - RandomForest: Accuracy=46.27%, F1=45.76%
+2026-02-27 22:56:01,375 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=1.0%
+2026-02-27 22:56:02,662 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 5d | Threshold: 1.0% | Acc: 58.96% | F1: 57.39% | AUC: 0.797
+2026-02-27 22:56:02,662 - train_v2_5 - INFO - GradientBoosting: Accuracy=58.96%, F1=57.39%
+2026-02-27 22:56:02,670 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=1.0%
+2026-02-27 22:56:02,977 - train_v2_5 - INFO - Model: SVM | Horizon: 5d | Threshold: 1.0% | Acc: 30.60% | F1: 27.72% | AUC: 0.582
+2026-02-27 22:56:02,977 - train_v2_5 - INFO - SVM: Accuracy=30.60%, F1=27.72%
+2026-02-27 22:56:02,980 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=1.0%
+2026-02-27 22:56:02,988 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 5d | Threshold: 1.0% | Acc: 35.82% | F1: 30.40% | AUC: 0.541
+2026-02-27 22:56:02,989 - train_v2_5 - INFO - NaiveBayes: Accuracy=35.82%, F1=30.40%
+2026-02-27 22:56:05,000 - train_v2_5 - INFO - Training Ensemble for horizon=5d, threshold=1.0%
+2026-02-27 22:56:05,000 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:05,000 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-27 22:56:05,000 - train_v2_5 - INFO - Best Accuracy: 58.96%
+2026-02-27 22:56:05,000 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:05,000 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 2.5%
+2026-02-27 22:56:05,000 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:05,123 - train_v2_5 - INFO - Data prepared: 1337 samples, 45 features
+2026-02-27 22:56:05,123 - train_v2_5 - INFO - Class distribution: [963 126 195  53]
+2026-02-27 22:56:05,124 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=2.5%
+2026-02-27 22:56:05,435 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 5d | Threshold: 2.5% | Acc: 58.58% | F1: 62.85% | AUC: 0.769
+2026-02-27 22:56:05,435 - train_v2_5 - INFO - LogisticRegression: Accuracy=58.58%, F1=62.85%
+2026-02-27 22:56:05,437 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=2.5%
+2026-02-27 22:56:05,615 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 2.5% | Acc: 73.51% | F1: 75.76% | AUC: 0.892
+2026-02-27 22:56:05,615 - train_v2_5 - INFO - RandomForest: Accuracy=73.51%, F1=75.76%
+2026-02-27 22:56:05,636 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=2.5%
+2026-02-27 22:56:06,910 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 5d | Threshold: 2.5% | Acc: 79.85% | F1: 77.63% | AUC: 0.921
+2026-02-27 22:56:06,910 - train_v2_5 - INFO - GradientBoosting: Accuracy=79.85%, F1=77.63%
+2026-02-27 22:56:06,917 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=2.5%
+2026-02-27 22:56:07,185 - train_v2_5 - INFO - Model: SVM | Horizon: 5d | Threshold: 2.5% | Acc: 64.55% | F1: 63.30% | AUC: 0.723
+2026-02-27 22:56:07,185 - train_v2_5 - INFO - SVM: Accuracy=64.55%, F1=63.30%
+2026-02-27 22:56:07,188 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=2.5%
+2026-02-27 22:56:07,194 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 5d | Threshold: 2.5% | Acc: 70.15% | F1: 65.38% | AUC: 0.710
+2026-02-27 22:56:07,194 - train_v2_5 - INFO - NaiveBayes: Accuracy=70.15%, F1=65.38%
+2026-02-27 22:56:09,213 - train_v2_5 - INFO - Training Ensemble for horizon=5d, threshold=2.5%
+2026-02-27 22:56:09,213 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:09,213 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-27 22:56:09,213 - train_v2_5 - INFO - Best Accuracy: 79.85%
+2026-02-27 22:56:09,213 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:09,213 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 5.0%
+2026-02-27 22:56:09,213 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:09,328 - train_v2_5 - INFO - Data prepared: 1337 samples, 45 features
+2026-02-27 22:56:09,328 - train_v2_5 - INFO - Class distribution: [1308   12    7   10]
+2026-02-27 22:56:09,330 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=5.0%
+2026-02-27 22:56:09,706 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 5d | Threshold: 5.0% | Acc: 12.31% | F1: 19.59% | AUC: 0.741
+2026-02-27 22:56:09,707 - train_v2_5 - INFO - LogisticRegression: Accuracy=12.31%, F1=19.59%
+2026-02-27 22:56:09,709 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=5.0%
+2026-02-27 22:56:09,904 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 5.0% | Acc: 98.51% | F1: 97.99% | AUC: 0.947
+2026-02-27 22:56:09,904 - train_v2_5 - INFO - RandomForest: Accuracy=98.51%, F1=97.99%
+2026-02-27 22:56:09,921 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=5.0%
+2026-02-27 22:56:11,254 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 5d | Threshold: 5.0% | Acc: 97.39% | F1: 96.65% | AUC: 0.849
+2026-02-27 22:56:11,254 - train_v2_5 - INFO - GradientBoosting: Accuracy=97.39%, F1=96.65%
+2026-02-27 22:56:11,264 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=5.0%
+2026-02-27 22:56:11,590 - train_v2_5 - INFO - Model: SVM | Horizon: 5d | Threshold: 5.0% | Acc: 44.40% | F1: 59.71% | AUC: 0.544
+2026-02-27 22:56:11,590 - train_v2_5 - INFO - SVM: Accuracy=44.40%, F1=59.71%
+2026-02-27 22:56:11,597 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=5.0%
+2026-02-27 22:56:11,604 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 5d | Threshold: 5.0% | Acc: 96.27% | F1: 95.54% | AUC: 0.646
+2026-02-27 22:56:11,604 - train_v2_5 - INFO - NaiveBayes: Accuracy=96.27%, F1=95.54%
+2026-02-27 22:56:13,670 - train_v2_5 - INFO - Training Ensemble for horizon=5d, threshold=5.0%
+2026-02-27 22:56:13,671 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:13,671 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:56:13,671 - train_v2_5 - INFO - Best Accuracy: 98.51%
+2026-02-27 22:56:13,671 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:13,671 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 1.0%
+2026-02-27 22:56:13,671 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:13,798 - train_v2_5 - INFO - Data prepared: 1332 samples, 45 features
+2026-02-27 22:56:13,798 - train_v2_5 - INFO - Class distribution: [ 43 248 110 931]
+2026-02-27 22:56:13,799 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=1.0%
+2026-02-27 22:56:14,162 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 10d | Threshold: 1.0% | Acc: 40.07% | F1: 48.36% | AUC: 0.622
+2026-02-27 22:56:14,162 - train_v2_5 - INFO - LogisticRegression: Accuracy=40.07%, F1=48.36%
+2026-02-27 22:56:14,164 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=1.0%
+2026-02-27 22:56:14,365 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 1.0% | Acc: 60.30% | F1: 65.18% | AUC: 0.815
+2026-02-27 22:56:14,365 - train_v2_5 - INFO - RandomForest: Accuracy=60.30%, F1=65.18%
+2026-02-27 22:56:14,383 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=1.0%
+2026-02-27 22:56:15,695 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 10d | Threshold: 1.0% | Acc: 79.78% | F1: 76.65% | AUC: 0.881
+2026-02-27 22:56:15,696 - train_v2_5 - INFO - GradientBoosting: Accuracy=79.78%, F1=76.65%
+2026-02-27 22:56:15,701 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=1.0%
+2026-02-27 22:56:16,007 - train_v2_5 - INFO - Model: SVM | Horizon: 10d | Threshold: 1.0% | Acc: 19.85% | F1: 26.83% | AUC: 0.642
+2026-02-27 22:56:16,007 - train_v2_5 - INFO - SVM: Accuracy=19.85%, F1=26.83%
+2026-02-27 22:56:16,011 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=1.0%
+2026-02-27 22:56:16,016 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 10d | Threshold: 1.0% | Acc: 69.29% | F1: 56.72% | AUC: 0.598
+2026-02-27 22:56:16,017 - train_v2_5 - INFO - NaiveBayes: Accuracy=69.29%, F1=56.72%
+2026-02-27 22:56:17,996 - train_v2_5 - INFO - Training Ensemble for horizon=10d, threshold=1.0%
+2026-02-27 22:56:17,996 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:17,996 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-27 22:56:17,996 - train_v2_5 - INFO - Best Accuracy: 79.78%
+2026-02-27 22:56:17,996 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:17,997 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 2.5%
+2026-02-27 22:56:17,997 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:18,121 - train_v2_5 - INFO - Data prepared: 1332 samples, 45 features
+2026-02-27 22:56:18,122 - train_v2_5 - INFO - Class distribution: [776 147 246 163]
+2026-02-27 22:56:18,123 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=2.5%
+2026-02-27 22:56:18,477 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 10d | Threshold: 2.5% | Acc: 50.19% | F1: 48.07% | AUC: 0.672
+2026-02-27 22:56:18,477 - train_v2_5 - INFO - LogisticRegression: Accuracy=50.19%, F1=48.07%
+2026-02-27 22:56:18,481 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=2.5%
+2026-02-27 22:56:18,680 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 2.5% | Acc: 74.16% | F1: 74.88% | AUC: 0.914
+2026-02-27 22:56:18,680 - train_v2_5 - INFO - RandomForest: Accuracy=74.16%, F1=74.88%
+2026-02-27 22:56:18,697 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=2.5%
+2026-02-27 22:56:20,066 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 10d | Threshold: 2.5% | Acc: 83.52% | F1: 82.84% | AUC: 0.942
+2026-02-27 22:56:20,067 - train_v2_5 - INFO - GradientBoosting: Accuracy=83.52%, F1=82.84%
+2026-02-27 22:56:20,075 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=2.5%
+2026-02-27 22:56:20,325 - train_v2_5 - INFO - Model: SVM | Horizon: 10d | Threshold: 2.5% | Acc: 59.55% | F1: 56.07% | AUC: 0.673
+2026-02-27 22:56:20,325 - train_v2_5 - INFO - SVM: Accuracy=59.55%, F1=56.07%
+2026-02-27 22:56:20,327 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=2.5%
+2026-02-27 22:56:20,335 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 10d | Threshold: 2.5% | Acc: 59.93% | F1: 50.22% | AUC: 0.669
+2026-02-27 22:56:20,335 - train_v2_5 - INFO - NaiveBayes: Accuracy=59.93%, F1=50.22%
+2026-02-27 22:56:22,277 - train_v2_5 - INFO - Training Ensemble for horizon=10d, threshold=2.5%
+2026-02-27 22:56:22,277 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:22,277 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-27 22:56:22,277 - train_v2_5 - INFO - Best Accuracy: 83.52%
+2026-02-27 22:56:22,277 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:22,277 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 5.0%
+2026-02-27 22:56:22,277 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:22,397 - train_v2_5 - INFO - Data prepared: 1332 samples, 45 features
+2026-02-27 22:56:22,397 - train_v2_5 - INFO - Class distribution: [1278   22   12   20]
+2026-02-27 22:56:22,398 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=5.0%
+2026-02-27 22:56:22,758 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 10d | Threshold: 5.0% | Acc: 77.90% | F1: 83.93% | AUC: 0.895
+2026-02-27 22:56:22,758 - train_v2_5 - INFO - LogisticRegression: Accuracy=77.90%, F1=83.93%
+2026-02-27 22:56:22,760 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=5.0%
+2026-02-27 22:56:22,949 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 5.0% | Acc: 97.38% | F1: 97.41% | AUC: 0.982
+2026-02-27 22:56:22,950 - train_v2_5 - INFO - RandomForest: Accuracy=97.38%, F1=97.41%
+2026-02-27 22:56:22,968 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=5.0%
+2026-02-27 22:56:24,451 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 10d | Threshold: 5.0% | Acc: 97.75% | F1: 97.62% | AUC: 0.991
+2026-02-27 22:56:24,451 - train_v2_5 - INFO - GradientBoosting: Accuracy=97.75%, F1=97.62%
+2026-02-27 22:56:24,457 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=5.0%
+2026-02-27 22:56:24,836 - train_v2_5 - INFO - Model: SVM | Horizon: 10d | Threshold: 5.0% | Acc: 50.19% | F1: 62.68% | AUC: 0.703
+2026-02-27 22:56:24,836 - train_v2_5 - INFO - SVM: Accuracy=50.19%, F1=62.68%
+2026-02-27 22:56:24,839 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=5.0%
+2026-02-27 22:56:24,846 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 10d | Threshold: 5.0% | Acc: 93.63% | F1: 91.46% | AUC: 0.748
+2026-02-27 22:56:24,846 - train_v2_5 - INFO - NaiveBayes: Accuracy=93.63%, F1=91.46%
+2026-02-27 22:56:27,200 - train_v2_5 - INFO - Training Ensemble for horizon=10d, threshold=5.0%
+2026-02-27 22:56:27,200 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:27,200 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-27 22:56:27,200 - train_v2_5 - INFO - Best Accuracy: 97.75%
+2026-02-27 22:56:27,200 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:27,200 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 1.0%
+2026-02-27 22:56:27,200 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:27,336 - train_v2_5 - INFO - Data prepared: 1322 samples, 45 features
+2026-02-27 22:56:27,337 - train_v2_5 - INFO - Class distribution: [   0   84   10 1228]
+2026-02-27 22:56:27,338 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=1.0%
+2026-02-27 22:56:27,715 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 20d | Threshold: 1.0% | Acc: 46.04% | F1: 56.72% | AUC: 0.756
+2026-02-27 22:56:27,715 - train_v2_5 - INFO - LogisticRegression: Accuracy=46.04%, F1=56.72%
+2026-02-27 22:56:27,718 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=1.0%
+2026-02-27 22:56:27,941 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 1.0% | Acc: 96.60% | F1: 96.64% | AUC: 0.992
+2026-02-27 22:56:27,941 - train_v2_5 - INFO - RandomForest: Accuracy=96.60%, F1=96.64%
+2026-02-27 22:56:27,977 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=1.0%
+2026-02-27 22:56:29,194 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 20d | Threshold: 1.0% | Acc: 93.58% | F1: 92.47% | AUC: 0.893
+2026-02-27 22:56:29,194 - train_v2_5 - INFO - GradientBoosting: Accuracy=93.58%, F1=92.47%
+2026-02-27 22:56:29,201 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=1.0%
+2026-02-27 22:56:29,461 - train_v2_5 - INFO - Model: SVM | Horizon: 20d | Threshold: 1.0% | Acc: 25.66% | F1: 31.51% | AUC: 0.768
+2026-02-27 22:56:29,462 - train_v2_5 - INFO - SVM: Accuracy=25.66%, F1=31.51%
+2026-02-27 22:56:29,465 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=1.0%
+2026-02-27 22:56:29,471 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 20d | Threshold: 1.0% | Acc: 92.08% | F1: 88.28% | AUC: 0.722
+2026-02-27 22:56:29,471 - train_v2_5 - INFO - NaiveBayes: Accuracy=92.08%, F1=88.28%
+2026-02-27 22:56:31,242 - train_v2_5 - INFO - Training Ensemble for horizon=20d, threshold=1.0%
+2026-02-27 22:56:31,242 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:31,242 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:56:31,242 - train_v2_5 - INFO - Best Accuracy: 96.60%
+2026-02-27 22:56:31,242 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:31,242 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 2.5%
+2026-02-27 22:56:31,242 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:31,364 - train_v2_5 - INFO - Data prepared: 1322 samples, 45 features
+2026-02-27 22:56:31,365 - train_v2_5 - INFO - Class distribution: [539 144 326 313]
+2026-02-27 22:56:31,366 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=2.5%
+2026-02-27 22:56:31,689 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 20d | Threshold: 2.5% | Acc: 48.68% | F1: 46.82% | AUC: 0.706
+2026-02-27 22:56:31,689 - train_v2_5 - INFO - LogisticRegression: Accuracy=48.68%, F1=46.82%
+2026-02-27 22:56:31,692 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=2.5%
+2026-02-27 22:56:31,898 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 2.5% | Acc: 78.87% | F1: 79.01% | AUC: 0.950
+2026-02-27 22:56:31,898 - train_v2_5 - INFO - RandomForest: Accuracy=78.87%, F1=79.01%
+2026-02-27 22:56:31,918 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=2.5%
+2026-02-27 22:56:33,286 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 20d | Threshold: 2.5% | Acc: 93.21% | F1: 93.17% | AUC: 0.991
+2026-02-27 22:56:33,286 - train_v2_5 - INFO - GradientBoosting: Accuracy=93.21%, F1=93.17%
+2026-02-27 22:56:33,293 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=2.5%
+2026-02-27 22:56:33,544 - train_v2_5 - INFO - Model: SVM | Horizon: 20d | Threshold: 2.5% | Acc: 42.26% | F1: 43.58% | AUC: 0.681
+2026-02-27 22:56:33,544 - train_v2_5 - INFO - SVM: Accuracy=42.26%, F1=43.58%
+2026-02-27 22:56:33,550 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=2.5%
+2026-02-27 22:56:33,558 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 20d | Threshold: 2.5% | Acc: 50.57% | F1: 44.78% | AUC: 0.695
+2026-02-27 22:56:33,558 - train_v2_5 - INFO - NaiveBayes: Accuracy=50.57%, F1=44.78%
+2026-02-27 22:56:36,171 - train_v2_5 - INFO - Training Ensemble for horizon=20d, threshold=2.5%
+2026-02-27 22:56:36,171 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:36,171 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-27 22:56:36,171 - train_v2_5 - INFO - Best Accuracy: 93.21%
+2026-02-27 22:56:36,171 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:36,171 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 5.0%
+2026-02-27 22:56:36,171 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:36,323 - train_v2_5 - INFO - Data prepared: 1322 samples, 45 features
+2026-02-27 22:56:36,324 - train_v2_5 - INFO - Class distribution: [1218   42   22   40]
+2026-02-27 22:56:36,325 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=5.0%
+2026-02-27 22:56:36,686 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 20d | Threshold: 5.0% | Acc: 66.04% | F1: 73.86% | AUC: 0.885
+2026-02-27 22:56:36,686 - train_v2_5 - INFO - LogisticRegression: Accuracy=66.04%, F1=73.86%
+2026-02-27 22:56:36,690 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=5.0%
+2026-02-27 22:56:36,880 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 5.0% | Acc: 98.11% | F1: 97.85% | AUC: 0.994
+2026-02-27 22:56:36,880 - train_v2_5 - INFO - RandomForest: Accuracy=98.11%, F1=97.85%
+2026-02-27 22:56:36,898 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=5.0%
+2026-02-27 22:56:38,307 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 20d | Threshold: 5.0% | Acc: 96.98% | F1: 96.39% | AUC: 0.997
+2026-02-27 22:56:38,307 - train_v2_5 - INFO - GradientBoosting: Accuracy=96.98%, F1=96.39%
+2026-02-27 22:56:38,312 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=5.0%
+2026-02-27 22:56:38,625 - train_v2_5 - INFO - Model: SVM | Horizon: 20d | Threshold: 5.0% | Acc: 42.64% | F1: 53.66% | AUC: 0.740
+2026-02-27 22:56:38,625 - train_v2_5 - INFO - SVM: Accuracy=42.64%, F1=53.66%
+2026-02-27 22:56:38,629 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=5.0%
+2026-02-27 22:56:38,637 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 20d | Threshold: 5.0% | Acc: 89.43% | F1: 86.76% | AUC: 0.733
+2026-02-27 22:56:38,637 - train_v2_5 - INFO - NaiveBayes: Accuracy=89.43%, F1=86.76%
+2026-02-27 22:56:40,852 - train_v2_5 - INFO - Training Ensemble for horizon=20d, threshold=5.0%
+2026-02-27 22:56:40,852 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:40,853 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:56:40,853 - train_v2_5 - INFO - Best Accuracy: 98.11%
+2026-02-27 22:56:40,853 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:40,853 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 1.0%
+2026-02-27 22:56:40,853 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:41,011 - train_v2_5 - INFO - Data prepared: 1312 samples, 45 features
+2026-02-27 22:56:41,011 - train_v2_5 - INFO - Class distribution: [   0   32    0 1280]
+2026-02-27 22:56:41,013 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=1.0%
+2026-02-27 22:56:41,337 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 30d | Threshold: 1.0% | Acc: 86.31% | F1: 91.07% | AUC: 0.000
+2026-02-27 22:56:41,337 - train_v2_5 - INFO - LogisticRegression: Accuracy=86.31%, F1=91.07%
+2026-02-27 22:56:41,341 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=1.0%
+2026-02-27 22:56:41,777 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 1.0% | Acc: 99.62% | F1: 99.64% | AUC: 0.000
+2026-02-27 22:56:41,777 - train_v2_5 - INFO - RandomForest: Accuracy=99.62%, F1=99.64%
+2026-02-27 22:56:41,817 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=1.0%
+2026-02-27 22:56:42,322 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 30d | Threshold: 1.0% | Acc: 99.62% | F1: 99.60% | AUC: 0.000
+2026-02-27 22:56:42,322 - train_v2_5 - INFO - GradientBoosting: Accuracy=99.62%, F1=99.60%
+2026-02-27 22:56:42,326 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=1.0%
+2026-02-27 22:56:42,485 - train_v2_5 - INFO - Model: SVM | Horizon: 30d | Threshold: 1.0% | Acc: 47.15% | F1: 62.06% | AUC: 0.000
+2026-02-27 22:56:42,486 - train_v2_5 - INFO - SVM: Accuracy=47.15%, F1=62.06%
+2026-02-27 22:56:42,489 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=1.0%
+2026-02-27 22:56:42,494 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 30d | Threshold: 1.0% | Acc: 98.10% | F1: 97.16% | AUC: 0.000
+2026-02-27 22:56:42,494 - train_v2_5 - INFO - NaiveBayes: Accuracy=98.10%, F1=97.16%
+2026-02-27 22:56:43,275 - train_v2_5 - INFO - Training Ensemble for horizon=30d, threshold=1.0%
+2026-02-27 22:56:43,275 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:43,275 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:56:43,276 - train_v2_5 - INFO - Best Accuracy: 99.62%
+2026-02-27 22:56:43,276 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:43,276 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 2.5%
+2026-02-27 22:56:43,276 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:43,399 - train_v2_5 - INFO - Data prepared: 1312 samples, 45 features
+2026-02-27 22:56:43,400 - train_v2_5 - INFO - Class distribution: [392 148 366 406]
+2026-02-27 22:56:43,400 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=2.5%
+2026-02-27 22:56:43,742 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 30d | Threshold: 2.5% | Acc: 46.77% | F1: 46.19% | AUC: 0.729
+2026-02-27 22:56:43,742 - train_v2_5 - INFO - LogisticRegression: Accuracy=46.77%, F1=46.19%
+2026-02-27 22:56:43,743 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=2.5%
+2026-02-27 22:56:43,927 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 2.5% | Acc: 79.09% | F1: 79.36% | AUC: 0.960
+2026-02-27 22:56:43,927 - train_v2_5 - INFO - RandomForest: Accuracy=79.09%, F1=79.36%
+2026-02-27 22:56:43,947 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=2.5%
+2026-02-27 22:56:45,291 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 30d | Threshold: 2.5% | Acc: 96.96% | F1: 96.97% | AUC: 0.997
+2026-02-27 22:56:45,291 - train_v2_5 - INFO - GradientBoosting: Accuracy=96.96%, F1=96.97%
+2026-02-27 22:56:45,295 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=2.5%
+2026-02-27 22:56:45,532 - train_v2_5 - INFO - Model: SVM | Horizon: 30d | Threshold: 2.5% | Acc: 40.68% | F1: 41.84% | AUC: 0.672
+2026-02-27 22:56:45,532 - train_v2_5 - INFO - SVM: Accuracy=40.68%, F1=41.84%
+2026-02-27 22:56:45,536 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=2.5%
+2026-02-27 22:56:45,541 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 30d | Threshold: 2.5% | Acc: 47.91% | F1: 45.64% | AUC: 0.693
+2026-02-27 22:56:45,541 - train_v2_5 - INFO - NaiveBayes: Accuracy=47.91%, F1=45.64%
+2026-02-27 22:56:47,551 - train_v2_5 - INFO - Training Ensemble for horizon=30d, threshold=2.5%
+2026-02-27 22:56:47,551 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:47,552 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-27 22:56:47,552 - train_v2_5 - INFO - Best Accuracy: 96.96%
+2026-02-27 22:56:47,552 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:47,552 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 5.0%
+2026-02-27 22:56:47,552 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:47,674 - train_v2_5 - INFO - Data prepared: 1312 samples, 45 features
+2026-02-27 22:56:47,674 - train_v2_5 - INFO - Class distribution: [1158   62   32   60]
+2026-02-27 22:56:47,675 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=5.0%
+2026-02-27 22:56:48,000 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 30d | Threshold: 5.0% | Acc: 65.40% | F1: 73.51% | AUC: 0.847
+2026-02-27 22:56:48,000 - train_v2_5 - INFO - LogisticRegression: Accuracy=65.40%, F1=73.51%
+2026-02-27 22:56:48,002 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=5.0%
+2026-02-27 22:56:48,193 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 5.0% | Acc: 98.10% | F1: 98.13% | AUC: 0.996
+2026-02-27 22:56:48,193 - train_v2_5 - INFO - RandomForest: Accuracy=98.10%, F1=98.13%
+2026-02-27 22:56:48,213 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=5.0%
+2026-02-27 22:56:49,533 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 30d | Threshold: 5.0% | Acc: 97.72% | F1: 97.59% | AUC: 1.000
+2026-02-27 22:56:49,534 - train_v2_5 - INFO - GradientBoosting: Accuracy=97.72%, F1=97.59%
+2026-02-27 22:56:49,538 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=5.0%
+2026-02-27 22:56:49,816 - train_v2_5 - INFO - Model: SVM | Horizon: 30d | Threshold: 5.0% | Acc: 41.83% | F1: 51.59% | AUC: 0.730
+2026-02-27 22:56:49,816 - train_v2_5 - INFO - SVM: Accuracy=41.83%, F1=51.59%
+2026-02-27 22:56:49,819 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=5.0%
+2026-02-27 22:56:49,825 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 30d | Threshold: 5.0% | Acc: 85.55% | F1: 81.26% | AUC: 0.712
+2026-02-27 22:56:49,826 - train_v2_5 - INFO - NaiveBayes: Accuracy=85.55%, F1=81.26%
+2026-02-27 22:56:51,948 - train_v2_5 - INFO - Training Ensemble for horizon=30d, threshold=5.0%
+2026-02-27 22:56:51,948 - train_v2_5 - ERROR - Error training ensemble: Can't instantiate abstract class EnsembleModel without an implementation for abstract method '_create_model'
+2026-02-27 22:56:51,948 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-27 22:56:51,948 - train_v2_5 - INFO - Best Accuracy: 98.10%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Saved metrics for 60 models to C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\src\logs\training\metrics_20260227_225651.json
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - 
+============================================================
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Training Complete - Summary
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - ============================================================
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 5d, Threshold: 1.0% | Best: GradientBoosting | Acc: 58.96%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 5d, Threshold: 2.5% | Best: GradientBoosting | Acc: 79.85%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 5d, Threshold: 5.0% | Best: RandomForest | Acc: 98.51%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 10d, Threshold: 1.0% | Best: GradientBoosting | Acc: 79.78%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 10d, Threshold: 2.5% | Best: GradientBoosting | Acc: 83.52%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 10d, Threshold: 5.0% | Best: GradientBoosting | Acc: 97.75%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 20d, Threshold: 1.0% | Best: RandomForest | Acc: 96.60%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 20d, Threshold: 2.5% | Best: GradientBoosting | Acc: 93.21%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 20d, Threshold: 5.0% | Best: RandomForest | Acc: 98.11%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 30d, Threshold: 1.0% | Best: RandomForest | Acc: 99.62%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 30d, Threshold: 2.5% | Best: GradientBoosting | Acc: 96.96%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Horizon: 30d, Threshold: 5.0% | Best: RandomForest | Acc: 98.10%
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - 
+Models saved to: C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\models\results
+2026-02-27 22:56:51,951 - train_v2_5 - INFO - Logs saved to: C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\src\logs\training

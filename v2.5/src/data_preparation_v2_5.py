@@ -4,17 +4,15 @@ Creates 4-class classification targets: UP, DOWN, UP_DOWN, SIDEWAYS
 Based on thresholds: 1%, 2.5%, 5% price movement in any day within horizon
 """
 
-import pandas as pd
-import numpy as np
-from pathlib import Path
-import sys
-from typing import Dict, List, Tuple
-
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from .config_v2_5 import (
+import pandas as pd
+import numpy as np
+from typing import Dict, List, Tuple
+
+from src.config_v2_5 import (
     RAW_DATA_DIR, HORIZONS, THRESHOLDS,
     THRESHOLD_LABELS, REGIME_PARAMS, FEATURE_PARAMS
 )
@@ -31,25 +29,37 @@ def load_raw_data() -> Dict[str, pd.DataFrame]:
     for name, path in data_files.items():
         if path.exists():
             try:
+                # Try legacy format (skip first 3 rows)
                 df = pd.read_csv(path, skiprows=3)
+                if len(df.columns) == 6:
+                    df.columns = ['date', 'close', 'high', 'low', 'open', 'volume']
+                else:
+                    df = pd.read_csv(path)
             except:
-                df = pd.read_csv(path, parse_dates=['date'])
+                # Try standard format
+                df = pd.read_csv(path)
             
+            # Handle column names
             if 'Price' in df.columns:
                 df.columns = ['date', 'close', 'high', 'low', 'open', 'volume']
             elif 'Date' in df.columns:
                 df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
+            elif len(df.columns) >= 6:
+                df = df.iloc[:, :6]
+                df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
             
+            # Convert date and set index
             df['date'] = pd.to_datetime(df['date'])
             df = df.set_index('date')
             
+            # Convert numeric columns
             for col in ['close', 'high', 'low', 'open', 'volume']:
                 if col in df.columns:
                     df[col] = pd.to_numeric(df[col], errors='coerce')
             
             df = df.dropna()
             dfs[name] = df
-            print(f"Loaded {name}: {len(df)} rows")
+            print(f"Loaded {name}: {len(df)} rows, date range: {df.index.min()} to {df.index.max()}")
     
     if not dfs:
         raise FileNotFoundError(f"No data files found in {RAW_DATA_DIR}")
@@ -273,10 +283,12 @@ def add_market_features(df: pd.DataFrame, spy_data: pd.DataFrame) -> pd.DataFram
     """Add market correlation features with SPY."""
     df = df.copy()
     
+    # Initialize columns
+    df['correlation_spy_5d'] = 0.0
+    df['correlation_spy_10d'] = 0.0
+    df['correlation_spy_20d'] = 0.0
+    
     if spy_data is None or len(spy_data) == 0:
-        df['correlation_spy_5d'] = 0.0
-        df['correlation_spy_10d'] = 0.0
-        df['correlation_spy_20d'] = 0.0
         return df
     
     spy_close = spy_data['close']
@@ -285,14 +297,13 @@ def add_market_features(df: pd.DataFrame, spy_data: pd.DataFrame) -> pd.DataFram
     # Align by index
     common_idx = df.index.intersection(spy_data.index)
     if len(common_idx) > 20:
-        stock_ret = stock_close.loc[common_idx].pct_change().dropna()
-        spy_ret = spy_close.loc[common_idx].pct_change().dropna()
+        stock_ret = stock_close.loc[common_idx].pct_change()
+        spy_ret = spy_close.loc[common_idx].pct_change()
         
-        aligned_stock = stock_ret.loc[spy_ret.index]
-        
-        df.loc[common_idx, 'correlation_spy_5d'] = aligned_stock.rolling(5).corr(spy_ret.rolling(5))
-        df.loc[common_idx, 'correlation_spy_10d'] = aligned_stock.rolling(10).corr(spy_ret.rolling(10))
-        df.loc[common_idx, 'correlation_spy_20d'] = aligned_stock.rolling(20).corr(spy_ret.rolling(20))
+        # Calculate rolling correlations
+        for window in [5, 10, 20]:
+            corr = stock_ret.rolling(window).corr(spy_ret)
+            df.loc[common_idx, f'correlation_spy_{window}d'] = corr
     
     df['correlation_spy_5d'] = df['correlation_spy_5d'].fillna(0)
     df['correlation_spy_10d'] = df['correlation_spy_10d'].fillna(0)
@@ -346,6 +357,10 @@ def prepare_data(
     exclude_cols += [c for c in df.columns if c.startswith('return_')]
     
     feature_cols = [c for c in df.columns if c not in exclude_cols]
+    
+    # Drop NaN in features
+    X_df = df[feature_cols].dropna()
+    df = df.loc[X_df.index]
     
     X = df[feature_cols].values
     y = df[target_col].values.astype(int)

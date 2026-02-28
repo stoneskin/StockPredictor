@@ -12,41 +12,47 @@ Stock Predictor V2.5 is an enhanced version with **4-class classification** for 
 - **7 Models**: Including XGBoost, CatBoost
 - **Enhanced Logging**: Date/time-stamped log files
 
-## Classification Logic
-
-```
-For each prediction horizon (e.g., 5 days) and threshold (e.g., 1%):
-
-- UP:       max daily gain > threshold, max daily loss <= threshold
-- DOWN:     max daily loss < threshold, max daily gain >= threshold  
-- UP_DOWN:  max daily gain > threshold AND max daily loss < threshold
-- SIDEWAYS: max daily gain <= threshold AND max daily loss >= threshold
-```
-
-Example: For 5-day horizon with 1% threshold:
-- If in any of the next 5 days, price goes up >1% but never down >1%: **UP**
-- If price goes down >1% but never up >1%: **DOWN**
-- If price goes up >1% AND down >1%: **UP_DOWN**
-- If price stays within ±1%: **SIDEWAYS**
-
 ## Quick Start
+
+**IMPORTANT**: All commands below must be run from the `v2.5/` folder.
 
 ### Installation
 
 ```bash
+# Install dependencies (from project root)
 pip install -r requirements.txt
 ```
 
 ### Training
 
 ```bash
-python v2.5/src/train_v2_5.py
+# Run from v2.5 folder
+cd v2.5
+python src/train_v2_5.py
 ```
 
 ### Running API
 
 ```bash
-python -m uvicorn v2_5.src.inference_v2_5:app --reload --host 0.0.0.0 --port 8000
+# Run from v2.5 folder
+cd v2.5
+python -m uvicorn src.inference_v2_5:app --reload --host 0.0.0.0 --port 8000
+```
+
+### Making Predictions
+
+```python
+import requests
+
+response = requests.post(
+    "http://localhost:8000/predict",
+    json={
+        "symbol": "QQQ",
+        "horizon": 20,
+        "threshold": 0.01
+    }
+)
+print(response.json())
 ```
 
 ### Making Predictions

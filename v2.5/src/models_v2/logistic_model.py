@@ -16,8 +16,7 @@ class LogisticModel(BaseModel):
             'max_iter': 1000,
             'class_weight': 'balanced',
             'random_state': 42,
-            'solver': 'lbfgs',
-            'multi_class': 'multinomial'
+            'solver': 'lbfgs'
         }
         if params:
             default_params.update(params)
