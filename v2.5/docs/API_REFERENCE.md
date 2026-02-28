@@ -1,10 +1,10 @@
-# 📡 API Reference - V2.5.1
+# 📡 API Reference - V2.5.2
 
-Complete documentation of all API endpoints for the Stock Predictor V2.5.1 service.
+Complete documentation of all API endpoints for the Stock Predictor V2.5.2 service.
 
 **Base URL**: `http://localhost:8000`  
 **Interactive Docs**: `http://localhost:8000/docs` (Swagger UI)  
-**Version**: 2.5.1
+**Version**: 2.5.2
 
 ---
 
@@ -15,6 +15,8 @@ Complete documentation of all API endpoints for the Stock Predictor V2.5.1 servi
 | `/` | GET | Get API info |
 | `/predict` | POST | Single prediction (recommended) |
 | `/predict/multi` | POST | Multiple horizons/thresholds |
+| `/backtest` | POST | Run backtest analysis |
+| `/backtest/{symbol}` | GET | Run backtest analysis (GET) |
 | `/health` | GET | Health check |
 | `/model-info` | GET | Model information |
 
@@ -171,13 +173,92 @@ curl -X POST http://localhost:8000/predict/multi \
     {"horizon": 10, "threshold": 0.01, "prediction": "SIDEWAYS", ...},
     {"horizon": 20, "threshold": 0.01, "prediction": "SIDEWAYS", ...},
     ...
-  ]
+   ]
 }
 ```
 
 ---
 
-## 5. GET `/model-info`
+## 5. POST `/backtest`
+
+Run comprehensive backtest for a symbol over a historical period.
+
+### Request
+```bash
+curl -X POST "http://localhost:8000/backtest" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "symbol": "TQQQ",
+    "horizon": 20,
+    "threshold": 0.01,
+    "days_back": 180,
+    "end_date": null
+  }'
+```
+
+### Request Parameters (JSON body)
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| symbol | string | Yes | - | Stock symbol (e.g., "TQQQ", "QQQ") |
+| horizon | int | No | 20 | Prediction horizon in days (3, 5, 10, 15, 20, 30) |
+| threshold | float | No | 0.01 | Threshold (0.0075, 0.01, 0.015, 0.025, 0.05) |
+| days_back | int | No | 180 | Number of trading days to backtest |
+| end_date | string | No | today | End date (YYYY-MM-DD) |
+
+### Response
+```json
+{
+  "symbol": "TQQQ",
+  "horizon": 20,
+  "threshold": 0.01,
+  "days_back": 180,
+  "summary": {
+    "total_predictions": 41,
+    "correct_predictions": 37,
+    "accuracy_pct": 90.24,
+    "by_class": {
+      "UP": {"count": 5, "correct": 4, "accuracy_pct": 80.0},
+      "DOWN": {"count": 2, "correct": 1, "accuracy_pct": 50.0},
+      "UP_DOWN": {"count": 34, "correct": 32, "accuracy_pct": 94.12}
+    },
+    "by_prediction": {
+      "UP_DOWN": {"count": 35, "actual_correct": 33, "precision_pct": 94.29}
+    }
+  },
+  "chart_path": "v2.5/data/backtest/charts/backtest_TQQQ_20260228_111020.png",
+  "results_file": "v2.5/data/backtest/backtest_TQQQ_h20_t10d_20260228_111020.csv"
+}
+```
+
+### Response Explanation
+
+| Field | Type | Description |
+|-------|------|-------------|
+| symbol | string | Symbol tested |
+| horizon | int | Prediction horizon used |
+| threshold | float | Threshold used |
+| days_back | int | Number of days backtested |
+| summary | dict | Summary statistics (accuracy, counts) |
+| chart_path | string | Path to generated PNG chart |
+| results_file | string | Path to CSV results file |
+
+---
+
+## 6. GET `/backtest/{symbol}`
+
+GET version for convenience.
+
+### Request
+```bash
+curl "http://localhost:8000/backtest/TQQQ?horizon=20&threshold=0.01&days_back=180"
+```
+
+Parameters same as POST (query parameters).
+
+---
+
+## 7. GET `/model-info`
 
 Get information about loaded models.
 
@@ -189,10 +270,10 @@ curl http://localhost:8000/model-info
 ### Response
 ```json
 {
-  "version": "2.5.1",
-  "models_loaded": 12,
-  "available_horizons": [5, 10, 20, 30],
-  "available_thresholds": [0.01, 0.025, 0.05],
+  "version": "2.5.2",
+  "models_loaded": 13,
+  "available_horizons": [3, 5, 10, 15, 20, 30],
+  "available_thresholds": [0.0075, 0.01, 0.015, 0.025, 0.05],
   "class_labels": ["UP", "DOWN", "UP_DOWN", "SIDEWAYS"],
   "features_count": 64,
   "best_model": "XGBoost"
@@ -298,5 +379,6 @@ else:
 
 ## Version History
 
+- **2.5.2** (2026-02-28): Backtest API, model_used field, multi-class handling
 - **2.5.1** (2026-02-28): Added response explanations, XGBoost as default
 - **2.5.0** (2026-02-27): Initial 4-class classification release

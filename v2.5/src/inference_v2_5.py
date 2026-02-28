@@ -32,9 +32,9 @@ logging.basicConfig(level=logging.INFO)
 logger = get_api_logger('inference_v2_5')
 
 app = FastAPI(
-    title="Stock Prediction API V2.5.1",
+    title="Stock Prediction API V2.5.2",
     description="Predict stock price movements with 4-class classification: UP, DOWN, UP_DOWN, SIDEWAYS",
-    version="2.5.1"
+    version="2.5.2"
 )
 
 models = {}
@@ -307,30 +307,33 @@ def load_models(horizon: int, threshold: float):
     
     Priority: XGBoost > GradientBoosting > RandomForest > Ensemble
     XGBoost is the best performer in V2.5.1
+    
+    Returns:
+        tuple: (model, model_name) or (None, None)
     """
     threshold_str = str(threshold).replace('.', '_')
     
     # Model priority order (best first)
     model_priority = [
-        f"xgboost_h{horizon}_t{threshold_str}.pkl",
-        f"gradientboosting_h{horizon}_t{threshold_str}.pkl",
-        f"randomforest_h{horizon}_t{threshold_str}.pkl",
-        f"ensemble_h{horizon}_t{threshold_str}.pkl",
+        (f"xgboost_h{horizon}_t{threshold_str}.pkl", "xgboost"),
+        (f"gradientboosting_h{horizon}_t{threshold_str}.pkl", "gradientboosting"),
+        (f"randomforest_h{horizon}_t{threshold_str}.pkl", "randomforest"),
+        (f"ensemble_h{horizon}_t{threshold_str}.pkl", "ensemble"),
     ]
     
-    for model_filename in model_priority:
+    for model_filename, model_name in model_priority:
         model_path = MODEL_RESULTS_DIR / model_filename
         
         if model_path.exists():
             try:
                 data = joblib.load(model_path)
                 logger.info(f"Loaded {model_filename} for horizon={horizon}d, threshold={threshold*100}%")
-                return data.get('model')
+                return data.get('model'), model_name
             except Exception as e:
                 logger.warning(f"Error loading {model_filename}: {e}")
                 continue
     
-    return None
+    return None, None
 
 
 # Pydantic models
@@ -351,6 +354,7 @@ class MultiHorizonRequest(BaseModel):
 class PredictionResult(BaseModel):
     horizon: int
     threshold: float
+    model_used: str
     prediction: str
     probabilities: Dict[str, float]
     confidence: float
@@ -371,11 +375,11 @@ async def startup_event():
     
     for horizon in HORIZONS:
         for threshold in THRESHOLDS:
-            model = load_models(horizon, threshold)
+            model, model_name = load_models(horizon, threshold)
             if model:
                 key = f"{horizon}_{threshold}"
-                models[key] = model
-                logger.info(f"Loaded model for horizon={horizon}d, threshold={threshold*100}%")
+                models[key] = (model, model_name)
+                logger.info(f"Loaded {model_name} for horizon={horizon}d, threshold={threshold*100}%")
     
     feature_file = MODEL_RESULTS_DIR / "feature_names.txt"
     if feature_file.exists():
@@ -390,11 +394,13 @@ async def root():
     """Root endpoint."""
     return {
         "message": "Stock Prediction API V2.5",
-        "version": "2.5.0",
+        "version": "2.5.2",
         "description": "4-class classification: UP, DOWN, UP_DOWN, SIDEWAYS",
         "endpoints": [
             "/predict",
             "/predict/multi",
+            "/backtest",
+            "/backtest/{symbol}",
             "/health",
             "/model-info"
         ]
@@ -416,7 +422,7 @@ async def health_check():
 async def model_info():
     """Model information."""
     return {
-        "version": "2.5.0",
+        "version": "2.5.2",
         "n_models": len(models),
         "horizons": HORIZONS,
         "thresholds": THRESHOLDS,
@@ -450,21 +456,35 @@ async def predict(request: PredictionRequest):
     X = df_features[feature_cols].iloc[-1:].values
     
     key = f"{horizon}_{threshold}"
-    model = models.get(key)
+    model_data = models.get(key)
     
-    if model is None:
+    if model_data is None:
         raise HTTPException(
             status_code=404,
             detail=f"Model not found for horizon={horizon}, threshold={threshold}. Please train first."
         )
     
+    model, model_name = model_data
+    
     pred = model.predict(X)[0]
     proba = model.predict_proba(X)[0]
     
     prediction_str = CLASS_LABELS[pred]
-    confidence = float(max(proba))
     
-    prob_dict = {CLASS_LABELS[i]: float(p) for i, p in enumerate(proba)}
+    # Build full probability dict for all 4 classes
+    prob_full = {cls: 0.0 for cls in CLASS_LABELS}
+    if hasattr(model, 'classes_'):
+        for i, class_idx in enumerate(model.classes_):
+            if class_idx < len(CLASS_LABELS):
+                prob_full[CLASS_LABELS[class_idx]] = float(proba[i])
+    else:
+        # Fallback: assume order is correct
+        for i, cls in enumerate(CLASS_LABELS):
+            if i < len(proba):
+                prob_full[cls] = float(proba[i])
+    
+    confidence = max(prob_full.values())
+    prob_dict = prob_full
     
     pred_logger.log_prediction(
         symbol=request.symbol,
@@ -483,6 +503,7 @@ async def predict(request: PredictionRequest):
             PredictionResult(
                 horizon=horizon,
                 threshold=threshold,
+                model_used=model_name,
                 prediction=prediction_str,
                 probabilities=prob_dict,
                 confidence=confidence
@@ -512,17 +533,32 @@ async def predict_multi(request: MultiHorizonRequest):
     for horizon in horizons:
         for threshold in thresholds:
             key = f"{horizon}_{threshold}"
-            model = models.get(key)
+            model_data = models.get(key)
             
-            if model is None:
+            if model_data is None:
                 continue
+            
+            model, model_name = model_data
             
             pred = model.predict(X)[0]
             proba = model.predict_proba(X)[0]
             
             prediction_str = CLASS_LABELS[pred]
-            confidence = float(max(proba))
-            prob_dict = {CLASS_LABELS[i]: float(p) for i, p in enumerate(proba)}
+            
+            # Build full probability dict for all 4 classes
+            prob_full = {cls: 0.0 for cls in CLASS_LABELS}
+            if hasattr(model, 'classes_'):
+                for i, class_idx in enumerate(model.classes_):
+                    if class_idx < len(CLASS_LABELS):
+                        prob_full[CLASS_LABELS[class_idx]] = float(proba[i])
+            else:
+                # Fallback: assume order is correct
+                for i, cls in enumerate(CLASS_LABELS):
+                    if i < len(proba):
+                        prob_full[cls] = float(proba[i])
+            
+            confidence = max(prob_full.values())
+            prob_dict = prob_full
             
             pred_logger.log_prediction(
                 symbol=request.symbol,
@@ -537,6 +573,7 @@ async def predict_multi(request: MultiHorizonRequest):
             all_predictions.append(PredictionResult(
                 horizon=horizon,
                 threshold=threshold,
+                model_used=model_name,
                 prediction=prediction_str,
                 probabilities=prob_dict,
                 confidence=confidence
@@ -589,3 +626,90 @@ async def predict_by_date(
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+
+class BacktestRequest(BaseModel):
+    symbol: str
+    horizon: Optional[int] = DEFAULT_HORIZON
+    threshold: Optional[float] = 0.01
+    days_back: Optional[int] = 180
+    end_date: Optional[str] = None
+
+
+class BacktestResponse(BaseModel):
+    symbol: str
+    horizon: int
+    threshold: float
+    days_back: int
+    summary: Dict
+    chart_path: str
+    results_file: str
+
+
+@app.post("/backtest", response_model=BacktestResponse)
+async def run_backtest(request: BacktestRequest):
+    """Run backtest for a symbol over specified period."""
+    from src.backtest_v2_5 import run_backtest, generate_charts, get_backtest_summary, BACKTEST_DIR, CHART_DIR
+    from datetime import datetime
+    import os
+    
+    logger.info(f"Backtest request: {request.symbol}, horizon={request.horizon}, threshold={request.threshold}, days={request.days_back}")
+    
+    horizon = request.horizon or DEFAULT_HORIZON
+    threshold = request.threshold or 0.01
+    days_back = request.days_back or 180
+    
+    if horizon not in HORIZONS:
+        raise HTTPException(status_code=400, detail=f"Invalid horizon. Must be one of {HORIZONS}")
+    
+    if threshold not in THRESHOLDS:
+        raise HTTPException(status_code=400, detail=f"Invalid threshold. Must be one of {THRESHOLDS}")
+    
+    try:
+        results_df = run_backtest(
+            symbol=request.symbol.upper(),
+            horizon=horizon,
+            threshold=threshold,
+            days_back=days_back,
+            end_date=request.end_date
+        )
+        
+        summary = get_backtest_summary(results_df)
+        
+        charts = generate_charts(results_df, request.symbol.upper())
+        
+        chart_path = charts.get('summary', '')
+        results_file = str(BACKTEST_DIR / f"backtest_{request.symbol.upper()}_h{horizon}_t{int(threshold*1000)}d_*.csv")
+        
+        return BacktestResponse(
+            symbol=request.symbol.upper(),
+            horizon=horizon,
+            threshold=threshold,
+            days_back=days_back,
+            summary=summary,
+            chart_path=chart_path,
+            results_file=results_file
+        )
+    
+    except Exception as e:
+        logger.error(f"Backtest error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/backtest/{symbol}")
+async def run_backtest_get(
+    symbol: str,
+    horizon: int = Query(DEFAULT_HORIZON, description="Prediction horizon in days"),
+    threshold: float = Query(0.01, description="Threshold as decimal"),
+    days_back: int = Query(180, description="Number of days to backtest"),
+    end_date: Optional[str] = None
+):
+    """Run backtest via GET request."""
+    request = BacktestRequest(
+        symbol=symbol,
+        horizon=horizon,
+        threshold=threshold,
+        days_back=days_back,
+        end_date=end_date
+    )
+    return await run_backtest(request)

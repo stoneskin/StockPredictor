@@ -6,9 +6,9 @@
 
 基于分类 + 集成学习的QQQ股票预测系统。使用多个机器学习模型和市场状态识别来预测QQQ未来价格走势。
 
-**状态**: ✅ 完全可用 | **版本**: 2.5.1 | **平台**: Windows/Linux/Mac | **框架**: scikit-learn + FastAPI
+**状态**: ✅ 完全可用 | **版本**: 2.5.2 | **平台**: Windows/Linux/Mac | **框架**: scikit-learn + FastAPI
 
-> **注意**: 最新版本（V2.5.1）在 `v2.5/` 文件夹中。V2版本在 `src/v2/`。请参阅 [CHANGELOG.md](CHANGELOG.md) 查看版本历史。
+> **注意**: 最新版本（V2.5.2）在 `v2.5/` 文件夹中。V2版本在 `src/v2/`。请参阅 [CHANGELOG.md](CHANGELOG.md) 查看版本历史。
 
 ---
 
@@ -18,10 +18,10 @@
 |------|------|
 | **预测标的** | QQQ (纳斯达克100科技股ETF) |
 | **预测目标** | 4分类：上涨(UP)、下跌(DOWN)、上涨下跌(UP_DOWN)、横盘(SIDEWAYS) |
-| **预测周期** | 5天、10天、20天、30天（可配置） |
-| **阈值** | 1%、2.5%、5%价格变动 |
-| **模型** | 7个集成模型（逻辑回归、随机森林、梯度提升、XGBoost、CatBoost、SVM、朴素贝叶斯） |
-| **特征** | 47个技术指标 + 市场状态识别 |
+| **预测周期** | 3天、5天、10天、15天、20天、30天（可配置） |
+| **阈值** | 0.75%、1%、1.5%、2.5%、5%价格变动 |
+| **模型** | 7个集成模型（XGBoost、CatBoost、GradientBoosting、RandomForest、LogisticRegression、SVM、NaiveBayes） |
+| **特征** | 64个技术指标 + 市场状态 + 相关性特征 |
 | **响应速度** | 每次预测 <100ms |
 
 ### ✨ 核心特性
@@ -47,9 +47,6 @@
 | **[v2.5/docs/API_REFERENCE.md](v2.5/docs/API_REFERENCE.md)** | 完整API参考（含响应说明） |
 | **[v2.5/docs/ARCHITECTURE.md](v2.5/docs/ARCHITECTURE.md)** | 系统设计与数据流 |
 | **[v2.5/docs/API_GUIDE.md](v2.5/docs/API_GUIDE.md)** | API使用指南 |
-| **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** | 快速开始（V2版本） |
-| **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** | V2系统架构 |
-| **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** | V2 API参考 |
 | **[CHANGELOG.md](CHANGELOG.md)** | 版本历史 |
 
 ---

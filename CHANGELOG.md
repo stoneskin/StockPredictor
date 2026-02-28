@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.2] - 2026-02-28
+
+### Added
+- **Backtesting API**: New endpoints `/backtest` (POST) and `/backtest/{symbol}` (GET) for historical prediction analysis
+  - Configurable backtest period (default 6 months)
+  - Daily predictions with actual outcome comparison
+  - PNG charts automatically generated and saved to `v2.5/data/backtest/charts/`
+  - Results saved as CSV with datetime in filename
+- **Model Information in Responses**: `model_used` field now shows which model (xgboost, gradientboosting, etc.) produced the prediction
+- **Multi-class Probability Handling**: API now gracefully handles models with fewer than 4 classes by filling missing classes with 0 probability
+- **Backtest Module**: `v2.5/src/backtest_v2_5.py` with comprehensive backtesting capabilities
+
+### Changed
+- Version bumped to 2.5.2
+- API response now includes probabilities for all 4 classes (UP, DOWN, UP_DOWN, SIDEWAYS), with 0 for missing classes
+- Improved error handling for models with incomplete class coverage
+- Backtest results include datetime stamps for easy tracking
+
+### Fixed
+- Fixed class ordering for proper AUC calculation
+- Fixed SMOTE handling for extreme class imbalances
+
+## [2.5.1] - 2026-02-28
+
+### Added
+- **XGBoost Support**: XGBoost added as primary model (best performer)
+- **CatBoost Support**: Added CatBoost to model ensemble
+- **SMOTE Integration**: Automatic class balancing for training
+- **Enhanced Regime Features**: ATR ratio, trend strength, RSI/stoch regimes, SPY correlation
+- **New Horizons**: 3d and 15d added
+- **New Thresholds**: 0.75% and 1.5% added
+- **Model Priority System**: Loads best available model (XGBoost > GradientBoosting > RandomForest > Ensemble)
+
+### Changed
+- Expanded from 12 to 30 model combinations (6 horizons × 5 thresholds)
+- Improved feature set (64 features total)
+
 ## [2.5.0] - 2026-02-27
 
 ### Added
@@ -76,7 +113,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.0 | 2024-01-01 | Initial release with regression |
 | 1.5 | 2024-06-01 | Walk-forward validation (experimental) |
 | 2.0 | 2025-01-01 | Binary classification with ensemble |
-| 2.5 | 2026-02-27 | 4-class classification with thresholds |
+| 2.5.0 | 2026-02-27 | 4-class classification with thresholds |
+| 2.5.1 | 2026-02-28 | XGBoost, SMOTE, new horizons/thresholds, regime features |
+| 2.5.2 | 2026-02-28 | Backtesting API, model info in responses, multi-class handling |
 
 ## Adding New Versions
 
@@ -98,7 +137,7 @@ When adding a new version:
 
 ```
 StockPredictor/
-├── v2.5/                 # Current version (2.5.0)
+├── v2.5/                 # Current version (2.5.2)
 │   ├── src/
 │   ├── tests/
 │   ├── docs/

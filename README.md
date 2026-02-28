@@ -6,9 +6,9 @@
 
 A complete machine learning system for predicting QQQ stock price movements using classification + ensemble learning. Learn ML fundamentals while building a real trading prediction system.
 
-**Status**: ✅ Fully functional | **Version**: 2.5.1 | **Platform**: Windows/Linux/Mac | **Framework**: scikit-learn + FastAPI
+**Status**: ✅ Fully functional | **Version**: 2.5.2 | **Platform**: Windows/Linux/Mac | **Framework**: scikit-learn + FastAPI
 
-> **Note**: The latest version (V2.5.1) is in the `v2.5/` folder. The V2 version is in `src/v2/`. See [CHANGELOG.md](CHANGELOG.md) for version history.
+> **Note**: The latest version (V2.5.2) is in the `v2.5/` folder. The V2 version is in `src/v2/`. See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ---
 
@@ -18,18 +18,20 @@ A complete machine learning system for predicting QQQ stock price movements usin
 |--------|---------|
 | **Target** | QQQ (Invesco QQQ Trust) |
 | **Prediction** | 4-class: UP, DOWN, UP_DOWN, SIDEWAYS |
-| **Horizons** | 5, 10, 20, 30 days ahead (configurable) |
-| **Thresholds** | 1%, 2.5%, 5% price movement |
+| **Horizons** | 3, 5, 10, 15, 20, 30 days ahead (configurable) |
+| **Thresholds** | 0.75%, 1%, 1.5%, 2.5%, 5% price movement |
 | **Models** | 7 ensemble (LR, RF, GB, XGBoost, CatBoost, SVM, NB) |
-| **Features** | 47 technical indicators + market regime detection |
+| **Features** | 64 technical indicators + market regime detection |
 | **Speed** | <100ms per prediction |
 
 ### ✨ Key Features
 
-- **🤖 7 Ensemble Models**: Added XGBoost and CatBoost
-- **📊 47 Technical Features**: MA, RSI, MACD, ATR, Bollinger Bands, Trend, Regime
+- **🤖 7 Ensemble Models**: XGBoost (best), CatBoost, Gradient Boosting, Random Forest, Logistic Regression, SVM, Naive Bayes
+- **📊 64 Technical Features**: MA, RSI, MACD, ATR, Bollinger Bands, Trend, Regime, SPY correlation
 - **⚡ Real-time API**: FastAPI server with automatic data fetching from Yahoo Finance
-- **🔮 Multiple Horizons**: Predict 5, 10, 20, 30 days ahead simultaneously
+- **🔮 Multiple Horizons**: Predict 3, 5, 10, 15, 20, 30 days ahead simultaneously
+- **📊 Backtesting**: Historical validation with PNG charts and CSV results (configurable period)
+- **🔍 Model Transparency**: Responses include `model_used` field and full class probabilities
 - **🎓 Complete Documentation**: Architecture, API guide, troubleshooting
 - **🧪 Model Persistence**: Pre-trained models available with feature names
 - **📈 Market Regime Detection**: Track bull/bear/sideways + volatility states
@@ -42,14 +44,11 @@ A complete machine learning system for predicting QQQ stock price movements usin
 
 | Document | Purpose |
 |----------|---------|
-| **[v2.5/README.md](v2.5/README.md)** | Latest version (V2.5.1) - quick start |
+| **[v2.5/README.md](v2.5/README.md)** | Latest version (V2.5.2) - quick start |
 | **[v2.5/docs/README.md](v2.5/docs/README.md)** | V2.5 docs index |
 | **[v2.5/docs/API_REFERENCE.md](v2.5/docs/API_REFERENCE.md)** | Complete API reference with response explanations |
 | **[v2.5/docs/ARCHITECTURE.md](v2.5/docs/ARCHITECTURE.md)** | System design & data flow |
 | **[v2.5/docs/API_GUIDE.md](v2.5/docs/API_GUIDE.md)** | API usage guide |
-| **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** | Quick start (V2) |
-| **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** | V2 system design |
-| **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** | V2 API reference |
 | **[CHANGELOG.md](CHANGELOG.md)** | Version history |
 
 ---
@@ -101,7 +100,7 @@ curl -X POST http://localhost:8000/predict \
 
 ```
 StockPredictor/
-├── v2.5/                           # Current version (2.5.0) [USE THIS]
+├── v2.5/                 # Current version (2.5.2) [USE THIS]
 │   ├── src/                        # Source code
 │   │   ├── config_v2_5.py          # Configuration
 │   │   ├── data_preparation_v2_5.py # Data preparation
@@ -123,50 +122,7 @@ StockPredictor/
 ├── README.md                       # This file
 └── README_cn.md                    # Chinese version
 ```
-│   │       └── volatility_regime.py
-│   └── common/                       # Shared utilities
-│
-├── 📊 data/                           # Data directory
-│   ├── raw/                          # Raw from Yahoo Finance
-│   │   ├── qqq.csv
-│   │   └── spy.csv
-│   ├── cache/                        # Cached for quick loading
-│   │   ├── qqq.csv
-│   │   ├── spy.csv
-│   │   └── ...
-│   ├── processed/                    # Engineered features (train/test split)
-│   │   ├── train.csv
-│   │   ├── val.csv
-│   │   └── test.csv
-│   └── splits/                       # Cross-validation splits
-│
-├── 🤖 models/                         # Trained models
-│   ├── checkpoints/                  # Intermediate checkpoints
-│   ├── onnx/                         # ONNX format (for deployment)
-│   │   └── model.onnx
-│   └── results/v2/                   # V2 Results (USE THESE)
-│       ├── gradientboosting_model.pkl ← Best single model (88.7% acc)
-│       ├── randomforest_model.pkl
-│       ├── ensemble_model.pkl
-│       ├── logisticregression_model.pkl
-│       ├── svm_model.pkl
-│       ├── naivebayes_model.pkl
-│       ├── feature_names.txt         # 47 features used
-│       ├── best_horizon.txt          # Best horizon config
-│       ├── horizon_comparison.json   # Performance by horizon
-│       └── results.txt               # Detailed metrics
-│
-├── ✅ tests/                          # Test scripts
-│   ├── test_api.py
-│   ├── test_performance_comparison.py
-│   ├── test_qqq_fix.py
-│   ├── test_cache_performance.py
-│   └── test_output.txt
-│
-├── 📋 requirements.txt                # Python dependencies
-├── README.md                          # This file (English)
-└── README_cn.md                       # Chinese version
-```
+
 
 ---
 
@@ -216,7 +172,7 @@ Example: 5-day horizon, 1% threshold:
 
 ---
 
-## 📈 V2.5.1 Training Results (February 2026)
+## 📈 V2.5 Model Performance (February 2026)
 
 ### Performance Summary
 
@@ -243,6 +199,21 @@ Example: 5-day horizon, 1% threshold:
 2. Use **2.5% threshold** for best balance of difficulty and accuracy
 3. Avoid 1% threshold with short horizons (5d) - inherently hard
 4. For risk-averse strategies: use 20d/5% threshold (>98% accuracy)
+
+## 🔄 V2.5.2 Enhancements (February 2026)
+
+### New Features
+
+- **Backtesting API**: `/backtest` endpoint with configurable period, daily predictions, PNG charts, CSV results
+- **Model Transparency**: `model_used` field in all prediction responses
+- **Multi-Class Handling**: Gracefully handles models with fewer than 4 classes (fills missing with 0 probability)
+- **Backtest Module**: `src/backtest_v2_5.py` with full historical analysis
+
+### API Changes
+
+- POST `/predict` and POST `/predict/multi` now return `model_used` in each prediction
+- GET `/backtest/{symbol}` and POST `/backtest` added
+- All endpoints support TQQQ and any other symbol
 
 ---
 
@@ -377,18 +348,29 @@ response = requests.post(
     }
 )
 ```
-import requests
 
-response = requests.get(
-    "http://localhost:8000/predict/simple",
-    params={
-        "symbol": "QQQ",
-        "date": "2026-02-25",
-        "horizons": "5,10,20"
+**4. Backtesting (GET example):**
+```bash
+curl "http://localhost:8000/backtest/TQQQ?horizon=20&threshold=0.01&days_back=180"
+```
+
+**5. Backtesting (POST example):**
+```python
+response = requests.post(
+    "http://localhost:8000/backtest",
+    json={
+        "symbol": "TQQQ",
+        "horizon": 20,
+        "threshold": 0.01,
+        "days_back": 180
     }
 )
 print(response.json())
 ```
+
+**6. View API documentation:**
+Open `http://localhost:8000/docs` in browser for interactive docs (includes backtest endpoints)
+---
 
 **3. Advanced prediction (POST):**
 ```python
