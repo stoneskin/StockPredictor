@@ -9,10 +9,9 @@ from pathlib import Path
 from datetime import datetime
 from typing import Optional
 
-import os
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.v2_5.config_v2_5 import (
+from .config_v2_5 import (
     LOG_DIR, TRAIN_LOG_DIR, PREDICTION_LOG_DIR, API_LOG_DIR,
     LOG_LEVEL, LOG_FORMAT
 )

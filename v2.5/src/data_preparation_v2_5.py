@@ -10,10 +10,12 @@ from pathlib import Path
 import sys
 from typing import Dict, List, Tuple
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.v2_5.config_v2_5 import (
-    PROCESSED_DATA_DIR, RAW_DATA_DIR, HORIZONS, THRESHOLDS,
+from .config_v2_5 import (
+    RAW_DATA_DIR, HORIZONS, THRESHOLDS,
     THRESHOLD_LABELS, REGIME_PARAMS, FEATURE_PARAMS
 )
 

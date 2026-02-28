@@ -16,19 +16,21 @@ from sklearn.metrics import (
 )
 import joblib
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.v2_5.config_v2_5 import (
+from .config_v2_5 import (
     MODEL_RESULTS_DIR, HORIZONS, THRESHOLDS, ENSEMBLE_WEIGHTS,
     TRAIN_PARAMS, MODEL_PARAMS
 )
-from src.v2_5.data_preparation_v2_5 import prepare_data, get_target_column_name
-from src.v2_5.models_v2 import (
+from .data_preparation_v2_5 import prepare_data, get_target_column_name
+from .models_v2 import (
     LogisticModel, RandomForestModel, GradientBoostingModel,
     XGBoostModel, CatBoostModel, SVMModel, NaiveBayesModel, EnsembleModel,
     XGBOOST_AVAILABLE, CATBOOST_AVAILABLE
 )
-from src.v2_5.logging_utils import get_training_logger, ModelPerformanceLogger, TRAIN_LOG_DIR
+from .logging_utils import get_training_logger, ModelPerformanceLogger, TRAIN_LOG_DIR
 
 
 def create_models() -> Dict[str, object]:

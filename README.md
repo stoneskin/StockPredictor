@@ -6,7 +6,9 @@
 
 A complete machine learning system for predicting QQQ stock price movements using classification + ensemble learning. Learn ML fundamentals while building a real trading prediction system.
 
-**Status**: ✅ Fully functional | **Version**: 2.0 | **Platform**: Windows/Linux/Mac | **Framework**: scikit-learn + FastAPI
+**Status**: ✅ Fully functional | **Version**: 2.5 | **Platform**: Windows/Linux/Mac | **Framework**: scikit-learn + FastAPI
+
+> **Note**: The latest version (V2.5) is in the `v2.5/` folder. The V2 version is in `src/v2/`. See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ---
 
@@ -39,12 +41,14 @@ A complete machine learning system for predicting QQQ stock price movements usin
 
 | Document | Purpose |
 |----------|---------|
-| **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** | Quick start (read this first!) |
+| **[v2.5/README.md](v2.5/README.md)** | Latest version (V2.5) - 4-class classification |
+| **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** | Quick start (V2, read this first!) |
 | **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** | System design & data flow |
 | **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** | All API endpoints & examples |
 | **[docs/V2_CLASSIFICATION.md](docs/V2_CLASSIFICATION.md)** | ML approach & feature engineering |
 | **[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)** | Common issues & solutions |
 | **[docs/v2/CACHE_OPTIMIZATION.md](docs/v2/CACHE_OPTIMIZATION.md)** | Performance tuning |
+| **[CHANGELOG.md](CHANGELOG.md)** | Version history |
 
 ---
 

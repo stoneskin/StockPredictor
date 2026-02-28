@@ -7,15 +7,14 @@ import os
 from pathlib import Path
 from datetime import datetime
 
-# Project paths
-PROJECT_ROOT = Path(__file__).parent.parent.parent
-DATA_DIR = PROJECT_ROOT / "data"
-PROCESSED_DATA_DIR = DATA_DIR / "processed"
-RAW_DATA_DIR = DATA_DIR / "raw"
+# Project paths - relative to v2.5 folder
+V25_ROOT = Path(__file__).parent.parent
+DATA_DIR = V25_ROOT / "data"
 CACHE_DATA_DIR = DATA_DIR / "cache"
-MODEL_DIR = PROJECT_ROOT / "models"
-MODEL_RESULTS_DIR = MODEL_DIR / "results" / "v2_5"
-LOG_DIR = PROJECT_ROOT / "src" / "v2_5" / "logs"
+RAW_DATA_DIR = V25_ROOT.parent / "data" / "raw"  # Shared with main project
+MODEL_DIR = V25_ROOT / "models"
+MODEL_RESULTS_DIR = MODEL_DIR / "results"
+LOG_DIR = Path(__file__).parent / "logs"
 
 # Create directories
 CACHE_DATA_DIR.mkdir(parents=True, exist_ok=True)

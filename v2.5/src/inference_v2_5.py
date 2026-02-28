@@ -17,14 +17,15 @@ from typing import List, Optional, Dict
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 
-PROJECT_ROOT = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(PROJECT_ROOT))
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.v2_5.config_v2_5 import (
+from .config_v2_5 import (
     MODEL_RESULTS_DIR, DEFAULT_HORIZON, HORIZONS, THRESHOLDS,
     CACHE_DATA_DIR, RAW_DATA_DIR, CLASS_LABELS
 )
-from src.v2_5.logging_utils import get_api_logger, get_prediction_logger, PredictionLogger
+from .logging_utils import get_api_logger, get_prediction_logger, PredictionLogger
 
 logging.basicConfig(level=logging.INFO)
 logger = get_api_logger('inference_v2_5')
