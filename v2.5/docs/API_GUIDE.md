@@ -49,10 +49,10 @@ Get information about loaded models.
 **Response:**
 ```json
 {
-  "version": "2.5.1",
-  "n_models": 12,
-  "horizons": [5, 10, 20, 30],
-  "thresholds": [0.01, 0.025, 0.05],
+  "version": "2.5.2",
+  "n_models": 30,
+  "horizons": [3, 5, 10, 15, 20, 30],
+  "thresholds": [0.0075, 0.01, 0.015, 0.025, 0.05],
   "classes": ["UP", "DOWN", "UP_DOWN", "SIDEWAYS"],
   "n_features": 64,
   "best_model": "XGBoost"
@@ -82,7 +82,7 @@ Make a single prediction for a stock.
 | symbol | string | Yes | Stock symbol (e.g., QQQ, AAPL, SPY) |
 | date | string | No | Date in YYYY-MM-DD format. Defaults to latest |
 | horizon | int | No | Prediction horizon in days (5, 10, 20, 30). Default: 20 |
-| threshold | float | No | Threshold as decimal (0.01=1%, 0.025=2.5%, 0.05=5%). Default: 0.01 |
+| threshold | float | No | Threshold as decimal (0.0075=0.75%, 0.01=1%, 0.015=1.5%, 0.025=2.5%, 0.05=5%). Default: 0.01 |
 
 **Response:**
 ```json

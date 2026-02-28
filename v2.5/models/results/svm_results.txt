@@ -406,3 +406,347 @@ Recall: 0.4068
 F1: 0.5041
 AUC-ROC: 0.7451
 Confusion Matrix: [[14, 0, 1, 2], [0, 1, 0, 1], [5, 2, 2, 5], [75, 54, 11, 90]]
+
+=== SVM - Horizon: 3d, Threshold: 0.75% ===
+Accuracy: 0.2687
+Precision: 0.2325
+Recall: 0.2687
+F1: 0.2116
+AUC-ROC: 0.5790
+Confusion Matrix: [[6, 5, 32, 51], [8, 2, 19, 26], [11, 9, 28, 24], [3, 5, 3, 36]]
+
+=== SVM - Horizon: 3d, Threshold: 1.0% ===
+Accuracy: 0.3657
+Precision: 0.2391
+Recall: 0.3657
+F1: 0.2822
+AUC-ROC: 0.5846
+Confusion Matrix: [[0, 9, 25, 42], [0, 8, 18, 29], [0, 14, 20, 16], [0, 7, 10, 70]]
+
+=== SVM - Horizon: 3d, Threshold: 1.5% ===
+Accuracy: 0.4664
+Precision: 0.4520
+Recall: 0.4664
+F1: 0.4514
+AUC-ROC: 0.6110
+Confusion Matrix: [[22, 0, 12, 16], [18, 0, 14, 15], [12, 0, 8, 6], [37, 0, 13, 95]]
+
+=== SVM - Horizon: 3d, Threshold: 2.5% ===
+Accuracy: 0.6045
+Precision: 0.7459
+Recall: 0.6045
+F1: 0.6613
+AUC-ROC: 0.6342
+Confusion Matrix: [[1, 0, 11, 6], [0, 0, 11, 11], [1, 0, 2, 4], [2, 5, 55, 159]]
+
+=== SVM - Horizon: 3d, Threshold: 5.0% ===
+Accuracy: 0.4030
+Precision: 0.9634
+Recall: 0.4030
+F1: 0.5647
+AUC-ROC: 0.5874
+Confusion Matrix: [[0, 1, 0, 0], [0, 1, 0, 1], [0, 1, 0, 1], [76, 71, 9, 107]]
+
+=== SVM - Horizon: 5d, Threshold: 0.75% ===
+Accuracy: 0.3470
+Precision: 0.4608
+Recall: 0.3470
+F1: 0.3688
+AUC-ROC: 0.5936
+Confusion Matrix: [[12, 0, 26, 44], [4, 4, 12, 10], [17, 12, 64, 46], [2, 1, 1, 13]]
+
+=== SVM - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.3097
+Precision: 0.3413
+Recall: 0.3097
+F1: 0.2990
+AUC-ROC: 0.5615
+Confusion Matrix: [[9, 21, 24, 33], [7, 10, 15, 11], [11, 16, 43, 27], [2, 13, 5, 21]]
+
+=== SVM - Horizon: 5d, Threshold: 1.5% ===
+Accuracy: 0.4291
+Precision: 0.3529
+Recall: 0.4291
+F1: 0.3831
+AUC-ROC: 0.6265
+Confusion Matrix: [[31, 0, 9, 24], [17, 0, 10, 25], [20, 0, 17, 12], [32, 0, 4, 67]]
+
+=== SVM - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.6418
+Precision: 0.6613
+Recall: 0.6418
+F1: 0.6354
+AUC-ROC: 0.6979
+Confusion Matrix: [[13, 0, 0, 10], [16, 1, 3, 18], [7, 0, 2, 3], [33, 6, 0, 156]]
+
+=== SVM - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.3396
+Precision: 0.9525
+Recall: 0.3396
+F1: 0.4813
+AUC-ROC: 0.6477
+Confusion Matrix: [[3, 0, 0, 0], [0, 1, 0, 1], [0, 0, 1, 1], [92, 49, 34, 86]]
+
+=== SVM - Horizon: 10d, Threshold: 0.75% ===
+Accuracy: 0.2285
+Precision: 0.7165
+Recall: 0.2285
+F1: 0.2984
+AUC-ROC: 0.5864
+Confusion Matrix: [[15, 15, 7, 8], [2, 4, 0, 0], [63, 56, 42, 52], [0, 3, 0, 0]]
+
+=== SVM - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.2584
+Precision: 0.6494
+Recall: 0.2584
+F1: 0.3362
+AUC-ROC: 0.5837
+Confusion Matrix: [[14, 16, 8, 19], [5, 5, 0, 7], [39, 39, 48, 59], [2, 4, 0, 2]]
+
+=== SVM - Horizon: 10d, Threshold: 1.5% ===
+Accuracy: 0.3333
+Precision: 0.4818
+Recall: 0.3333
+F1: 0.3205
+AUC-ROC: 0.6690
+Confusion Matrix: [[32, 12, 6, 5], [13, 23, 2, 4], [61, 26, 24, 9], [16, 22, 2, 10]]
+
+=== SVM - Horizon: 3d, Threshold: 0.75% ===
+Accuracy: 0.2687
+Precision: 0.2325
+Recall: 0.2687
+F1: 0.2116
+AUC-ROC: 0.5790
+Confusion Matrix: [[6, 5, 32, 51], [8, 2, 19, 26], [11, 9, 28, 24], [3, 5, 3, 36]]
+
+=== SVM - Horizon: 3d, Threshold: 1.0% ===
+Accuracy: 0.3657
+Precision: 0.2391
+Recall: 0.3657
+F1: 0.2822
+AUC-ROC: 0.5846
+Confusion Matrix: [[0, 9, 25, 42], [0, 8, 18, 29], [0, 14, 20, 16], [0, 7, 10, 70]]
+
+=== SVM - Horizon: 3d, Threshold: 1.5% ===
+Accuracy: 0.4664
+Precision: 0.4520
+Recall: 0.4664
+F1: 0.4514
+AUC-ROC: 0.6110
+Confusion Matrix: [[22, 0, 12, 16], [18, 0, 14, 15], [12, 0, 8, 6], [37, 0, 13, 95]]
+
+=== SVM - Horizon: 3d, Threshold: 2.5% ===
+Accuracy: 0.6045
+Precision: 0.7459
+Recall: 0.6045
+F1: 0.6613
+AUC-ROC: 0.6342
+Confusion Matrix: [[1, 0, 11, 6], [0, 0, 11, 11], [1, 0, 2, 4], [2, 5, 55, 159]]
+
+=== SVM - Horizon: 3d, Threshold: 5.0% ===
+Accuracy: 0.4030
+Precision: 0.9634
+Recall: 0.4030
+F1: 0.5647
+AUC-ROC: 0.5874
+Confusion Matrix: [[0, 1, 0, 0], [0, 1, 0, 1], [0, 1, 0, 1], [76, 71, 9, 107]]
+
+=== SVM - Horizon: 5d, Threshold: 0.75% ===
+Accuracy: 0.3470
+Precision: 0.4608
+Recall: 0.3470
+F1: 0.3688
+AUC-ROC: 0.5936
+Confusion Matrix: [[12, 0, 26, 44], [4, 4, 12, 10], [17, 12, 64, 46], [2, 1, 1, 13]]
+
+=== SVM - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.3097
+Precision: 0.3413
+Recall: 0.3097
+F1: 0.2990
+AUC-ROC: 0.5615
+Confusion Matrix: [[9, 21, 24, 33], [7, 10, 15, 11], [11, 16, 43, 27], [2, 13, 5, 21]]
+
+=== SVM - Horizon: 5d, Threshold: 1.5% ===
+Accuracy: 0.4291
+Precision: 0.3529
+Recall: 0.4291
+F1: 0.3831
+AUC-ROC: 0.6265
+Confusion Matrix: [[31, 0, 9, 24], [17, 0, 10, 25], [20, 0, 17, 12], [32, 0, 4, 67]]
+
+=== SVM - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.6418
+Precision: 0.6613
+Recall: 0.6418
+F1: 0.6354
+AUC-ROC: 0.6979
+Confusion Matrix: [[13, 0, 0, 10], [16, 1, 3, 18], [7, 0, 2, 3], [33, 6, 0, 156]]
+
+=== SVM - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.3396
+Precision: 0.9525
+Recall: 0.3396
+F1: 0.4813
+AUC-ROC: 0.6477
+Confusion Matrix: [[3, 0, 0, 0], [0, 1, 0, 1], [0, 0, 1, 1], [92, 49, 34, 86]]
+
+=== SVM - Horizon: 10d, Threshold: 0.75% ===
+Accuracy: 0.2285
+Precision: 0.7165
+Recall: 0.2285
+F1: 0.2984
+AUC-ROC: 0.5864
+Confusion Matrix: [[15, 15, 7, 8], [2, 4, 0, 0], [63, 56, 42, 52], [0, 3, 0, 0]]
+
+=== SVM - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.2584
+Precision: 0.6494
+Recall: 0.2584
+F1: 0.3362
+AUC-ROC: 0.5837
+Confusion Matrix: [[14, 16, 8, 19], [5, 5, 0, 7], [39, 39, 48, 59], [2, 4, 0, 2]]
+
+=== SVM - Horizon: 10d, Threshold: 1.5% ===
+Accuracy: 0.3333
+Precision: 0.4818
+Recall: 0.3333
+F1: 0.3205
+AUC-ROC: 0.6690
+Confusion Matrix: [[32, 12, 6, 5], [13, 23, 2, 4], [61, 26, 24, 9], [16, 22, 2, 10]]
+
+=== SVM - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.5393
+Precision: 0.5277
+Recall: 0.5393
+F1: 0.5255
+AUC-ROC: 0.6604
+Confusion Matrix: [[9, 1, 5, 13], [10, 9, 6, 28], [12, 0, 11, 12], [14, 20, 2, 115]]
+
+=== SVM - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.5318
+Precision: 0.9192
+Recall: 0.5318
+F1: 0.6536
+AUC-ROC: 0.7745
+Confusion Matrix: [[4, 0, 0, 1], [0, 4, 1, 0], [2, 0, 0, 3], [68, 39, 11, 134]]
+
+=== SVM - Horizon: 15d, Threshold: 0.75% ===
+Accuracy: 0.1842
+Precision: 0.9269
+Recall: 0.1842
+F1: 0.2544
+AUC-ROC: 0.0000
+Confusion Matrix: [[11, 2, 1], [0, 0, 0], [140, 74, 38]]
+
+=== SVM - Horizon: 15d, Threshold: 1.0% ===
+Accuracy: 0.1880
+Precision: 0.8196
+Recall: 0.1880
+F1: 0.2632
+AUC-ROC: 0.6837
+Confusion Matrix: [[4, 6, 1, 17], [1, 7, 1, 3], [31, 60, 38, 96], [0, 0, 0, 1]]
+
+=== SVM - Horizon: 15d, Threshold: 1.5% ===
+Accuracy: 0.3308
+Precision: 0.5643
+Recall: 0.3308
+F1: 0.3095
+AUC-ROC: 0.6831
+Confusion Matrix: [[32, 5, 4, 4], [6, 25, 2, 6], [86, 33, 29, 5], [14, 12, 1, 2]]
+
+=== SVM - Horizon: 15d, Threshold: 2.5% ===
+Accuracy: 0.4286
+Precision: 0.4781
+Recall: 0.4286
+F1: 0.4402
+AUC-ROC: 0.7070
+Confusion Matrix: [[11, 3, 4, 11], [8, 16, 4, 33], [20, 0, 20, 13], [27, 26, 3, 67]]
+
+=== SVM - Horizon: 15d, Threshold: 5.0% ===
+Accuracy: 0.4624
+Precision: 0.8995
+Recall: 0.4624
+F1: 0.5855
+AUC-ROC: 0.7160
+Confusion Matrix: [[7, 0, 0, 2], [0, 2, 0, 0], [0, 0, 0, 4], [79, 47, 11, 114]]
+
+=== SVM - Horizon: 20d, Threshold: 0.75% ===
+Accuracy: 0.4792
+Precision: 0.9485
+Recall: 0.4792
+F1: 0.6130
+AUC-ROC: 0.0000
+Confusion Matrix: [[8, 2], [136, 119]]
+
+=== SVM - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.2981
+Precision: 0.8718
+Recall: 0.2981
+F1: 0.3806
+AUC-ROC: 0.7749
+Confusion Matrix: [[13, 0, 4], [0, 4, 0], [136, 46, 62]]
+
+=== SVM - Horizon: 20d, Threshold: 1.5% ===
+Accuracy: 0.3321
+Precision: 0.6516
+Recall: 0.3321
+F1: 0.3418
+AUC-ROC: 0.6891
+Confusion Matrix: [[24, 5, 5, 7], [2, 19, 1, 3], [95, 33, 41, 12], [8, 5, 1, 4]]
+
+=== SVM - Horizon: 20d, Threshold: 2.5% ===
+Accuracy: 0.4075
+Precision: 0.4946
+Recall: 0.4075
+F1: 0.4185
+AUC-ROC: 0.6824
+Confusion Matrix: [[15, 4, 2, 9], [12, 22, 3, 27], [27, 4, 19, 18], [26, 22, 3, 52]]
+
+=== SVM - Horizon: 20d, Threshold: 5.0% ===
+Accuracy: 0.4340
+Precision: 0.8691
+Recall: 0.4340
+F1: 0.5414
+AUC-ROC: 0.7461
+Confusion Matrix: [[9, 1, 0, 1], [0, 4, 0, 0], [1, 2, 1, 5], [86, 49, 5, 101]]
+
+=== SVM - Horizon: 30d, Threshold: 0.75% ===
+Accuracy: 0.6806
+Precision: 0.9855
+Recall: 0.6806
+F1: 0.7955
+AUC-ROC: 0.0000
+Confusion Matrix: [[4, 0], [84, 175]]
+
+=== SVM - Horizon: 30d, Threshold: 1.0% ===
+Accuracy: 0.5133
+Precision: 0.9817
+Recall: 0.5133
+F1: 0.6587
+AUC-ROC: 0.0000
+Confusion Matrix: [[5, 0], [128, 130]]
+
+=== SVM - Horizon: 30d, Threshold: 1.5% ===
+Accuracy: 0.1521
+Precision: 0.8080
+Recall: 0.1521
+F1: 0.1282
+AUC-ROC: 0.7509
+Confusion Matrix: [[11, 8, 1, 1], [1, 14, 0, 0], [107, 65, 14, 37], [0, 3, 0, 1]]
+
+=== SVM - Horizon: 30d, Threshold: 2.5% ===
+Accuracy: 0.4144
+Precision: 0.5113
+Recall: 0.4144
+F1: 0.4244
+AUC-ROC: 0.6814
+Confusion Matrix: [[14, 6, 3, 8], [10, 27, 4, 28], [26, 11, 28, 22], [15, 20, 1, 40]]
+
+=== SVM - Horizon: 30d, Threshold: 5.0% ===
+Accuracy: 0.4068
+Precision: 0.8205
+Recall: 0.4068
+F1: 0.5041
+AUC-ROC: 0.7451
+Confusion Matrix: [[14, 0, 1, 2], [0, 1, 0, 1], [5, 2, 2, 5], [75, 54, 11, 90]]

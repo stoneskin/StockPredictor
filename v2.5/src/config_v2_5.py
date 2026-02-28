@@ -31,7 +31,8 @@ PREDICTION_LOG_DIR.mkdir(parents=True, exist_ok=True)
 API_LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 # Data parameters
-HORIZONS = [5, 10, 20, 30]
+# V2.5.2: Added 3d, 15d horizons and 0.75%, 1.5% thresholds
+HORIZONS = [3, 5, 10, 15, 20, 30]
 DEFAULT_HORIZON = 20
 
 # New threshold-based classification (V2.5)
@@ -40,8 +41,9 @@ DEFAULT_HORIZON = 20
 # DOWN: max loss > threshold in any day within horizon
 # UP_DOWN: both max gain > threshold AND max loss > threshold
 # SIDEWAYS: neither max gain > threshold nor max loss > threshold
-THRESHOLDS = [0.01, 0.025, 0.05]  # 1%, 2.5%, 5%
-THRESHOLD_LABELS = ["1pct", "2_5pct", "5pct"]
+# V2.5.2: Added 0.75% (0.0075) and 1.5% (0.015) thresholds
+THRESHOLDS = [0.0075, 0.01, 0.015, 0.025, 0.05]  # 0.75%, 1%, 1.5%, 2.5%, 5%
+THRESHOLD_LABELS = ["0_75pct", "1pct", "1_5pct", "2_5pct", "5pct"]
 
 # Classification target: 4 classes
 # V2.5.1: Reordered to put minority classes first for better AUC calculation
@@ -150,18 +152,30 @@ TRAIN_PARAMS = {
     'cv_folds': 5
 }
 
-# V2.5.1 Improvements
+# V2.5.2 Improvements
 USE_SMOTE = True  # Apply SMOTE for class imbalance
 USE_TIMESERIES_CV = False  # Use time-series cross-validation (slower but more realistic)
 SMOTE_K_NEIGHBORS = 5  # Number of neighbors for SMOTE
 
-# Threshold-specific model parameters (V2.5.1)
+# Threshold-specific model parameters (V2.5.2)
 # Different thresholds need different handling
 THRESHOLD_PARAMS = {
+    0.0075: {  # 0.75% threshold - very hard, max regularization
+        'max_depth': 3,
+        'n_estimators': 200,
+        'min_samples_split': 40,
+        'class_weight': 'balanced'
+    },
     0.01: {  # 1% threshold - hard to predict, use more regularization
         'max_depth': 3,
         'n_estimators': 150,
         'min_samples_split': 30,
+        'class_weight': 'balanced'
+    },
+    0.015: {  # 1.5% threshold - moderate
+        'max_depth': 4,
+        'n_estimators': 120,
+        'min_samples_split': 25,
         'class_weight': 'balanced'
     },
     0.025: {  # 2.5% threshold - standard approach

@@ -78,7 +78,7 @@ curl -X POST http://localhost:8000/predict \
 |-----------|------|----------|---------|-------------|
 | symbol | string | Yes | - | Stock symbol (e.g., "QQQ", "SPY") |
 | horizon | int | No | 20 | Prediction horizon in days (5, 10, 20, 30) |
-| threshold | float | No | 0.01 | Price movement threshold (0.01=1%, 0.025=2.5%, 0.05=5%) |
+| threshold | float | No | 0.01 | Price movement threshold (0.0075=0.75%, 0.01=1%, 0.015=1.5%, 0.025=2.5%, 0.05=5%) |
 | date | string | No | latest | Date for prediction (YYYY-MM-DD) |
 
 ### Response
@@ -225,7 +225,9 @@ curl http://localhost:8000/model-info
 
 | Threshold | Use Case | Difficulty |
 |-----------|----------|------------|
-| 1% (0.01) | Early warning, sensitive to small movements | Hard to predict |
+| 0.75% (0.0075) | Ultra-sensitive, early warning | Very hard |
+| 1% (0.01) | Sensitive, short-term moves | Hard to predict |
+| 1.5% (0.015) | Moderate sensitivity | Moderate |
 | 2.5% (0.025) | Balanced - recommended default | Moderate |
 | 5% (0.05) | Significant movements only, lower noise | Easy (mostly SIDEWAYS) |
 
@@ -233,12 +235,14 @@ curl http://localhost:8000/model-info
 
 ## Horizon Selection Guide
 
-| Horizon | Use Case | Accuracy |
+| Horizon | Use Case | Typical Accuracy |
 |---------|----------|----------|
-| 5 days | Short-term trading signals | ~61-81% |
-| 10 days | Medium-term signals | ~80-82% |
-| 20 days | Default, balanced | ~93% (2.5% threshold) |
-| 30 days | Long-term trends | ~97% (2.5% threshold) |
+| 3 days | Intraday/scalping | ~45-50% |
+| 5 days | Short-term trading signals | ~60-80% |
+| 10 days | Medium-term signals | ~80-85% |
+| 15 days | Transition to medium-term | ~85-90% |
+| 20 days | Default, balanced | ~90-95% |
+| 30 days | Long-term trends | ~95-98% |
 
 ---
 

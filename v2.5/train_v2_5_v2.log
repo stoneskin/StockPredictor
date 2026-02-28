@@ -1,0 +1,1876 @@
+2026-02-28 01:59:37,035 - train_v2_5 - INFO - ============================================================
+2026-02-28 01:59:37,035 - train_v2_5 - INFO - Stock Predictor V2.5.1 Training
+2026-02-28 01:59:37,035 - train_v2_5 - INFO - ============================================================
+2026-02-28 01:59:37,036 - train_v2_5 - INFO - SMOTE enabled: True
+2026-02-28 01:59:37,036 - train_v2_5 - INFO - Time-series CV: False
+2026-02-28 01:59:37,036 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 01:59:37,036 - train_v2_5 - INFO - Training for Horizon: 3d, Threshold: 0.75%
+2026-02-28 01:59:37,039 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 01:59:37,184 - train_v2_5 - INFO - Data prepared: 1339 samples, 64 features
+2026-02-28 01:59:37,184 - train_v2_5 - INFO - Class distribution: [479 279 379 202]
+2026-02-28 01:59:37,184 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 01:59:38,719 - train_v2_5 - INFO - SMOTE applied: 1071 -> 1540 samples
+2026-02-28 01:59:38,719 - train_v2_5 - INFO - New class distribution: [385 385 385 385]
+2026-02-28 01:59:38,719 - train_v2_5 - INFO - Training LogisticRegression for horizon=3d, threshold=0.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 01:59:39,201 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 3d | Threshold: 0.75% | Acc: 35.45% | F1: 31.05% | AUC: 0.631
+2026-02-28 01:59:39,201 - train_v2_5 - INFO - LogisticRegression: Accuracy=35.45%, F1=31.05%
+2026-02-28 01:59:39,206 - train_v2_5 - INFO - Training RandomForest for horizon=3d, threshold=0.75%
+2026-02-28 01:59:39,392 - train_v2_5 - INFO - Model: RandomForest | Horizon: 3d | Threshold: 0.75% | Acc: 44.40% | F1: 42.93% | AUC: 0.709
+2026-02-28 01:59:39,392 - train_v2_5 - INFO - RandomForest: Accuracy=44.40%, F1=42.93%
+2026-02-28 01:59:39,411 - train_v2_5 - INFO - Training GradientBoosting for horizon=3d, threshold=0.75%
+2026-02-28 01:59:41,782 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 3d | Threshold: 0.75% | Acc: 47.01% | F1: 47.36% | AUC: 0.719
+2026-02-28 01:59:41,782 - train_v2_5 - INFO - GradientBoosting: Accuracy=47.01%, F1=47.36%
+2026-02-28 01:59:41,789 - train_v2_5 - INFO - Training SVM for horizon=3d, threshold=0.75%
+2026-02-28 01:59:42,224 - train_v2_5 - INFO - Model: SVM | Horizon: 3d | Threshold: 0.75% | Acc: 26.87% | F1: 21.16% | AUC: 0.579
+2026-02-28 01:59:42,225 - train_v2_5 - INFO - SVM: Accuracy=26.87%, F1=21.16%
+2026-02-28 01:59:42,228 - train_v2_5 - INFO - Training NaiveBayes for horizon=3d, threshold=0.75%
+2026-02-28 01:59:42,234 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 3d | Threshold: 0.75% | Acc: 25.75% | F1: 20.24% | AUC: 0.571
+2026-02-28 01:59:42,234 - train_v2_5 - INFO - NaiveBayes: Accuracy=25.75%, F1=20.24%
+2026-02-28 01:59:42,238 - train_v2_5 - INFO - Training XGBoost for horizon=3d, threshold=0.75%
+2026-02-28 01:59:42,549 - train_v2_5 - INFO - Model: XGBoost | Horizon: 3d | Threshold: 0.75% | Acc: 47.01% | F1: 46.97% | AUC: 0.739
+2026-02-28 01:59:42,549 - train_v2_5 - INFO - XGBoost: Accuracy=47.01%, F1=46.97%
+2026-02-28 01:59:42,557 - train_v2_5 - INFO - Training CatBoost for horizon=3d, threshold=0.75%
+2026-02-28 01:59:43,002 - train_v2_5 - INFO - Model: CatBoost | Horizon: 3d | Threshold: 0.75% | Acc: 45.90% | F1: 45.73% | AUC: 0.698
+2026-02-28 01:59:43,003 - train_v2_5 - INFO - CatBoost: Accuracy=45.90%, F1=45.73%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 01:59:47,446 - train_v2_5 - INFO - Training Ensemble for horizon=3d, threshold=0.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 01:59:51,454 - train_v2_5 - INFO - Ensemble: Accuracy=46.64%, F1=46.01%
+2026-02-28 01:59:51,504 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 01:59:51,505 - train_v2_5 - INFO - Best Accuracy: 47.01%
+2026-02-28 01:59:51,505 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 01:59:51,505 - train_v2_5 - INFO - Training for Horizon: 3d, Threshold: 1.0%
+2026-02-28 01:59:51,505 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 01:59:51,718 - train_v2_5 - INFO - Data prepared: 1339 samples, 64 features
+2026-02-28 01:59:51,718 - train_v2_5 - INFO - Class distribution: [409 299 259 372]
+2026-02-28 01:59:51,718 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 01:59:51,746 - train_v2_5 - INFO - SMOTE applied: 1071 -> 1332 samples
+2026-02-28 01:59:51,746 - train_v2_5 - INFO - New class distribution: [333 333 333 333]
+2026-02-28 01:59:51,746 - train_v2_5 - INFO - Training LogisticRegression for horizon=3d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 01:59:52,206 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 3d | Threshold: 1.0% | Acc: 41.79% | F1: 36.80% | AUC: 0.643
+2026-02-28 01:59:52,206 - train_v2_5 - INFO - LogisticRegression: Accuracy=41.79%, F1=36.80%
+2026-02-28 01:59:52,209 - train_v2_5 - INFO - Training RandomForest for horizon=3d, threshold=1.0%
+2026-02-28 01:59:52,419 - train_v2_5 - INFO - Model: RandomForest | Horizon: 3d | Threshold: 1.0% | Acc: 45.52% | F1: 43.45% | AUC: 0.756
+2026-02-28 01:59:52,420 - train_v2_5 - INFO - RandomForest: Accuracy=45.52%, F1=43.45%
+2026-02-28 01:59:52,439 - train_v2_5 - INFO - Training GradientBoosting for horizon=3d, threshold=1.0%
+2026-02-28 01:59:54,756 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 3d | Threshold: 1.0% | Acc: 53.73% | F1: 54.11% | AUC: 0.763
+2026-02-28 01:59:54,756 - train_v2_5 - INFO - GradientBoosting: Accuracy=53.73%, F1=54.11%
+2026-02-28 01:59:54,765 - train_v2_5 - INFO - Training SVM for horizon=3d, threshold=1.0%
+2026-02-28 01:59:55,233 - train_v2_5 - INFO - Model: SVM | Horizon: 3d | Threshold: 1.0% | Acc: 36.57% | F1: 28.22% | AUC: 0.585
+2026-02-28 01:59:55,233 - train_v2_5 - INFO - SVM: Accuracy=36.57%, F1=28.22%
+2026-02-28 01:59:55,237 - train_v2_5 - INFO - Training NaiveBayes for horizon=3d, threshold=1.0%
+2026-02-28 01:59:55,245 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 3d | Threshold: 1.0% | Acc: 33.21% | F1: 25.87% | AUC: 0.589
+2026-02-28 01:59:55,246 - train_v2_5 - INFO - NaiveBayes: Accuracy=33.21%, F1=25.87%
+2026-02-28 01:59:55,249 - train_v2_5 - INFO - Training XGBoost for horizon=3d, threshold=1.0%
+2026-02-28 01:59:55,755 - train_v2_5 - INFO - Model: XGBoost | Horizon: 3d | Threshold: 1.0% | Acc: 52.99% | F1: 53.10% | AUC: 0.789
+2026-02-28 01:59:55,755 - train_v2_5 - INFO - XGBoost: Accuracy=52.99%, F1=53.10%
+2026-02-28 01:59:55,770 - train_v2_5 - INFO - Training CatBoost for horizon=3d, threshold=1.0%
+2026-02-28 01:59:56,156 - train_v2_5 - INFO - Model: CatBoost | Horizon: 3d | Threshold: 1.0% | Acc: 45.52% | F1: 44.34% | AUC: 0.738
+2026-02-28 01:59:56,157 - train_v2_5 - INFO - CatBoost: Accuracy=45.52%, F1=44.34%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 01:59:59,998 - train_v2_5 - INFO - Training Ensemble for horizon=3d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:00:03,701 - train_v2_5 - INFO - Ensemble: Accuracy=50.37%, F1=49.87%
+2026-02-28 02:00:03,771 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 02:00:03,771 - train_v2_5 - INFO - Best Accuracy: 53.73%
+2026-02-28 02:00:03,771 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:00:03,771 - train_v2_5 - INFO - Training for Horizon: 3d, Threshold: 1.5%
+2026-02-28 02:00:03,771 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:00:04,006 - train_v2_5 - INFO - Data prepared: 1339 samples, 64 features
+2026-02-28 02:00:04,006 - train_v2_5 - INFO - Class distribution: [251 275 114 699]
+2026-02-28 02:00:04,006 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:00:04,031 - train_v2_5 - INFO - SMOTE applied: 1071 -> 2216 samples
+2026-02-28 02:00:04,031 - train_v2_5 - INFO - New class distribution: [554 554 554 554]
+2026-02-28 02:00:04,032 - train_v2_5 - INFO - Training LogisticRegression for horizon=3d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:00:04,669 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 3d | Threshold: 1.5% | Acc: 51.87% | F1: 52.35% | AUC: 0.680
+2026-02-28 02:00:04,669 - train_v2_5 - INFO - LogisticRegression: Accuracy=51.87%, F1=52.35%
+2026-02-28 02:00:04,672 - train_v2_5 - INFO - Training RandomForest for horizon=3d, threshold=1.5%
+2026-02-28 02:00:04,883 - train_v2_5 - INFO - Model: RandomForest | Horizon: 3d | Threshold: 1.5% | Acc: 59.70% | F1: 59.20% | AUC: 0.782
+2026-02-28 02:00:04,883 - train_v2_5 - INFO - RandomForest: Accuracy=59.70%, F1=59.20%
+2026-02-28 02:00:04,905 - train_v2_5 - INFO - Training GradientBoosting for horizon=3d, threshold=1.5%
+2026-02-28 02:00:08,685 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 3d | Threshold: 1.5% | Acc: 61.57% | F1: 61.65% | AUC: 0.795
+2026-02-28 02:00:08,685 - train_v2_5 - INFO - GradientBoosting: Accuracy=61.57%, F1=61.65%
+2026-02-28 02:00:08,692 - train_v2_5 - INFO - Training SVM for horizon=3d, threshold=1.5%
+2026-02-28 02:00:10,155 - train_v2_5 - INFO - Model: SVM | Horizon: 3d | Threshold: 1.5% | Acc: 46.64% | F1: 45.14% | AUC: 0.611
+2026-02-28 02:00:10,156 - train_v2_5 - INFO - SVM: Accuracy=46.64%, F1=45.14%
+2026-02-28 02:00:10,163 - train_v2_5 - INFO - Training NaiveBayes for horizon=3d, threshold=1.5%
+2026-02-28 02:00:10,173 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 3d | Threshold: 1.5% | Acc: 54.10% | F1: 48.98% | AUC: 0.624
+2026-02-28 02:00:10,173 - train_v2_5 - INFO - NaiveBayes: Accuracy=54.10%, F1=48.98%
+2026-02-28 02:00:10,176 - train_v2_5 - INFO - Training XGBoost for horizon=3d, threshold=1.5%
+2026-02-28 02:00:10,794 - train_v2_5 - INFO - Model: XGBoost | Horizon: 3d | Threshold: 1.5% | Acc: 66.04% | F1: 65.82% | AUC: 0.817
+2026-02-28 02:00:10,794 - train_v2_5 - INFO - XGBoost: Accuracy=66.04%, F1=65.82%
+2026-02-28 02:00:10,802 - train_v2_5 - INFO - Training CatBoost for horizon=3d, threshold=1.5%
+2026-02-28 02:00:11,258 - train_v2_5 - INFO - Model: CatBoost | Horizon: 3d | Threshold: 1.5% | Acc: 59.70% | F1: 59.62% | AUC: 0.783
+2026-02-28 02:00:11,258 - train_v2_5 - INFO - CatBoost: Accuracy=59.70%, F1=59.62%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:00:17,881 - train_v2_5 - INFO - Training Ensemble for horizon=3d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:00:24,583 - train_v2_5 - INFO - Ensemble: Accuracy=64.55%, F1=64.25%
+2026-02-28 02:00:24,647 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:00:24,647 - train_v2_5 - INFO - Best Accuracy: 66.04%
+2026-02-28 02:00:24,647 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:00:24,647 - train_v2_5 - INFO - Training for Horizon: 3d, Threshold: 2.5%
+2026-02-28 02:00:24,647 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:00:24,889 - train_v2_5 - INFO - Data prepared: 1339 samples, 64 features
+2026-02-28 02:00:24,889 - train_v2_5 - INFO - Class distribution: [  91  138   22 1088]
+2026-02-28 02:00:24,889 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:00:24,912 - train_v2_5 - INFO - SMOTE applied: 1071 -> 3468 samples
+2026-02-28 02:00:24,912 - train_v2_5 - INFO - New class distribution: [867 867 867 867]
+2026-02-28 02:00:24,915 - train_v2_5 - INFO - Training LogisticRegression for horizon=3d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:00:25,739 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 3d | Threshold: 2.5% | Acc: 60.45% | F1: 67.08% | AUC: 0.691
+2026-02-28 02:00:25,739 - train_v2_5 - INFO - LogisticRegression: Accuracy=60.45%, F1=67.08%
+2026-02-28 02:00:25,742 - train_v2_5 - INFO - Training RandomForest for horizon=3d, threshold=2.5%
+2026-02-28 02:00:25,980 - train_v2_5 - INFO - Model: RandomForest | Horizon: 3d | Threshold: 2.5% | Acc: 70.52% | F1: 74.29% | AUC: 0.871
+2026-02-28 02:00:25,980 - train_v2_5 - INFO - RandomForest: Accuracy=70.52%, F1=74.29%
+2026-02-28 02:00:26,003 - train_v2_5 - INFO - Training GradientBoosting for horizon=3d, threshold=2.5%
+2026-02-28 02:00:31,866 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 3d | Threshold: 2.5% | Acc: 80.60% | F1: 81.05% | AUC: 0.880
+2026-02-28 02:00:31,866 - train_v2_5 - INFO - GradientBoosting: Accuracy=80.60%, F1=81.05%
+2026-02-28 02:00:31,873 - train_v2_5 - INFO - Training SVM for horizon=3d, threshold=2.5%
+2026-02-28 02:00:34,305 - train_v2_5 - INFO - Model: SVM | Horizon: 3d | Threshold: 2.5% | Acc: 60.45% | F1: 66.13% | AUC: 0.634
+2026-02-28 02:00:34,306 - train_v2_5 - INFO - SVM: Accuracy=60.45%, F1=66.13%
+2026-02-28 02:00:34,311 - train_v2_5 - INFO - Training NaiveBayes for horizon=3d, threshold=2.5%
+2026-02-28 02:00:34,320 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 3d | Threshold: 2.5% | Acc: 64.55% | F1: 68.42% | AUC: 0.615
+2026-02-28 02:00:34,321 - train_v2_5 - INFO - NaiveBayes: Accuracy=64.55%, F1=68.42%
+2026-02-28 02:00:34,323 - train_v2_5 - INFO - Training XGBoost for horizon=3d, threshold=2.5%
+2026-02-28 02:00:34,906 - train_v2_5 - INFO - Model: XGBoost | Horizon: 3d | Threshold: 2.5% | Acc: 81.34% | F1: 81.03% | AUC: 0.888
+2026-02-28 02:00:34,906 - train_v2_5 - INFO - XGBoost: Accuracy=81.34%, F1=81.03%
+2026-02-28 02:00:34,915 - train_v2_5 - INFO - Training CatBoost for horizon=3d, threshold=2.5%
+2026-02-28 02:00:35,386 - train_v2_5 - INFO - Model: CatBoost | Horizon: 3d | Threshold: 2.5% | Acc: 75.75% | F1: 77.33% | AUC: 0.873
+2026-02-28 02:00:35,386 - train_v2_5 - INFO - CatBoost: Accuracy=75.75%, F1=77.33%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:00:44,957 - train_v2_5 - INFO - Training Ensemble for horizon=3d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:00:56,066 - train_v2_5 - INFO - Ensemble: Accuracy=80.97%, F1=81.16%
+2026-02-28 02:00:56,135 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:00:56,135 - train_v2_5 - INFO - Best Accuracy: 81.34%
+2026-02-28 02:00:56,135 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:00:56,135 - train_v2_5 - INFO - Training for Horizon: 3d, Threshold: 5.0%
+2026-02-28 02:00:56,136 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:00:56,381 - train_v2_5 - INFO - Data prepared: 1339 samples, 64 features
+2026-02-28 02:00:56,381 - train_v2_5 - INFO - Class distribution: [   8    5    6 1320]
+2026-02-28 02:00:56,382 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:00:56,412 - train_v2_5 - INFO - SMOTE applied: 1071 -> 4228 samples
+2026-02-28 02:00:56,412 - train_v2_5 - INFO - New class distribution: [1057 1057 1057 1057]
+2026-02-28 02:00:56,413 - train_v2_5 - INFO - Training LogisticRegression for horizon=3d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:00:57,447 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 3d | Threshold: 5.0% | Acc: 69.40% | F1: 80.70% | AUC: 0.866
+2026-02-28 02:00:57,447 - train_v2_5 - INFO - LogisticRegression: Accuracy=69.40%, F1=80.70%
+2026-02-28 02:00:57,452 - train_v2_5 - INFO - Training RandomForest for horizon=3d, threshold=5.0%
+2026-02-28 02:00:57,744 - train_v2_5 - INFO - Model: RandomForest | Horizon: 3d | Threshold: 5.0% | Acc: 97.39% | F1: 97.47% | AUC: 0.986
+2026-02-28 02:00:57,745 - train_v2_5 - INFO - RandomForest: Accuracy=97.39%, F1=97.47%
+2026-02-28 02:00:57,772 - train_v2_5 - INFO - Training GradientBoosting for horizon=3d, threshold=5.0%
+2026-02-28 02:01:05,885 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 3d | Threshold: 5.0% | Acc: 98.13% | F1: 97.76% | AUC: 0.988
+2026-02-28 02:01:05,885 - train_v2_5 - INFO - GradientBoosting: Accuracy=98.13%, F1=97.76%
+2026-02-28 02:01:05,892 - train_v2_5 - INFO - Training SVM for horizon=3d, threshold=5.0%
+2026-02-28 02:01:07,554 - train_v2_5 - INFO - Model: SVM | Horizon: 3d | Threshold: 5.0% | Acc: 40.30% | F1: 56.47% | AUC: 0.587
+2026-02-28 02:01:07,555 - train_v2_5 - INFO - SVM: Accuracy=40.30%, F1=56.47%
+2026-02-28 02:01:07,560 - train_v2_5 - INFO - Training NaiveBayes for horizon=3d, threshold=5.0%
+2026-02-28 02:01:07,569 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 3d | Threshold: 5.0% | Acc: 32.09% | F1: 47.54% | AUC: 0.641
+2026-02-28 02:01:07,569 - train_v2_5 - INFO - NaiveBayes: Accuracy=32.09%, F1=47.54%
+2026-02-28 02:01:07,572 - train_v2_5 - INFO - Training XGBoost for horizon=3d, threshold=5.0%
+2026-02-28 02:01:08,039 - train_v2_5 - INFO - Model: XGBoost | Horizon: 3d | Threshold: 5.0% | Acc: 98.13% | F1: 97.58% | AUC: 0.988
+2026-02-28 02:01:08,039 - train_v2_5 - INFO - XGBoost: Accuracy=98.13%, F1=97.58%
+2026-02-28 02:01:08,049 - train_v2_5 - INFO - Training CatBoost for horizon=3d, threshold=5.0%
+2026-02-28 02:01:08,488 - train_v2_5 - INFO - Model: CatBoost | Horizon: 3d | Threshold: 5.0% | Acc: 97.76% | F1: 97.94% | AUC: 0.990
+2026-02-28 02:01:08,489 - train_v2_5 - INFO - CatBoost: Accuracy=97.76%, F1=97.94%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:01:19,514 - train_v2_5 - INFO - Training Ensemble for horizon=3d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:01:30,620 - train_v2_5 - INFO - Ensemble: Accuracy=97.76%, F1=97.39%
+2026-02-28 02:01:30,683 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 02:01:30,683 - train_v2_5 - INFO - Best Accuracy: 98.13%
+2026-02-28 02:01:30,683 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:01:30,683 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 0.75%
+2026-02-28 02:01:30,683 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:01:30,913 - train_v2_5 - INFO - Data prepared: 1337 samples, 64 features
+2026-02-28 02:01:30,913 - train_v2_5 - INFO - Class distribution: [383 153 721  80]
+2026-02-28 02:01:30,913 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:01:30,949 - train_v2_5 - INFO - SMOTE applied: 1069 -> 2328 samples
+2026-02-28 02:01:30,949 - train_v2_5 - INFO - New class distribution: [582 582 582 582]
+2026-02-28 02:01:30,949 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=0.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:01:31,489 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 5d | Threshold: 0.75% | Acc: 36.57% | F1: 37.96% | AUC: 0.645
+2026-02-28 02:01:31,489 - train_v2_5 - INFO - LogisticRegression: Accuracy=36.57%, F1=37.96%
+2026-02-28 02:01:31,492 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=0.75%
+2026-02-28 02:01:31,673 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 0.75% | Acc: 52.99% | F1: 54.03% | AUC: 0.739
+2026-02-28 02:01:31,673 - train_v2_5 - INFO - RandomForest: Accuracy=52.99%, F1=54.03%
+2026-02-28 02:01:31,692 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=0.75%
+2026-02-28 02:01:35,003 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 5d | Threshold: 0.75% | Acc: 63.06% | F1: 63.03% | AUC: 0.793
+2026-02-28 02:01:35,004 - train_v2_5 - INFO - GradientBoosting: Accuracy=63.06%, F1=63.03%
+2026-02-28 02:01:35,009 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=0.75%
+2026-02-28 02:01:35,893 - train_v2_5 - INFO - Model: SVM | Horizon: 5d | Threshold: 0.75% | Acc: 34.70% | F1: 36.88% | AUC: 0.594
+2026-02-28 02:01:35,893 - train_v2_5 - INFO - SVM: Accuracy=34.70%, F1=36.88%
+2026-02-28 02:01:35,899 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=0.75%
+2026-02-28 02:01:35,905 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 5d | Threshold: 0.75% | Acc: 27.24% | F1: 29.64% | AUC: 0.573
+2026-02-28 02:01:35,905 - train_v2_5 - INFO - NaiveBayes: Accuracy=27.24%, F1=29.64%
+2026-02-28 02:01:35,907 - train_v2_5 - INFO - Training XGBoost for horizon=5d, threshold=0.75%
+2026-02-28 02:01:36,220 - train_v2_5 - INFO - Model: XGBoost | Horizon: 5d | Threshold: 0.75% | Acc: 65.67% | F1: 64.79% | AUC: 0.796
+2026-02-28 02:01:36,220 - train_v2_5 - INFO - XGBoost: Accuracy=65.67%, F1=64.79%
+2026-02-28 02:01:36,228 - train_v2_5 - INFO - Training CatBoost for horizon=5d, threshold=0.75%
+2026-02-28 02:01:36,572 - train_v2_5 - INFO - Model: CatBoost | Horizon: 5d | Threshold: 0.75% | Acc: 56.34% | F1: 56.78% | AUC: 0.743
+2026-02-28 02:01:36,572 - train_v2_5 - INFO - CatBoost: Accuracy=56.34%, F1=56.78%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:01:42,524 - train_v2_5 - INFO - Training Ensemble for horizon=5d, threshold=0.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:01:48,119 - train_v2_5 - INFO - Ensemble: Accuracy=59.70%, F1=59.87%
+2026-02-28 02:01:48,181 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:01:48,181 - train_v2_5 - INFO - Best Accuracy: 65.67%
+2026-02-28 02:01:48,182 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:01:48,182 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 1.0%
+2026-02-28 02:01:48,182 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:01:48,392 - train_v2_5 - INFO - Data prepared: 1337 samples, 64 features
+2026-02-28 02:01:48,393 - train_v2_5 - INFO - Class distribution: [399 248 511 179]
+2026-02-28 02:01:48,393 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:01:48,424 - train_v2_5 - INFO - SMOTE applied: 1069 -> 1656 samples
+2026-02-28 02:01:48,425 - train_v2_5 - INFO - New class distribution: [414 414 414 414]
+2026-02-28 02:01:48,425 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:01:48,838 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 5d | Threshold: 1.0% | Acc: 38.81% | F1: 37.15% | AUC: 0.616
+2026-02-28 02:01:48,839 - train_v2_5 - INFO - LogisticRegression: Accuracy=38.81%, F1=37.15%
+2026-02-28 02:01:48,843 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=1.0%
+2026-02-28 02:01:49,004 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 1.0% | Acc: 46.64% | F1: 45.63% | AUC: 0.745
+2026-02-28 02:01:49,004 - train_v2_5 - INFO - RandomForest: Accuracy=46.64%, F1=45.63%
+2026-02-28 02:01:49,020 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=1.0%
+2026-02-28 02:01:51,352 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 5d | Threshold: 1.0% | Acc: 60.45% | F1: 60.73% | AUC: 0.804
+2026-02-28 02:01:51,352 - train_v2_5 - INFO - GradientBoosting: Accuracy=60.45%, F1=60.73%
+2026-02-28 02:01:51,357 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=1.0%
+2026-02-28 02:01:51,819 - train_v2_5 - INFO - Model: SVM | Horizon: 5d | Threshold: 1.0% | Acc: 30.97% | F1: 29.90% | AUC: 0.561
+2026-02-28 02:01:51,819 - train_v2_5 - INFO - SVM: Accuracy=30.97%, F1=29.90%
+2026-02-28 02:01:51,822 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=1.0%
+2026-02-28 02:01:51,829 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 5d | Threshold: 1.0% | Acc: 24.63% | F1: 24.05% | AUC: 0.552
+2026-02-28 02:01:51,829 - train_v2_5 - INFO - NaiveBayes: Accuracy=24.63%, F1=24.05%
+2026-02-28 02:01:51,831 - train_v2_5 - INFO - Training XGBoost for horizon=5d, threshold=1.0%
+2026-02-28 02:01:52,084 - train_v2_5 - INFO - Model: XGBoost | Horizon: 5d | Threshold: 1.0% | Acc: 61.19% | F1: 61.04% | AUC: 0.819
+2026-02-28 02:01:52,085 - train_v2_5 - INFO - XGBoost: Accuracy=61.19%, F1=61.04%
+2026-02-28 02:01:52,091 - train_v2_5 - INFO - Training CatBoost for horizon=5d, threshold=1.0%
+2026-02-28 02:01:52,399 - train_v2_5 - INFO - Model: CatBoost | Horizon: 5d | Threshold: 1.0% | Acc: 50.37% | F1: 50.12% | AUC: 0.738
+2026-02-28 02:01:52,399 - train_v2_5 - INFO - CatBoost: Accuracy=50.37%, F1=50.12%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:01:56,281 - train_v2_5 - INFO - Training Ensemble for horizon=5d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:02:00,407 - train_v2_5 - INFO - Ensemble: Accuracy=55.22%, F1=55.16%
+2026-02-28 02:02:00,467 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:02:00,467 - train_v2_5 - INFO - Best Accuracy: 61.19%
+2026-02-28 02:02:00,467 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:02:00,467 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 1.5%
+2026-02-28 02:02:00,467 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:02:00,679 - train_v2_5 - INFO - Data prepared: 1337 samples, 64 features
+2026-02-28 02:02:00,679 - train_v2_5 - INFO - Class distribution: [282 288 263 504]
+2026-02-28 02:02:00,679 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:02:00,700 - train_v2_5 - INFO - SMOTE applied: 1069 -> 1604 samples
+2026-02-28 02:02:00,700 - train_v2_5 - INFO - New class distribution: [401 401 401 401]
+2026-02-28 02:02:00,701 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=1.5%
+2026-02-28 02:02:01,069 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 5d | Threshold: 1.5% | Acc: 42.54% | F1: 40.70% | AUC: 0.660
+2026-02-28 02:02:01,069 - train_v2_5 - INFO - LogisticRegression: Accuracy=42.54%, F1=40.70%
+2026-02-28 02:02:01,072 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=1.5%
+2026-02-28 02:02:01,252 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 1.5% | Acc: 57.46% | F1: 56.15% | AUC: 0.809
+2026-02-28 02:02:01,252 - train_v2_5 - INFO - RandomForest: Accuracy=57.46%, F1=56.15%
+2026-02-28 02:02:01,274 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=1.5%
+2026-02-28 02:02:03,524 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 5d | Threshold: 1.5% | Acc: 63.06% | F1: 63.27% | AUC: 0.844
+2026-02-28 02:02:03,524 - train_v2_5 - INFO - GradientBoosting: Accuracy=63.06%, F1=63.27%
+2026-02-28 02:02:03,529 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=1.5%
+2026-02-28 02:02:03,934 - train_v2_5 - INFO - Model: SVM | Horizon: 5d | Threshold: 1.5% | Acc: 42.91% | F1: 38.31% | AUC: 0.627
+2026-02-28 02:02:03,934 - train_v2_5 - INFO - SVM: Accuracy=42.91%, F1=38.31%
+2026-02-28 02:02:03,939 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=1.5%
+2026-02-28 02:02:03,944 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 5d | Threshold: 1.5% | Acc: 41.04% | F1: 36.44% | AUC: 0.610
+2026-02-28 02:02:03,944 - train_v2_5 - INFO - NaiveBayes: Accuracy=41.04%, F1=36.44%
+2026-02-28 02:02:03,948 - train_v2_5 - INFO - Training XGBoost for horizon=5d, threshold=1.5%
+2026-02-28 02:02:04,232 - train_v2_5 - INFO - Model: XGBoost | Horizon: 5d | Threshold: 1.5% | Acc: 67.91% | F1: 68.09% | AUC: 0.877
+2026-02-28 02:02:04,232 - train_v2_5 - INFO - XGBoost: Accuracy=67.91%, F1=68.09%
+2026-02-28 02:02:04,241 - train_v2_5 - INFO - Training CatBoost for horizon=5d, threshold=1.5%
+2026-02-28 02:02:04,539 - train_v2_5 - INFO - Model: CatBoost | Horizon: 5d | Threshold: 1.5% | Acc: 60.82% | F1: 60.32% | AUC: 0.833
+2026-02-28 02:02:04,539 - train_v2_5 - INFO - CatBoost: Accuracy=60.82%, F1=60.32%
+2026-02-28 02:02:08,295 - train_v2_5 - INFO - Training Ensemble for horizon=5d, threshold=1.5%
+2026-02-28 02:02:12,291 - train_v2_5 - INFO - Ensemble: Accuracy=62.69%, F1=62.10%
+2026-02-28 02:02:12,355 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:02:12,355 - train_v2_5 - INFO - Best Accuracy: 67.91%
+2026-02-28 02:02:12,355 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:02:12,355 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 2.5%
+2026-02-28 02:02:12,355 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:02:12,575 - train_v2_5 - INFO - Data prepared: 1337 samples, 64 features
+2026-02-28 02:02:12,575 - train_v2_5 - INFO - Class distribution: [126 195  53 963]
+2026-02-28 02:02:12,575 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:02:12,597 - train_v2_5 - INFO - SMOTE applied: 1069 -> 3072 samples
+2026-02-28 02:02:12,597 - train_v2_5 - INFO - New class distribution: [768 768 768 768]
+2026-02-28 02:02:12,597 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:02:13,235 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 5d | Threshold: 2.5% | Acc: 58.58% | F1: 63.13% | AUC: 0.770
+2026-02-28 02:02:13,235 - train_v2_5 - INFO - LogisticRegression: Accuracy=58.58%, F1=63.13%
+2026-02-28 02:02:13,237 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=2.5%
+2026-02-28 02:02:13,455 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 2.5% | Acc: 69.78% | F1: 72.83% | AUC: 0.866
+2026-02-28 02:02:13,455 - train_v2_5 - INFO - RandomForest: Accuracy=69.78%, F1=72.83%
+2026-02-28 02:02:13,476 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=2.5%
+2026-02-28 02:02:18,637 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 5d | Threshold: 2.5% | Acc: 77.99% | F1: 78.70% | AUC: 0.898
+2026-02-28 02:02:18,637 - train_v2_5 - INFO - GradientBoosting: Accuracy=77.99%, F1=78.70%
+2026-02-28 02:02:18,647 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=2.5%
+2026-02-28 02:02:20,254 - train_v2_5 - INFO - Model: SVM | Horizon: 5d | Threshold: 2.5% | Acc: 64.18% | F1: 63.54% | AUC: 0.698
+2026-02-28 02:02:20,254 - train_v2_5 - INFO - SVM: Accuracy=64.18%, F1=63.54%
+2026-02-28 02:02:20,258 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=2.5%
+2026-02-28 02:02:20,266 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 5d | Threshold: 2.5% | Acc: 66.04% | F1: 64.58% | AUC: 0.683
+2026-02-28 02:02:20,266 - train_v2_5 - INFO - NaiveBayes: Accuracy=66.04%, F1=64.58%
+2026-02-28 02:02:20,269 - train_v2_5 - INFO - Training XGBoost for horizon=5d, threshold=2.5%
+2026-02-28 02:02:20,714 - train_v2_5 - INFO - Model: XGBoost | Horizon: 5d | Threshold: 2.5% | Acc: 80.97% | F1: 81.23% | AUC: 0.913
+2026-02-28 02:02:20,714 - train_v2_5 - INFO - XGBoost: Accuracy=80.97%, F1=81.23%
+2026-02-28 02:02:20,724 - train_v2_5 - INFO - Training CatBoost for horizon=5d, threshold=2.5%
+2026-02-28 02:02:21,185 - train_v2_5 - INFO - Model: CatBoost | Horizon: 5d | Threshold: 2.5% | Acc: 72.39% | F1: 74.20% | AUC: 0.883
+2026-02-28 02:02:21,185 - train_v2_5 - INFO - CatBoost: Accuracy=72.39%, F1=74.20%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:02:28,807 - train_v2_5 - INFO - Training Ensemble for horizon=5d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:02:36,611 - train_v2_5 - INFO - Ensemble: Accuracy=79.85%, F1=79.89%
+2026-02-28 02:02:36,672 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:02:36,672 - train_v2_5 - INFO - Best Accuracy: 80.97%
+2026-02-28 02:02:36,672 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:02:36,672 - train_v2_5 - INFO - Training for Horizon: 5d, Threshold: 5.0%
+2026-02-28 02:02:36,672 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:02:36,890 - train_v2_5 - INFO - Data prepared: 1337 samples, 64 features
+2026-02-28 02:02:36,890 - train_v2_5 - INFO - Class distribution: [  12    7   10 1308]
+2026-02-28 02:02:36,890 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:02:36,912 - train_v2_5 - INFO - SMOTE applied: 1069 -> 4188 samples
+2026-02-28 02:02:36,912 - train_v2_5 - INFO - New class distribution: [1047 1047 1047 1047]
+2026-02-28 02:02:36,914 - train_v2_5 - INFO - Training LogisticRegression for horizon=5d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:02:37,836 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 5d | Threshold: 5.0% | Acc: 40.30% | F1: 55.98% | AUC: 0.721
+2026-02-28 02:02:37,836 - train_v2_5 - INFO - LogisticRegression: Accuracy=40.30%, F1=55.98%
+2026-02-28 02:02:37,840 - train_v2_5 - INFO - Training RandomForest for horizon=5d, threshold=5.0%
+2026-02-28 02:02:38,064 - train_v2_5 - INFO - Model: RandomForest | Horizon: 5d | Threshold: 5.0% | Acc: 96.64% | F1: 96.49% | AUC: 0.916
+2026-02-28 02:02:38,064 - train_v2_5 - INFO - RandomForest: Accuracy=96.64%, F1=96.49%
+2026-02-28 02:02:38,082 - train_v2_5 - INFO - Training GradientBoosting for horizon=5d, threshold=5.0%
+2026-02-28 02:02:44,295 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 5d | Threshold: 5.0% | Acc: 98.13% | F1: 97.52% | AUC: 0.953
+2026-02-28 02:02:44,295 - train_v2_5 - INFO - GradientBoosting: Accuracy=98.13%, F1=97.52%
+2026-02-28 02:02:44,301 - train_v2_5 - INFO - Training SVM for horizon=5d, threshold=5.0%
+2026-02-28 02:02:46,311 - train_v2_5 - INFO - Model: SVM | Horizon: 5d | Threshold: 5.0% | Acc: 33.96% | F1: 48.13% | AUC: 0.648
+2026-02-28 02:02:46,311 - train_v2_5 - INFO - SVM: Accuracy=33.96%, F1=48.13%
+2026-02-28 02:02:46,317 - train_v2_5 - INFO - Training NaiveBayes for horizon=5d, threshold=5.0%
+2026-02-28 02:02:46,325 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 5d | Threshold: 5.0% | Acc: 29.48% | F1: 43.19% | AUC: 0.726
+2026-02-28 02:02:46,325 - train_v2_5 - INFO - NaiveBayes: Accuracy=29.48%, F1=43.19%
+2026-02-28 02:02:46,327 - train_v2_5 - INFO - Training XGBoost for horizon=5d, threshold=5.0%
+2026-02-28 02:02:46,631 - train_v2_5 - INFO - Model: XGBoost | Horizon: 5d | Threshold: 5.0% | Acc: 98.51% | F1: 97.95% | AUC: 0.973
+2026-02-28 02:02:46,632 - train_v2_5 - INFO - XGBoost: Accuracy=98.51%, F1=97.95%
+2026-02-28 02:02:46,639 - train_v2_5 - INFO - Training CatBoost for horizon=5d, threshold=5.0%
+2026-02-28 02:02:47,070 - train_v2_5 - INFO - Model: CatBoost | Horizon: 5d | Threshold: 5.0% | Acc: 98.13% | F1: 98.06% | AUC: 0.956
+2026-02-28 02:02:47,070 - train_v2_5 - INFO - CatBoost: Accuracy=98.13%, F1=98.06%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:02:57,461 - train_v2_5 - INFO - Training Ensemble for horizon=5d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:03:07,770 - train_v2_5 - INFO - Ensemble: Accuracy=98.51%, F1=97.95%
+2026-02-28 02:03:07,829 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:03:07,829 - train_v2_5 - INFO - Best Accuracy: 98.51%
+2026-02-28 02:03:07,829 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:03:07,829 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 0.75%
+2026-02-28 02:03:07,829 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:03:08,072 - train_v2_5 - INFO - Data prepared: 1332 samples, 64 features
+2026-02-28 02:03:08,072 - train_v2_5 - INFO - Class distribution: [ 183   26 1109   14]
+2026-02-28 02:03:08,073 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:03:08,102 - train_v2_5 - INFO - SMOTE applied: 1065 -> 3584 samples
+2026-02-28 02:03:08,103 - train_v2_5 - INFO - New class distribution: [896 896 896 896]
+2026-02-28 02:03:08,103 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=0.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:03:08,863 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 10d | Threshold: 0.75% | Acc: 35.58% | F1: 47.55% | AUC: 0.541
+2026-02-28 02:03:08,863 - train_v2_5 - INFO - LogisticRegression: Accuracy=35.58%, F1=47.55%
+2026-02-28 02:03:08,866 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=0.75%
+2026-02-28 02:03:09,084 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 0.75% | Acc: 74.91% | F1: 78.07% | AUC: 0.789
+2026-02-28 02:03:09,084 - train_v2_5 - INFO - RandomForest: Accuracy=74.91%, F1=78.07%
+2026-02-28 02:03:09,104 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=0.75%
+2026-02-28 02:03:14,657 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 10d | Threshold: 0.75% | Acc: 85.39% | F1: 85.51% | AUC: 0.817
+2026-02-28 02:03:14,657 - train_v2_5 - INFO - GradientBoosting: Accuracy=85.39%, F1=85.51%
+2026-02-28 02:03:14,662 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=0.75%
+2026-02-28 02:03:16,668 - train_v2_5 - INFO - Model: SVM | Horizon: 10d | Threshold: 0.75% | Acc: 22.85% | F1: 29.84% | AUC: 0.586
+2026-02-28 02:03:16,668 - train_v2_5 - INFO - SVM: Accuracy=22.85%, F1=29.84%
+2026-02-28 02:03:16,672 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=0.75%
+2026-02-28 02:03:16,681 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 10d | Threshold: 0.75% | Acc: 23.97% | F1: 32.80% | AUC: 0.538
+2026-02-28 02:03:16,681 - train_v2_5 - INFO - NaiveBayes: Accuracy=23.97%, F1=32.80%
+2026-02-28 02:03:16,685 - train_v2_5 - INFO - Training XGBoost for horizon=10d, threshold=0.75%
+2026-02-28 02:03:17,050 - train_v2_5 - INFO - Model: XGBoost | Horizon: 10d | Threshold: 0.75% | Acc: 84.64% | F1: 83.79% | AUC: 0.833
+2026-02-28 02:03:17,050 - train_v2_5 - INFO - XGBoost: Accuracy=84.64%, F1=83.79%
+2026-02-28 02:03:17,058 - train_v2_5 - INFO - Training CatBoost for horizon=10d, threshold=0.75%
+2026-02-28 02:03:17,462 - train_v2_5 - INFO - Model: CatBoost | Horizon: 10d | Threshold: 0.75% | Acc: 78.65% | F1: 80.71% | AUC: 0.813
+2026-02-28 02:03:17,462 - train_v2_5 - INFO - CatBoost: Accuracy=78.65%, F1=80.71%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:03:26,570 - train_v2_5 - INFO - Training Ensemble for horizon=10d, threshold=0.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:03:36,561 - train_v2_5 - INFO - Ensemble: Accuracy=82.77%, F1=83.42%
+2026-02-28 02:03:36,631 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 02:03:36,631 - train_v2_5 - INFO - Best Accuracy: 85.39%
+2026-02-28 02:03:36,631 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:03:36,631 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 1.0%
+2026-02-28 02:03:36,631 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:03:36,879 - train_v2_5 - INFO - Data prepared: 1332 samples, 64 features
+2026-02-28 02:03:36,880 - train_v2_5 - INFO - Class distribution: [248 110 931  43]
+2026-02-28 02:03:36,880 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:03:36,910 - train_v2_5 - INFO - SMOTE applied: 1065 -> 2984 samples
+2026-02-28 02:03:36,911 - train_v2_5 - INFO - New class distribution: [746 746 746 746]
+2026-02-28 02:03:36,911 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:03:37,772 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 10d | Threshold: 1.0% | Acc: 38.58% | F1: 46.76% | AUC: 0.613
+2026-02-28 02:03:37,772 - train_v2_5 - INFO - LogisticRegression: Accuracy=38.58%, F1=46.76%
+2026-02-28 02:03:37,776 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=1.0%
+2026-02-28 02:03:38,030 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 1.0% | Acc: 55.81% | F1: 61.52% | AUC: 0.787
+2026-02-28 02:03:38,030 - train_v2_5 - INFO - RandomForest: Accuracy=55.81%, F1=61.52%
+2026-02-28 02:03:38,052 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=1.0%
+2026-02-28 02:03:43,502 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 10d | Threshold: 1.0% | Acc: 79.03% | F1: 79.80% | AUC: 0.867
+2026-02-28 02:03:43,503 - train_v2_5 - INFO - GradientBoosting: Accuracy=79.03%, F1=79.80%
+2026-02-28 02:03:43,509 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=1.0%
+2026-02-28 02:03:45,327 - train_v2_5 - INFO - Model: SVM | Horizon: 10d | Threshold: 1.0% | Acc: 25.84% | F1: 33.62% | AUC: 0.584
+2026-02-28 02:03:45,327 - train_v2_5 - INFO - SVM: Accuracy=25.84%, F1=33.62%
+2026-02-28 02:03:45,335 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=1.0%
+2026-02-28 02:03:45,348 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 10d | Threshold: 1.0% | Acc: 26.59% | F1: 32.81% | AUC: 0.582
+2026-02-28 02:03:45,348 - train_v2_5 - INFO - NaiveBayes: Accuracy=26.59%, F1=32.81%
+2026-02-28 02:03:45,350 - train_v2_5 - INFO - Training XGBoost for horizon=10d, threshold=1.0%
+2026-02-28 02:03:45,748 - train_v2_5 - INFO - Model: XGBoost | Horizon: 10d | Threshold: 1.0% | Acc: 82.02% | F1: 81.77% | AUC: 0.885
+2026-02-28 02:03:45,749 - train_v2_5 - INFO - XGBoost: Accuracy=82.02%, F1=81.77%
+2026-02-28 02:03:45,757 - train_v2_5 - INFO - Training CatBoost for horizon=10d, threshold=1.0%
+2026-02-28 02:03:46,188 - train_v2_5 - INFO - Model: CatBoost | Horizon: 10d | Threshold: 1.0% | Acc: 71.54% | F1: 73.65% | AUC: 0.816
+2026-02-28 02:03:46,188 - train_v2_5 - INFO - CatBoost: Accuracy=71.54%, F1=73.65%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:03:55,481 - train_v2_5 - INFO - Training Ensemble for horizon=10d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:04:05,356 - train_v2_5 - INFO - Ensemble: Accuracy=76.40%, F1=77.97%
+2026-02-28 02:04:05,427 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:04:05,428 - train_v2_5 - INFO - Best Accuracy: 82.02%
+2026-02-28 02:04:05,428 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:04:05,428 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 1.5%
+2026-02-28 02:04:05,428 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:04:05,668 - train_v2_5 - INFO - Data prepared: 1332 samples, 64 features
+2026-02-28 02:04:05,669 - train_v2_5 - INFO - Class distribution: [260 222 559 291]
+2026-02-28 02:04:05,669 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:04:05,703 - train_v2_5 - INFO - SMOTE applied: 1065 -> 1756 samples
+2026-02-28 02:04:05,703 - train_v2_5 - INFO - New class distribution: [439 439 439 439]
+2026-02-28 02:04:05,703 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:04:06,367 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 10d | Threshold: 1.5% | Acc: 36.70% | F1: 38.21% | AUC: 0.683
+2026-02-28 02:04:06,367 - train_v2_5 - INFO - LogisticRegression: Accuracy=36.70%, F1=38.21%
+2026-02-28 02:04:06,371 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=1.5%
+2026-02-28 02:04:06,596 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 1.5% | Acc: 58.80% | F1: 59.90% | AUC: 0.843
+2026-02-28 02:04:06,597 - train_v2_5 - INFO - RandomForest: Accuracy=58.80%, F1=59.90%
+2026-02-28 02:04:06,617 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=1.5%
+2026-02-28 02:04:09,826 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 10d | Threshold: 1.5% | Acc: 69.66% | F1: 69.92% | AUC: 0.897
+2026-02-28 02:04:09,827 - train_v2_5 - INFO - GradientBoosting: Accuracy=69.66%, F1=69.92%
+2026-02-28 02:04:09,833 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=1.5%
+2026-02-28 02:04:10,478 - train_v2_5 - INFO - Model: SVM | Horizon: 10d | Threshold: 1.5% | Acc: 33.33% | F1: 32.05% | AUC: 0.669
+2026-02-28 02:04:10,479 - train_v2_5 - INFO - SVM: Accuracy=33.33%, F1=32.05%
+2026-02-28 02:04:10,483 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=1.5%
+2026-02-28 02:04:10,494 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 10d | Threshold: 1.5% | Acc: 34.83% | F1: 32.06% | AUC: 0.659
+2026-02-28 02:04:10,494 - train_v2_5 - INFO - NaiveBayes: Accuracy=34.83%, F1=32.06%
+2026-02-28 02:04:10,496 - train_v2_5 - INFO - Training XGBoost for horizon=10d, threshold=1.5%
+2026-02-28 02:04:10,917 - train_v2_5 - INFO - Model: XGBoost | Horizon: 10d | Threshold: 1.5% | Acc: 74.53% | F1: 74.61% | AUC: 0.915
+2026-02-28 02:04:10,917 - train_v2_5 - INFO - XGBoost: Accuracy=74.53%, F1=74.61%
+2026-02-28 02:04:10,928 - train_v2_5 - INFO - Training CatBoost for horizon=10d, threshold=1.5%
+2026-02-28 02:04:11,339 - train_v2_5 - INFO - Model: CatBoost | Horizon: 10d | Threshold: 1.5% | Acc: 62.17% | F1: 63.13% | AUC: 0.858
+2026-02-28 02:04:11,339 - train_v2_5 - INFO - CatBoost: Accuracy=62.17%, F1=63.13%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:04:16,515 - train_v2_5 - INFO - Training Ensemble for horizon=10d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:04:22,198 - train_v2_5 - INFO - Ensemble: Accuracy=69.29%, F1=69.77%
+2026-02-28 02:04:22,266 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:04:22,266 - train_v2_5 - INFO - Best Accuracy: 74.53%
+2026-02-28 02:04:22,266 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:04:22,266 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 2.5%
+2026-02-28 02:04:22,266 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:04:22,505 - train_v2_5 - INFO - Data prepared: 1332 samples, 64 features
+2026-02-28 02:04:22,506 - train_v2_5 - INFO - Class distribution: [147 246 163 776]
+2026-02-28 02:04:22,506 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:04:22,537 - train_v2_5 - INFO - SMOTE applied: 1065 -> 2500 samples
+2026-02-28 02:04:22,537 - train_v2_5 - INFO - New class distribution: [625 625 625 625]
+2026-02-28 02:04:22,538 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:04:23,273 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 10d | Threshold: 2.5% | Acc: 52.06% | F1: 53.63% | AUC: 0.758
+2026-02-28 02:04:23,273 - train_v2_5 - INFO - LogisticRegression: Accuracy=52.06%, F1=53.63%
+2026-02-28 02:04:23,277 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=2.5%
+2026-02-28 02:04:23,516 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 2.5% | Acc: 76.03% | F1: 76.81% | AUC: 0.915
+2026-02-28 02:04:23,517 - train_v2_5 - INFO - RandomForest: Accuracy=76.03%, F1=76.81%
+2026-02-28 02:04:23,537 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=2.5%
+2026-02-28 02:04:28,277 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 10d | Threshold: 2.5% | Acc: 80.90% | F1: 81.25% | AUC: 0.944
+2026-02-28 02:04:28,277 - train_v2_5 - INFO - GradientBoosting: Accuracy=80.90%, F1=81.25%
+2026-02-28 02:04:28,283 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=2.5%
+2026-02-28 02:04:29,380 - train_v2_5 - INFO - Model: SVM | Horizon: 10d | Threshold: 2.5% | Acc: 53.93% | F1: 52.55% | AUC: 0.660
+2026-02-28 02:04:29,380 - train_v2_5 - INFO - SVM: Accuracy=53.93%, F1=52.55%
+2026-02-28 02:04:29,384 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=2.5%
+2026-02-28 02:04:29,394 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 10d | Threshold: 2.5% | Acc: 54.31% | F1: 52.39% | AUC: 0.662
+2026-02-28 02:04:29,394 - train_v2_5 - INFO - NaiveBayes: Accuracy=54.31%, F1=52.39%
+2026-02-28 02:04:29,396 - train_v2_5 - INFO - Training XGBoost for horizon=10d, threshold=2.5%
+2026-02-28 02:04:29,784 - train_v2_5 - INFO - Model: XGBoost | Horizon: 10d | Threshold: 2.5% | Acc: 79.78% | F1: 80.21% | AUC: 0.943
+2026-02-28 02:04:29,784 - train_v2_5 - INFO - XGBoost: Accuracy=79.78%, F1=80.21%
+2026-02-28 02:04:29,793 - train_v2_5 - INFO - Training CatBoost for horizon=10d, threshold=2.5%
+2026-02-28 02:04:30,212 - train_v2_5 - INFO - Model: CatBoost | Horizon: 10d | Threshold: 2.5% | Acc: 76.40% | F1: 77.17% | AUC: 0.917
+2026-02-28 02:04:30,213 - train_v2_5 - INFO - CatBoost: Accuracy=76.40%, F1=77.17%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:04:37,780 - train_v2_5 - INFO - Training Ensemble for horizon=10d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:04:45,860 - train_v2_5 - INFO - Ensemble: Accuracy=78.28%, F1=78.66%
+2026-02-28 02:04:45,931 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 02:04:45,931 - train_v2_5 - INFO - Best Accuracy: 80.90%
+2026-02-28 02:04:45,931 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:04:45,931 - train_v2_5 - INFO - Training for Horizon: 10d, Threshold: 5.0%
+2026-02-28 02:04:45,931 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:04:46,205 - train_v2_5 - INFO - Data prepared: 1332 samples, 64 features
+2026-02-28 02:04:46,206 - train_v2_5 - INFO - Class distribution: [  22   12   20 1278]
+2026-02-28 02:04:46,206 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:04:46,243 - train_v2_5 - INFO - SMOTE applied: 1065 -> 4104 samples
+2026-02-28 02:04:46,243 - train_v2_5 - INFO - New class distribution: [1026 1026 1026 1026]
+2026-02-28 02:04:46,243 - train_v2_5 - INFO - Training LogisticRegression for horizon=10d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:04:47,325 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 10d | Threshold: 5.0% | Acc: 52.81% | F1: 65.14% | AUC: 0.779
+2026-02-28 02:04:47,326 - train_v2_5 - INFO - LogisticRegression: Accuracy=52.81%, F1=65.14%
+2026-02-28 02:04:47,329 - train_v2_5 - INFO - Training RandomForest for horizon=10d, threshold=5.0%
+2026-02-28 02:04:47,590 - train_v2_5 - INFO - Model: RandomForest | Horizon: 10d | Threshold: 5.0% | Acc: 98.13% | F1: 98.07% | AUC: 0.993
+2026-02-28 02:04:47,590 - train_v2_5 - INFO - RandomForest: Accuracy=98.13%, F1=98.07%
+2026-02-28 02:04:47,616 - train_v2_5 - INFO - Training GradientBoosting for horizon=10d, threshold=5.0%
+2026-02-28 02:04:55,370 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 10d | Threshold: 5.0% | Acc: 98.13% | F1: 97.87% | AUC: 0.982
+2026-02-28 02:04:55,370 - train_v2_5 - INFO - GradientBoosting: Accuracy=98.13%, F1=97.87%
+2026-02-28 02:04:55,377 - train_v2_5 - INFO - Training SVM for horizon=10d, threshold=5.0%
+2026-02-28 02:04:57,123 - train_v2_5 - INFO - Model: SVM | Horizon: 10d | Threshold: 5.0% | Acc: 53.18% | F1: 65.36% | AUC: 0.774
+2026-02-28 02:04:57,123 - train_v2_5 - INFO - SVM: Accuracy=53.18%, F1=65.36%
+2026-02-28 02:04:57,130 - train_v2_5 - INFO - Training NaiveBayes for horizon=10d, threshold=5.0%
+2026-02-28 02:04:57,141 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 10d | Threshold: 5.0% | Acc: 61.05% | F1: 71.65% | AUC: 0.764
+2026-02-28 02:04:57,141 - train_v2_5 - INFO - NaiveBayes: Accuracy=61.05%, F1=71.65%
+2026-02-28 02:04:57,146 - train_v2_5 - INFO - Training XGBoost for horizon=10d, threshold=5.0%
+2026-02-28 02:04:57,624 - train_v2_5 - INFO - Model: XGBoost | Horizon: 10d | Threshold: 5.0% | Acc: 98.13% | F1: 97.87% | AUC: 0.982
+2026-02-28 02:04:57,624 - train_v2_5 - INFO - XGBoost: Accuracy=98.13%, F1=97.87%
+2026-02-28 02:04:57,635 - train_v2_5 - INFO - Training CatBoost for horizon=10d, threshold=5.0%
+2026-02-28 02:04:58,098 - train_v2_5 - INFO - Model: CatBoost | Horizon: 10d | Threshold: 5.0% | Acc: 97.75% | F1: 97.75% | AUC: 0.977
+2026-02-28 02:04:58,098 - train_v2_5 - INFO - CatBoost: Accuracy=97.75%, F1=97.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:05:09,587 - train_v2_5 - INFO - Training Ensemble for horizon=10d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:05:21,567 - train_v2_5 - INFO - Ensemble: Accuracy=98.13%, F1=97.87%
+2026-02-28 02:05:21,632 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-28 02:05:21,632 - train_v2_5 - INFO - Best Accuracy: 98.13%
+2026-02-28 02:05:21,632 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:05:21,632 - train_v2_5 - INFO - Training for Horizon: 15d, Threshold: 0.75%
+2026-02-28 02:05:21,632 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:05:21,880 - train_v2_5 - INFO - Data prepared: 1327 samples, 64 features
+2026-02-28 02:05:21,881 - train_v2_5 - INFO - Class distribution: [  81    2 1244]
+2026-02-28 02:05:21,881 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:05:21,911 - train_v2_5 - INFO - SMOTE applied: 1061 -> 2976 samples
+2026-02-28 02:05:21,911 - train_v2_5 - INFO - New class distribution: [992 992 992]
+2026-02-28 02:05:21,913 - train_v2_5 - INFO - Training LogisticRegression for horizon=15d, threshold=0.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:05:23,029 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 15d | Threshold: 0.75% | Acc: 53.01% | F1: 65.23% | AUC: 0.000
+2026-02-28 02:05:23,029 - train_v2_5 - INFO - LogisticRegression: Accuracy=53.01%, F1=65.23%
+2026-02-28 02:05:23,032 - train_v2_5 - INFO - Training RandomForest for horizon=15d, threshold=0.75%
+2026-02-28 02:05:23,309 - train_v2_5 - INFO - Model: RandomForest | Horizon: 15d | Threshold: 0.75% | Acc: 92.11% | F1: 93.36% | AUC: 0.000
+2026-02-28 02:05:23,309 - train_v2_5 - INFO - RandomForest: Accuracy=92.11%, F1=93.36%
+2026-02-28 02:05:23,339 - train_v2_5 - INFO - Training GradientBoosting for horizon=15d, threshold=0.75%
+2026-02-28 02:05:27,013 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 15d | Threshold: 0.75% | Acc: 95.86% | F1: 95.44% | AUC: 0.000
+2026-02-28 02:05:27,013 - train_v2_5 - INFO - GradientBoosting: Accuracy=95.86%, F1=95.44%
+2026-02-28 02:05:27,021 - train_v2_5 - INFO - Training SVM for horizon=15d, threshold=0.75%
+2026-02-28 02:05:28,574 - train_v2_5 - INFO - Model: SVM | Horizon: 15d | Threshold: 0.75% | Acc: 18.42% | F1: 25.44% | AUC: 0.000
+2026-02-28 02:05:28,574 - train_v2_5 - INFO - SVM: Accuracy=18.42%, F1=25.44%
+2026-02-28 02:05:28,579 - train_v2_5 - INFO - Training NaiveBayes for horizon=15d, threshold=0.75%
+2026-02-28 02:05:28,588 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 15d | Threshold: 0.75% | Acc: 30.08% | F1: 41.70% | AUC: 0.000
+2026-02-28 02:05:28,588 - train_v2_5 - INFO - NaiveBayes: Accuracy=30.08%, F1=41.70%
+2026-02-28 02:05:28,591 - train_v2_5 - INFO - Training XGBoost for horizon=15d, threshold=0.75%
+2026-02-28 02:05:28,865 - train_v2_5 - INFO - Model: XGBoost | Horizon: 15d | Threshold: 0.75% | Acc: 96.24% | F1: 95.94% | AUC: 0.000
+2026-02-28 02:05:28,865 - train_v2_5 - INFO - XGBoost: Accuracy=96.24%, F1=95.94%
+2026-02-28 02:05:28,873 - train_v2_5 - INFO - Training CatBoost for horizon=15d, threshold=0.75%
+Found only 3 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:05:29,246 - train_v2_5 - INFO - Model: CatBoost | Horizon: 15d | Threshold: 0.75% | Acc: 95.11% | F1: 95.55% | AUC: 0.000
+2026-02-28 02:05:29,246 - train_v2_5 - INFO - CatBoost: Accuracy=95.11%, F1=95.55%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+Found only 3 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:05:35,780 - train_v2_5 - INFO - Training Ensemble for horizon=15d, threshold=0.75%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+Found only 3 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:05:42,634 - train_v2_5 - ERROR - Error training ensemble: operands could not be broadcast together with shapes (266,4) (266,3) (266,4) 
+2026-02-28 02:05:42,634 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:05:42,634 - train_v2_5 - INFO - Best Accuracy: 96.24%
+2026-02-28 02:05:42,634 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:05:42,634 - train_v2_5 - INFO - Training for Horizon: 15d, Threshold: 1.0%
+2026-02-28 02:05:42,634 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:05:42,864 - train_v2_5 - INFO - Data prepared: 1327 samples, 64 features
+2026-02-28 02:05:42,865 - train_v2_5 - INFO - Class distribution: [ 153   42 1127    5]
+2026-02-28 02:05:42,865 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:05:42,893 - train_v2_5 - INFO - SMOTE applied: 1061 -> 3608 samples
+2026-02-28 02:05:42,893 - train_v2_5 - INFO - New class distribution: [902 902 902 902]
+2026-02-28 02:05:42,894 - train_v2_5 - INFO - Training LogisticRegression for horizon=15d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:05:43,850 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 15d | Threshold: 1.0% | Acc: 40.60% | F1: 51.23% | AUC: 0.768
+2026-02-28 02:05:43,851 - train_v2_5 - INFO - LogisticRegression: Accuracy=40.60%, F1=51.23%
+2026-02-28 02:05:43,855 - train_v2_5 - INFO - Training RandomForest for horizon=15d, threshold=1.0%
+2026-02-28 02:05:44,111 - train_v2_5 - INFO - Model: RandomForest | Horizon: 15d | Threshold: 1.0% | Acc: 78.20% | F1: 80.88% | AUC: 0.933
+2026-02-28 02:05:44,111 - train_v2_5 - INFO - RandomForest: Accuracy=78.20%, F1=80.88%
+2026-02-28 02:05:44,138 - train_v2_5 - INFO - Training GradientBoosting for horizon=15d, threshold=1.0%
+2026-02-28 02:05:50,956 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 15d | Threshold: 1.0% | Acc: 87.59% | F1: 87.79% | AUC: 0.926
+2026-02-28 02:05:50,956 - train_v2_5 - INFO - GradientBoosting: Accuracy=87.59%, F1=87.79%
+2026-02-28 02:05:50,964 - train_v2_5 - INFO - Training SVM for horizon=15d, threshold=1.0%
+2026-02-28 02:05:53,272 - train_v2_5 - INFO - Model: SVM | Horizon: 15d | Threshold: 1.0% | Acc: 18.80% | F1: 26.32% | AUC: 0.684
+2026-02-28 02:05:53,273 - train_v2_5 - INFO - SVM: Accuracy=18.80%, F1=26.32%
+2026-02-28 02:05:53,278 - train_v2_5 - INFO - Training NaiveBayes for horizon=15d, threshold=1.0%
+2026-02-28 02:05:53,287 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 15d | Threshold: 1.0% | Acc: 27.07% | F1: 35.21% | AUC: 0.692
+2026-02-28 02:05:53,287 - train_v2_5 - INFO - NaiveBayes: Accuracy=27.07%, F1=35.21%
+2026-02-28 02:05:53,294 - train_v2_5 - INFO - Training XGBoost for horizon=15d, threshold=1.0%
+2026-02-28 02:05:53,712 - train_v2_5 - INFO - Model: XGBoost | Horizon: 15d | Threshold: 1.0% | Acc: 90.60% | F1: 90.39% | AUC: 0.944
+2026-02-28 02:05:53,712 - train_v2_5 - INFO - XGBoost: Accuracy=90.60%, F1=90.39%
+2026-02-28 02:05:53,723 - train_v2_5 - INFO - Training CatBoost for horizon=15d, threshold=1.0%
+2026-02-28 02:05:54,158 - train_v2_5 - INFO - Model: CatBoost | Horizon: 15d | Threshold: 1.0% | Acc: 86.09% | F1: 87.03% | AUC: 0.941
+2026-02-28 02:05:54,159 - train_v2_5 - INFO - CatBoost: Accuracy=86.09%, F1=87.03%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:05,703 - train_v2_5 - INFO - Training Ensemble for horizon=15d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:17,438 - train_v2_5 - INFO - Ensemble: Accuracy=89.47%, F1=89.67%
+2026-02-28 02:06:17,509 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:06:17,509 - train_v2_5 - INFO - Best Accuracy: 90.60%
+2026-02-28 02:06:17,509 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:06:17,509 - train_v2_5 - INFO - Training for Horizon: 15d, Threshold: 1.5%
+2026-02-28 02:06:17,509 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:06:17,763 - train_v2_5 - INFO - Data prepared: 1327 samples, 64 features
+2026-02-28 02:06:17,763 - train_v2_5 - INFO - Class distribution: [230 177 756 164]
+2026-02-28 02:06:17,763 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:06:17,796 - train_v2_5 - INFO - SMOTE applied: 1061 -> 2412 samples
+2026-02-28 02:06:17,796 - train_v2_5 - INFO - New class distribution: [603 603 603 603]
+2026-02-28 02:06:17,797 - train_v2_5 - INFO - Training LogisticRegression for horizon=15d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:18,872 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 15d | Threshold: 1.5% | Acc: 40.23% | F1: 43.69% | AUC: 0.669
+2026-02-28 02:06:18,872 - train_v2_5 - INFO - LogisticRegression: Accuracy=40.23%, F1=43.69%
+2026-02-28 02:06:18,877 - train_v2_5 - INFO - Training RandomForest for horizon=15d, threshold=1.5%
+2026-02-28 02:06:19,223 - train_v2_5 - INFO - Model: RandomForest | Horizon: 15d | Threshold: 1.5% | Acc: 67.29% | F1: 68.51% | AUC: 0.870
+2026-02-28 02:06:19,223 - train_v2_5 - INFO - RandomForest: Accuracy=67.29%, F1=68.51%
+2026-02-28 02:06:19,250 - train_v2_5 - INFO - Training GradientBoosting for horizon=15d, threshold=1.5%
+2026-02-28 02:06:23,690 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 15d | Threshold: 1.5% | Acc: 82.33% | F1: 82.40% | AUC: 0.932
+2026-02-28 02:06:23,690 - train_v2_5 - INFO - GradientBoosting: Accuracy=82.33%, F1=82.40%
+2026-02-28 02:06:23,696 - train_v2_5 - INFO - Training SVM for horizon=15d, threshold=1.5%
+2026-02-28 02:06:24,726 - train_v2_5 - INFO - Model: SVM | Horizon: 15d | Threshold: 1.5% | Acc: 33.08% | F1: 30.95% | AUC: 0.683
+2026-02-28 02:06:24,726 - train_v2_5 - INFO - SVM: Accuracy=33.08%, F1=30.95%
+2026-02-28 02:06:24,734 - train_v2_5 - INFO - Training NaiveBayes for horizon=15d, threshold=1.5%
+2026-02-28 02:06:24,741 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 15d | Threshold: 1.5% | Acc: 38.72% | F1: 37.10% | AUC: 0.670
+2026-02-28 02:06:24,741 - train_v2_5 - INFO - NaiveBayes: Accuracy=38.72%, F1=37.10%
+2026-02-28 02:06:24,743 - train_v2_5 - INFO - Training XGBoost for horizon=15d, threshold=1.5%
+2026-02-28 02:06:25,174 - train_v2_5 - INFO - Model: XGBoost | Horizon: 15d | Threshold: 1.5% | Acc: 81.58% | F1: 81.58% | AUC: 0.933
+2026-02-28 02:06:25,174 - train_v2_5 - INFO - XGBoost: Accuracy=81.58%, F1=81.58%
+2026-02-28 02:06:25,186 - train_v2_5 - INFO - Training CatBoost for horizon=15d, threshold=1.5%
+2026-02-28 02:06:25,605 - train_v2_5 - INFO - Model: CatBoost | Horizon: 15d | Threshold: 1.5% | Acc: 74.81% | F1: 75.52% | AUC: 0.887
+2026-02-28 02:06:25,605 - train_v2_5 - INFO - CatBoost: Accuracy=74.81%, F1=75.52%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:32,161 - train_v2_5 - INFO - Training Ensemble for horizon=15d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:38,770 - train_v2_5 - INFO - Ensemble: Accuracy=79.70%, F1=80.09%
+2026-02-28 02:06:38,837 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 02:06:38,837 - train_v2_5 - INFO - Best Accuracy: 82.33%
+2026-02-28 02:06:38,837 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:06:38,837 - train_v2_5 - INFO - Training for Horizon: 15d, Threshold: 2.5%
+2026-02-28 02:06:38,837 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:06:39,073 - train_v2_5 - INFO - Data prepared: 1327 samples, 64 features
+2026-02-28 02:06:39,073 - train_v2_5 - INFO - Class distribution: [141 282 261 643]
+2026-02-28 02:06:39,073 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:06:39,095 - train_v2_5 - INFO - SMOTE applied: 1061 -> 2080 samples
+2026-02-28 02:06:39,095 - train_v2_5 - INFO - New class distribution: [520 520 520 520]
+2026-02-28 02:06:39,096 - train_v2_5 - INFO - Training LogisticRegression for horizon=15d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:39,674 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 15d | Threshold: 2.5% | Acc: 51.88% | F1: 50.53% | AUC: 0.718
+2026-02-28 02:06:39,675 - train_v2_5 - INFO - LogisticRegression: Accuracy=51.88%, F1=50.53%
+2026-02-28 02:06:39,677 - train_v2_5 - INFO - Training RandomForest for horizon=15d, threshold=2.5%
+2026-02-28 02:06:39,906 - train_v2_5 - INFO - Model: RandomForest | Horizon: 15d | Threshold: 2.5% | Acc: 76.32% | F1: 76.86% | AUC: 0.928
+2026-02-28 02:06:39,906 - train_v2_5 - INFO - RandomForest: Accuracy=76.32%, F1=76.86%
+2026-02-28 02:06:39,933 - train_v2_5 - INFO - Training GradientBoosting for horizon=15d, threshold=2.5%
+2026-02-28 02:06:43,409 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 15d | Threshold: 2.5% | Acc: 89.47% | F1: 89.33% | AUC: 0.981
+2026-02-28 02:06:43,409 - train_v2_5 - INFO - GradientBoosting: Accuracy=89.47%, F1=89.33%
+2026-02-28 02:06:43,416 - train_v2_5 - INFO - Training SVM for horizon=15d, threshold=2.5%
+2026-02-28 02:06:44,089 - train_v2_5 - INFO - Model: SVM | Horizon: 15d | Threshold: 2.5% | Acc: 42.86% | F1: 44.02% | AUC: 0.707
+2026-02-28 02:06:44,090 - train_v2_5 - INFO - SVM: Accuracy=42.86%, F1=44.02%
+2026-02-28 02:06:44,096 - train_v2_5 - INFO - Training NaiveBayes for horizon=15d, threshold=2.5%
+2026-02-28 02:06:44,103 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 15d | Threshold: 2.5% | Acc: 45.49% | F1: 47.71% | AUC: 0.707
+2026-02-28 02:06:44,103 - train_v2_5 - INFO - NaiveBayes: Accuracy=45.49%, F1=47.71%
+2026-02-28 02:06:44,107 - train_v2_5 - INFO - Training XGBoost for horizon=15d, threshold=2.5%
+2026-02-28 02:06:44,487 - train_v2_5 - INFO - Model: XGBoost | Horizon: 15d | Threshold: 2.5% | Acc: 91.73% | F1: 91.64% | AUC: 0.981
+2026-02-28 02:06:44,487 - train_v2_5 - INFO - XGBoost: Accuracy=91.73%, F1=91.64%
+2026-02-28 02:06:44,496 - train_v2_5 - INFO - Training CatBoost for horizon=15d, threshold=2.5%
+2026-02-28 02:06:44,872 - train_v2_5 - INFO - Model: CatBoost | Horizon: 15d | Threshold: 2.5% | Acc: 78.20% | F1: 78.48% | AUC: 0.941
+2026-02-28 02:06:44,873 - train_v2_5 - INFO - CatBoost: Accuracy=78.20%, F1=78.48%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:50,259 - train_v2_5 - INFO - Training Ensemble for horizon=15d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:55,878 - train_v2_5 - INFO - Ensemble: Accuracy=86.09%, F1=86.04%
+2026-02-28 02:06:55,942 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:06:55,943 - train_v2_5 - INFO - Best Accuracy: 91.73%
+2026-02-28 02:06:55,943 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:06:55,943 - train_v2_5 - INFO - Training for Horizon: 15d, Threshold: 5.0%
+2026-02-28 02:06:55,943 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:06:56,181 - train_v2_5 - INFO - Data prepared: 1327 samples, 64 features
+2026-02-28 02:06:56,182 - train_v2_5 - INFO - Class distribution: [  32   17   30 1248]
+2026-02-28 02:06:56,182 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:06:56,211 - train_v2_5 - INFO - SMOTE applied: 1061 -> 3988 samples
+2026-02-28 02:06:56,212 - train_v2_5 - INFO - New class distribution: [997 997 997 997]
+2026-02-28 02:06:56,212 - train_v2_5 - INFO - Training LogisticRegression for horizon=15d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:06:57,109 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 15d | Threshold: 5.0% | Acc: 72.56% | F1: 80.56% | AUC: 0.893
+2026-02-28 02:06:57,109 - train_v2_5 - INFO - LogisticRegression: Accuracy=72.56%, F1=80.56%
+2026-02-28 02:06:57,113 - train_v2_5 - INFO - Training RandomForest for horizon=15d, threshold=5.0%
+2026-02-28 02:06:57,352 - train_v2_5 - INFO - Model: RandomForest | Horizon: 15d | Threshold: 5.0% | Acc: 96.99% | F1: 97.34% | AUC: 0.992
+2026-02-28 02:06:57,352 - train_v2_5 - INFO - RandomForest: Accuracy=96.99%, F1=97.34%
+2026-02-28 02:06:57,374 - train_v2_5 - INFO - Training GradientBoosting for horizon=15d, threshold=5.0%
+2026-02-28 02:07:05,026 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 15d | Threshold: 5.0% | Acc: 97.74% | F1: 97.71% | AUC: 0.993
+2026-02-28 02:07:05,026 - train_v2_5 - INFO - GradientBoosting: Accuracy=97.74%, F1=97.71%
+2026-02-28 02:07:05,036 - train_v2_5 - INFO - Training SVM for horizon=15d, threshold=5.0%
+2026-02-28 02:07:06,608 - train_v2_5 - INFO - Model: SVM | Horizon: 15d | Threshold: 5.0% | Acc: 46.24% | F1: 58.55% | AUC: 0.716
+2026-02-28 02:07:06,608 - train_v2_5 - INFO - SVM: Accuracy=46.24%, F1=58.55%
+2026-02-28 02:07:06,614 - train_v2_5 - INFO - Training NaiveBayes for horizon=15d, threshold=5.0%
+2026-02-28 02:07:06,622 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 15d | Threshold: 5.0% | Acc: 22.93% | F1: 32.90% | AUC: 0.727
+2026-02-28 02:07:06,622 - train_v2_5 - INFO - NaiveBayes: Accuracy=22.93%, F1=32.90%
+2026-02-28 02:07:06,626 - train_v2_5 - INFO - Training XGBoost for horizon=15d, threshold=5.0%
+2026-02-28 02:07:07,098 - train_v2_5 - INFO - Model: XGBoost | Horizon: 15d | Threshold: 5.0% | Acc: 97.37% | F1: 97.39% | AUC: 0.998
+2026-02-28 02:07:07,098 - train_v2_5 - INFO - XGBoost: Accuracy=97.37%, F1=97.39%
+2026-02-28 02:07:07,109 - train_v2_5 - INFO - Training CatBoost for horizon=15d, threshold=5.0%
+2026-02-28 02:07:07,576 - train_v2_5 - INFO - Model: CatBoost | Horizon: 15d | Threshold: 5.0% | Acc: 96.62% | F1: 97.12% | AUC: 0.993
+2026-02-28 02:07:07,576 - train_v2_5 - INFO - CatBoost: Accuracy=96.62%, F1=97.12%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:07:18,231 - train_v2_5 - INFO - Training Ensemble for horizon=15d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:07:29,440 - train_v2_5 - INFO - Ensemble: Accuracy=98.12%, F1=98.29%
+2026-02-28 02:07:29,506 - train_v2_5 - INFO - 
+Best Model: Ensemble
+2026-02-28 02:07:29,506 - train_v2_5 - INFO - Best Accuracy: 98.12%
+2026-02-28 02:07:29,506 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:07:29,506 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 0.75%
+2026-02-28 02:07:29,507 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:07:29,743 - train_v2_5 - INFO - Data prepared: 1322 samples, 64 features
+2026-02-28 02:07:29,743 - train_v2_5 - INFO - Class distribution: [  38    0 1284]
+2026-02-28 02:07:29,743 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:07:29,755 - train_v2_5 - INFO - SMOTE applied: 1057 -> 2058 samples
+2026-02-28 02:07:29,755 - train_v2_5 - INFO - New class distribution: [1029    0 1029]
+2026-02-28 02:07:29,756 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=0.75%
+2026-02-28 02:07:29,893 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 20d | Threshold: 0.75% | Acc: 81.89% | F1: 87.21% | AUC: 0.000
+2026-02-28 02:07:29,893 - train_v2_5 - INFO - LogisticRegression: Accuracy=81.89%, F1=87.21%
+2026-02-28 02:07:29,900 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=0.75%
+2026-02-28 02:07:30,100 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 0.75% | Acc: 97.74% | F1: 97.61% | AUC: 0.000
+2026-02-28 02:07:30,100 - train_v2_5 - INFO - RandomForest: Accuracy=97.74%, F1=97.61%
+2026-02-28 02:07:30,123 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=0.75%
+2026-02-28 02:07:30,942 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 20d | Threshold: 0.75% | Acc: 98.11% | F1: 97.95% | AUC: 0.000
+2026-02-28 02:07:30,943 - train_v2_5 - INFO - GradientBoosting: Accuracy=98.11%, F1=97.95%
+2026-02-28 02:07:30,947 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=0.75%
+2026-02-28 02:07:31,412 - train_v2_5 - INFO - Model: SVM | Horizon: 20d | Threshold: 0.75% | Acc: 47.92% | F1: 61.30% | AUC: 0.000
+2026-02-28 02:07:31,412 - train_v2_5 - INFO - SVM: Accuracy=47.92%, F1=61.30%
+2026-02-28 02:07:31,417 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=0.75%
+2026-02-28 02:07:31,424 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 20d | Threshold: 0.75% | Acc: 52.08% | F1: 65.19% | AUC: 0.000
+2026-02-28 02:07:31,424 - train_v2_5 - INFO - NaiveBayes: Accuracy=52.08%, F1=65.19%
+2026-02-28 02:07:31,426 - train_v2_5 - INFO - Training XGBoost for horizon=20d, threshold=0.75%
+2026-02-28 02:07:31,427 - train_v2_5 - ERROR - Error training XGBoost: Invalid classes inferred from unique values of `y`.  Expected: [0 1], got [0 2]
+2026-02-28 02:07:31,427 - train_v2_5 - INFO - Training CatBoost for horizon=20d, threshold=0.75%
+Found only 2 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:07:31,666 - train_v2_5 - INFO - Model: CatBoost | Horizon: 20d | Threshold: 0.75% | Acc: 98.49% | F1: 98.31% | AUC: 0.000
+2026-02-28 02:07:31,666 - train_v2_5 - INFO - CatBoost: Accuracy=98.49%, F1=98.31%
+2026-02-28 02:07:33,327 - train_v2_5 - ERROR - Error training ensemble: Invalid classes inferred from unique values of `y`.  Expected: [0 1], got [0 2]
+2026-02-28 02:07:33,327 - train_v2_5 - INFO - 
+Best Model: CatBoost
+2026-02-28 02:07:33,327 - train_v2_5 - INFO - Best Accuracy: 98.49%
+2026-02-28 02:07:33,328 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:07:33,328 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 1.0%
+2026-02-28 02:07:33,328 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:07:33,460 - train_v2_5 - INFO - Data prepared: 1322 samples, 64 features
+2026-02-28 02:07:33,460 - train_v2_5 - INFO - Class distribution: [  84   10 1228]
+2026-02-28 02:07:33,460 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:07:33,480 - train_v2_5 - INFO - SMOTE applied: 1057 -> 2952 samples
+2026-02-28 02:07:33,480 - train_v2_5 - INFO - New class distribution: [984 984 984]
+2026-02-28 02:07:33,481 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:07:34,515 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 20d | Threshold: 1.0% | Acc: 56.98% | F1: 66.56% | AUC: 0.760
+2026-02-28 02:07:34,515 - train_v2_5 - INFO - LogisticRegression: Accuracy=56.98%, F1=66.56%
+2026-02-28 02:07:34,518 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=1.0%
+2026-02-28 02:07:34,742 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 1.0% | Acc: 92.45% | F1: 92.93% | AUC: 0.973
+2026-02-28 02:07:34,742 - train_v2_5 - INFO - RandomForest: Accuracy=92.45%, F1=92.93%
+2026-02-28 02:07:34,763 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=1.0%
+2026-02-28 02:07:38,292 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 20d | Threshold: 1.0% | Acc: 95.85% | F1: 95.00% | AUC: 0.964
+2026-02-28 02:07:38,292 - train_v2_5 - INFO - GradientBoosting: Accuracy=95.85%, F1=95.00%
+2026-02-28 02:07:38,299 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=1.0%
+2026-02-28 02:07:39,274 - train_v2_5 - INFO - Model: SVM | Horizon: 20d | Threshold: 1.0% | Acc: 29.81% | F1: 38.06% | AUC: 0.775
+2026-02-28 02:07:39,274 - train_v2_5 - INFO - SVM: Accuracy=29.81%, F1=38.06%
+2026-02-28 02:07:39,278 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=1.0%
+2026-02-28 02:07:39,285 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 20d | Threshold: 1.0% | Acc: 29.81% | F1: 38.40% | AUC: 0.730
+2026-02-28 02:07:39,285 - train_v2_5 - INFO - NaiveBayes: Accuracy=29.81%, F1=38.40%
+2026-02-28 02:07:39,289 - train_v2_5 - INFO - Training XGBoost for horizon=20d, threshold=1.0%
+2026-02-28 02:07:39,648 - train_v2_5 - INFO - Model: XGBoost | Horizon: 20d | Threshold: 1.0% | Acc: 96.98% | F1: 96.80% | AUC: 0.982
+2026-02-28 02:07:39,648 - train_v2_5 - INFO - XGBoost: Accuracy=96.98%, F1=96.80%
+2026-02-28 02:07:39,658 - train_v2_5 - INFO - Training CatBoost for horizon=20d, threshold=1.0%
+Found only 3 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:07:40,165 - train_v2_5 - INFO - Model: CatBoost | Horizon: 20d | Threshold: 1.0% | Acc: 96.23% | F1: 96.25% | AUC: 0.000
+2026-02-28 02:07:40,165 - train_v2_5 - INFO - CatBoost: Accuracy=96.23%, F1=96.25%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+Found only 3 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:07:46,933 - train_v2_5 - INFO - Training Ensemble for horizon=20d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+Found only 3 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:07:53,039 - train_v2_5 - ERROR - Error training ensemble: operands could not be broadcast together with shapes (265,4) (265,3) (265,4) 
+2026-02-28 02:07:53,040 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:07:53,040 - train_v2_5 - INFO - Best Accuracy: 96.98%
+2026-02-28 02:07:53,040 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:07:53,040 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 1.5%
+2026-02-28 02:07:53,040 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:07:53,258 - train_v2_5 - INFO - Data prepared: 1322 samples, 64 features
+2026-02-28 02:07:53,258 - train_v2_5 - INFO - Class distribution: [195 129 906  92]
+2026-02-28 02:07:53,258 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:07:53,283 - train_v2_5 - INFO - SMOTE applied: 1057 -> 2900 samples
+2026-02-28 02:07:53,284 - train_v2_5 - INFO - New class distribution: [725 725 725 725]
+2026-02-28 02:07:53,285 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:07:54,106 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 20d | Threshold: 1.5% | Acc: 44.91% | F1: 48.64% | AUC: 0.717
+2026-02-28 02:07:54,106 - train_v2_5 - INFO - LogisticRegression: Accuracy=44.91%, F1=48.64%
+2026-02-28 02:07:54,109 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=1.5%
+2026-02-28 02:07:54,345 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 1.5% | Acc: 72.83% | F1: 73.58% | AUC: 0.923
+2026-02-28 02:07:54,346 - train_v2_5 - INFO - RandomForest: Accuracy=72.83%, F1=73.58%
+2026-02-28 02:07:54,373 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=1.5%
+2026-02-28 02:07:59,211 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 20d | Threshold: 1.5% | Acc: 87.17% | F1: 87.27% | AUC: 0.961
+2026-02-28 02:07:59,211 - train_v2_5 - INFO - GradientBoosting: Accuracy=87.17%, F1=87.27%
+2026-02-28 02:07:59,218 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=1.5%
+2026-02-28 02:08:00,901 - train_v2_5 - INFO - Model: SVM | Horizon: 20d | Threshold: 1.5% | Acc: 33.21% | F1: 34.18% | AUC: 0.689
+2026-02-28 02:08:00,901 - train_v2_5 - INFO - SVM: Accuracy=33.21%, F1=34.18%
+2026-02-28 02:08:00,908 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=1.5%
+2026-02-28 02:08:00,917 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 20d | Threshold: 1.5% | Acc: 35.47% | F1: 36.65% | AUC: 0.678
+2026-02-28 02:08:00,917 - train_v2_5 - INFO - NaiveBayes: Accuracy=35.47%, F1=36.65%
+2026-02-28 02:08:00,920 - train_v2_5 - INFO - Training XGBoost for horizon=20d, threshold=1.5%
+2026-02-28 02:08:01,432 - train_v2_5 - INFO - Model: XGBoost | Horizon: 20d | Threshold: 1.5% | Acc: 88.68% | F1: 88.64% | AUC: 0.968
+2026-02-28 02:08:01,433 - train_v2_5 - INFO - XGBoost: Accuracy=88.68%, F1=88.64%
+2026-02-28 02:08:01,446 - train_v2_5 - INFO - Training CatBoost for horizon=20d, threshold=1.5%
+2026-02-28 02:08:01,885 - train_v2_5 - INFO - Model: CatBoost | Horizon: 20d | Threshold: 1.5% | Acc: 78.49% | F1: 79.13% | AUC: 0.933
+2026-02-28 02:08:01,886 - train_v2_5 - INFO - CatBoost: Accuracy=78.49%, F1=79.13%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:08:10,713 - train_v2_5 - INFO - Training Ensemble for horizon=20d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:08:18,481 - train_v2_5 - INFO - Ensemble: Accuracy=82.64%, F1=82.93%
+2026-02-28 02:08:18,548 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:08:18,549 - train_v2_5 - INFO - Best Accuracy: 88.68%
+2026-02-28 02:08:18,549 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:08:18,549 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 2.5%
+2026-02-28 02:08:18,549 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:08:18,791 - train_v2_5 - INFO - Data prepared: 1322 samples, 64 features
+2026-02-28 02:08:18,792 - train_v2_5 - INFO - Class distribution: [144 326 313 539]
+2026-02-28 02:08:18,792 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:08:18,829 - train_v2_5 - INFO - SMOTE applied: 1057 -> 1744 samples
+2026-02-28 02:08:18,829 - train_v2_5 - INFO - New class distribution: [436 436 436 436]
+2026-02-28 02:08:18,830 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:08:19,410 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 20d | Threshold: 2.5% | Acc: 48.68% | F1: 48.88% | AUC: 0.758
+2026-02-28 02:08:19,410 - train_v2_5 - INFO - LogisticRegression: Accuracy=48.68%, F1=48.88%
+2026-02-28 02:08:19,412 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=2.5%
+2026-02-28 02:08:19,628 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 2.5% | Acc: 79.25% | F1: 79.62% | AUC: 0.951
+2026-02-28 02:08:19,629 - train_v2_5 - INFO - RandomForest: Accuracy=79.25%, F1=79.62%
+2026-02-28 02:08:19,646 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=2.5%
+2026-02-28 02:08:22,394 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 20d | Threshold: 2.5% | Acc: 92.45% | F1: 92.48% | AUC: 0.987
+2026-02-28 02:08:22,394 - train_v2_5 - INFO - GradientBoosting: Accuracy=92.45%, F1=92.48%
+2026-02-28 02:08:22,400 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=2.5%
+2026-02-28 02:08:23,012 - train_v2_5 - INFO - Model: SVM | Horizon: 20d | Threshold: 2.5% | Acc: 40.75% | F1: 41.85% | AUC: 0.682
+2026-02-28 02:08:23,012 - train_v2_5 - INFO - SVM: Accuracy=40.75%, F1=41.85%
+2026-02-28 02:08:23,016 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=2.5%
+2026-02-28 02:08:23,025 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 20d | Threshold: 2.5% | Acc: 45.66% | F1: 46.96% | AUC: 0.700
+2026-02-28 02:08:23,025 - train_v2_5 - INFO - NaiveBayes: Accuracy=45.66%, F1=46.96%
+2026-02-28 02:08:23,028 - train_v2_5 - INFO - Training XGBoost for horizon=20d, threshold=2.5%
+2026-02-28 02:08:23,585 - train_v2_5 - INFO - Model: XGBoost | Horizon: 20d | Threshold: 2.5% | Acc: 92.83% | F1: 92.83% | AUC: 0.993
+2026-02-28 02:08:23,585 - train_v2_5 - INFO - XGBoost: Accuracy=92.83%, F1=92.83%
+2026-02-28 02:08:23,594 - train_v2_5 - INFO - Training CatBoost for horizon=20d, threshold=2.5%
+2026-02-28 02:08:24,005 - train_v2_5 - INFO - Model: CatBoost | Horizon: 20d | Threshold: 2.5% | Acc: 80.38% | F1: 80.54% | AUC: 0.950
+2026-02-28 02:08:24,005 - train_v2_5 - INFO - CatBoost: Accuracy=80.38%, F1=80.54%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:08:29,390 - train_v2_5 - INFO - Training Ensemble for horizon=20d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:08:34,093 - train_v2_5 - INFO - Ensemble: Accuracy=89.06%, F1=89.16%
+2026-02-28 02:08:34,158 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:08:34,159 - train_v2_5 - INFO - Best Accuracy: 92.83%
+2026-02-28 02:08:34,159 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:08:34,159 - train_v2_5 - INFO - Training for Horizon: 20d, Threshold: 5.0%
+2026-02-28 02:08:34,159 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:08:34,384 - train_v2_5 - INFO - Data prepared: 1322 samples, 64 features
+2026-02-28 02:08:34,384 - train_v2_5 - INFO - Class distribution: [  42   22   40 1218]
+2026-02-28 02:08:34,384 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:08:34,407 - train_v2_5 - INFO - SMOTE applied: 1057 -> 3908 samples
+2026-02-28 02:08:34,407 - train_v2_5 - INFO - New class distribution: [977 977 977 977]
+2026-02-28 02:08:34,409 - train_v2_5 - INFO - Training LogisticRegression for horizon=20d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:08:35,288 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 20d | Threshold: 5.0% | Acc: 42.26% | F1: 55.38% | AUC: 0.722
+2026-02-28 02:08:35,288 - train_v2_5 - INFO - LogisticRegression: Accuracy=42.26%, F1=55.38%
+2026-02-28 02:08:35,291 - train_v2_5 - INFO - Training RandomForest for horizon=20d, threshold=5.0%
+2026-02-28 02:08:35,529 - train_v2_5 - INFO - Model: RandomForest | Horizon: 20d | Threshold: 5.0% | Acc: 98.11% | F1: 97.85% | AUC: 0.985
+2026-02-28 02:08:35,529 - train_v2_5 - INFO - RandomForest: Accuracy=98.11%, F1=97.85%
+2026-02-28 02:08:35,550 - train_v2_5 - INFO - Training GradientBoosting for horizon=20d, threshold=5.0%
+2026-02-28 02:08:41,943 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 20d | Threshold: 5.0% | Acc: 97.36% | F1: 96.96% | AUC: 0.993
+2026-02-28 02:08:41,943 - train_v2_5 - INFO - GradientBoosting: Accuracy=97.36%, F1=96.96%
+2026-02-28 02:08:41,951 - train_v2_5 - INFO - Training SVM for horizon=20d, threshold=5.0%
+2026-02-28 02:08:43,388 - train_v2_5 - INFO - Model: SVM | Horizon: 20d | Threshold: 5.0% | Acc: 43.40% | F1: 54.14% | AUC: 0.746
+2026-02-28 02:08:43,388 - train_v2_5 - INFO - SVM: Accuracy=43.40%, F1=54.14%
+2026-02-28 02:08:43,392 - train_v2_5 - INFO - Training NaiveBayes for horizon=20d, threshold=5.0%
+2026-02-28 02:08:43,400 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 20d | Threshold: 5.0% | Acc: 31.32% | F1: 40.71% | AUC: 0.733
+2026-02-28 02:08:43,400 - train_v2_5 - INFO - NaiveBayes: Accuracy=31.32%, F1=40.71%
+2026-02-28 02:08:43,403 - train_v2_5 - INFO - Training XGBoost for horizon=20d, threshold=5.0%
+2026-02-28 02:08:43,785 - train_v2_5 - INFO - Model: XGBoost | Horizon: 20d | Threshold: 5.0% | Acc: 98.49% | F1: 98.40% | AUC: 0.998
+2026-02-28 02:08:43,786 - train_v2_5 - INFO - XGBoost: Accuracy=98.49%, F1=98.40%
+2026-02-28 02:08:43,794 - train_v2_5 - INFO - Training CatBoost for horizon=20d, threshold=5.0%
+2026-02-28 02:08:44,265 - train_v2_5 - INFO - Model: CatBoost | Horizon: 20d | Threshold: 5.0% | Acc: 97.36% | F1: 97.53% | AUC: 0.994
+2026-02-28 02:08:44,265 - train_v2_5 - INFO - CatBoost: Accuracy=97.36%, F1=97.53%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:08:53,637 - train_v2_5 - INFO - Training Ensemble for horizon=20d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:04,064 - train_v2_5 - INFO - Ensemble: Accuracy=98.49%, F1=98.40%
+2026-02-28 02:09:04,127 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:09:04,127 - train_v2_5 - INFO - Best Accuracy: 98.49%
+2026-02-28 02:09:04,127 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:09:04,127 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 0.75%
+2026-02-28 02:09:04,127 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:09:04,365 - train_v2_5 - INFO - Data prepared: 1312 samples, 64 features
+2026-02-28 02:09:04,365 - train_v2_5 - INFO - Class distribution: [  14    0 1298]
+2026-02-28 02:09:04,365 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:09:04,377 - train_v2_5 - INFO - SMOTE applied: 1049 -> 2078 samples
+2026-02-28 02:09:04,377 - train_v2_5 - INFO - New class distribution: [1039    0 1039]
+2026-02-28 02:09:04,378 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=0.75%
+2026-02-28 02:09:04,553 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 30d | Threshold: 0.75% | Acc: 96.58% | F1: 97.22% | AUC: 0.000
+2026-02-28 02:09:04,554 - train_v2_5 - INFO - LogisticRegression: Accuracy=96.58%, F1=97.22%
+2026-02-28 02:09:04,558 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=0.75%
+2026-02-28 02:09:04,794 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 0.75% | Acc: 99.62% | F1: 99.59% | AUC: 0.000
+2026-02-28 02:09:04,795 - train_v2_5 - INFO - RandomForest: Accuracy=99.62%, F1=99.59%
+2026-02-28 02:09:04,818 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=0.75%
+2026-02-28 02:09:05,766 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 30d | Threshold: 0.75% | Acc: 100.00% | F1: 100.00% | AUC: 0.000
+2026-02-28 02:09:05,766 - train_v2_5 - INFO - GradientBoosting: Accuracy=100.00%, F1=100.00%
+2026-02-28 02:09:05,771 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=0.75%
+2026-02-28 02:09:06,223 - train_v2_5 - INFO - Model: SVM | Horizon: 30d | Threshold: 0.75% | Acc: 68.06% | F1: 79.55% | AUC: 0.000
+2026-02-28 02:09:06,223 - train_v2_5 - INFO - SVM: Accuracy=68.06%, F1=79.55%
+2026-02-28 02:09:06,226 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=0.75%
+2026-02-28 02:09:06,232 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 30d | Threshold: 0.75% | Acc: 96.96% | F1: 97.69% | AUC: 0.000
+2026-02-28 02:09:06,232 - train_v2_5 - INFO - NaiveBayes: Accuracy=96.96%, F1=97.69%
+2026-02-28 02:09:06,238 - train_v2_5 - INFO - Training XGBoost for horizon=30d, threshold=0.75%
+2026-02-28 02:09:06,239 - train_v2_5 - ERROR - Error training XGBoost: Invalid classes inferred from unique values of `y`.  Expected: [0 1], got [0 2]
+2026-02-28 02:09:06,239 - train_v2_5 - INFO - Training CatBoost for horizon=30d, threshold=0.75%
+Found only 2 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:09:06,513 - train_v2_5 - INFO - Model: CatBoost | Horizon: 30d | Threshold: 0.75% | Acc: 100.00% | F1: 100.00% | AUC: 0.000
+2026-02-28 02:09:06,513 - train_v2_5 - INFO - CatBoost: Accuracy=100.00%, F1=100.00%
+2026-02-28 02:09:08,104 - train_v2_5 - ERROR - Error training ensemble: Invalid classes inferred from unique values of `y`.  Expected: [0 1], got [0 2]
+2026-02-28 02:09:08,104 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 02:09:08,104 - train_v2_5 - INFO - Best Accuracy: 100.00%
+2026-02-28 02:09:08,104 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:09:08,104 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 1.0%
+2026-02-28 02:09:08,104 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:09:08,266 - train_v2_5 - INFO - Data prepared: 1312 samples, 64 features
+2026-02-28 02:09:08,267 - train_v2_5 - INFO - Class distribution: [  32    0 1280]
+2026-02-28 02:09:08,267 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:09:08,280 - train_v2_5 - INFO - SMOTE applied: 1049 -> 2044 samples
+2026-02-28 02:09:08,280 - train_v2_5 - INFO - New class distribution: [1022    0 1022]
+2026-02-28 02:09:08,280 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=1.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:08,579 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 30d | Threshold: 1.0% | Acc: 90.11% | F1: 93.29% | AUC: 0.000
+2026-02-28 02:09:08,579 - train_v2_5 - INFO - LogisticRegression: Accuracy=90.11%, F1=93.29%
+2026-02-28 02:09:08,581 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=1.0%
+2026-02-28 02:09:08,782 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 1.0% | Acc: 99.62% | F1: 99.64% | AUC: 0.000
+2026-02-28 02:09:08,782 - train_v2_5 - INFO - RandomForest: Accuracy=99.62%, F1=99.64%
+2026-02-28 02:09:08,803 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=1.0%
+2026-02-28 02:09:09,627 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 30d | Threshold: 1.0% | Acc: 99.24% | F1: 99.30% | AUC: 0.000
+2026-02-28 02:09:09,628 - train_v2_5 - INFO - GradientBoosting: Accuracy=99.24%, F1=99.30%
+2026-02-28 02:09:09,631 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=1.0%
+2026-02-28 02:09:10,030 - train_v2_5 - INFO - Model: SVM | Horizon: 30d | Threshold: 1.0% | Acc: 51.33% | F1: 65.87% | AUC: 0.000
+2026-02-28 02:09:10,031 - train_v2_5 - INFO - SVM: Accuracy=51.33%, F1=65.87%
+2026-02-28 02:09:10,034 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=1.0%
+2026-02-28 02:09:10,039 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 30d | Threshold: 1.0% | Acc: 69.96% | F1: 80.62% | AUC: 0.000
+2026-02-28 02:09:10,039 - train_v2_5 - INFO - NaiveBayes: Accuracy=69.96%, F1=80.62%
+2026-02-28 02:09:10,043 - train_v2_5 - INFO - Training XGBoost for horizon=30d, threshold=1.0%
+2026-02-28 02:09:10,044 - train_v2_5 - ERROR - Error training XGBoost: Invalid classes inferred from unique values of `y`.  Expected: [0 1], got [0 2]
+2026-02-28 02:09:10,044 - train_v2_5 - INFO - Training CatBoost for horizon=30d, threshold=1.0%
+Found only 2 unique classes in the data, but have defined 4 classes. Probably something is wrong with data.
+2026-02-28 02:09:10,257 - train_v2_5 - INFO - Model: CatBoost | Horizon: 30d | Threshold: 1.0% | Acc: 99.62% | F1: 99.64% | AUC: 0.000
+2026-02-28 02:09:10,257 - train_v2_5 - INFO - CatBoost: Accuracy=99.62%, F1=99.64%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:11,950 - train_v2_5 - ERROR - Error training ensemble: Invalid classes inferred from unique values of `y`.  Expected: [0 1], got [0 2]
+2026-02-28 02:09:11,950 - train_v2_5 - INFO - 
+Best Model: RandomForest
+2026-02-28 02:09:11,950 - train_v2_5 - INFO - Best Accuracy: 99.62%
+2026-02-28 02:09:11,950 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:09:11,951 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 1.5%
+2026-02-28 02:09:11,951 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:09:12,132 - train_v2_5 - INFO - Data prepared: 1312 samples, 64 features
+2026-02-28 02:09:12,132 - train_v2_5 - INFO - Class distribution: [ 133   73 1076   30]
+2026-02-28 02:09:12,132 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:09:12,158 - train_v2_5 - INFO - SMOTE applied: 1049 -> 3412 samples
+2026-02-28 02:09:12,158 - train_v2_5 - INFO - New class distribution: [853 853 853 853]
+2026-02-28 02:09:12,158 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:13,281 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 30d | Threshold: 1.5% | Acc: 51.33% | F1: 60.32% | AUC: 0.765
+2026-02-28 02:09:13,281 - train_v2_5 - INFO - LogisticRegression: Accuracy=51.33%, F1=60.32%
+2026-02-28 02:09:13,290 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=1.5%
+2026-02-28 02:09:13,603 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 1.5% | Acc: 86.69% | F1: 88.43% | AUC: 0.951
+2026-02-28 02:09:13,604 - train_v2_5 - INFO - RandomForest: Accuracy=86.69%, F1=88.43%
+2026-02-28 02:09:13,634 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=1.5%
+2026-02-28 02:09:19,769 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 30d | Threshold: 1.5% | Acc: 96.58% | F1: 96.69% | AUC: 0.976
+2026-02-28 02:09:19,769 - train_v2_5 - INFO - GradientBoosting: Accuracy=96.58%, F1=96.69%
+2026-02-28 02:09:19,776 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=1.5%
+2026-02-28 02:09:21,689 - train_v2_5 - INFO - Model: SVM | Horizon: 30d | Threshold: 1.5% | Acc: 15.21% | F1: 12.82% | AUC: 0.751
+2026-02-28 02:09:21,689 - train_v2_5 - INFO - SVM: Accuracy=15.21%, F1=12.82%
+2026-02-28 02:09:21,694 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=1.5%
+2026-02-28 02:09:21,707 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 30d | Threshold: 1.5% | Acc: 12.17% | F1: 9.84% | AUC: 0.647
+2026-02-28 02:09:21,707 - train_v2_5 - INFO - NaiveBayes: Accuracy=12.17%, F1=9.84%
+2026-02-28 02:09:21,711 - train_v2_5 - INFO - Training XGBoost for horizon=30d, threshold=1.5%
+2026-02-28 02:09:22,296 - train_v2_5 - INFO - Model: XGBoost | Horizon: 30d | Threshold: 1.5% | Acc: 96.58% | F1: 96.74% | AUC: 0.984
+2026-02-28 02:09:22,296 - train_v2_5 - INFO - XGBoost: Accuracy=96.58%, F1=96.74%
+2026-02-28 02:09:22,442 - train_v2_5 - INFO - Training CatBoost for horizon=30d, threshold=1.5%
+2026-02-28 02:09:22,917 - train_v2_5 - INFO - Model: CatBoost | Horizon: 30d | Threshold: 1.5% | Acc: 90.87% | F1: 91.70% | AUC: 0.974
+2026-02-28 02:09:22,917 - train_v2_5 - INFO - CatBoost: Accuracy=90.87%, F1=91.70%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:33,012 - train_v2_5 - INFO - Training Ensemble for horizon=30d, threshold=1.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:42,948 - train_v2_5 - INFO - Ensemble: Accuracy=95.06%, F1=95.27%
+2026-02-28 02:09:43,011 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 02:09:43,011 - train_v2_5 - INFO - Best Accuracy: 96.58%
+2026-02-28 02:09:43,011 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:09:43,011 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 2.5%
+2026-02-28 02:09:43,012 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:09:43,243 - train_v2_5 - INFO - Data prepared: 1312 samples, 64 features
+2026-02-28 02:09:43,243 - train_v2_5 - INFO - Class distribution: [148 366 406 392]
+2026-02-28 02:09:43,243 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:09:43,279 - train_v2_5 - INFO - SMOTE applied: 1049 -> 1276 samples
+2026-02-28 02:09:43,279 - train_v2_5 - INFO - New class distribution: [319 319 319 319]
+2026-02-28 02:09:43,279 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:43,739 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 30d | Threshold: 2.5% | Acc: 48.67% | F1: 47.58% | AUC: 0.728
+2026-02-28 02:09:43,739 - train_v2_5 - INFO - LogisticRegression: Accuracy=48.67%, F1=47.58%
+2026-02-28 02:09:43,742 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=2.5%
+2026-02-28 02:09:43,933 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 2.5% | Acc: 80.61% | F1: 80.66% | AUC: 0.965
+2026-02-28 02:09:43,934 - train_v2_5 - INFO - RandomForest: Accuracy=80.61%, F1=80.66%
+2026-02-28 02:09:43,952 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=2.5%
+2026-02-28 02:09:45,927 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 30d | Threshold: 2.5% | Acc: 96.20% | F1: 96.20% | AUC: 0.996
+2026-02-28 02:09:45,927 - train_v2_5 - INFO - GradientBoosting: Accuracy=96.20%, F1=96.20%
+2026-02-28 02:09:45,933 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=2.5%
+2026-02-28 02:09:46,234 - train_v2_5 - INFO - Model: SVM | Horizon: 30d | Threshold: 2.5% | Acc: 41.44% | F1: 42.44% | AUC: 0.681
+2026-02-28 02:09:46,234 - train_v2_5 - INFO - SVM: Accuracy=41.44%, F1=42.44%
+2026-02-28 02:09:46,238 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=2.5%
+2026-02-28 02:09:46,246 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 30d | Threshold: 2.5% | Acc: 43.73% | F1: 45.21% | AUC: 0.696
+2026-02-28 02:09:46,246 - train_v2_5 - INFO - NaiveBayes: Accuracy=43.73%, F1=45.21%
+2026-02-28 02:09:46,249 - train_v2_5 - INFO - Training XGBoost for horizon=30d, threshold=2.5%
+2026-02-28 02:09:46,557 - train_v2_5 - INFO - Model: XGBoost | Horizon: 30d | Threshold: 2.5% | Acc: 97.34% | F1: 97.33% | AUC: 0.997
+2026-02-28 02:09:46,557 - train_v2_5 - INFO - XGBoost: Accuracy=97.34%, F1=97.33%
+2026-02-28 02:09:46,566 - train_v2_5 - INFO - Training CatBoost for horizon=30d, threshold=2.5%
+2026-02-28 02:09:46,895 - train_v2_5 - INFO - Model: CatBoost | Horizon: 30d | Threshold: 2.5% | Acc: 82.51% | F1: 82.63% | AUC: 0.966
+2026-02-28 02:09:46,895 - train_v2_5 - INFO - CatBoost: Accuracy=82.51%, F1=82.63%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:50,391 - train_v2_5 - INFO - Training Ensemble for horizon=30d, threshold=2.5%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:55,188 - train_v2_5 - INFO - Ensemble: Accuracy=92.78%, F1=92.83%
+2026-02-28 02:09:55,254 - train_v2_5 - INFO - 
+Best Model: XGBoost
+2026-02-28 02:09:55,255 - train_v2_5 - INFO - Best Accuracy: 97.34%
+2026-02-28 02:09:55,255 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:09:55,255 - train_v2_5 - INFO - Training for Horizon: 30d, Threshold: 5.0%
+2026-02-28 02:09:55,255 - train_v2_5 - INFO - ============================================================
+Loaded qqq: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+Loaded spy: 1541 rows, date range: 2020-01-03 00:00:00 to 2026-02-20 00:00:00
+2026-02-28 02:09:55,495 - train_v2_5 - INFO - Data prepared: 1312 samples, 64 features
+2026-02-28 02:09:55,496 - train_v2_5 - INFO - Class distribution: [  62   32   60 1158]
+2026-02-28 02:09:55,496 - train_v2_5 - INFO - Class labels: ['UP', 'DOWN', 'UP_DOWN', 'SIDEWAYS']
+2026-02-28 02:09:55,520 - train_v2_5 - INFO - SMOTE applied: 1049 -> 3712 samples
+2026-02-28 02:09:55,520 - train_v2_5 - INFO - New class distribution: [928 928 928 928]
+2026-02-28 02:09:55,521 - train_v2_5 - INFO - Training LogisticRegression for horizon=30d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:09:56,382 - train_v2_5 - INFO - Model: LogisticRegression | Horizon: 30d | Threshold: 5.0% | Acc: 64.64% | F1: 73.08% | AUC: 0.826
+2026-02-28 02:09:56,382 - train_v2_5 - INFO - LogisticRegression: Accuracy=64.64%, F1=73.08%
+2026-02-28 02:09:56,385 - train_v2_5 - INFO - Training RandomForest for horizon=30d, threshold=5.0%
+2026-02-28 02:09:56,635 - train_v2_5 - INFO - Model: RandomForest | Horizon: 30d | Threshold: 5.0% | Acc: 97.72% | F1: 97.73% | AUC: 0.994
+2026-02-28 02:09:56,635 - train_v2_5 - INFO - RandomForest: Accuracy=97.72%, F1=97.73%
+2026-02-28 02:09:56,659 - train_v2_5 - INFO - Training GradientBoosting for horizon=30d, threshold=5.0%
+2026-02-28 02:10:03,185 - train_v2_5 - INFO - Model: GradientBoosting | Horizon: 30d | Threshold: 5.0% | Acc: 98.10% | F1: 98.09% | AUC: 0.988
+2026-02-28 02:10:03,185 - train_v2_5 - INFO - GradientBoosting: Accuracy=98.10%, F1=98.09%
+2026-02-28 02:10:03,199 - train_v2_5 - INFO - Training SVM for horizon=30d, threshold=5.0%
+2026-02-28 02:10:04,548 - train_v2_5 - INFO - Model: SVM | Horizon: 30d | Threshold: 5.0% | Acc: 40.68% | F1: 50.41% | AUC: 0.745
+2026-02-28 02:10:04,548 - train_v2_5 - INFO - SVM: Accuracy=40.68%, F1=50.41%
+2026-02-28 02:10:04,552 - train_v2_5 - INFO - Training NaiveBayes for horizon=30d, threshold=5.0%
+2026-02-28 02:10:04,564 - train_v2_5 - INFO - Model: NaiveBayes | Horizon: 30d | Threshold: 5.0% | Acc: 37.26% | F1: 46.18% | AUC: 0.725
+2026-02-28 02:10:04,565 - train_v2_5 - INFO - NaiveBayes: Accuracy=37.26%, F1=46.18%
+2026-02-28 02:10:04,569 - train_v2_5 - INFO - Training XGBoost for horizon=30d, threshold=5.0%
+2026-02-28 02:10:05,025 - train_v2_5 - INFO - Model: XGBoost | Horizon: 30d | Threshold: 5.0% | Acc: 98.10% | F1: 98.20% | AUC: 0.996
+2026-02-28 02:10:05,025 - train_v2_5 - INFO - XGBoost: Accuracy=98.10%, F1=98.20%
+2026-02-28 02:10:05,034 - train_v2_5 - INFO - Training CatBoost for horizon=30d, threshold=5.0%
+2026-02-28 02:10:05,678 - train_v2_5 - INFO - Model: CatBoost | Horizon: 30d | Threshold: 5.0% | Acc: 96.58% | F1: 96.82% | AUC: 0.993
+2026-02-28 02:10:05,678 - train_v2_5 - INFO - CatBoost: Accuracy=96.58%, F1=96.82%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:10:14,899 - train_v2_5 - INFO - Training Ensemble for horizon=30d, threshold=5.0%
+C:\Users\stone\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\linear_model\_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+2026-02-28 02:10:23,198 - train_v2_5 - INFO - Ensemble: Accuracy=98.10%, F1=98.20%
+2026-02-28 02:10:23,315 - train_v2_5 - INFO - 
+Best Model: GradientBoosting
+2026-02-28 02:10:23,315 - train_v2_5 - INFO - Best Accuracy: 98.10%
+2026-02-28 02:10:23,336 - train_v2_5 - INFO - Saved metrics for 207 models to C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\src\logs\training\metrics_20260228_021023.json
+2026-02-28 02:10:23,336 - train_v2_5 - INFO - 
+============================================================
+2026-02-28 02:10:23,336 - train_v2_5 - INFO - Training Complete - Summary
+2026-02-28 02:10:23,336 - train_v2_5 - INFO - ============================================================
+2026-02-28 02:10:23,336 - train_v2_5 - INFO - Horizon: 3d, Threshold: 0.75% | Best: GradientBoosting | Acc: 47.01%
+2026-02-28 02:10:23,336 - train_v2_5 - INFO - Horizon: 3d, Threshold: 1.0% | Best: GradientBoosting | Acc: 53.73%
+2026-02-28 02:10:23,336 - train_v2_5 - INFO - Horizon: 3d, Threshold: 1.5% | Best: XGBoost | Acc: 66.04%
+2026-02-28 02:10:23,336 - train_v2_5 - INFO - Horizon: 3d, Threshold: 2.5% | Best: XGBoost | Acc: 81.34%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 3d, Threshold: 5.0% | Best: GradientBoosting | Acc: 98.13%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 5d, Threshold: 0.75% | Best: XGBoost | Acc: 65.67%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 5d, Threshold: 1.0% | Best: XGBoost | Acc: 61.19%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 5d, Threshold: 1.5% | Best: XGBoost | Acc: 67.91%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 5d, Threshold: 2.5% | Best: XGBoost | Acc: 80.97%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 5d, Threshold: 5.0% | Best: XGBoost | Acc: 98.51%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 10d, Threshold: 0.75% | Best: GradientBoosting | Acc: 85.39%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 10d, Threshold: 1.0% | Best: XGBoost | Acc: 82.02%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 10d, Threshold: 1.5% | Best: XGBoost | Acc: 74.53%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 10d, Threshold: 2.5% | Best: GradientBoosting | Acc: 80.90%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 10d, Threshold: 5.0% | Best: RandomForest | Acc: 98.13%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 15d, Threshold: 0.75% | Best: XGBoost | Acc: 96.24%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 15d, Threshold: 1.0% | Best: XGBoost | Acc: 90.60%
+2026-02-28 02:10:23,337 - train_v2_5 - INFO - Horizon: 15d, Threshold: 1.5% | Best: GradientBoosting | Acc: 82.33%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 15d, Threshold: 2.5% | Best: XGBoost | Acc: 91.73%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 15d, Threshold: 5.0% | Best: Ensemble | Acc: 98.12%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 20d, Threshold: 0.75% | Best: CatBoost | Acc: 98.49%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 20d, Threshold: 1.0% | Best: XGBoost | Acc: 96.98%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 20d, Threshold: 1.5% | Best: XGBoost | Acc: 88.68%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 20d, Threshold: 2.5% | Best: XGBoost | Acc: 92.83%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 20d, Threshold: 5.0% | Best: XGBoost | Acc: 98.49%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 30d, Threshold: 0.75% | Best: GradientBoosting | Acc: 100.00%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 30d, Threshold: 1.0% | Best: RandomForest | Acc: 99.62%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 30d, Threshold: 1.5% | Best: GradientBoosting | Acc: 96.58%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 30d, Threshold: 2.5% | Best: XGBoost | Acc: 97.34%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Horizon: 30d, Threshold: 5.0% | Best: GradientBoosting | Acc: 98.10%
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - 
+Models saved to: C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\models\results
+2026-02-28 02:10:23,338 - train_v2_5 - INFO - Logs saved to: C:\Users\stone\OneDrive\Documents\obsidian_notes\SelfProject\StockPredictor\v2.5\src\logs\training

@@ -161,23 +161,23 @@ def load_model(horizon: int = None):
 
 ### Project Structure
 - `src/` - Source code organized by version
-  - `src/v2_5/` - Current active version (4-class classification: UP/DOWN/UP_DOWN/SIDEWAYS)
-  - `src/v2/` - Legacy version (binary classification: UP/DOWN)
-  - `src/v1/` - Legacy regression models (deprecated)
-  - `src/v1_5/` - Experimental walk-forward validation
-  - `archive/` - Archived old versions
+  - `v2.5/` - Current active version (4-class classification: UP/DOWN/UP_DOWN/SIDEWAYS)
+  - `v2/` - Legacy version (binary classification: UP/DOWN)
+  - `v1/` - Legacy regression models (deprecated)
+  - `v1_5/` - Experimental walk-forward validation
 - `tests/` - Test files in root directory
-- `docs/` - Documentation organized by version
+- `docs/` - Documentation (root level)
+- `v2.5/docs/` - Version-specific documentation
 - `data/` - Data files (raw/, cache/, processed/)
 - `models/` - Trained models (results/v2/, results/v2_5/)
 - `logs/` - Logging (training/, prediction/, api/)
 
 ### Version Management
 - V2.5 is the current active version with 4-class classification
-- Always work in `src/v2_5/` for new features
+- Always work in `v2.5/` folder for new features
 - Classification targets: UP, DOWN, UP_DOWN (both), SIDEWAYS (neither)
-- Thresholds: 1%, 2.5%, 5% price movement
-- Horizons: 5, 10, 20, 30 days
+- Thresholds: 0.75%, 1%, 1.5%, 2.5%, 5% price movement
+- Horizons: 3, 5, 10, 15, 20, 30 days
 - Default prediction: 20-day horizon, 1% threshold
 
 ### Data Files
@@ -320,10 +320,88 @@ df = (df
 - Note: Windows with OneDrive may lock cache files - handle gracefully
 - Use `time.sleep()` retries for file lock issues on Windows
 
-When making changes:
+---
+
+## Documentation Guidelines (IMPORTANT)
+
+When making ANY changes to the codebase, ALWAYS follow these documentation rules:
+
+### 1. Update README Files
+- **ALWAYS** update `README.md` (English) when making changes
+- **ALWAYS** update `README_cn.md` (Chinese) when making changes
+- Include new features, parameters, endpoints, and version changes
+
+### 2. Update Changelog
+- **ALWAYS** add entries to `CHANGELOG.md` in the root directory
+- Include: version number, date, description of changes
+- Use proper format:
+```markdown
+## [VERSION] - YYYY-MM-DD
+
+### Added
+- New feature description
+
+### Changed
+- Changed feature description
+
+### Fixed
+- Bug fix description
+```
+
+### 3. Update Version-Specific Docs
+- **ALWAYS** update `v{version}/docs/` directory
+- Update API_REFERENCE.md if endpoints changed
+- Update ARCHITECTURE.md if system design changed
+- Update API_GUIDE.md if parameters changed
+
+### 4. Version Numbering
+- Follow semantic versioning: MAJOR.MINOR.PATCH
+- Increment:
+  - MAJOR: Breaking changes (API incompatibility)
+  - MINOR: New features (backward compatible)
+  - PATCH: Bug fixes
+
+### Example: Adding New Horizon
+
+When adding a new horizon (e.g., 15d):
+
+1. **Update config**: `v2.5/src/config_v2_5.py`
+2. **Update README.md**: Add 15d to horizons list
+3. **Update README_cn.md**: Add 15d to Chinese list
+4. **Update CHANGELOG.md**: Add entry for new version
+5. **Update v2.5/docs/**: 
+   - API_REFERENCE.md: Add to horizon options
+   - API_GUIDE.md: Add to model-info
+   - ARCHITECTURE.md: Update if needed
+
+### Example: New API Endpoint
+
+When adding `/predict/batch`:
+
+1. **Update code**: `v2.5/src/inference_v2_5.py`
+2. **Update README.md**: Add endpoint to list
+3. **Update README_cn.md**: Add Chinese endpoint
+4. **Update CHANGELOG.md**: Document new endpoint
+5. **Update v2.5/docs/**:
+   - API_REFERENCE.md: Add full endpoint documentation
+   - API_GUIDE.md: Add usage example
+
+### Quick Checklist
+
+Before completing ANY task:
+- [ ] Updated README.md?
+- [ ] Updated README_cn.md?
+- [ ] Updated CHANGELOG.md?
+- [ ] Updated version-specific docs (v2.5/docs/)?
+- [ ] Updated API docs if endpoints changed?
+- [ ] Version number incremented in config?
+
+---
+
+## When Making Changes
 1. Update tests for new functionality
 2. Run tests: `python -m pytest tests/ -v`
 3. Ensure backward compatibility with API
-4. Update relevant documentation in `docs/v2/`
+4. Update relevant documentation in `v2.5/docs/`
 5. Test with both cached and fresh data
 6. Check that models can still be loaded from disk

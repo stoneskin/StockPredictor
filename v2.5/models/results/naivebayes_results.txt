@@ -406,3 +406,347 @@ Recall: 0.3726
 F1: 0.4618
 AUC-ROC: 0.7248
 Confusion Matrix: [[15, 0, 1, 1], [0, 2, 0, 0], [3, 2, 2, 7], [67, 68, 16, 79]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 0.75% ===
+Accuracy: 0.2575
+Precision: 0.2825
+Recall: 0.2575
+F1: 0.2024
+AUC-ROC: 0.5712
+Confusion Matrix: [[3, 13, 26, 52], [0, 10, 18, 27], [4, 21, 19, 28], [2, 8, 0, 37]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 1.0% ===
+Accuracy: 0.3321
+Precision: 0.3038
+Recall: 0.3321
+F1: 0.2587
+AUC-ROC: 0.5889
+Confusion Matrix: [[1, 10, 21, 44], [1, 6, 17, 31], [1, 19, 14, 16], [0, 12, 7, 68]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 1.5% ===
+Accuracy: 0.5410
+Precision: 0.4476
+Recall: 0.5410
+F1: 0.4898
+AUC-ROC: 0.6240
+Confusion Matrix: [[21, 0, 6, 23], [16, 0, 8, 23], [5, 0, 8, 13], [21, 1, 7, 116]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 2.5% ===
+Accuracy: 0.6455
+Precision: 0.7315
+Recall: 0.6455
+F1: 0.6842
+AUC-ROC: 0.6150
+Confusion Matrix: [[0, 0, 11, 7], [2, 0, 9, 11], [2, 0, 1, 4], [2, 0, 47, 172]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 5.0% ===
+Accuracy: 0.3209
+Precision: 0.9815
+Recall: 0.3209
+F1: 0.4754
+AUC-ROC: 0.6408
+Confusion Matrix: [[0, 1, 0, 0], [0, 2, 0, 0], [1, 1, 0, 0], [51, 118, 10, 84]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 0.75% ===
+Accuracy: 0.2724
+Precision: 0.4004
+Recall: 0.2724
+F1: 0.2964
+AUC-ROC: 0.5733
+Confusion Matrix: [[10, 14, 21, 37], [7, 8, 8, 7], [30, 27, 44, 38], [1, 5, 0, 11]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.2463
+Precision: 0.2785
+Recall: 0.2463
+F1: 0.2405
+AUC-ROC: 0.5517
+Confusion Matrix: [[8, 14, 21, 44], [10, 6, 11, 16], [20, 15, 31, 31], [4, 12, 4, 21]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 1.5% ===
+Accuracy: 0.4104
+Precision: 0.5192
+Recall: 0.4104
+F1: 0.3644
+AUC-ROC: 0.6099
+Confusion Matrix: [[21, 0, 10, 33], [15, 1, 9, 27], [18, 0, 16, 15], [27, 0, 4, 72]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.6604
+Precision: 0.6414
+Recall: 0.6604
+F1: 0.6458
+AUC-ROC: 0.6835
+Confusion Matrix: [[11, 0, 2, 10], [15, 0, 5, 18], [5, 0, 4, 3], [25, 6, 2, 162]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.2948
+Precision: 0.9747
+Recall: 0.2948
+F1: 0.4319
+AUC-ROC: 0.7265
+Confusion Matrix: [[2, 1, 0, 0], [0, 2, 0, 0], [0, 1, 1, 0], [50, 114, 23, 74]]
+
+=== NaiveBayes - Horizon: 10d, Threshold: 0.75% ===
+Accuracy: 0.2397
+Precision: 0.7132
+Recall: 0.2397
+F1: 0.3280
+AUC-ROC: 0.5384
+Confusion Matrix: [[9, 21, 8, 7], [1, 4, 0, 1], [57, 68, 51, 37], [0, 3, 0, 0]]
+
+=== NaiveBayes - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.2659
+Precision: 0.6463
+Recall: 0.2659
+F1: 0.3281
+AUC-ROC: 0.5823
+Confusion Matrix: [[13, 25, 8, 11], [1, 10, 0, 6], [43, 60, 46, 36], [0, 6, 0, 2]]
+
+=== NaiveBayes - Horizon: 10d, Threshold: 1.5% ===
+Accuracy: 0.3483
+Precision: 0.4844
+Recall: 0.3483
+F1: 0.3206
+AUC-ROC: 0.6593
+Confusion Matrix: [[30, 17, 7, 1], [8, 31, 2, 1], [52, 35, 30, 3], [13, 33, 2, 2]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 0.75% ===
+Accuracy: 0.2575
+Precision: 0.2825
+Recall: 0.2575
+F1: 0.2024
+AUC-ROC: 0.5712
+Confusion Matrix: [[3, 13, 26, 52], [0, 10, 18, 27], [4, 21, 19, 28], [2, 8, 0, 37]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 1.0% ===
+Accuracy: 0.3321
+Precision: 0.3038
+Recall: 0.3321
+F1: 0.2587
+AUC-ROC: 0.5889
+Confusion Matrix: [[1, 10, 21, 44], [1, 6, 17, 31], [1, 19, 14, 16], [0, 12, 7, 68]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 1.5% ===
+Accuracy: 0.5410
+Precision: 0.4476
+Recall: 0.5410
+F1: 0.4898
+AUC-ROC: 0.6240
+Confusion Matrix: [[21, 0, 6, 23], [16, 0, 8, 23], [5, 0, 8, 13], [21, 1, 7, 116]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 2.5% ===
+Accuracy: 0.6455
+Precision: 0.7315
+Recall: 0.6455
+F1: 0.6842
+AUC-ROC: 0.6150
+Confusion Matrix: [[0, 0, 11, 7], [2, 0, 9, 11], [2, 0, 1, 4], [2, 0, 47, 172]]
+
+=== NaiveBayes - Horizon: 3d, Threshold: 5.0% ===
+Accuracy: 0.3209
+Precision: 0.9815
+Recall: 0.3209
+F1: 0.4754
+AUC-ROC: 0.6408
+Confusion Matrix: [[0, 1, 0, 0], [0, 2, 0, 0], [1, 1, 0, 0], [51, 118, 10, 84]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 0.75% ===
+Accuracy: 0.2724
+Precision: 0.4004
+Recall: 0.2724
+F1: 0.2964
+AUC-ROC: 0.5733
+Confusion Matrix: [[10, 14, 21, 37], [7, 8, 8, 7], [30, 27, 44, 38], [1, 5, 0, 11]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.2463
+Precision: 0.2785
+Recall: 0.2463
+F1: 0.2405
+AUC-ROC: 0.5517
+Confusion Matrix: [[8, 14, 21, 44], [10, 6, 11, 16], [20, 15, 31, 31], [4, 12, 4, 21]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 1.5% ===
+Accuracy: 0.4104
+Precision: 0.5192
+Recall: 0.4104
+F1: 0.3644
+AUC-ROC: 0.6099
+Confusion Matrix: [[21, 0, 10, 33], [15, 1, 9, 27], [18, 0, 16, 15], [27, 0, 4, 72]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.6604
+Precision: 0.6414
+Recall: 0.6604
+F1: 0.6458
+AUC-ROC: 0.6835
+Confusion Matrix: [[11, 0, 2, 10], [15, 0, 5, 18], [5, 0, 4, 3], [25, 6, 2, 162]]
+
+=== NaiveBayes - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.2948
+Precision: 0.9747
+Recall: 0.2948
+F1: 0.4319
+AUC-ROC: 0.7265
+Confusion Matrix: [[2, 1, 0, 0], [0, 2, 0, 0], [0, 1, 1, 0], [50, 114, 23, 74]]
+
+=== NaiveBayes - Horizon: 10d, Threshold: 0.75% ===
+Accuracy: 0.2397
+Precision: 0.7132
+Recall: 0.2397
+F1: 0.3280
+AUC-ROC: 0.5384
+Confusion Matrix: [[9, 21, 8, 7], [1, 4, 0, 1], [57, 68, 51, 37], [0, 3, 0, 0]]
+
+=== NaiveBayes - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.2659
+Precision: 0.6463
+Recall: 0.2659
+F1: 0.3281
+AUC-ROC: 0.5823
+Confusion Matrix: [[13, 25, 8, 11], [1, 10, 0, 6], [43, 60, 46, 36], [0, 6, 0, 2]]
+
+=== NaiveBayes - Horizon: 10d, Threshold: 1.5% ===
+Accuracy: 0.3483
+Precision: 0.4844
+Recall: 0.3483
+F1: 0.3206
+AUC-ROC: 0.6593
+Confusion Matrix: [[30, 17, 7, 1], [8, 31, 2, 1], [52, 35, 30, 3], [13, 33, 2, 2]]
+
+=== NaiveBayes - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.5431
+Precision: 0.5397
+Recall: 0.5431
+F1: 0.5239
+AUC-ROC: 0.6622
+Confusion Matrix: [[9, 0, 5, 14], [12, 7, 5, 29], [12, 0, 11, 12], [19, 12, 2, 118]]
+
+=== NaiveBayes - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.6105
+Precision: 0.9260
+Recall: 0.6105
+F1: 0.7165
+AUC-ROC: 0.7636
+Confusion Matrix: [[4, 0, 0, 1], [0, 4, 1, 0], [0, 0, 2, 3], [63, 21, 15, 153]]
+
+=== NaiveBayes - Horizon: 15d, Threshold: 0.75% ===
+Accuracy: 0.3008
+Precision: 0.9253
+Recall: 0.3008
+F1: 0.4170
+AUC-ROC: 0.0000
+Confusion Matrix: [[10, 2, 2], [0, 0, 0], [113, 69, 70]]
+
+=== NaiveBayes - Horizon: 15d, Threshold: 1.0% ===
+Accuracy: 0.2707
+Precision: 0.7559
+Recall: 0.2707
+F1: 0.3521
+AUC-ROC: 0.6921
+Confusion Matrix: [[10, 6, 5, 7], [1, 5, 3, 3], [72, 65, 56, 32], [0, 0, 0, 1]]
+
+=== NaiveBayes - Horizon: 15d, Threshold: 1.5% ===
+Accuracy: 0.3872
+Precision: 0.5589
+Recall: 0.3872
+F1: 0.3710
+AUC-ROC: 0.6698
+Confusion Matrix: [[28, 10, 5, 2], [3, 32, 3, 1], [65, 40, 43, 5], [12, 15, 2, 0]]
+
+=== NaiveBayes - Horizon: 15d, Threshold: 2.5% ===
+Accuracy: 0.4549
+Precision: 0.5301
+Recall: 0.4549
+F1: 0.4771
+AUC-ROC: 0.7075
+Confusion Matrix: [[14, 3, 4, 8], [12, 25, 4, 20], [21, 2, 22, 8], [28, 30, 5, 60]]
+
+=== NaiveBayes - Horizon: 15d, Threshold: 5.0% ===
+Accuracy: 0.2293
+Precision: 0.9293
+Recall: 0.2293
+F1: 0.3290
+AUC-ROC: 0.7271
+Confusion Matrix: [[7, 1, 1, 0], [0, 2, 0, 0], [0, 3, 0, 1], [64, 116, 19, 52]]
+
+=== NaiveBayes - Horizon: 20d, Threshold: 0.75% ===
+Accuracy: 0.5208
+Precision: 0.9427
+Recall: 0.5208
+F1: 0.6519
+AUC-ROC: 0.0000
+Confusion Matrix: [[7, 3], [124, 131]]
+
+=== NaiveBayes - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.2981
+Precision: 0.8599
+Recall: 0.2981
+F1: 0.3840
+AUC-ROC: 0.7297
+Confusion Matrix: [[12, 0, 5], [0, 4, 0], [118, 63, 63]]
+
+=== NaiveBayes - Horizon: 20d, Threshold: 1.5% ===
+Accuracy: 0.3547
+Precision: 0.5979
+Recall: 0.3547
+F1: 0.3665
+AUC-ROC: 0.6777
+Confusion Matrix: [[21, 10, 9, 1], [1, 22, 1, 1], [85, 38, 49, 9], [7, 5, 4, 2]]
+
+=== NaiveBayes - Horizon: 20d, Threshold: 2.5% ===
+Accuracy: 0.4566
+Precision: 0.5299
+Recall: 0.4566
+F1: 0.4696
+AUC-ROC: 0.6997
+Confusion Matrix: [[20, 4, 3, 3], [12, 25, 5, 22], [24, 5, 26, 13], [26, 23, 4, 50]]
+
+=== NaiveBayes - Horizon: 20d, Threshold: 5.0% ===
+Accuracy: 0.3132
+Precision: 0.8346
+Recall: 0.3132
+F1: 0.4071
+AUC-ROC: 0.7327
+Confusion Matrix: [[8, 0, 1, 2], [0, 4, 0, 0], [0, 1, 3, 5], [70, 87, 16, 68]]
+
+=== NaiveBayes - Horizon: 30d, Threshold: 0.75% ===
+Accuracy: 0.9696
+Precision: 0.9899
+Recall: 0.9696
+F1: 0.9769
+AUC-ROC: 0.0000
+Confusion Matrix: [[4, 0], [8, 251]]
+
+=== NaiveBayes - Horizon: 30d, Threshold: 1.0% ===
+Accuracy: 0.6996
+Precision: 0.9765
+Recall: 0.6996
+F1: 0.8062
+AUC-ROC: 0.0000
+Confusion Matrix: [[4, 1], [78, 180]]
+
+=== NaiveBayes - Horizon: 30d, Threshold: 1.5% ===
+Accuracy: 0.1217
+Precision: 0.8631
+Recall: 0.1217
+F1: 0.0984
+AUC-ROC: 0.6474
+Confusion Matrix: [[9, 8, 0, 4], [1, 12, 0, 2], [98, 60, 10, 55], [0, 3, 0, 1]]
+
+=== NaiveBayes - Horizon: 30d, Threshold: 2.5% ===
+Accuracy: 0.4373
+Precision: 0.5160
+Recall: 0.4373
+F1: 0.4521
+AUC-ROC: 0.6957
+Confusion Matrix: [[16, 6, 3, 6], [11, 28, 3, 27], [20, 14, 37, 16], [14, 25, 3, 34]]
+
+=== NaiveBayes - Horizon: 30d, Threshold: 5.0% ===
+Accuracy: 0.3726
+Precision: 0.8113
+Recall: 0.3726
+F1: 0.4618
+AUC-ROC: 0.7248
+Confusion Matrix: [[15, 0, 1, 1], [0, 2, 0, 0], [3, 2, 2, 7], [67, 68, 16, 79]]

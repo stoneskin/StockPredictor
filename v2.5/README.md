@@ -7,10 +7,10 @@ Stock Predictor V2.5.1 is an enhanced version with **4-class classification** fo
 ### Key Features
 
 - **4 Classes**: UP, DOWN, UP_DOWN, SIDEWAYS (reordered for better AUC)
-- **Multi-Threshold**: 1%, 2.5%, 5% price movement detection
-- **Multi-Horizon**: 5, 10, 20, 30-day predictions
+- **Multi-Horizon**: 3, 5, 10, 15, 20, 30-day predictions
+- **Multi-Threshold**: 0.75%, 1%, 1.5%, 2.5%, 5% price movement detection
 - **7 Models**: Including XGBoost, CatBoost
-- **SMOTE**: Class imbalance handling for 5% threshold
+- **SMOTE**: Class imbalance handling
 - **64 Features**: Technical + regime + market features
 - **Enhanced Logging**: Date/time-stamped log files
 
