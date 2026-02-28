@@ -40,11 +40,17 @@ python -m uvicorn src.v2.inference_v2:app --host 0.0.0.0 --port 8000
 
 ### Training Models
 ```bash
-# Train V2 models (current version)
-python src/v2/train_v2.py
+# Train V2.5 models (current version - 4-class classification)
+python src/v2_5/train_v2_5.py
 
-# Train V1 models (legacy)
-python src/v1/train.py
+# Train V2 models (legacy)
+python src/v2/train_v2.py
+```
+
+### Starting V2.5 API Server
+```bash
+# Development with hot reload
+python -m uvicorn src.v2_5.inference_v2_5:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ## Code Style Guidelines
@@ -145,19 +151,24 @@ def load_model(horizon: int = None):
 
 ### Project Structure
 - `src/` - Source code organized by version
-  - `src/v2/` - Active version (USE THIS)
+  - `src/v2_5/` - Current active version (4-class classification: UP/DOWN/UP_DOWN/SIDEWAYS)
+  - `src/v2/` - Legacy version (binary classification: UP/DOWN)
   - `src/v1/` - Legacy regression models (deprecated)
   - `src/v1_5/` - Experimental walk-forward validation
+  - `archive/` - Archived old versions
 - `tests/` - Test files in root directory
 - `docs/` - Documentation organized by version
 - `data/` - Data files (raw/, cache/, processed/)
-- `models/` - Trained models (checkpoints/, results/v2/)
+- `models/` - Trained models (results/v2/, results/v2_5/)
+- `logs/` - Logging (training/, prediction/, api/)
 
 ### Version Management
-- V2 is the current active version
-- Always work in `src/v2/` for new features
-- Prefer `GradientBoosting` model (best performance at 88.7% accuracy)
-- Default prediction horizon is 20 days
+- V2.5 is the current active version with 4-class classification
+- Always work in `src/v2_5/` for new features
+- Classification targets: UP, DOWN, UP_DOWN (both), SIDEWAYS (neither)
+- Thresholds: 1%, 2.5%, 5% price movement
+- Horizons: 5, 10, 20, 30 days
+- Default prediction: 20-day horizon, 1% threshold
 
 ### Data Files
 - CSV format with lowercase column names: `date, open, high, low, close, volume`
@@ -281,13 +292,14 @@ df = (df
 ### Legacy Code Notes
 - V1 uses regression (deprecated, don't use)
 - V1_5 uses walk-forward validation (experimental only)
-- V2 uses classification with ensemble (current, use this)
+- V2 uses binary classification with ensemble (legacy)
+- V2.5 uses 4-class classification (current, use this)
 - Legacy CSV format has 3 header rows to skip
 - New format is standard OHLCV with lowercase column names
 
 ### Dependencies
 - Core: scikit-learn, pandas, numpy
-- ML: lightgbm
+- ML: lightgbm, xgboost, catboost
 - Technical Analysis: ta, yfinance
 - API: fastapi, uvicorn, pydantic
 - ONNX: onnx, skl2onnx, onnxruntime
