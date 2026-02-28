@@ -44,8 +44,9 @@ THRESHOLDS = [0.01, 0.025, 0.05]  # 1%, 2.5%, 5%
 THRESHOLD_LABELS = ["1pct", "2_5pct", "5pct"]
 
 # Classification target: 4 classes
-# 0: SIDEWAYS, 1: UP, 2: DOWN, 3: UP_DOWN
-CLASS_LABELS = ["SIDEWAYS", "UP", "DOWN", "UP_DOWN"]
+# V2.5.1: Reordered to put minority classes first for better AUC calculation
+# 0: UP, 1: DOWN, 2: UP_DOWN, 3: SIDEWAYS
+CLASS_LABELS = ["UP", "DOWN", "UP_DOWN", "SIDEWAYS"]
 CLASSIFICATION_THRESHOLD = 0.5
 
 # Model parameters
@@ -78,7 +79,6 @@ MODEL_PARAMS = {
         'subsample': 0.8,
         'colsample_bytree': 0.8,
         'random_state': 42,
-        'use_label_encoder': False,
         'eval_metric': 'mlogloss'
     },
     'catboost': {
@@ -149,6 +149,38 @@ TRAIN_PARAMS = {
     'random_state': 42,
     'cv_folds': 5
 }
+
+# V2.5.1 Improvements
+USE_SMOTE = True  # Apply SMOTE for class imbalance
+USE_TIMESERIES_CV = False  # Use time-series cross-validation (slower but more realistic)
+SMOTE_K_NEIGHBORS = 5  # Number of neighbors for SMOTE
+
+# Threshold-specific model parameters (V2.5.1)
+# Different thresholds need different handling
+THRESHOLD_PARAMS = {
+    0.01: {  # 1% threshold - hard to predict, use more regularization
+        'max_depth': 3,
+        'n_estimators': 150,
+        'min_samples_split': 30,
+        'class_weight': 'balanced'
+    },
+    0.025: {  # 2.5% threshold - standard approach
+        'max_depth': 5,
+        'n_estimators': 100,
+        'min_samples_split': 20,
+        'class_weight': 'balanced'
+    },
+    0.05: {  # 5% threshold - use SMOTE for heavy imbalance
+        'max_depth': 7,
+        'n_estimators': 100,
+        'min_samples_split': 10,
+        'class_weight': 'balanced'
+    }
+}
+
+# Probability calibration (V2.5.1)
+USE_CALIBRATION = False  # Set True for better probability estimates
+CALIBRATION_METHOD = 'isotonic'  # 'isotonic' or 'sigmoid'
 
 # Evaluation metrics
 EVALUATION_METRICS = [

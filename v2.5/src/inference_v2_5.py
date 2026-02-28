@@ -32,9 +32,9 @@ logging.basicConfig(level=logging.INFO)
 logger = get_api_logger('inference_v2_5')
 
 app = FastAPI(
-    title="Stock Prediction API V2.5",
+    title="Stock Prediction API V2.5.1",
     description="Predict stock price movements with 4-class classification: UP, DOWN, UP_DOWN, SIDEWAYS",
-    version="2.5.0"
+    version="2.5.1"
 )
 
 models = {}
@@ -122,8 +122,11 @@ def get_stock_data(symbol: str, current_date: Optional[str] = None) -> tuple[pd.
     return data, current_date_str
 
 
-def compute_features(df: pd.DataFrame) -> pd.DataFrame:
-    """Compute technical indicators as features."""
+def compute_features(df: pd.DataFrame, include_spy_features: bool = True) -> pd.DataFrame:
+    """Compute technical indicators as features.
+    
+    Must match features used in training (V2.5.1).
+    """
     df = df.copy()
     close = df['close']
     high = df.get('high', close)
@@ -176,19 +179,109 @@ def compute_features(df: pd.DataFrame) -> pd.DataFrame:
     df['momentum_10'] = close / close.shift(10) - 1
     df['momentum_20'] = close / close.shift(20) - 1
     
+    # Rate of Change
+    df['roc_5'] = (close - close.shift(5)) / close.shift(5) * 100
+    df['roc_10'] = (close - close.shift(10)) / close.shift(10) * 100
+    
     # Volume
+    df['volume_ma_5'] = volume.rolling(window=5).mean()
     df['volume_ma_20'] = volume.rolling(window=20).mean()
     df['volume_ratio'] = volume / df['volume_ma_20']
+    
+    # Price position relative to MAs
+    df['price_above_ma50'] = (close > df['ma_50']).astype(int)
+    df['price_above_ma200'] = (close > df['ma_200']).astype(int)
     
     # MA Crossover Regime
     ma50 = close.rolling(50).mean()
     ma200 = close.rolling(200).mean()
     df['ma_cross_bull'] = ((close > ma50) & (close > ma200) & (ma50 > ma200)).astype(int)
     df['ma_cross_bear'] = ((close < ma50) & (close < ma200) & (ma50 < ma200)).astype(int)
+    df['ma_cross_sideways'] = (~(df['ma_cross_bull'].astype(bool)) & ~(df['ma_cross_bear'].astype(bool))).astype(int)
     
     # Volatility
     daily_returns = close.pct_change()
     df['volatility'] = daily_returns.rolling(20).std()
+    
+    high_vol = 0.03
+    low_vol = 0.005
+    df['volatility_high'] = (df['volatility'] > high_vol).astype(int)
+    df['volatility_normal'] = ((df['volatility'] >= low_vol) & (df['volatility'] <= high_vol)).astype(int)
+    df['volatility_low'] = (df['volatility'] < low_vol).astype(int)
+    
+    # V2.5.1 Additional regime features
+    
+    # ATR Ratio
+    df['atr_ratio'] = df['atr'] / close
+    
+    # Trend Strength
+    df['trend_strength'] = abs(df['ma_50'] - df['ma_200']) / df['ma_200']
+    
+    # Price vs MA
+    df['price_vs_ma50'] = (close - df['ma_50']) / df['ma_50']
+    df['price_vs_ma200'] = (close - df['ma_200']) / df['ma_200']
+    
+    # Volatility regime numeric
+    df['volatility_regime_num'] = 0
+    df.loc[df['volatility'] > high_vol, 'volatility_regime_num'] = 2
+    df.loc[(df['volatility'] >= low_vol) & (df['volatility'] <= high_vol), 'volatility_regime_num'] = 1
+    
+    # Momentum regime
+    df['momentum_positive'] = (df['momentum_20'] > 0).astype(int)
+    df['momentum_strong'] = (abs(df['momentum_20']) > 0.05).astype(int)
+    
+    # RSI regime
+    df['rsi_overbought'] = (df['rsi'] > 70).astype(int)
+    df['rsi_oversold'] = (df['rsi'] < 30).astype(int)
+    df['rsi_neutral'] = ((df['rsi'] >= 30) & (df['rsi'] <= 70)).astype(int)
+    
+    # Stochastic regime
+    df['stoch_overbought'] = (df['stoch_k'] > 80).astype(int)
+    df['stoch_oversold'] = (df['stoch_k'] < 20).astype(int)
+    
+    # Bollinger Band squeeze/expansion
+    bb_width_median = df['bb_width'].median()
+    df['bb_squeeze'] = (df['bb_width'] < bb_width_median * 0.8).astype(int)
+    df['bb_expansion'] = (df['bb_width'] > bb_width_median * 1.2).astype(int)
+    
+    # SPY correlation features (if SPY data available)
+    if include_spy_features:
+        try:
+            spy_data = get_spy_data(df.index)
+            if spy_data is not None and len(spy_data) > 0:
+                spy_close = spy_data['close']
+                stock_close = close
+                
+                common_idx = df.index.intersection(spy_data.index)
+                if len(common_idx) > 20:
+                    stock_ret = stock_close.loc[common_idx].pct_change()
+                    spy_ret = spy_close.loc[common_idx].pct_change()
+                    
+                    for window in [5, 10, 20]:
+                        corr = stock_ret.rolling(window).corr(spy_ret)
+                        df.loc[common_idx, f'correlation_spy_{window}d'] = corr.fillna(0)
+                    
+                    # SPY momentum
+                    spy_ma20 = spy_close.rolling(20).mean()
+                    spy_momentum = (spy_close - spy_ma20) / spy_ma20
+                    df.loc[common_idx, 'spy_momentum'] = spy_momentum.loc[common_idx]
+        except:
+            pass
+    
+    # Initialize SPY correlation columns if not set
+    for col in ['correlation_spy_5d', 'correlation_spy_10d', 'correlation_spy_20d', 'spy_momentum']:
+        if col not in df.columns:
+            df[col] = 0.0
+    df['correlation_spy_5d'] = df['correlation_spy_5d'].fillna(0)
+    df['correlation_spy_10d'] = df['correlation_spy_10d'].fillna(0)
+    df['correlation_spy_20d'] = df['correlation_spy_20d'].fillna(0)
+    df['spy_momentum'] = df['spy_momentum'].fillna(0)
+    
+    # SPY correlation regime
+    df['spy_correlation_positive'] = (df['correlation_spy_20d'] > 0.3).astype(int)
+    df['spy_correlation_negative'] = (df['correlation_spy_20d'] < -0.3).astype(int)
+    df['spy_correlation_neutral'] = ((df['correlation_spy_20d'] >= -0.3) & (df['correlation_spy_20d'] <= 0.3)).astype(int)
+    df['spy_momentum_positive'] = (df['spy_momentum'] > 0).astype(int)
     
     # Fill NaN
     df = df.fillna(0)
@@ -196,21 +289,48 @@ def compute_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def load_models(horizon: int, threshold: float):
-    """Load models for specific horizon and threshold."""
-    threshold_str = str(threshold).replace('.', '_')
-    model_filename = f"gradientboosting_h{horizon}_t{threshold_str}.pkl"
-    model_path = MODEL_RESULTS_DIR / model_filename
-    
-    if not model_path.exists():
-        return None
-    
+def get_spy_data(index) -> Optional[pd.DataFrame]:
+    """Get SPY data aligned with given index."""
     try:
-        data = joblib.load(model_path)
-        return data.get('model')
-    except Exception as e:
-        logger.error(f"Error loading model: {e}")
-        return None
+        cache_file = CACHE_DATA_DIR / "spy.csv"
+        if cache_file.exists():
+            spy_df = pd.read_csv(cache_file, parse_dates=['date'])
+            spy_df = spy_df.set_index('date')
+            return spy_df
+    except:
+        pass
+    return None
+
+
+def load_models(horizon: int, threshold: float):
+    """Load models for specific horizon and threshold.
+    
+    Priority: XGBoost > GradientBoosting > RandomForest > Ensemble
+    XGBoost is the best performer in V2.5.1
+    """
+    threshold_str = str(threshold).replace('.', '_')
+    
+    # Model priority order (best first)
+    model_priority = [
+        f"xgboost_h{horizon}_t{threshold_str}.pkl",
+        f"gradientboosting_h{horizon}_t{threshold_str}.pkl",
+        f"randomforest_h{horizon}_t{threshold_str}.pkl",
+        f"ensemble_h{horizon}_t{threshold_str}.pkl",
+    ]
+    
+    for model_filename in model_priority:
+        model_path = MODEL_RESULTS_DIR / model_filename
+        
+        if model_path.exists():
+            try:
+                data = joblib.load(model_path)
+                logger.info(f"Loaded {model_filename} for horizon={horizon}d, threshold={threshold*100}%")
+                return data.get('model')
+            except Exception as e:
+                logger.warning(f"Error loading {model_filename}: {e}")
+                continue
+    
+    return None
 
 
 # Pydantic models
@@ -308,7 +428,8 @@ async def model_info():
 @app.post("/predict", response_model=PredictionResponse)
 async def predict(request: PredictionRequest):
     """Make prediction for a single horizon and threshold."""
-    pred_logger = get_prediction_logger('prediction')
+    base_logger = get_prediction_logger('prediction')
+    pred_logger = PredictionLogger(base_logger)
     
     logger.info(f"Prediction request: {request.symbol}, horizon={request.horizon}, threshold={request.threshold}")
     
@@ -373,7 +494,8 @@ async def predict(request: PredictionRequest):
 @app.post("/predict/multi", response_model=PredictionResponse)
 async def predict_multi(request: MultiHorizonRequest):
     """Make predictions for multiple horizons and thresholds."""
-    pred_logger = get_prediction_logger('prediction_multi')
+    base_logger = get_prediction_logger('prediction_multi')
+    pred_logger = PredictionLogger(base_logger)
     
     horizons = request.horizons or HORIZONS
     thresholds = request.thresholds or THRESHOLDS

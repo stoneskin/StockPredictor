@@ -6,9 +6,9 @@
 
 A complete machine learning system for predicting QQQ stock price movements using classification + ensemble learning. Learn ML fundamentals while building a real trading prediction system.
 
-**Status**: ✅ Fully functional | **Version**: 2.5 | **Platform**: Windows/Linux/Mac | **Framework**: scikit-learn + FastAPI
+**Status**: ✅ Fully functional | **Version**: 2.5.1 | **Platform**: Windows/Linux/Mac | **Framework**: scikit-learn + FastAPI
 
-> **Note**: The latest version (V2.5) is in the `v2.5/` folder. The V2 version is in `src/v2/`. See [CHANGELOG.md](CHANGELOG.md) for version history.
+> **Note**: The latest version (V2.5.1) is in the `v2.5/` folder. The V2 version is in `src/v2/`. See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ---
 
@@ -42,13 +42,14 @@ A complete machine learning system for predicting QQQ stock price movements usin
 
 | Document | Purpose |
 |----------|---------|
-| **[v2.5/README.md](v2.5/README.md)** | Latest version (V2.5) - 4-class classification |
-| **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** | Quick start (V2, read this first!) |
-| **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** | System design & data flow |
-| **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** | All API endpoints & examples |
-| **[docs/V2_CLASSIFICATION.md](docs/V2_CLASSIFICATION.md)** | ML approach & feature engineering |
-| **[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)** | Common issues & solutions |
-| **[docs/v2/CACHE_OPTIMIZATION.md](docs/v2/CACHE_OPTIMIZATION.md)** | Performance tuning |
+| **[v2.5/README.md](v2.5/README.md)** | Latest version (V2.5.1) - quick start |
+| **[v2.5/docs/README.md](v2.5/docs/README.md)** | V2.5 docs index |
+| **[v2.5/docs/API_REFERENCE.md](v2.5/docs/API_REFERENCE.md)** | Complete API reference with response explanations |
+| **[v2.5/docs/ARCHITECTURE.md](v2.5/docs/ARCHITECTURE.md)** | System design & data flow |
+| **[v2.5/docs/API_GUIDE.md](v2.5/docs/API_GUIDE.md)** | API usage guide |
+| **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** | Quick start (V2) |
+| **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** | V2 system design |
+| **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** | V2 API reference |
 | **[CHANGELOG.md](CHANGELOG.md)** | Version history |
 
 ---
@@ -212,6 +213,36 @@ Example: 5-day horizon, 1% threshold:
 - Price goes down >1% but never up >1%: **DOWN**
 - Price goes up >1% AND down >1%: **UP_DOWN**
 - Price stays within ±1%: **SIDEWAYS**
+
+---
+
+## 📈 V2.5.1 Training Results (February 2026)
+
+### Performance Summary
+
+| Horizon | Threshold | Best Model | Accuracy | AUC-ROC |
+|---------|-----------|------------|----------|---------|
+| 5d | 1% | XGBoost | 61.19% | 0.820 |
+| 5d | 2.5% | XGBoost | 80.97% | 0.913 |
+| 10d | 1% | XGBoost | 82.02% | 0.885 |
+| 10d | 2.5% | XGBoost | 79.78% | 0.943 |
+| 20d | 2.5% | XGBoost | 92.83% | 0.993 |
+| 30d | 2.5% | XGBoost | 97.34% | 0.997 |
+
+### Key Improvements (V2.5.1 vs V2.5.0)
+
+- **XGBoost outperforms RandomForest** by 7-22% accuracy
+- **10d/1% now viable** - 82% accuracy (was 60%)
+- **20d/2.5% improved** - 93% accuracy (was 77-79%)
+- **SMOTE handling** - balanced class distribution during training
+- **64 features** - added regime detection features
+
+### Recommendations
+
+1. Use **XGBoost** as default model (best performer)
+2. Use **2.5% threshold** for best balance of difficulty and accuracy
+3. Avoid 1% threshold with short horizons (5d) - inherently hard
+4. For risk-averse strategies: use 20d/5% threshold (>98% accuracy)
 
 ---
 

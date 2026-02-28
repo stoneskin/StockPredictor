@@ -6,9 +6,9 @@
 
 基于分类 + 集成学习的QQQ股票预测系统。使用多个机器学习模型和市场状态识别来预测QQQ未来价格走势。
 
-**状态**: ✅ 完全可用 | **版本**: 2.5 | **平台**: Windows/Linux/Mac | **框架**: scikit-learn + FastAPI
+**状态**: ✅ 完全可用 | **版本**: 2.5.1 | **平台**: Windows/Linux/Mac | **框架**: scikit-learn + FastAPI
 
-> **注意**: 最新版本（V2.5）在 `v2.5/` 文件夹中。V2版本在 `src/v2/`。请参阅 [CHANGELOG.md](CHANGELOG.md) 查看版本历史。
+> **注意**: 最新版本（V2.5.1）在 `v2.5/` 文件夹中。V2版本在 `src/v2/`。请参阅 [CHANGELOG.md](CHANGELOG.md) 查看版本历史。
 
 ---
 
@@ -42,12 +42,14 @@
 
 | 文档 | 用途 |
 |------|------|
-| **[v2.5/README.md](v2.5/README.md)** | 最新版本（V2.5）- 4分类预测 |
-| **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** | 快速开始（V2版本，先读这个！） |
-| **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** | 系统架构及数据流 |
-| **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** | 所有API端点及示例 |
-| **[docs/V2_CLASSIFICATION.md](docs/V2_CLASSIFICATION.md)** | ML方法及特征工程 |
-| **[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)** | 常见问题及解决方案 |
+| **[v2.5/README.md](v2.5/README.md)** | 最新版本（V2.5.1）- 快速开始 |
+| **[v2.5/docs/README.md](v2.5/docs/README.md)** | V2.5文档索引 |
+| **[v2.5/docs/API_REFERENCE.md](v2.5/docs/API_REFERENCE.md)** | 完整API参考（含响应说明） |
+| **[v2.5/docs/ARCHITECTURE.md](v2.5/docs/ARCHITECTURE.md)** | 系统设计与数据流 |
+| **[v2.5/docs/API_GUIDE.md](v2.5/docs/API_GUIDE.md)** | API使用指南 |
+| **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** | 快速开始（V2版本） |
+| **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** | V2系统架构 |
+| **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** | V2 API参考 |
 | **[CHANGELOG.md](CHANGELOG.md)** | 版本历史 |
 
 ---
@@ -192,6 +194,36 @@ response = requests.post(
     }
 )
 ```
+
+---
+
+## 📈 V2.5.1 训练结果 (2026年2月)
+
+### 性能总结
+
+| 周期 | 阈值 | 最佳模型 | 准确率 | AUC-ROC |
+|------|------|----------|--------|---------|
+| 5天 | 1% | XGBoost | 61.19% | 0.820 |
+| 5天 | 2.5% | XGBoost | 80.97% | 0.913 |
+| 10天 | 1% | XGBoost | 82.02% | 0.885 |
+| 10天 | 2.5% | XGBoost | 79.78% | 0.943 |
+| 20天 | 2.5% | XGBoost | 92.83% | 0.993 |
+| 30天 | 2.5% | XGBoost | 97.34% | 0.997 |
+
+### 主要改进 (V2.5.1 vs V2.5.0)
+
+- **XGBoost优于RandomForest** 准确率提升7-22%
+- **10天/1%现在可用** - 82%准确率（原来60%）
+- **20天/2.5%显著改善** - 93%准确率（原来77-79%）
+- **SMOTE处理** - 训练时平衡类别分布
+- **64个特征** - 新增市场状态识别特征
+
+### 使用建议
+
+1. 使用**XGBoost**作为默认模型（表现最佳）
+2. 使用**2.5%阈值**获得最佳难度与准确率平衡
+3. 避免短周期（5天）+1%阈值组合 - 预测难度高
+4. 保守策略：使用20天/5%阈值（>98%准确率）
 
 ---
 

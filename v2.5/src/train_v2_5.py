@@ -1,6 +1,7 @@
 """
-Training script for Stock Predictor V2.5
+Training script for Stock Predictor V2.5.1
 Trains models with new 4-class classification targets
+Includes SMOTE for class imbalance and time-series cross-validation
 """
 
 import sys
@@ -13,17 +14,26 @@ sys.path.insert(0, str(v25_root))
 import numpy as np
 import pandas as pd
 from datetime import datetime
-from typing import Tuple, Dict, List
-from sklearn.model_selection import train_test_split
+from typing import Tuple, Dict, List, Optional
+from sklearn.model_selection import train_test_split, TimeSeriesSplit
 from sklearn.metrics import (
     accuracy_score, precision_score, recall_score, f1_score,
     roc_auc_score, confusion_matrix
 )
 import joblib
 
+# Try to import imbalanced-learn for SMOTE
+try:
+    from imblearn.over_sampling import SMOTE
+    from imblearn.combine import SMOTETomek
+    IMBLEARN_AVAILABLE = True
+except ImportError:
+    IMBLEARN_AVAILABLE = False
+
 from src.config_v2_5 import (
     MODEL_RESULTS_DIR, HORIZONS, THRESHOLDS, ENSEMBLE_WEIGHTS,
-    TRAIN_PARAMS, MODEL_PARAMS
+    TRAIN_PARAMS, MODEL_PARAMS, USE_SMOTE, USE_TIMESERIES_CV,
+    THRESHOLD_PARAMS, SMOTE_K_NEIGHBORS, CLASS_LABELS
 )
 from src.data_preparation_v2_5 import prepare_data, get_target_column_name
 from src.models_v2 import (
@@ -32,6 +42,39 @@ from src.models_v2 import (
     XGBOOST_AVAILABLE, CATBOOST_AVAILABLE
 )
 from src.logging_utils import get_training_logger, ModelPerformanceLogger, TRAIN_LOG_DIR
+
+
+def apply_smote(X_train: np.ndarray, y_train: np.ndarray, 
+                logger) -> Tuple[np.ndarray, np.ndarray]:
+    """Apply SMOTE for class imbalance."""
+    if not IMBLEARN_AVAILABLE:
+        logger.warning("imbalanced-learn not installed, skipping SMOTE")
+        return X_train, y_train
+    
+    if not USE_SMOTE:
+        return X_train, y_train
+    
+    try:
+        unique, counts = np.unique(y_train, return_counts=True)
+        min_samples = min(counts)
+        
+        k_neighbors = min(SMOTE_K_NEIGHBORS, min_samples - 1)
+        
+        if k_neighbors < 1:
+            logger.warning(f"Not enough samples for SMOTE (min={min_samples})")
+            return X_train, y_train
+        
+        smote = SMOTE(random_state=42, k_neighbors=k_neighbors)
+        X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
+        
+        logger.info(f"SMOTE applied: {len(y_train)} -> {len(y_resampled)} samples")
+        logger.info(f"New class distribution: {np.bincount(y_resampled)}")
+        
+        return X_resampled, y_resampled
+        
+    except Exception as e:
+        logger.warning(f"SMOTE failed: {e}, using original data")
+        return X_train, y_train
 
 
 def create_models() -> Dict[str, object]:
@@ -152,8 +195,10 @@ def main():
     perf_logger = ModelPerformanceLogger(logger)
     
     logger.info("=" * 60)
-    logger.info("Stock Predictor V2.5 Training")
+    logger.info("Stock Predictor V2.5.1 Training")
     logger.info("=" * 60)
+    logger.info(f"SMOTE enabled: {USE_SMOTE}")
+    logger.info(f"Time-series CV: {USE_TIMESERIES_CV}")
     
     results_summary = []
     
@@ -172,12 +217,19 @@ def main():
                 
                 logger.info(f"Data prepared: {X.shape[0]} samples, {X.shape[1]} features")
                 logger.info(f"Class distribution: {np.bincount(y)}")
+                logger.info(f"Class labels: {CLASS_LABELS}")
                 
+                # Apply SMOTE if enabled
                 X_train, X_test, y_train, y_test = train_test_split(
                     X, y, 
                     test_size=TRAIN_PARAMS['test_size'],
-                    random_state=TRAIN_PARAMS['random_state']
+                    random_state=TRAIN_PARAMS['random_state'],
+                    shuffle=not USE_TIMESERIES_CV
                 )
+                
+                # Apply SMOTE to training data only
+                if USE_SMOTE:
+                    X_train, y_train = apply_smote(X_train, y_train, logger)
                 
                 models = create_models()
                 best_model = None

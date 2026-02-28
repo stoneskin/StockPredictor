@@ -1,16 +1,27 @@
-# Stock Predictor V2.5
+# Stock Predictor V2.5.1
 
 ## Overview
 
-Stock Predictor V2.5 is an enhanced version with **4-class classification** for predicting stock price movements.
+Stock Predictor V2.5.1 is an enhanced version with **4-class classification** for predicting stock price movements.
 
 ### Key Features
 
-- **4 Classes**: UP, DOWN, UP_DOWN, SIDEWAYS
+- **4 Classes**: UP, DOWN, UP_DOWN, SIDEWAYS (reordered for better AUC)
 - **Multi-Threshold**: 1%, 2.5%, 5% price movement detection
 - **Multi-Horizon**: 5, 10, 20, 30-day predictions
 - **7 Models**: Including XGBoost, CatBoost
+- **SMOTE**: Class imbalance handling for 5% threshold
+- **64 Features**: Technical + regime + market features
 - **Enhanced Logging**: Date/time-stamped log files
+
+## Documentation
+
+| Document | Purpose |
+|----------|---------|
+| **[docs/README.md](docs/README.md)** | Docs index |
+| **[docs/API_REFERENCE.md](docs/API_REFERENCE.md)** | Complete API reference with response explanations |
+| **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** | System design & data flow |
+| **[docs/API_GUIDE.md](docs/API_GUIDE.md)** | API usage guide with examples |
 
 ## Quick Start
 
@@ -117,9 +128,43 @@ See `requirements.txt` for dependencies.
 
 ## Version History
 
+- **2.5.1** (2026-02-28): Class reordering (UP/DOWN/UP_DOWN/SIDEWAYS), SMOTE support, enhanced regime features, XGBoost/CatBoost now trained
 - **2.5.0** (2026-02-27): 4-class classification, multi-threshold, XGBoost/CatBoost
 - **2.0** (2025-01-01): Binary classification with ensemble (see ../v2/)
 - **1.0** (2024-01-01): Initial release (see ../archive/)
+
+## Training Results (V2.5.1)
+
+### Performance Summary
+
+| Horizon | Threshold | Best Model | Accuracy | AUC-ROC | Notes |
+|---------|-----------|------------|----------|---------|-------|
+| 5d | 1% | XGBoost | 61.19% | 0.820 | Hard to predict |
+| 5d | 2.5% | XGBoost | 80.97% | 0.913 | Good |
+| 5d | 5% | XGBoost | 98.51% | 0.973 | Trivial |
+| 10d | 1% | XGBoost | 82.02% | 0.885 | Improved |
+| 10d | 2.5% | XGBoost | 79.78% | 0.943 | Good |
+| 10d | 5% | XGBoost | 98.13% | 0.982 | Trivial |
+| 20d | 1% | XGBoost | 96.98% | 0.982 | Binary (3 classes) |
+| 20d | 2.5% | XGBoost | 92.83% | 0.993 | Excellent |
+| 20d | 5% | XGBoost | 98.49% | 0.998 | Trivial |
+| 30d | 2.5% | XGBoost | 97.34% | 0.997 | Excellent |
+| 30d | 5% | XGBoost | 98.10% | 0.996 | Trivial |
+
+### Key Improvements over V2.5.0
+
+- **XGBoost outperforms RandomForest** by 7-22% accuracy
+- **10d/1% now viable** - 82% accuracy (was 60%)
+- **20d/2.5% improved** - 93% accuracy (was 77-79%)
+- **SMOTE handling** - balanced class distribution during training
+- **64 features** - added regime detection features
+
+### Recommendations
+
+1. Use **XGBoost** as default model (best performer)
+2. Use **2.5% threshold** for best balance of difficulty and accuracy
+3. Avoid 1% threshold with short horizons (5d) - inherently hard
+4. For risk-averse strategies: use 20d/5% threshold (>98% accuracy)
 
 ## Notes
 

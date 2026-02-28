@@ -190,3 +190,315 @@ Recall: 0.9810
 F1: 0.9813
 AUC-ROC: 0.9960
 Confusion Matrix: [[228, 0, 1, 1], [1, 15, 0, 1], [0, 0, 2, 0], [1, 0, 0, 13]]
+
+=== RandomForest - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.4627
+Precision: 0.4696
+Recall: 0.4627
+F1: 0.4576
+AUC-ROC: 0.7354
+Confusion Matrix: [[24, 7, 8, 2], [13, 27, 18, 29], [5, 4, 17, 17], [13, 18, 10, 56]]
+
+=== RandomForest - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.7351
+Precision: 0.8130
+Recall: 0.7351
+F1: 0.7576
+AUC-ROC: 0.8917
+Confusion Matrix: [[147, 14, 32, 2], [1, 20, 0, 2], [5, 4, 22, 7], [1, 2, 1, 8]]
+
+=== RandomForest - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.9851
+Precision: 0.9790
+Recall: 0.9851
+F1: 0.9799
+AUC-ROC: 0.9471
+Confusion Matrix: [[261, 0, 0, 0], [2, 1, 0, 0], [1, 0, 0, 1], [0, 0, 0, 2]]
+
+=== RandomForest - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.6030
+Precision: 0.7629
+Recall: 0.6030
+F1: 0.6518
+AUC-ROC: 0.8151
+Confusion Matrix: [[5, 0, 3, 0], [3, 30, 13, 11], [1, 3, 12, 1], [9, 22, 40, 114]]
+
+=== RandomForest - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.7416
+Precision: 0.7625
+Recall: 0.7416
+F1: 0.7488
+AUC-ROC: 0.9141
+Confusion Matrix: [[119, 5, 25, 2], [3, 19, 1, 5], [12, 1, 35, 5], [0, 5, 5, 25]]
+
+=== RandomForest - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.9738
+Precision: 0.9770
+Recall: 0.9738
+F1: 0.9741
+AUC-ROC: 0.9820
+Confusion Matrix: [[249, 0, 1, 2], [2, 3, 0, 0], [0, 0, 4, 1], [1, 0, 0, 4]]
+
+=== RandomForest - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.9660
+Precision: 0.9710
+Recall: 0.9660
+F1: 0.9664
+AUC-ROC: 0.9917
+Confusion Matrix: [[16, 0, 1], [0, 2, 2], [6, 0, 238]]
+
+=== RandomForest - Horizon: 20d, Threshold: 2.5% ===
+Accuracy: 0.7887
+Precision: 0.7963
+Recall: 0.7887
+F1: 0.7901
+AUC-ROC: 0.9497
+Confusion Matrix: [[83, 5, 15, 0], [2, 27, 0, 1], [14, 3, 44, 3], [4, 3, 6, 55]]
+
+=== RandomForest - Horizon: 20d, Threshold: 5.0% ===
+Accuracy: 0.9811
+Precision: 0.9840
+Recall: 0.9811
+F1: 0.9785
+AUC-ROC: 0.9940
+Confusion Matrix: [[240, 0, 0, 1], [0, 10, 0, 1], [2, 0, 1, 1], [0, 0, 0, 9]]
+
+=== RandomForest - Horizon: 30d, Threshold: 1.0% ===
+Accuracy: 0.9962
+Precision: 0.9968
+Recall: 0.9962
+F1: 0.9964
+AUC-ROC: 0.0000
+Confusion Matrix: [[5, 0], [1, 257]]
+
+=== RandomForest - Horizon: 30d, Threshold: 2.5% ===
+Accuracy: 0.7909
+Precision: 0.8064
+Recall: 0.7909
+F1: 0.7936
+AUC-ROC: 0.9600
+Confusion Matrix: [[59, 6, 11, 0], [0, 29, 0, 2], [16, 1, 52, 0], [9, 2, 8, 68]]
+
+=== RandomForest - Horizon: 30d, Threshold: 5.0% ===
+Accuracy: 0.9810
+Precision: 0.9828
+Recall: 0.9810
+F1: 0.9813
+AUC-ROC: 0.9960
+Confusion Matrix: [[228, 0, 1, 1], [1, 15, 0, 1], [0, 0, 2, 0], [1, 0, 0, 13]]
+
+=== RandomForest - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.4664
+Precision: 0.4782
+Recall: 0.4664
+F1: 0.4563
+AUC-ROC: 0.7448
+Confusion Matrix: [[26, 13, 31, 17], [3, 12, 21, 7], [14, 10, 61, 12], [5, 10, 0, 26]]
+
+=== RandomForest - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.6978
+Precision: 0.7965
+Recall: 0.6978
+F1: 0.7283
+AUC-ROC: 0.8656
+Confusion Matrix: [[18, 0, 3, 2], [3, 20, 10, 5], [2, 1, 8, 1], [11, 36, 7, 141]]
+
+=== RandomForest - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.9664
+Precision: 0.9639
+Recall: 0.9664
+F1: 0.9649
+AUC-ROC: 0.9158
+Confusion Matrix: [[0, 0, 0, 3], [0, 0, 1, 1], [0, 0, 2, 0], [3, 1, 0, 257]]
+
+=== RandomForest - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.5581
+Precision: 0.7411
+Recall: 0.5581
+F1: 0.6152
+AUC-ROC: 0.7871
+Confusion Matrix: [[26, 14, 8, 9], [3, 8, 3, 3], [28, 33, 109, 15], [0, 2, 0, 6]]
+
+=== RandomForest - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.7603
+Precision: 0.7890
+Recall: 0.7603
+F1: 0.7681
+AUC-ROC: 0.9147
+Confusion Matrix: [[22, 1, 3, 2], [1, 38, 5, 9], [2, 4, 28, 1], [8, 27, 1, 115]]
+
+=== RandomForest - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.9813
+Precision: 0.9826
+Recall: 0.9813
+F1: 0.9807
+AUC-ROC: 0.9926
+Confusion Matrix: [[4, 0, 0, 1], [0, 3, 0, 2], [1, 0, 4, 0], [1, 0, 0, 251]]
+
+=== RandomForest - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.9245
+Precision: 0.9396
+Recall: 0.9245
+F1: 0.9293
+AUC-ROC: 0.9734
+Confusion Matrix: [[12, 0, 5], [0, 2, 2], [13, 0, 231]]
+
+=== RandomForest - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.4664
+Precision: 0.4782
+Recall: 0.4664
+F1: 0.4563
+AUC-ROC: 0.7448
+Confusion Matrix: [[26, 13, 31, 17], [3, 12, 21, 7], [14, 10, 61, 12], [5, 10, 0, 26]]
+
+=== RandomForest - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.6978
+Precision: 0.7965
+Recall: 0.6978
+F1: 0.7283
+AUC-ROC: 0.8656
+Confusion Matrix: [[18, 0, 3, 2], [3, 20, 10, 5], [2, 1, 8, 1], [11, 36, 7, 141]]
+
+=== RandomForest - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.9664
+Precision: 0.9639
+Recall: 0.9664
+F1: 0.9649
+AUC-ROC: 0.9158
+Confusion Matrix: [[0, 0, 0, 3], [0, 0, 1, 1], [0, 0, 2, 0], [3, 1, 0, 257]]
+
+=== RandomForest - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.5581
+Precision: 0.7411
+Recall: 0.5581
+F1: 0.6152
+AUC-ROC: 0.7871
+Confusion Matrix: [[26, 14, 8, 9], [3, 8, 3, 3], [28, 33, 109, 15], [0, 2, 0, 6]]
+
+=== RandomForest - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.7603
+Precision: 0.7890
+Recall: 0.7603
+F1: 0.7681
+AUC-ROC: 0.9147
+Confusion Matrix: [[22, 1, 3, 2], [1, 38, 5, 9], [2, 4, 28, 1], [8, 27, 1, 115]]
+
+=== RandomForest - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.9813
+Precision: 0.9826
+Recall: 0.9813
+F1: 0.9807
+AUC-ROC: 0.9926
+Confusion Matrix: [[4, 0, 0, 1], [0, 3, 0, 2], [1, 0, 4, 0], [1, 0, 0, 251]]
+
+=== RandomForest - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.9245
+Precision: 0.9396
+Recall: 0.9245
+F1: 0.9293
+AUC-ROC: 0.9734
+Confusion Matrix: [[12, 0, 5], [0, 2, 2], [13, 0, 231]]
+
+=== RandomForest - Horizon: 20d, Threshold: 2.5% ===
+Accuracy: 0.7925
+Precision: 0.8140
+Recall: 0.7925
+F1: 0.7962
+AUC-ROC: 0.9509
+Confusion Matrix: [[27, 0, 1, 2], [3, 52, 2, 7], [5, 6, 53, 4], [7, 18, 0, 78]]
+
+=== RandomForest - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.4664
+Precision: 0.4782
+Recall: 0.4664
+F1: 0.4563
+AUC-ROC: 0.7448
+Confusion Matrix: [[26, 13, 31, 17], [3, 12, 21, 7], [14, 10, 61, 12], [5, 10, 0, 26]]
+
+=== RandomForest - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.6978
+Precision: 0.7965
+Recall: 0.6978
+F1: 0.7283
+AUC-ROC: 0.8656
+Confusion Matrix: [[18, 0, 3, 2], [3, 20, 10, 5], [2, 1, 8, 1], [11, 36, 7, 141]]
+
+=== RandomForest - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.9664
+Precision: 0.9639
+Recall: 0.9664
+F1: 0.9649
+AUC-ROC: 0.9158
+Confusion Matrix: [[0, 0, 0, 3], [0, 0, 1, 1], [0, 0, 2, 0], [3, 1, 0, 257]]
+
+=== RandomForest - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.5581
+Precision: 0.7411
+Recall: 0.5581
+F1: 0.6152
+AUC-ROC: 0.7871
+Confusion Matrix: [[26, 14, 8, 9], [3, 8, 3, 3], [28, 33, 109, 15], [0, 2, 0, 6]]
+
+=== RandomForest - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.7603
+Precision: 0.7890
+Recall: 0.7603
+F1: 0.7681
+AUC-ROC: 0.9147
+Confusion Matrix: [[22, 1, 3, 2], [1, 38, 5, 9], [2, 4, 28, 1], [8, 27, 1, 115]]
+
+=== RandomForest - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.9813
+Precision: 0.9826
+Recall: 0.9813
+F1: 0.9807
+AUC-ROC: 0.9926
+Confusion Matrix: [[4, 0, 0, 1], [0, 3, 0, 2], [1, 0, 4, 0], [1, 0, 0, 251]]
+
+=== RandomForest - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.9245
+Precision: 0.9396
+Recall: 0.9245
+F1: 0.9293
+AUC-ROC: 0.9734
+Confusion Matrix: [[12, 0, 5], [0, 2, 2], [13, 0, 231]]
+
+=== RandomForest - Horizon: 20d, Threshold: 2.5% ===
+Accuracy: 0.7925
+Precision: 0.8140
+Recall: 0.7925
+F1: 0.7962
+AUC-ROC: 0.9509
+Confusion Matrix: [[27, 0, 1, 2], [3, 52, 2, 7], [5, 6, 53, 4], [7, 18, 0, 78]]
+
+=== RandomForest - Horizon: 20d, Threshold: 5.0% ===
+Accuracy: 0.9811
+Precision: 0.9840
+Recall: 0.9811
+F1: 0.9785
+AUC-ROC: 0.9855
+Confusion Matrix: [[10, 0, 1, 0], [0, 1, 1, 2], [0, 0, 9, 0], [0, 0, 1, 240]]
+
+=== RandomForest - Horizon: 30d, Threshold: 1.0% ===
+Accuracy: 0.9962
+Precision: 0.9968
+Recall: 0.9962
+F1: 0.9964
+AUC-ROC: 0.0000
+Confusion Matrix: [[5, 0], [1, 257]]
+
+=== RandomForest - Horizon: 30d, Threshold: 2.5% ===
+Accuracy: 0.8061
+Precision: 0.8235
+Recall: 0.8061
+F1: 0.8066
+AUC-ROC: 0.9654
+Confusion Matrix: [[28, 0, 3, 0], [1, 62, 0, 6], [3, 13, 63, 8], [9, 7, 1, 59]]
+
+=== RandomForest - Horizon: 30d, Threshold: 5.0% ===
+Accuracy: 0.9772
+Precision: 0.9785
+Recall: 0.9772
+F1: 0.9773
+AUC-ROC: 0.9940
+Confusion Matrix: [[15, 0, 1, 1], [0, 2, 0, 0], [0, 0, 12, 2], [0, 1, 1, 228]]

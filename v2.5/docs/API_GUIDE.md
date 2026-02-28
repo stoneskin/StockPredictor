@@ -1,12 +1,12 @@
-# Stock Predictor V2.5 API Guide
+# Stock Predictor V2.5.1 API Guide
 
 ## Overview
 
-The V2.5 API provides stock price movement predictions using 4-class classification:
-- **UP**: Price goes up more than threshold in any day within horizon
-- **DOWN**: Price goes down more than threshold in any day within horizon
-- **UP_DOWN**: Both up and down exceed threshold
-- **SIDEWAYS**: Price stays within threshold range
+The V2.5.1 API provides stock price movement predictions using 4-class classification:
+- **UP**: Price goes up more than threshold without going down more than threshold
+- **DOWN**: Price goes down more than threshold without going up more than threshold
+- **UP_DOWN**: Both up and down exceed threshold (volatile market)
+- **SIDEWAYS**: Price stays within ±threshold (no significant movement)
 
 ## Base URL
 
@@ -49,12 +49,13 @@ Get information about loaded models.
 **Response:**
 ```json
 {
-  "version": "2.5.0",
+  "version": "2.5.1",
   "n_models": 12,
   "horizons": [5, 10, 20, 30],
   "thresholds": [0.01, 0.025, 0.05],
-  "classes": ["SIDEWAYS", "UP", "DOWN", "UP_DOWN"],
-  "n_features": 47
+  "classes": ["UP", "DOWN", "UP_DOWN", "SIDEWAYS"],
+  "n_features": 64,
+  "best_model": "XGBoost"
 }
 ```
 
@@ -87,23 +88,38 @@ Make a single prediction for a stock.
 ```json
 {
   "symbol": "QQQ",
-  "date": "2026-02-25",
+  "date": "2026-02-27",
   "predictions": [
     {
       "horizon": 20,
-      "threshold": 0.01,
-      "prediction": "UP",
+      "threshold": 0.025,
+      "prediction": "SIDEWAYS",
       "probabilities": {
-        "SIDEWAYS": 0.15,
-        "UP": 0.55,
-        "DOWN": 0.10,
-        "UP_DOWN": 0.20
+        "UP": 0.0066,
+        "DOWN": 0.0878,
+        "UP_DOWN": 0.0377,
+        "SIDEWAYS": 0.8679
       },
-      "confidence": 0.55
+      "confidence": 0.8679
     }
   ]
 }
 ```
+
+### Response Explanation
+
+| Field | Description |
+|-------|-------------|
+| **prediction** | The predicted class (UP, DOWN, UP_DOWN, or SIDEWAYS) |
+| **probabilities** | Probability for each class (sums to 1.0) |
+| **confidence** | Highest probability (confidence in prediction) |
+
+#### Understanding Probabilities
+
+- **UP (0.66%)**: Probability price will go up >2.5% without dropping >2.5%
+- **DOWN (8.78%)**: Probability price will drop >2.5% without rising >2.5%
+- **UP_DOWN (3.77%)**: Probability of volatile movement (up AND down >2.5%)
+- **SIDEWAYS (86.79%)**: Probability price stays within ±2.5%
 
 ---
 
@@ -188,14 +204,23 @@ GET /predict/by-date/2026-02-25?symbol=QQQ&horizon=20
 
 ---
 
-## Classification Classes
+## Classification Classes (V2.5.1)
 
 | Class | Value | Description |
 |-------|-------|--------------|
-| SIDEWAYS | 0 | Price stays within ±threshold |
-| UP | 1 | Price goes up > threshold, down ≤ threshold |
-| DOWN | 2 | Price goes down > threshold, up ≥ threshold |
-| UP_DOWN | 3 | Both up and down exceed threshold |
+| **UP** | 0 | Price goes up > threshold, down ≤ threshold |
+| **DOWN** | 1 | Price goes down > threshold, up ≥ threshold |
+| **UP_DOWN** | 2 | Both up AND down exceed threshold (volatile) |
+| **SIDEWAYS** | 3 | Price stays within ±threshold |
+
+### Class Definitions with Examples (20-day horizon, 2.5% threshold)
+
+| Class | Condition | Example |
+|-------|-----------|---------|
+| **UP** | max_gain > 2.5% AND max_loss ≤ 2.5% | Price goes to +5% but never below -2.5% |
+| **DOWN** | max_loss > 2.5% AND max_gain ≤ 2.5% | Price goes to -5% but never above +2.5% |
+| **UP_DOWN** | max_gain > 2.5% AND max_loss > 2.5% | Price goes to +5% AND -5% (volatile) |
+| **SIDEWAYS** | max_gain ≤ 2.5% AND max_loss ≥ -2.5% | Price stays between ±2.5% |
 
 ---
 

@@ -19,9 +19,14 @@ class EnsembleModel(BaseModel):
         self.weights = weights or {}
         self.feature_names = None
         self.n_classes_ = 4
+        self.is_fitted = False
         
         if not self.weights and self.models:
             self.weights = {m.name: 1.0 / len(self.models) for m in self.models}
+    
+    def _create_model(self):
+        """Ensemble doesn't use a single model - this is a no-op."""
+        return None
     
     def add_model(self, model: BaseModel, weight: float = None):
         """Add a model to the ensemble."""

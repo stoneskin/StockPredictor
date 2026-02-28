@@ -106,11 +106,11 @@ def create_4class_targets(
     """
     Create 4-class classification targets based on threshold.
     
-    Classes:
-    - 0: SIDEWAYS - neither max gain nor max loss exceeds threshold
-    - 1: UP - max gain exceeds threshold, max loss does not
-    - 2: DOWN - max loss exceeds threshold (negative), max gain does not
-    - 3: UP_DOWN - both max gain and max loss exceed threshold
+    Classes (V2.5.1 - reordered for better AUC):
+    - 0: UP - max gain exceeds threshold, max loss does not
+    - 1: DOWN - max loss exceeds threshold (negative), max gain does not
+    - 2: UP_DOWN - both max gain and max loss exceed threshold
+    - 3: SIDEWAYS - neither max gain nor max loss exceeds threshold
     
     Args:
         df: DataFrame with 'close' price column
@@ -127,12 +127,12 @@ def create_4class_targets(
     target_col = f'target_{horizon}d_{threshold*100}pct'
     
     conditions = [
-        (max_gain > threshold) & (max_loss < -threshold),  # UP_DOWN: 3
-        (max_gain > threshold) & (max_loss >= -threshold),  # UP: 1
-        (max_gain <= threshold) & (max_loss < -threshold),  # DOWN: 2
-        (max_gain <= threshold) & (max_loss >= -threshold),  # SIDEWAYS: 0
+        (max_gain > threshold) & (max_loss >= -threshold),  # UP: 0
+        (max_gain <= threshold) & (max_loss < -threshold),  # DOWN: 1
+        (max_gain > threshold) & (max_loss < -threshold),   # UP_DOWN: 2
+        (max_gain <= threshold) & (max_loss >= -threshold), # SIDEWAYS: 3
     ]
-    choices = [3, 1, 2, 0]
+    choices = [0, 1, 2, 3]
     
     df[target_col] = np.select(conditions, choices, default=np.nan)
     
@@ -252,6 +252,8 @@ def add_regime_features(df: pd.DataFrame) -> pd.DataFrame:
     params = REGIME_PARAMS
     
     close = df['close']
+    high = df.get('high', close)
+    low = df.get('low', close)
     
     # MA Crossover Regime
     short_ma = close.rolling(window=params['short_ma']).mean()
@@ -275,6 +277,44 @@ def add_regime_features(df: pd.DataFrame) -> pd.DataFrame:
     df['volatility_high'] = (df['volatility'] > high_vol).astype(int)
     df['volatility_normal'] = ((df['volatility'] >= low_vol) & (df['volatility'] <= high_vol)).astype(int)
     df['volatility_low'] = (df['volatility'] < low_vol).astype(int)
+    
+    # V2.5.1: Additional regime features
+    
+    # ATR Ratio - normalized volatility
+    if 'atr' in df.columns:
+        df['atr_ratio'] = df['atr'] / close
+    
+    # Trend Strength (ADX-like)
+    df['trend_strength'] = abs(df['ma_50'] - df['ma_200']) / df['ma_200']
+    
+    # Price position relative to trend
+    df['price_vs_ma50'] = (close - df['ma_50']) / df['ma_50']
+    df['price_vs_ma200'] = (close - df['ma_200']) / df['ma_200']
+    
+    # Volatility regime as numeric (for model)
+    df['volatility_regime_num'] = 0  # low
+    df.loc[df['volatility'] > high_vol, 'volatility_regime_num'] = 2  # high
+    df.loc[(df['volatility'] >= low_vol) & (df['volatility'] <= high_vol), 'volatility_regime_num'] = 1  # normal
+    
+    # Momentum regime
+    df['momentum_positive'] = (df['momentum_20'] > 0).astype(int)
+    df['momentum_strong'] = (abs(df['momentum_20']) > 0.05).astype(int)
+    
+    # RSI regime
+    if 'rsi' in df.columns:
+        df['rsi_overbought'] = (df['rsi'] > 70).astype(int)
+        df['rsi_oversold'] = (df['rsi'] < 30).astype(int)
+        df['rsi_neutral'] = ((df['rsi'] >= 30) & (df['rsi'] <= 70)).astype(int)
+    
+    # Stochastic regime
+    if 'stoch_k' in df.columns:
+        df['stoch_overbought'] = (df['stoch_k'] > 80).astype(int)
+        df['stoch_oversold'] = (df['stoch_k'] < 20).astype(int)
+    
+    # Bollinger Band position regime
+    if 'bb_position' in df.columns:
+        df['bb_squeeze'] = (df['bb_width'] < df['bb_width'].quantile(0.2)).astype(int)
+        df['bb_expansion'] = (df['bb_width'] > df['bb_width'].quantile(0.8)).astype(int)
     
     return df
 
@@ -308,6 +348,26 @@ def add_market_features(df: pd.DataFrame, spy_data: pd.DataFrame) -> pd.DataFram
     df['correlation_spy_5d'] = df['correlation_spy_5d'].fillna(0)
     df['correlation_spy_10d'] = df['correlation_spy_10d'].fillna(0)
     df['correlation_spy_20d'] = df['correlation_spy_20d'].fillna(0)
+    
+    # V2.5.1: Market correlation regime features
+    # Correlation regime: inverse, neutral, positive
+    df['spy_correlation_positive'] = (df['correlation_spy_20d'] > 0.3).astype(int)
+    df['spy_correlation_negative'] = (df['correlation_spy_20d'] < -0.3).astype(int)
+    df['spy_correlation_neutral'] = ((df['correlation_spy_20d'] >= -0.3) & (df['correlation_spy_20d'] <= 0.3)).astype(int)
+    
+    # SPY relative momentum
+    spy_ma20 = spy_close.rolling(20).mean()
+    spy_momentum = (spy_close - spy_ma20) / spy_ma20
+    
+    common_idx = df.index.intersection(spy_data.index)
+    if len(common_idx) > 20:
+        df.loc[common_idx, 'spy_momentum'] = spy_momentum.loc[common_idx]
+    
+    if 'spy_momentum' not in df.columns:
+        df['spy_momentum'] = 0.0
+    
+    df['spy_momentum'] = df['spy_momentum'].fillna(0)
+    df['spy_momentum_positive'] = (df['spy_momentum'] > 0).astype(int)
     
     return df
 

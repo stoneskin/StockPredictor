@@ -94,3 +94,315 @@ Recall: 0.6540
 F1: 0.7351
 AUC-ROC: 0.8472
 Confusion Matrix: [[150, 22, 35, 23], [0, 12, 0, 5], [0, 0, 2, 0], [1, 3, 2, 8]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.3619
+Precision: 0.3602
+Recall: 0.3619
+F1: 0.3407
+AUC-ROC: 0.6109
+Confusion Matrix: [[23, 5, 11, 2], [29, 11, 16, 31], [9, 5, 9, 20], [20, 14, 9, 54]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.5858
+Precision: 0.7165
+Recall: 0.5858
+F1: 0.6285
+AUC-ROC: 0.7690
+Confusion Matrix: [[127, 16, 43, 9], [1, 14, 3, 5], [12, 10, 8, 8], [1, 2, 1, 8]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.1231
+Precision: 0.9745
+Recall: 0.1231
+F1: 0.1959
+AUC-ROC: 0.7405
+Confusion Matrix: [[29, 28, 136, 68], [0, 1, 0, 2], [0, 0, 2, 0], [0, 0, 1, 1]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.4007
+Precision: 0.6614
+Recall: 0.4007
+F1: 0.4836
+AUC-ROC: 0.6223
+Confusion Matrix: [[2, 0, 6, 0], [16, 6, 22, 13], [8, 1, 5, 3], [38, 13, 40, 94]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.5019
+Precision: 0.4848
+Recall: 0.5019
+F1: 0.4807
+AUC-ROC: 0.6724
+Confusion Matrix: [[104, 31, 8, 8], [6, 13, 0, 9], [32, 11, 1, 9], [8, 11, 0, 16]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.7790
+Precision: 0.9449
+Recall: 0.7790
+F1: 0.8393
+AUC-ROC: 0.8948
+Confusion Matrix: [[196, 25, 20, 11], [2, 3, 0, 0], [0, 0, 4, 1], [0, 0, 0, 5]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.4604
+Precision: 0.8724
+Recall: 0.4604
+F1: 0.5672
+AUC-ROC: 0.7561
+Confusion Matrix: [[10, 0, 7], [0, 4, 0], [89, 47, 108]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 2.5% ===
+Accuracy: 0.4868
+Precision: 0.4869
+Recall: 0.4868
+F1: 0.4682
+AUC-ROC: 0.7064
+Confusion Matrix: [[67, 10, 9, 17], [4, 5, 2, 19], [37, 6, 13, 8], [10, 12, 2, 44]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 5.0% ===
+Accuracy: 0.6604
+Precision: 0.9049
+Recall: 0.6604
+F1: 0.7386
+AUC-ROC: 0.8849
+Confusion Matrix: [[157, 34, 29, 21], [2, 8, 1, 0], [2, 0, 2, 0], [0, 1, 0, 8]]
+
+=== LogisticRegression - Horizon: 30d, Threshold: 1.0% ===
+Accuracy: 0.8631
+Precision: 0.9738
+Recall: 0.8631
+F1: 0.9107
+AUC-ROC: 0.0000
+Confusion Matrix: [[3, 2], [34, 224]]
+
+=== LogisticRegression - Horizon: 30d, Threshold: 2.5% ===
+Accuracy: 0.4677
+Precision: 0.4749
+Recall: 0.4677
+F1: 0.4619
+AUC-ROC: 0.7287
+Confusion Matrix: [[46, 8, 17, 5], [5, 4, 5, 17], [42, 4, 19, 4], [15, 15, 3, 54]]
+
+=== LogisticRegression - Horizon: 30d, Threshold: 5.0% ===
+Accuracy: 0.6540
+Precision: 0.9019
+Recall: 0.6540
+F1: 0.7351
+AUC-ROC: 0.8472
+Confusion Matrix: [[150, 22, 35, 23], [0, 12, 0, 5], [0, 0, 2, 0], [1, 3, 2, 8]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.3881
+Precision: 0.3895
+Recall: 0.3881
+F1: 0.3715
+AUC-ROC: 0.6162
+Confusion Matrix: [[16, 14, 29, 28], [7, 10, 18, 8], [19, 8, 51, 19], [3, 9, 2, 27]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.5858
+Precision: 0.7199
+Recall: 0.5858
+F1: 0.6313
+AUC-ROC: 0.7697
+Confusion Matrix: [[11, 1, 7, 4], [9, 10, 10, 9], [2, 1, 8, 1], [11, 42, 14, 128]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.4030
+Precision: 0.9744
+Recall: 0.4030
+F1: 0.5598
+AUC-ROC: 0.7206
+Confusion Matrix: [[1, 0, 2, 0], [0, 2, 0, 0], [1, 1, 0, 0], [36, 59, 61, 105]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.3858
+Precision: 0.6551
+Recall: 0.3858
+F1: 0.4676
+AUC-ROC: 0.6132
+Confusion Matrix: [[8, 23, 11, 15], [2, 7, 2, 6], [27, 38, 86, 34], [0, 6, 0, 2]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.5206
+Precision: 0.5597
+Recall: 0.5206
+F1: 0.5363
+AUC-ROC: 0.7583
+Confusion Matrix: [[12, 2, 12, 2], [4, 17, 5, 27], [18, 5, 11, 1], [4, 34, 14, 99]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.5281
+Precision: 0.9408
+Recall: 0.5281
+F1: 0.6514
+AUC-ROC: 0.7788
+Confusion Matrix: [[2, 0, 3, 0], [0, 4, 1, 0], [0, 0, 4, 1], [25, 48, 48, 131]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.5698
+Precision: 0.8918
+Recall: 0.5698
+F1: 0.6656
+AUC-ROC: 0.7605
+Confusion Matrix: [[11, 0, 6], [0, 4, 0], [73, 35, 136]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.3881
+Precision: 0.3895
+Recall: 0.3881
+F1: 0.3715
+AUC-ROC: 0.6162
+Confusion Matrix: [[16, 14, 29, 28], [7, 10, 18, 8], [19, 8, 51, 19], [3, 9, 2, 27]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.5858
+Precision: 0.7199
+Recall: 0.5858
+F1: 0.6313
+AUC-ROC: 0.7697
+Confusion Matrix: [[11, 1, 7, 4], [9, 10, 10, 9], [2, 1, 8, 1], [11, 42, 14, 128]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.4030
+Precision: 0.9744
+Recall: 0.4030
+F1: 0.5598
+AUC-ROC: 0.7206
+Confusion Matrix: [[1, 0, 2, 0], [0, 2, 0, 0], [1, 1, 0, 0], [36, 59, 61, 105]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.3858
+Precision: 0.6551
+Recall: 0.3858
+F1: 0.4676
+AUC-ROC: 0.6132
+Confusion Matrix: [[8, 23, 11, 15], [2, 7, 2, 6], [27, 38, 86, 34], [0, 6, 0, 2]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.5206
+Precision: 0.5597
+Recall: 0.5206
+F1: 0.5363
+AUC-ROC: 0.7583
+Confusion Matrix: [[12, 2, 12, 2], [4, 17, 5, 27], [18, 5, 11, 1], [4, 34, 14, 99]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.5281
+Precision: 0.9408
+Recall: 0.5281
+F1: 0.6514
+AUC-ROC: 0.7788
+Confusion Matrix: [[2, 0, 3, 0], [0, 4, 1, 0], [0, 0, 4, 1], [25, 48, 48, 131]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.5698
+Precision: 0.8918
+Recall: 0.5698
+F1: 0.6656
+AUC-ROC: 0.7605
+Confusion Matrix: [[11, 0, 6], [0, 4, 0], [73, 35, 136]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 2.5% ===
+Accuracy: 0.4868
+Precision: 0.4969
+Recall: 0.4868
+F1: 0.4888
+AUC-ROC: 0.7582
+Confusion Matrix: [[10, 2, 12, 6], [7, 21, 8, 28], [20, 0, 38, 10], [7, 25, 11, 60]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 1.0% ===
+Accuracy: 0.3881
+Precision: 0.3895
+Recall: 0.3881
+F1: 0.3715
+AUC-ROC: 0.6162
+Confusion Matrix: [[16, 14, 29, 28], [7, 10, 18, 8], [19, 8, 51, 19], [3, 9, 2, 27]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 2.5% ===
+Accuracy: 0.5858
+Precision: 0.7199
+Recall: 0.5858
+F1: 0.6313
+AUC-ROC: 0.7697
+Confusion Matrix: [[11, 1, 7, 4], [9, 10, 10, 9], [2, 1, 8, 1], [11, 42, 14, 128]]
+
+=== LogisticRegression - Horizon: 5d, Threshold: 5.0% ===
+Accuracy: 0.4030
+Precision: 0.9744
+Recall: 0.4030
+F1: 0.5598
+AUC-ROC: 0.7206
+Confusion Matrix: [[1, 0, 2, 0], [0, 2, 0, 0], [1, 1, 0, 0], [36, 59, 61, 105]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 1.0% ===
+Accuracy: 0.3858
+Precision: 0.6551
+Recall: 0.3858
+F1: 0.4676
+AUC-ROC: 0.6132
+Confusion Matrix: [[8, 23, 11, 15], [2, 7, 2, 6], [27, 38, 86, 34], [0, 6, 0, 2]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 2.5% ===
+Accuracy: 0.5206
+Precision: 0.5597
+Recall: 0.5206
+F1: 0.5363
+AUC-ROC: 0.7583
+Confusion Matrix: [[12, 2, 12, 2], [4, 17, 5, 27], [18, 5, 11, 1], [4, 34, 14, 99]]
+
+=== LogisticRegression - Horizon: 10d, Threshold: 5.0% ===
+Accuracy: 0.5281
+Precision: 0.9408
+Recall: 0.5281
+F1: 0.6514
+AUC-ROC: 0.7788
+Confusion Matrix: [[2, 0, 3, 0], [0, 4, 1, 0], [0, 0, 4, 1], [25, 48, 48, 131]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 1.0% ===
+Accuracy: 0.5698
+Precision: 0.8918
+Recall: 0.5698
+F1: 0.6656
+AUC-ROC: 0.7605
+Confusion Matrix: [[11, 0, 6], [0, 4, 0], [73, 35, 136]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 2.5% ===
+Accuracy: 0.4868
+Precision: 0.4969
+Recall: 0.4868
+F1: 0.4888
+AUC-ROC: 0.7582
+Confusion Matrix: [[10, 2, 12, 6], [7, 21, 8, 28], [20, 0, 38, 10], [7, 25, 11, 60]]
+
+=== LogisticRegression - Horizon: 20d, Threshold: 5.0% ===
+Accuracy: 0.4226
+Precision: 0.8722
+Recall: 0.4226
+F1: 0.5538
+AUC-ROC: 0.7221
+Confusion Matrix: [[1, 1, 9, 0], [0, 3, 0, 1], [1, 2, 2, 4], [23, 27, 85, 106]]
+
+=== LogisticRegression - Horizon: 30d, Threshold: 1.0% ===
+Accuracy: 0.9011
+Precision: 0.9748
+Recall: 0.9011
+F1: 0.9329
+AUC-ROC: 0.0000
+Confusion Matrix: [[3, 2], [24, 234]]
+
+=== LogisticRegression - Horizon: 30d, Threshold: 2.5% ===
+Accuracy: 0.4867
+Precision: 0.4845
+Recall: 0.4867
+F1: 0.4758
+AUC-ROC: 0.7284
+Confusion Matrix: [[4, 5, 17, 5], [2, 20, 5, 42], [12, 3, 57, 15], [7, 16, 6, 47]]
+
+=== LogisticRegression - Horizon: 30d, Threshold: 5.0% ===
+Accuracy: 0.6464
+Precision: 0.8863
+Recall: 0.6464
+F1: 0.7308
+AUC-ROC: 0.8264
+Confusion Matrix: [[12, 0, 5, 0], [0, 1, 0, 1], [8, 2, 3, 1], [24, 29, 23, 154]]
