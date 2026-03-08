@@ -10,6 +10,8 @@ A complete machine learning system for predicting QQQ stock price movements usin
 
 > **Note**: The latest version (V2.5.2) is in the `v2.5/` folder. The V2 version is in `src/v2/`. See [CHANGELOG.md](CHANGELOG.md) for version history.
 
+> **V3.0.2 Progress (Phase 0)**: Leakage-gated shared pipeline work has started in `v3.0/`.
+
 ---
 
 ## 🎯 Quick Overview
@@ -49,6 +51,9 @@ A complete machine learning system for predicting QQQ stock price movements usin
 | **[v2.5/docs/API_REFERENCE.md](v2.5/docs/API_REFERENCE.md)** | Complete API reference with response explanations |
 | **[v2.5/docs/ARCHITECTURE.md](v2.5/docs/ARCHITECTURE.md)** | System design & data flow |
 | **[v2.5/docs/API_GUIDE.md](v2.5/docs/API_GUIDE.md)** | API usage guide |
+| **[v3.0/IMPROVEMENT_PLAN_V3.0.2.md](v3.0/IMPROVEMENT_PLAN_V3.0.2.md)** | V3.0 execution plan baseline |
+| **[v3.0/LEAKAGE_AUDIT_REPORT.md](v3.0/LEAKAGE_AUDIT_REPORT.md)** | Phase 0 leakage controls and gate status |
+| **[v3.0/docs/VALIDATION_PROTOCOL.md](v3.0/docs/VALIDATION_PROTOCOL.md)** | V3.0 Phase 0 validation protocol |
 | **[CHANGELOG.md](CHANGELOG.md)** | Version history |
 
 ---
