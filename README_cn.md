@@ -10,6 +10,8 @@
 
 > **注意**: 最新版本（V2.5.2）在 `v2.5/` 文件夹中。V2版本在 `src/v2/`。请参阅 [CHANGELOG.md](CHANGELOG.md) 查看版本历史。
 
+> **V3.0.2 进度（Phase 0）**：`v3.0/` 已开始无泄漏门禁的共享特征流水线建设。
+
 ---
 
 ## 🎯 快速概览
@@ -47,6 +49,9 @@
 | **[v2.5/docs/API_REFERENCE.md](v2.5/docs/API_REFERENCE.md)** | 完整API参考（含响应说明） |
 | **[v2.5/docs/ARCHITECTURE.md](v2.5/docs/ARCHITECTURE.md)** | 系统设计与数据流 |
 | **[v2.5/docs/API_GUIDE.md](v2.5/docs/API_GUIDE.md)** | API使用指南 |
+| **[v3.0/IMPROVEMENT_PLAN_V3.0.2.md](v3.0/IMPROVEMENT_PLAN_V3.0.2.md)** | V3.0 执行基线计划 |
+| **[v3.0/LEAKAGE_AUDIT_REPORT.md](v3.0/LEAKAGE_AUDIT_REPORT.md)** | Phase 0 无泄漏控制与门禁状态 |
+| **[v3.0/docs/VALIDATION_PROTOCOL.md](v3.0/docs/VALIDATION_PROTOCOL.md)** | V3.0 Phase 0 验证协议 |
 | **[CHANGELOG.md](CHANGELOG.md)** | 版本历史 |
 
 ---

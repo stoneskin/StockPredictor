@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- V3.0.2 Phase 0 shared feature engineering pipeline: `v3.0/src/features/pipeline.py`
+- V3.0.2 shared target logic module: `v3.0/src/labels/targets.py`
+- New Phase 0 leakage and feature parity tests:
+  - `v3.0/tests/test_no_lookahead.py`
+  - `v3.0/tests/test_feature_parity.py`
+- New V3.0 documentation artifacts:
+  - `v3.0/LEAKAGE_AUDIT_REPORT.md`
+  - `v3.0/docs/VALIDATION_PROTOCOL.md`
+  - `v3.0/docs/RELEASE_CHECKLIST.md`
+
+### Changed
+- Root readmes now include V3.0.2 Phase 0 documentation links and status notes
+
 ## [2.5.2] - 2026-02-28
 
 ### Added
